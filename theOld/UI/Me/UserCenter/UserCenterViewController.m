@@ -15,7 +15,7 @@
 #import "ChangeIphoneViewController.h"
 #import "CustomNavigationController.h"
 
-@interface UserCenterViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface UserCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>{
     CGRect _frame;
     UITableView *_mainTableView;
     UIImageView *_iconImageView;
@@ -244,7 +244,7 @@
     
     if (0 == indexPath.section) {
         if (0 == indexPath.row) {
-            
+            [self photo];
         }else if (1 == indexPath.row) {
             
         }else if (2 == indexPath.row) {
@@ -262,4 +262,115 @@
     }
 }
 
+#pragma mark - photo
+- (void)photo {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
+        
+        self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        UIAlertController * alert = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        alert.view.tintColor = baseColor;
+        //通过拍照上传图片
+        UIAlertAction * takingPicAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                
+                UIImagePickerController * imagePicker = [[UIImagePickerController alloc]init];
+                imagePicker.delegate = self;
+                imagePicker.allowsEditing = YES;
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                [self presentViewController:imagePicker animated:YES completion:nil];
+            }
+            
+        }];
+        //从手机相册中选择上传图片
+        UIAlertAction * okAction = [UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
+                UIImagePickerController * imagePicker = [[UIImagePickerController alloc]init];
+                imagePicker.delegate = self;
+                imagePicker.allowsEditing = YES;
+                imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                [self presentViewController:imagePicker animated:YES completion:nil];
+            }
+            
+        }];
+        
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [alert addAction:takingPicAction];
+        [alert addAction:okAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+        
+    }else{
+        
+        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"从手机相册选择", nil];
+        [actionSheet showInView:self.view];
+    }
+}
+
+#pragma mark 调用系统相册及拍照功能实现方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    NSLog(@"调用系统相册及拍照功能实现方法");
+    UIImage * chosenImage = info[UIImagePickerControllerEditedImage];
+    UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
+    picImageView.image = chosenImage;
+    chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
+    NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+    //    [self saveImage:chosenImage withName:@"avatar.png"];
+    //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
+    //将图片上传到服务器
+    //    --------------------------------------------------------
+//    AFHTTPRequestOperationManager * manager = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:nil];
+//    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",@"text/javascript",@"text/json", nil];
+//    NSString * urlString = [NSString stringWithFormat:@"%@appuser/modifyUserIcon",BASE_URL];
+//    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:1];
+//    [dict setObject:[userDefaults objectForKey:@"user_id"] forKey:@"user_id"];
+//    [manager POST:urlString parameters:dict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//        //通过post请求上传用户头像图片,name和fileName传的参数需要跟后台协商,看后台要传的参数名
+//        [formData appendPartWithFileData:imageData name:@"img" fileName:@"img.jpg" mimeType:@"image/jpeg"];
+//
+//    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        //解析后台返回的结果,如果不做一下处理,打印结果可能是一些二进制流数据
+//        NSError *error;
+//        NSDictionary * imageDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers error:&error];
+//        //上传成功后更新数据
+//        self.personModel.adperurl = imageDict[@"adperurl"];
+//        NSLog(@"上传图片成功0---%@",imageDict);
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"上传图片-- 失败  -%@",error);
+//    }];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"用户取消选取时调用");
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+//压缩图片
+- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
+}
 @end
