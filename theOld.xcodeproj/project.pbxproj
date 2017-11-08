@@ -48,6 +48,8 @@
 		C398DA6B1FB29BFB00D0BED9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA651FB29BFB00D0BED9 /* AFURLSessionManager.m */; };
 		C398DA6F1FB29D1300D0BED9 /* VFNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA6E1FB29D1300D0BED9 /* VFNetAPIClient.m */; };
 		C398DA721FB29D4600D0BED9 /* DataInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA701FB29D4600D0BED9 /* DataInterface.m */; };
+		C398DA791FB2AE6A00D0BED9 /* NBLMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA751FB2AE6A00D0BED9 /* NBLMessage.m */; };
+		C398DA7A1FB2AE6B00D0BED9 /* NBLWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA771FB2AE6A00D0BED9 /* NBLWebViewController.m */; };
 		C3B23CAF1FAAB27A00D78E5C /* CommanSwitchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B23CAE1FAAB27A00D78E5C /* CommanSwitchBar.m */; };
 		C3B23CB81FAABA2600D78E5C /* UIImage+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B23CB51FAABA2600D78E5C /* UIImage+RoundedCorner.m */; };
 		C3B23CB91FAABA2600D78E5C /* UIView+RoundedCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B23CB71FAABA2600D78E5C /* UIView+RoundedCorner.m */; };
@@ -140,6 +142,11 @@
 		C398DA6E1FB29D1300D0BED9 /* VFNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VFNetAPIClient.m; sourceTree = "<group>"; };
 		C398DA701FB29D4600D0BED9 /* DataInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataInterface.m; sourceTree = "<group>"; };
 		C398DA711FB29D4600D0BED9 /* DataInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataInterface.h; sourceTree = "<group>"; };
+		C398DA741FB2AE6A00D0BED9 /* NBLMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBLMessage.h; sourceTree = "<group>"; };
+		C398DA751FB2AE6A00D0BED9 /* NBLMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBLMessage.m; sourceTree = "<group>"; };
+		C398DA761FB2AE6A00D0BED9 /* NBLWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBLWebViewController.h; sourceTree = "<group>"; };
+		C398DA771FB2AE6A00D0BED9 /* NBLWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBLWebViewController.m; sourceTree = "<group>"; };
+		C398DA781FB2AE6A00D0BED9 /* NBLWebViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBLWebViewHeader.h; sourceTree = "<group>"; };
 		C3B23CAD1FAAB27A00D78E5C /* CommanSwitchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommanSwitchBar.h; sourceTree = "<group>"; };
 		C3B23CAE1FAAB27A00D78E5C /* CommanSwitchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommanSwitchBar.m; sourceTree = "<group>"; };
 		C3B23CB41FAABA2600D78E5C /* UIImage+RoundedCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCorner.h"; sourceTree = "<group>"; };
@@ -281,9 +288,22 @@
 			path = Interface;
 			sourceTree = "<group>";
 		};
+		C398DA731FB2AE6A00D0BED9 /* NBLWebView */ = {
+			isa = PBXGroup;
+			children = (
+				C398DA741FB2AE6A00D0BED9 /* NBLMessage.h */,
+				C398DA751FB2AE6A00D0BED9 /* NBLMessage.m */,
+				C398DA761FB2AE6A00D0BED9 /* NBLWebViewController.h */,
+				C398DA771FB2AE6A00D0BED9 /* NBLWebViewController.m */,
+				C398DA781FB2AE6A00D0BED9 /* NBLWebViewHeader.h */,
+			);
+			path = NBLWebView;
+			sourceTree = "<group>";
+		};
 		C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				C398DA731FB2AE6A00D0BED9 /* NBLWebView */,
 				C398DA581FB29BFB00D0BED9 /* AFNetworking */,
 				C3B23CB31FAABA2600D78E5C /* JMRoundedCorner */,
 			);
@@ -359,12 +379,12 @@
 				C398DA6C1FB29D0600D0BED9 /* Interface */,
 				C3DE8D501FA6D08E007CE853 /* UI */,
 				C3DE8D571FA6D0BA007CE853 /* CustomView */,
-				C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */,
 				C3DE8D471FA6CE0D007CE853 /* vvDefine */,
 				C3108E891FA9AC030087C473 /* InitModel */,
 				C3DE8D311FA6CCA1007CE853 /* AppDelegate.h */,
 				C3DE8D321FA6CCA1007CE853 /* AppDelegate.m */,
 				C3DE8D4F1FA6CF8A007CE853 /* theOld-Prefix.pch */,
+				C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */,
 				C3DE8D3A1FA6CCA1007CE853 /* Assets.xcassets */,
 				C3DE8D3F1FA6CCA1007CE853 /* Info.plist */,
 				C3DE8D401FA6CCA1007CE853 /* main.m */,
@@ -585,7 +605,9 @@
 				C3B23CAF1FAAB27A00D78E5C /* CommanSwitchBar.m in Sources */,
 				C3108E9B1FA9AF1C0087C473 /* SettingViewController.m in Sources */,
 				C3108E8F1FA9AC780087C473 /* VVGlobalDefine.m in Sources */,
+				C398DA7A1FB2AE6B00D0BED9 /* NBLWebViewController.m in Sources */,
 				C3DE8D411FA6CCA1007CE853 /* main.m in Sources */,
+				C398DA791FB2AE6A00D0BED9 /* NBLMessage.m in Sources */,
 				C398DA691FB29BFB00D0BED9 /* AFURLRequestSerialization.m in Sources */,
 				C3B23CD21FAB02BB00D78E5C /* RegisterViewController.m in Sources */,
 				C3B23CCC1FAB02BB00D78E5C /* ForgetPwdOneViewController.m in Sources */,

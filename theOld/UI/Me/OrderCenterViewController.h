@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NBLWebViewController.h"
 
-@interface OrderCenterViewController : UIViewController
-- (id)initWithFrame:(CGRect)frame;
+@interface OrderCenterViewController : NBLWebViewController
+- (id)initWithFrame:(CGRect)frame withURLString:(NSString *)urlString;
 @end

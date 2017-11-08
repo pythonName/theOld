@@ -14,10 +14,16 @@
 
 @end
 
+//handler name
+static NSString *OrderCenterMessagehandler = @"OrderCenterMessagehandler";
+
+//implemented method list
+static NSString *business1 = @"business1";
+
 @implementation OrderCenterViewController
 
-- (id)initWithFrame:(CGRect)frame {
-    self = [super init];
+- (id)initWithFrame:(CGRect)frame withURLString:(NSString *)urlString{
+    self = [super initWithURLString:urlString];
     if (self) {
         _frame = frame;
     }
@@ -32,21 +38,46 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"订单列表";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)registerMessageHandler
+{
+    [super registerMessageHandler];
+    [self.webView.configuration.userContentController addScriptMessageHandler:self name:OrderCenterMessagehandler];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)dealWithMessage:(WKScriptMessage *)message
+{
+    BOOL deal = [super dealWithMessage:message];
+    if (deal) {
+        return deal;
+    }
+    
+    if ([message.name isEqualToString:OrderCenterMessagehandler] && [self.message.methodName isEqualToString:business1]) {
+        [self business1];
+        deal = YES;
+        if (self.message.callbackMethod.length > 0) {
+            [self.webView evaluateJavaScript:[NSString stringWithFormat:@"%@('test')",self.message.callbackMethod] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                
+            }];
+        }
+    }
+    
+    return deal;
 }
-*/
+
+
+- (void)business1
+{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:self.message.params
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    if (!error) {
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"js传给oc的参数是：%@", jsonString);
+    }
+}
 
 @end
