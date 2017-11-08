@@ -10,4 +10,16 @@
 
 @interface HeaderOfMainView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView *headerImageV;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+
+@property (weak, nonatomic) IBOutlet UIImageView *sexImageV;
+
+@property (weak, nonatomic) IBOutlet UIButton *resouseButton;
+
+- (IBAction)resouseButtonClick:(id)sender;
+
++ (HeaderOfMainView *)loadHeaderOfMainView;
+
 @end

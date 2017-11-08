@@ -7,9 +7,22 @@
 //
 
 #import "HeaderOfMainView.h"
-//#import "ns"
+#import "UIView+NIB.h"
 @implementation HeaderOfMainView
 
++ (HeaderOfMainView *)loadHeaderOfMainView{
+    HeaderOfMainView *vv = (HeaderOfMainView *)[self loadFromNIB];
+    
+    return vv;
+}
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.resouseButton.layer.cornerRadius = 10;
+    
+}
 
+//老人资料卡
+- (IBAction)resouseButtonClick:(id)sender {
+}
 @end

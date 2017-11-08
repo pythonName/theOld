@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>S_Title</key>
+		<string>照护服务总览</string>
+		<key>Title</key>
+		<string>照护服务总览</string>
+		<key>ClassName</key>
+		<string>ServiceListViewController</string>
+	</dict>
+	<dict>
+		<key>S_Title</key>
+		<string>关注老人列表</string>
+		<key>Title</key>
+		<string>关注老人列表</string>
+		<key>ClassName</key>
+		<string>OldManListViewController</string>
+	</dict>
+</array>
+</plist>

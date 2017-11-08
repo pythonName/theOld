@@ -16,5 +16,5 @@
 //#import "UIView+Extension.h"
 //#import "VVConfig.h"
 #import "vvDefine.h"
-
+#import "VVGlobalDefine.h"
 #endif
