@@ -1,19 +1,18 @@
 //
 //  MainViewController.m
-//  VShare
+//  theOld
 //
-//  Created by 胜日公司 on 16/2/26.
-//  Copyright © 2016年 胜日公司. All rights reserved.
+//  Created by 拓润公司 on 2017/11/8.
+//  Copyright © 2017年 loary. All rights reserved.
 //
 
 #import "MainViewController.h"
-//#import "LeveyTabBarController.h"
-
 
 @interface MainViewController (){
     CGRect _frame;
-
+    
 }
+
 
 @end
 
@@ -29,24 +28,20 @@
 
 - (void)loadView {
     self.view = [[UIView alloc] initWithFrame:_frame];
-    [self.view setBackgroundColor:UIColorRGB(248, 248, 248)];
+//    [self.view setBackgroundColor:UIColorRGB(248, 248, 248)];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+ 
+    self.view.backgroundColor = [UIColor redColor];
+     
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    if (!self.leveyTabBarController.tabBarHidden) {
-//        [self.leveyTabBarController hideTabBar:YES];
-//    }
-}
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    //[self.leveyTabBarController showTabBar:YES];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -1,5 +1,5 @@
 //
-//  MainViewController.h
+//  HeaderOfMainView.h
 //  theOld
 //
 //  Created by 拓润公司 on 2017/11/8.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainViewController : UIViewController
- 
-- (id)initWithFrame:(CGRect)frame;
-
+@interface HeaderOfMainView : UIView
 
 @end
