@@ -43,6 +43,10 @@
                 <constraint firstItem="4I3-Ht-XGR" firstAttribute="top" secondItem="C4x-gA-qXh" secondAttribute="bottom" id="lEc-kT-1HZ"/>
             </constraints>
             <size key="customSize" width="146" height="148"/>
+            <connections>
+                <outlet property="nameLab" destination="4I3-Ht-XGR" id="RVy-Ta-XZd"/>
+                <outlet property="personImageV" destination="C4x-gA-qXh" id="D04-3c-w7W"/>
+            </connections>
             <point key="canvasLocation" x="72" y="100.5"/>
         </collectionViewCell>
     </objects>

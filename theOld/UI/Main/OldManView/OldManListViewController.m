@@ -8,6 +8,7 @@
 
 #import "OldManListViewController.h"
 #import "OldManListCollectionViewCell.h"
+#import "NewAdditionOldManViewController.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
@@ -76,7 +77,7 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataArr.count;
+    return self.dataArr.count+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -84,6 +85,15 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     OldManListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
     cell.backgroundColor = [UIColor redColor];
     cell.layer.cornerRadius = 10;
+    
+    if (self.dataArr.count == indexPath.row) {
+        cell.personImageV.image = [UIImage imageNamed:@"addImage.png"];
+        cell.nameLab.text = @"新增老人";
+    }else{
+        //正常数据
+        
+    }
+    
     return cell;
 }
 
@@ -101,9 +111,21 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
+    if (self.dataArr.count == indexPath.row) {
+        //@"新增老人";
+        UIViewController *vc = (UIViewController *)self.delegate;
+        
+        NewAdditionOldManViewController *vv = [[NewAdditionOldManViewController alloc] init];
+        [vc.navigationController pushViewController:vv animated:YES];
+    }else{
+        //普通数据点击更新界面
+    }
 }
 
+
+- (void)setupDelegate:(id)delegate {
+    self.delegate = delegate;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -1,5 +1,5 @@
 //
-//  NewAdditionOldManViewController.h
+//  TheRemoteSupervisionViewController.h
 //  theOld
 //
 //  Created by 拓润公司 on 2017/11/8.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewAdditionOldManViewController : UIViewController
+@interface TheRemoteSupervisionViewController : UIViewController
 
 @end

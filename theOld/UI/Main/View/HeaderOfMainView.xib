@@ -59,11 +59,9 @@
             <constraints>
                 <constraint firstItem="EiS-wG-rJc" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" constant="100" id="4fC-rW-LXL"/>
                 <constraint firstItem="siR-ap-NN3" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="5rM-aa-fku"/>
-                <constraint firstItem="siR-ap-NN3" firstAttribute="leading" secondItem="neX-bK-8EZ" secondAttribute="leading" constant="147" id="7su-Gd-rBc"/>
                 <constraint firstItem="EiS-wG-rJc" firstAttribute="leading" secondItem="y6w-GO-SpO" secondAttribute="trailing" constant="8" id="Qf9-ha-DYI"/>
                 <constraint firstItem="siR-ap-NN3" firstAttribute="top" secondItem="y6w-GO-SpO" secondAttribute="bottom" constant="14" id="Stg-FI-K1w"/>
                 <constraint firstItem="y6w-GO-SpO" firstAttribute="top" secondItem="dDV-dX-1Du" secondAttribute="bottom" constant="12" id="YYh-oj-e4R"/>
-                <constraint firstAttribute="trailing" secondItem="siR-ap-NN3" secondAttribute="trailing" constant="148" id="eLY-eZ-TH5"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" constant="10" id="roU-TE-YK7"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="tir-D1-wQT"/>
                 <constraint firstItem="y6w-GO-SpO" firstAttribute="trailing" secondItem="dDV-dX-1Du" secondAttribute="trailing" id="vkD-t8-4B4"/>

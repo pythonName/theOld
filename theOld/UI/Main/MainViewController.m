@@ -40,7 +40,7 @@
     //头部信息
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
-    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 180);
+    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 200* ScreenHRatioBaseIphone6);
     
     //下半部分
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];

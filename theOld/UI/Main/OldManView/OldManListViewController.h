@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface OldManListViewController : UIViewController
+
+@property (nonatomic, weak) id delegate;
+
 - (id)initWithFrame:(CGRect)frame;
+
 @end
