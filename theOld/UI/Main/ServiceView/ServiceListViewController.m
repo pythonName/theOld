@@ -7,6 +7,10 @@
 //
 
 #import "ServiceListViewController.h"
+#import "CarePackagesViewController.h"
+#import "GuardiansViewController.h"
+#import "PhysiologicalDataViewController.h"
+#import "TheRemoteSupervisionViewController.h"
 
 @interface ServiceListViewController (){
     CGRect _frame;
@@ -47,35 +51,63 @@
     for(int i=0 ;i<titleArr.count;i++) {
         NSDictionary *dic = titleArr[i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(30* ScreenHRatioBaseIphone6+(i%2)*(9+width), 37+i/2*(9+height), width, height);
+        btn.frame = CGRectMake(30*ScreenHRatioBaseIphone6+(i%2)*(9+width), 30*ScreenHRatioBaseIphone6+i/2*(9+height), width, height);
         [self.view addSubview:btn];
+        [btn addTarget:self action:@selector(buttonsClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.backgroundColor = [UIColor whiteColor];
         btn.layer.cornerRadius = 10;
-        
+        btn.tag = 1000+i;
         //图片
-        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake((width-39)/2, 18, 39, 38)];
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake((width-39* ScreenHRatioBaseIphone6)/2, 14*ScreenHRatioBaseIphone6, 39* ScreenHRatioBaseIphone6, 38* ScreenHRatioBaseIphone6)];
         [btn addSubview:imageV];
         imageV.image = [UIImage imageNamed:dic[@"image"]];
         
         //名称
-        UILabel *nameLab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageV.frame)+12, CGRectGetWidth(btn.frame), 17)];
+        UILabel *nameLab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageV.frame)+10* ScreenHRatioBaseIphone6, CGRectGetWidth(btn.frame), 17)];
         [btn addSubview:nameLab];
         nameLab.textAlignment = NSTextAlignmentCenter;
         nameLab.font = [UIFont systemFontOfSize:13];
         nameLab.text = dic[@"name"];
         
         //描述
-        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLab.frame)+7, CGRectGetWidth(btn.frame), 17)];
+        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLab.frame)+4* ScreenHRatioBaseIphone6, CGRectGetWidth(btn.frame), 17)];
         [btn addSubview:lab];
         lab.textAlignment = NSTextAlignmentCenter;
         lab.font = [UIFont systemFontOfSize:13];
-        lab.text = dic[@"name"];
+        lab.text = dic[@"describe"];
         lab.textColor = UIColorFromRGB(0x888888);
     }
     
     
 }
 
+- (void)setupDelegate:(id)delegate {
+    self.delegate = delegate;
+}
+
+-(void)buttonsClick:(UIButton*)btn  {
+    NSInteger tag = btn.tag-1000;
+    
+    UIViewController *vc = (UIViewController *)self.delegate;
+    if (tag == 0) {
+        //看护套餐
+        CarePackagesViewController *vv = [[CarePackagesViewController alloc] init];
+        [vc.navigationController pushViewController:vv animated:YES];
+        
+    }else if (tag == 1){
+        //生理数据
+        PhysiologicalDataViewController *vv = [[PhysiologicalDataViewController alloc] init];
+        [vc.navigationController pushViewController:vv animated:YES];
+    }else if (tag == 2){
+        //远程
+        TheRemoteSupervisionViewController *vv = [[TheRemoteSupervisionViewController alloc] init];
+        [vc.navigationController pushViewController:vv animated:YES];
+    }else {
+        //监护人
+        GuardiansViewController *vv = [[GuardiansViewController alloc] init];
+        [vc.navigationController pushViewController:vv animated:YES];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

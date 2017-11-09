@@ -10,4 +10,11 @@
 
 @interface OldManListCollectionViewCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *personImageV;
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLab;
+
+//@property (nonatomic , strong) 
+
+
 @end
