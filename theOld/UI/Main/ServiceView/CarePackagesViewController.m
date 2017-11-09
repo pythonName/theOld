@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"照护套餐";
+//    self.mainScrollView.contentSize = cg
 }
 
 - (void)didReceiveMemoryWarning {
