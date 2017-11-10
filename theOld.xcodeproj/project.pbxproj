@@ -44,6 +44,8 @@
 		0AD73BFF1FB2B6F900256654 /* HeaderOfMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD73BFE1FB2B6F900256654 /* HeaderOfMainView.xib */; };
 		0AD73C021FB2C0E200256654 /* UIView+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD73C001FB2C0E200256654 /* UIView+NIB.m */; };
 		0AD73C041FB2C8C300256654 /* MainSubViewControllersConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AD73C031FB2C8C200256654 /* MainSubViewControllersConfig.plist */; };
+		0AE8BFF11FB5B3B5008C981C /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE8BFEF1FB5B3B5008C981C /* UserCenterTableViewCell.m */; };
+		0AE8BFF21FB5B3B5008C981C /* UserCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8BFF01FB5B3B5008C981C /* UserCenterTableViewCell.xib */; };
 		0AEC50901FB2E257009C60E4 /* carePackages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50881FB2E257009C60E4 /* carePackages@2x.png */; };
 		0AEC50911FB2E257009C60E4 /* carePackages@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50891FB2E257009C60E4 /* carePackages@3x.png */; };
 		0AEC50921FB2E257009C60E4 /* guardians@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC508A1FB2E257009C60E4 /* guardians@2x.png */; };
@@ -175,6 +177,9 @@
 		0AD73C001FB2C0E200256654 /* UIView+NIB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+NIB.m"; sourceTree = "<group>"; };
 		0AD73C011FB2C0E200256654 /* UIView+NIB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+NIB.h"; sourceTree = "<group>"; };
 		0AD73C031FB2C8C200256654 /* MainSubViewControllersConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainSubViewControllersConfig.plist; sourceTree = "<group>"; };
+		0AE8BFEE1FB5B3B5008C981C /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
+		0AE8BFEF1FB5B3B5008C981C /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
+		0AE8BFF01FB5B3B5008C981C /* UserCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCenterTableViewCell.xib; sourceTree = "<group>"; };
 		0AEC50881FB2E257009C60E4 /* carePackages@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carePackages@2x.png"; sourceTree = "<group>"; };
 		0AEC50891FB2E257009C60E4 /* carePackages@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "carePackages@3x.png"; sourceTree = "<group>"; };
 		0AEC508A1FB2E257009C60E4 /* guardians@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "guardians@2x.png"; sourceTree = "<group>"; };
@@ -574,6 +579,9 @@
 			children = (
 				C3B23CD41FAB031000D78E5C /* UserCenterViewController.h */,
 				C3B23CD51FAB031000D78E5C /* UserCenterViewController.m */,
+				0AE8BFEE1FB5B3B5008C981C /* UserCenterTableViewCell.h */,
+				0AE8BFEF1FB5B3B5008C981C /* UserCenterTableViewCell.m */,
+				0AE8BFF01FB5B3B5008C981C /* UserCenterTableViewCell.xib */,
 				C398DA381FAC5EE300D0BED9 /* ChangePwdViewController.h */,
 				C398DA391FAC5EE300D0BED9 /* ChangePwdViewController.m */,
 				C398DA3B1FAC62F000D0BED9 /* ChangeIphoneViewController.h */,
@@ -815,6 +823,7 @@
 				0AD73BD51FB2A1F200256654 /* accountIconDefault@2x.png in Resources */,
 				799B1DC61FB48FB6000CB480 /* BloodFat@3x.png in Resources */,
 				0AEC50921FB2E257009C60E4 /* guardians@2x.png in Resources */,
+				0AE8BFF21FB5B3B5008C981C /* UserCenterTableViewCell.xib in Resources */,
 				799B1DB81FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib in Resources */,
 				0AEC50971FB2E257009C60E4 /* theRemoteSupervision@3x.png in Resources */,
 				0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */,
@@ -898,6 +907,7 @@
 				799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */,
 				C3DE8D721FA6D27D007CE853 /* CarePlanViewController.m in Sources */,
 				0AEC50C21FB30A45009C60E4 /* SearchOldManView.m in Sources */,
+				0AE8BFF11FB5B3B5008C981C /* UserCenterTableViewCell.m in Sources */,
 				C398DA671FB29BFB00D0BED9 /* AFNetworkReachabilityManager.m in Sources */,
 				C3B23CCD1FAB02BB00D78E5C /* ForgetPwdTwoViewController.m in Sources */,
 				C3B23CCE1FAB02BB00D78E5C /* LoginNoPwdViewController.m in Sources */,
@@ -1039,12 +1049,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UQ2VEQX9V3;
+				DEVELOPMENT_TEAM = N7ACXAH9HH;
 				GCC_PREFIX_HEADER = "theOld/theOld-Prefix.pch";
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1056,12 +1066,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = UQ2VEQX9V3;
+				DEVELOPMENT_TEAM = N7ACXAH9HH;
 				GCC_PREFIX_HEADER = "theOld/theOld-Prefix.pch";
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
