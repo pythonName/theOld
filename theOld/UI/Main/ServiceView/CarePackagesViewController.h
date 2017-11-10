@@ -9,5 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @interface CarePackagesViewController : UIViewController
- 
+
+@property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
+
+@property (weak, nonatomic) IBOutlet UIView *greenView;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *greenViewWidth;
+
+@property (weak, nonatomic) IBOutlet UIView *grayView;
+
+@property (weak, nonatomic) IBOutlet UILabel *startLab;
+
+@property (weak, nonatomic) IBOutlet UILabel *endLab;
+
 @end

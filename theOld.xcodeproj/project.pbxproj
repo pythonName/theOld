@@ -69,6 +69,23 @@
 		0AEC50C41FB30A50009C60E4 /* SearchOldManView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C31FB30A50009C60E4 /* SearchOldManView.xib */; };
 		0AEC50C71FB30A67009C60E4 /* SearchOldManOfResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */; };
 		0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */; };
+		799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */; };
+		799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */; };
+		799B1DB71FB489DC000CB480 /* PhysiologicalDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB51FB489DC000CB480 /* PhysiologicalDataTableViewCell.m */; };
+		799B1DB81FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DB61FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib */; };
+		799B1DC51FB48FB6000CB480 /* BloodFat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DB91FB48FB5000CB480 /* BloodFat@2x.png */; };
+		799B1DC61FB48FB6000CB480 /* BloodFat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBA1FB48FB5000CB480 /* BloodFat@3x.png */; };
+		799B1DC71FB48FB6000CB480 /* BloodPressure@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBB1FB48FB5000CB480 /* BloodPressure@2x.png */; };
+		799B1DC81FB48FB6000CB480 /* BloodPressure@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBC1FB48FB5000CB480 /* BloodPressure@3x.png */; };
+		799B1DC91FB48FB6000CB480 /* HeartRate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBD1FB48FB5000CB480 /* HeartRate@2x.png */; };
+		799B1DCA1FB48FB6000CB480 /* BloodSugar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBE1FB48FB6000CB480 /* BloodSugar@2x.png */; };
+		799B1DCB1FB48FB6000CB480 /* HeartRate@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DBF1FB48FB6000CB480 /* HeartRate@3x.png */; };
+		799B1DCC1FB48FB6000CB480 /* BloodSugar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DC01FB48FB6000CB480 /* BloodSugar@3x.png */; };
+		799B1DCD1FB48FB6000CB480 /* BodyTemperature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DC11FB48FB6000CB480 /* BodyTemperature@2x.png */; };
+		799B1DCE1FB48FB6000CB480 /* BodyTemperature@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DC21FB48FB6000CB480 /* BodyTemperature@3x.png */; };
+		799B1DCF1FB48FB6000CB480 /* weight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DC31FB48FB6000CB480 /* weight@2x.png */; };
+		799B1DD01FB48FB6000CB480 /* weight@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DC41FB48FB6000CB480 /* weight@3x.png */; };
+		799B1DD31FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DD21FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m */; };
 		C3108E8C1FA9AC0D0087C473 /* VVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E8A1FA9AC0D0087C473 /* VVConfig.m */; };
 		C3108E8F1FA9AC780087C473 /* VVGlobalDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E8E1FA9AC780087C473 /* VVGlobalDefine.m */; };
 		C3108E921FA9AEE60087C473 /* OrderCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E911FA9AEE60087C473 /* OrderCenterViewController.m */; };
@@ -191,6 +208,26 @@
 		0AEC50C51FB30A67009C60E4 /* SearchOldManOfResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchOldManOfResultView.h; sourceTree = "<group>"; };
 		0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchOldManOfResultView.m; sourceTree = "<group>"; };
 		0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchOldManOfResultView.xib; sourceTree = "<group>"; };
+		799B1DAF1FB484AF000CB480 /* GuardiansTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuardiansTableViewCell.h; sourceTree = "<group>"; };
+		799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardiansTableViewCell.m; sourceTree = "<group>"; };
+		799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuardiansTableViewCell.xib; sourceTree = "<group>"; };
+		799B1DB41FB489DC000CB480 /* PhysiologicalDataTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysiologicalDataTableViewCell.h; sourceTree = "<group>"; };
+		799B1DB51FB489DC000CB480 /* PhysiologicalDataTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhysiologicalDataTableViewCell.m; sourceTree = "<group>"; };
+		799B1DB61FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhysiologicalDataTableViewCell.xib; sourceTree = "<group>"; };
+		799B1DB91FB48FB5000CB480 /* BloodFat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodFat@2x.png"; sourceTree = "<group>"; };
+		799B1DBA1FB48FB5000CB480 /* BloodFat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodFat@3x.png"; sourceTree = "<group>"; };
+		799B1DBB1FB48FB5000CB480 /* BloodPressure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodPressure@2x.png"; sourceTree = "<group>"; };
+		799B1DBC1FB48FB5000CB480 /* BloodPressure@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodPressure@3x.png"; sourceTree = "<group>"; };
+		799B1DBD1FB48FB5000CB480 /* HeartRate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeartRate@2x.png"; sourceTree = "<group>"; };
+		799B1DBE1FB48FB6000CB480 /* BloodSugar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodSugar@2x.png"; sourceTree = "<group>"; };
+		799B1DBF1FB48FB6000CB480 /* HeartRate@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeartRate@3x.png"; sourceTree = "<group>"; };
+		799B1DC01FB48FB6000CB480 /* BloodSugar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BloodSugar@3x.png"; sourceTree = "<group>"; };
+		799B1DC11FB48FB6000CB480 /* BodyTemperature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BodyTemperature@2x.png"; sourceTree = "<group>"; };
+		799B1DC21FB48FB6000CB480 /* BodyTemperature@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BodyTemperature@3x.png"; sourceTree = "<group>"; };
+		799B1DC31FB48FB6000CB480 /* weight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weight@2x.png"; sourceTree = "<group>"; };
+		799B1DC41FB48FB6000CB480 /* weight@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weight@3x.png"; sourceTree = "<group>"; };
+		799B1DD11FB492E6000CB480 /* PhysiologicalDataTableViewHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhysiologicalDataTableViewHeader.h; sourceTree = "<group>"; };
+		799B1DD21FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhysiologicalDataTableViewHeader.m; sourceTree = "<group>"; };
 		C3108E8A1FA9AC0D0087C473 /* VVConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVConfig.m; sourceTree = "<group>"; };
 		C3108E8B1FA9AC0D0087C473 /* VVConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVConfig.h; sourceTree = "<group>"; };
 		C3108E8D1FA9AC780087C473 /* VVGlobalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVGlobalDefine.h; sourceTree = "<group>"; };
@@ -313,6 +350,7 @@
 		0A997A681FB2CDFF0015EC1F /* ServiceView */ = {
 			isa = PBXGroup;
 			children = (
+				799B1DAE1FB4846F000CB480 /* viewOfService */,
 				0A997A691FB2CDFF0015EC1F /* ServiceListViewController.h */,
 				0A997A6A1FB2CDFF0015EC1F /* ServiceListViewController.m */,
 				0AEC50A71FB300F9009C60E4 /* CarePackagesViewController.h */,
@@ -382,6 +420,18 @@
 		0AEC50871FB2E257009C60E4 /* MainImage */ = {
 			isa = PBXGroup;
 			children = (
+				799B1DB91FB48FB5000CB480 /* BloodFat@2x.png */,
+				799B1DBA1FB48FB5000CB480 /* BloodFat@3x.png */,
+				799B1DBB1FB48FB5000CB480 /* BloodPressure@2x.png */,
+				799B1DBC1FB48FB5000CB480 /* BloodPressure@3x.png */,
+				799B1DBE1FB48FB6000CB480 /* BloodSugar@2x.png */,
+				799B1DC01FB48FB6000CB480 /* BloodSugar@3x.png */,
+				799B1DC11FB48FB6000CB480 /* BodyTemperature@2x.png */,
+				799B1DC21FB48FB6000CB480 /* BodyTemperature@3x.png */,
+				799B1DBD1FB48FB5000CB480 /* HeartRate@2x.png */,
+				799B1DBF1FB48FB6000CB480 /* HeartRate@3x.png */,
+				799B1DC31FB48FB6000CB480 /* weight@2x.png */,
+				799B1DC41FB48FB6000CB480 /* weight@3x.png */,
 				0AEC50BC1FB30704009C60E4 /* addImage@2x.png */,
 				0AEC50BB1FB30704009C60E4 /* addImage@3x.png */,
 				0AEC50881FB2E257009C60E4 /* carePackages@2x.png */,
@@ -407,6 +457,21 @@
 				0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */,
 			);
 			path = NewAddOldMan;
+			sourceTree = "<group>";
+		};
+		799B1DAE1FB4846F000CB480 /* viewOfService */ = {
+			isa = PBXGroup;
+			children = (
+				799B1DAF1FB484AF000CB480 /* GuardiansTableViewCell.h */,
+				799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */,
+				799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */,
+				799B1DB41FB489DC000CB480 /* PhysiologicalDataTableViewCell.h */,
+				799B1DB51FB489DC000CB480 /* PhysiologicalDataTableViewCell.m */,
+				799B1DB61FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib */,
+				799B1DD11FB492E6000CB480 /* PhysiologicalDataTableViewHeader.h */,
+				799B1DD21FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m */,
+			);
+			path = viewOfService;
 			sourceTree = "<group>";
 		};
 		C3108E891FA9AC030087C473 /* InitModel */ = {
@@ -732,42 +797,55 @@
 				0AEC509C1FB2EEB8009C60E4 /* OldManListCollectionViewCell.xib in Resources */,
 				0AEC50911FB2E257009C60E4 /* carePackages@3x.png in Resources */,
 				0AEC50901FB2E257009C60E4 /* carePackages@2x.png in Resources */,
+				799B1DCA1FB48FB6000CB480 /* BloodSugar@2x.png in Resources */,
 				0AD73BF51FB2A39600256654 /* man@2x.png in Resources */,
 				0AD73BDE1FB2A1F200256654 /* couponCell@3x.png in Resources */,
 				0AD73BF41FB2A39600256654 /* women@2x.png in Resources */,
 				0AD73BD91FB2A1F200256654 /* CarePlanPic@2x.png in Resources */,
+				799B1DC51FB48FB6000CB480 /* BloodFat@2x.png in Resources */,
+				799B1DCD1FB48FB6000CB480 /* BodyTemperature@2x.png in Resources */,
 				0AD73BE31FB2A1F200256654 /* oldAccountCell@2x.png in Resources */,
 				0AEC50941FB2E257009C60E4 /* PhysiologicalData@2x.png in Resources */,
 				0AD73BF31FB2A39600256654 /* man@3x.png in Resources */,
 				0AD73BDC1FB2A1F200256654 /* CarePlanPic_s@3x.png in Resources */,
 				0AD73BED1FB2A1F200256654 /* userCenterMid@2x.png in Resources */,
 				0AD73BF61FB2A39600256654 /* women@3x.png in Resources */,
+				799B1DC71FB48FB6000CB480 /* BloodPressure@2x.png in Resources */,
 				0AD73BEE1FB2A1F200256654 /* userCenterMid@3x.png in Resources */,
 				0AD73BD51FB2A1F200256654 /* accountIconDefault@2x.png in Resources */,
+				799B1DC61FB48FB6000CB480 /* BloodFat@3x.png in Resources */,
 				0AEC50921FB2E257009C60E4 /* guardians@2x.png in Resources */,
+				799B1DB81FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib in Resources */,
 				0AEC50971FB2E257009C60E4 /* theRemoteSupervision@3x.png in Resources */,
 				0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */,
 				C3DE8D3B1FA6CCA1007CE853 /* Assets.xcassets in Resources */,
 				0AD73BDD1FB2A1F200256654 /* couponCell@2x.png in Resources */,
 				0AD73BD61FB2A1F200256654 /* accountIconDefault@3x.png in Resources */,
+				799B1DC91FB48FB6000CB480 /* HeartRate@2x.png in Resources */,
 				0AD73BEA1FB2A1F200256654 /* orderCell@3x.png in Resources */,
+				799B1DD01FB48FB6000CB480 /* weight@3x.png in Resources */,
 				0AEC50B01FB30120009C60E4 /* GuardiansViewController.xib in Resources */,
 				0AD73BD81FB2A1F200256654 /* back@3x.png in Resources */,
 				0AEC50951FB2E257009C60E4 /* PhysiologicalData@3x.png in Resources */,
 				0AD73BDB1FB2A1F200256654 /* CarePlanPic_s@2x.png in Resources */,
 				0AD73BE01FB2A1F200256654 /* MePicture@3x.png in Resources */,
 				0AD73BE61FB2A1F200256654 /* oldPic@3x.png in Resources */,
+				799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */,
 				0AEC50BD1FB30705009C60E4 /* addImage@3x.png in Resources */,
 				0AD73BE81FB2A1F200256654 /* oldPic_s@3x.png in Resources */,
 				0AD73BE51FB2A1F200256654 /* oldPic@2x.png in Resources */,
+				799B1DCE1FB48FB6000CB480 /* BodyTemperature@3x.png in Resources */,
 				C3B23CD01FAB02BB00D78E5C /* LoginSubViewControllersConfig.plist in Resources */,
 				0AD73BE21FB2A1F200256654 /* MePicture_s@3x.png in Resources */,
 				0AD73BD71FB2A1F200256654 /* back@2x.png in Resources */,
 				0AD73BEB1FB2A1F200256654 /* settingCell@2x.png in Resources */,
 				0AEC50B51FB30144009C60E4 /* PhysiologicalDataViewController.xib in Resources */,
 				0AD73C041FB2C8C300256654 /* MainSubViewControllersConfig.plist in Resources */,
+				799B1DCF1FB48FB6000CB480 /* weight@2x.png in Resources */,
 				0AD73BE41FB2A1F200256654 /* oldAccountCell@3x.png in Resources */,
 				0AD73BDF1FB2A1F200256654 /* MePicture@2x.png in Resources */,
+				799B1DCB1FB48FB6000CB480 /* HeartRate@3x.png in Resources */,
+				799B1DCC1FB48FB6000CB480 /* BloodSugar@3x.png in Resources */,
 				0AEC50BA1FB30167009C60E4 /* TheRemoteSupervisionViewController.xib in Resources */,
 				0AEC50931FB2E257009C60E4 /* guardians@3x.png in Resources */,
 				0AD73BEC1FB2A1F200256654 /* settingCell@3x.png in Resources */,
@@ -775,6 +853,7 @@
 				0AEC50C41FB30A50009C60E4 /* SearchOldManView.xib in Resources */,
 				0AD73BE11FB2A1F200256654 /* MePicture_s@2x.png in Resources */,
 				0AD73BE71FB2A1F200256654 /* oldPic_s@2x.png in Resources */,
+				799B1DC81FB48FB6000CB480 /* BloodPressure@3x.png in Resources */,
 				0AEC50AB1FB300F9009C60E4 /* CarePackagesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,7 +885,9 @@
 				C3DE8D411FA6CCA1007CE853 /* main.m in Sources */,
 				0AD73C021FB2C0E200256654 /* UIView+NIB.m in Sources */,
 				C398DA791FB2AE6A00D0BED9 /* NBLMessage.m in Sources */,
+				799B1DD31FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m in Sources */,
 				C398DA691FB29BFB00D0BED9 /* AFURLRequestSerialization.m in Sources */,
+				799B1DB71FB489DC000CB480 /* PhysiologicalDataTableViewCell.m in Sources */,
 				0A997A6B1FB2CDFF0015EC1F /* OldManListViewController.m in Sources */,
 				C3B23CD21FAB02BB00D78E5C /* RegisterViewController.m in Sources */,
 				C3B23CCC1FAB02BB00D78E5C /* ForgetPwdOneViewController.m in Sources */,
@@ -814,6 +895,7 @@
 				0AEC50B41FB30144009C60E4 /* PhysiologicalDataViewController.m in Sources */,
 				C3B23CB81FAABA2600D78E5C /* UIImage+RoundedCorner.m in Sources */,
 				C398DA661FB29BFB00D0BED9 /* AFHTTPSessionManager.m in Sources */,
+				799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */,
 				C3DE8D721FA6D27D007CE853 /* CarePlanViewController.m in Sources */,
 				0AEC50C21FB30A45009C60E4 /* SearchOldManView.m in Sources */,
 				C398DA671FB29BFB00D0BED9 /* AFNetworkReachabilityManager.m in Sources */,
