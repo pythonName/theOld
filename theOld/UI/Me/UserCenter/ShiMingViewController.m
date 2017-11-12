@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UITextField *nameTextField;
 @property (nonatomic, strong) UITextField *sexTextField;
 @property (nonatomic, strong) UITextField *idTextField;
-@property (nonatomic, strong) UIButton *loginBtn;
+@property (nonatomic, strong) UIButton *submitBtn;
 @end
 
 @implementation ShiMingViewController
@@ -156,18 +156,19 @@
     [self.view addSubview:line4];
     
     //提交按钮
-    self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginBtn.frame = CGRectMake(0, CGRectGetMaxY(line4.frame) + 40, 297*ScreenWRatioBaseIphone6, CGRectGetHeight(self.idTextField.frame));
-    [self.loginBtn jm_setCornerRadius:CGRectGetHeight(self.loginBtn.frame)/2 withBackgroundColor:baseColor];
-    [self.loginBtn setTitle:@"提交" forState:UIControlStateNormal];
-    self.loginBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:15.0];
-    [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.loginBtn.center = CGPointMake(CGRectGetWidth(_frame)/2, self.loginBtn.center.y);
-    [self.loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.loginBtn];
+    self.submitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.submitBtn.frame = CGRectMake(0, CGRectGetMaxY(line4.frame) + 40, 297*ScreenWRatioBaseIphone6, 45);
+    [self.submitBtn jm_setCornerRadius:CGRectGetHeight(self.submitBtn.frame)/2 withBackgroundColor:baseColor];
+    [self.submitBtn setTitle:@"提交" forState:UIControlStateNormal];
+    self.submitBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:15.0];
+    [self.submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.submitBtn.center = CGPointMake(CGRectGetWidth(_frame)/2, self.submitBtn.center.y);
+    [self.submitBtn addTarget:self action:@selector(submitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.submitBtn];
 }
 
-- (void)loginBtnClick:(UIButton *)sender{
+
+- (void)submitBtnClick:(UIButton *)sender{
     
 }
 

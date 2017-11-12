@@ -82,7 +82,7 @@
     
     //确认修改按钮
     self.loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginBtn.frame = CGRectMake(0, CGRectGetMaxY(line2.frame) + 40, 297*ScreenWRatioBaseIphone6, CGRectGetHeight(self.passWordTextField.frame));
+    self.loginBtn.frame = CGRectMake(0, CGRectGetMaxY(line2.frame) + 40, 297*ScreenWRatioBaseIphone6, 45);
     [self.loginBtn jm_setCornerRadius:CGRectGetHeight(self.loginBtn.frame)/2 withBackgroundColor:baseColor];
     [self.loginBtn setTitle:@"确认修改" forState:UIControlStateNormal];
     self.loginBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:15.0];

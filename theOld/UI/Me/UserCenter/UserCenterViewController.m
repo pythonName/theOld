@@ -8,7 +8,7 @@
 
 #import "UserCenterViewController.h"
 #import "VVConfig.h"
-#import "UIView+RoundedCorner.h"
+
 #import "UserManager.h"
 #import "ShiMingViewController.h"
 #import "ChangePwdViewController.h"
@@ -16,17 +16,16 @@
 #import "CustomNavigationController.h"
 #import "UserCenterTableViewCell.h"
 #import "PhysiologicalDataTableViewHeader.h"
+#import "MainViewController.h"
+#import "LeveyTabBarController.h"
 
 static NSString *cellIdet = @"UserCenterTableViewCell";
 static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 @interface UserCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>{
     CGRect _frame;
     UITableView *_mainTableView;
-//    UIImageView *_iconImageView;
-//    UILabel *_accountLabel;
-//    UILabel *_changePhoneNumLabel;
     UIView *_buttonCellView;
-//    UILabel *_factNameView;
+ 
 }
 @property (nonatomic, strong) NSArray *labelNameArr;
 @property (nonatomic, strong) NSArray *labelImageNameArr;
@@ -102,12 +101,13 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     [leftBtn setTitleColor:UIColorFromRGB(0xff9c31) forState:UIControlStateNormal];
     [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(-13, 0, 0, 0)];
     [_buttonCellView addSubview:leftBtn];
+    [leftBtn addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
     //左边关注老人文字
     UILabel *leftll = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(leftBtn.frame) - 30, CGRectGetWidth(leftBtn.frame), 30)];
     leftll.text = @"关注老人";
     leftll.textColor = UIColorFromRGB(0x666666);
     leftll.textAlignment = NSTextAlignmentCenter;
-    leftll.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:22.0];
+    leftll.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:11.0];
     [leftBtn addSubview:leftll];
     
     //右边邀请监护人按钮
@@ -121,14 +121,32 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     rightBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(-13, 0, 0, 0)];
     [_buttonCellView addSubview:rightBtn];
+    [rightBtn addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
     //右边邀请监护人文字
     UILabel *rightll = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(rightBtn.frame) - 30, CGRectGetWidth(rightBtn.frame), 30)];
     rightll.text = @"邀请监护人";
     rightll.textColor = UIColorFromRGB(0x666666);
     rightll.textAlignment = NSTextAlignmentCenter;
-    rightll.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:22.0];
+    rightll.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:11.0];
     [rightBtn addSubview:rightll];
     
+}
+
+-(void)rightButtonClick {
+   
+}
+
+-(void)leftButtonClick {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+    LeveyTabBarController *tabVC = (LeveyTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+    
+    MainViewController *mainController=[[MainViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight*ScreenRatio, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight*ScreenRatio)];
+    NSInteger pageInde = 0;
+    CustomNavigationController *ctl =[tabVC.viewControllers objectAtIndex:pageInde];
+    tabVC.selectedIndex = 0;
+    [ctl  pushViewController:mainController animated:YES];
+    mainController.pageIndex = 1;
 }
 
 #pragma mark - tableViewDelegate
@@ -171,8 +189,8 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 {
     UserCenterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdet];
     cell.titleLab.text = self.labelNameArr[indexPath.section][indexPath.row];
- 
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell refreshCellViewWithData:nil indexPath:indexPath];
     return cell;
 }
  

@@ -7,9 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PageTurningView.h"
 
 @interface MainViewController : UIViewController
- 
+
+@property (nonatomic, strong) PageTurningView *scrollComponent;
+
+@property (nonatomic, assign) NSInteger pageIndex;
+
 - (id)initWithFrame:(CGRect)frame;
 
 
