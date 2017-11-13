@@ -17,4 +17,6 @@
 //#import "VVConfig.h"
 #import "vvDefine.h"
 #import "VVGlobalDefine.h"
+#import "UIView+RoundedCorner.h"
+
 #endif

@@ -8,12 +8,12 @@
 
 #import "MainViewController.h"
 #import "HeaderOfMainView.h"
-#import "PageTurningView.h"
+
 
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
     HeaderOfMainView *_headerOfMainView;
-    PageTurningView *_scrollComponent;
+    
 }
 
 
@@ -34,6 +34,14 @@
     [self.view setBackgroundColor:UIColorRGB(248, 248, 248)];
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    if (self.pageIndex == 1) {
+        [_scrollComponent setCurrentVC:self.pageIndex];
+    }else{
+         [_scrollComponent setCurrentVC:0];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
   
@@ -46,15 +54,15 @@
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];
     
     NSArray *viewControllers = [NSArray arrayWithContentsOfFile:plistFilePath];
-    _scrollComponent = [[PageTurningView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerOfMainView.frame), CGRectGetWidth(_frame), ScreenHeight-64-49-CGRectGetHeight(_headerOfMainView.frame)) withViewControllers:viewControllers delegate:self];
+    self.scrollComponent = [[PageTurningView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerOfMainView.frame), CGRectGetWidth(_frame), ScreenHeight-64-49-CGRectGetHeight(_headerOfMainView.frame)) withViewControllers:viewControllers delegate:self];
     [self.view addSubview:_scrollComponent];
-    [_scrollComponent setCurrentVC:0];
+   
     _scrollComponent.userInteractionEnabled = YES;
 }
 
 //PageTurningViewDelegate
 -(void)switchBarClicked:(NSInteger)buttonIndex {
-    
+    self.pageIndex = buttonIndex;
 }
 
 - (void)didReceiveMemoryWarning {
