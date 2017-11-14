@@ -77,7 +77,7 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 165;
+    return 110;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,25 +85,25 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
 }
 
 -(void)initHeaderView {
-    UIView *whiterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 164+15)];
+    UIView *whiterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 110+15)];
     whiterView.backgroundColor = [UIColor whiteColor];
    
     
-    _textFiledView = [[UITextField alloc] initWithFrame:CGRectMake(20, (179-60*ScreenHRatioBaseIphone6)/2, 231*ScreenHRatioBaseIphone6,60*ScreenHRatioBaseIphone6 )];
+    _textFiledView = [[UITextField alloc] initWithFrame:CGRectMake(20, (110-40*ScreenHRatioBaseIphone6)/2, 231*ScreenHRatioBaseIphone6,40*ScreenHRatioBaseIphone6 )];
     [whiterView addSubview:_textFiledView];
     _textFiledView.borderStyle = UITextBorderStyleLine;
     _textFiledView.layer.borderWidth = 0.5;
     _textFiledView.layer.borderColor = [UIColor lightTextColor].CGColor;
     _textFiledView.placeholder = @"请输入优惠码";
-    _textFiledView.font = [UIFont systemFontOfSize:20];
+    _textFiledView.font = [UIFont systemFontOfSize:13];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(CGRectGetMaxX(_textFiledView.frame)-1, (179-60*ScreenHRatioBaseIphone6)/2, 110*ScreenHRatioBaseIphone6,CGRectGetHeight(_textFiledView.frame));
+    btn.frame = CGRectMake(CGRectGetMaxX(_textFiledView.frame)-1, (110-40*ScreenHRatioBaseIphone6)/2, 110*ScreenHRatioBaseIphone6,CGRectGetHeight(_textFiledView.frame));
     [btn setTitle:@"兑换" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     btn.backgroundColor = UIColorFromRGB(0x8dc21f);
     [btn addTarget:self action:@selector(exchangeButtonClick) forControlEvents:UIControlEventTouchUpInside];
-    btn.titleLabel.font = [UIFont systemFontOfSize:45/2];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
     [whiterView addSubview:btn];
     
     UIView *vv = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(whiterView.frame)-15, CGRectGetWidth(whiterView.frame), 15)];

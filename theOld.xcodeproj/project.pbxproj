@@ -72,6 +72,19 @@
 		0AEC50C71FB30A67009C60E4 /* SearchOldManOfResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */; };
 		0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */; };
 		79142F8F1FB8993E0070C28E /* MyAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */; };
+		79142F961FBB1E550070C28E /* counponImageUse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F921FBB1E550070C28E /* counponImageUse@3x.png */; };
+		79142F971FBB1E550070C28E /* counponImageNo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F931FBB1E550070C28E /* counponImageNo@2x.png */; };
+		79142F981FBB1E550070C28E /* counponImageNo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F941FBB1E550070C28E /* counponImageNo@3x.png */; };
+		79142F991FBB1E550070C28E /* counponImageUse@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F951FBB1E550070C28E /* counponImageUse@2x.png */; };
+		79142F9D1FBB22270070C28E /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142F9B1FBB22270070C28E /* SettingTableViewCell.m */; };
+		79142F9E1FBB22270070C28E /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79142F9C1FBB22270070C28E /* SettingTableViewCell.xib */; };
+		79142FA31FBB23A10070C28E /* gotoImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F9F1FBB23A10070C28E /* gotoImage@2x.png */; };
+		79142FA41FBB23A10070C28E /* tellImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142FA01FBB23A10070C28E /* tellImage@2x.png */; };
+		79142FA51FBB23A10070C28E /* gotoImage@3x-.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142FA11FBB23A10070C28E /* gotoImage@3x-.png */; };
+		79142FA61FBB23A10070C28E /* tellImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142FA21FBB23A10070C28E /* tellImage@3x.png */; };
+		79142FAD1FBB2CA00070C28E /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FAB1FBB2CA00070C28E /* AboutUsViewController.m */; };
+		79142FAE1FBB2CA00070C28E /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79142FAC1FBB2CA00070C28E /* AboutUsViewController.xib */; };
+		79142FB11FBB30F70070C28E /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FB01FBB30F70070C28E /* HelpCenterViewController.m */; };
 		799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */; };
 		799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */; };
 		799B1DB71FB489DC000CB480 /* PhysiologicalDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB51FB489DC000CB480 /* PhysiologicalDataTableViewCell.m */; };
@@ -222,6 +235,22 @@
 		79142F8B1FB8974C0070C28E /* vvDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vvDefine.h; sourceTree = "<group>"; };
 		79142F8C1FB8993D0070C28E /* MyAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTableViewCell.h; sourceTree = "<group>"; };
 		79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTableViewCell.m; sourceTree = "<group>"; };
+		79142F921FBB1E550070C28E /* counponImageUse@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "counponImageUse@3x.png"; sourceTree = "<group>"; };
+		79142F931FBB1E550070C28E /* counponImageNo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "counponImageNo@2x.png"; sourceTree = "<group>"; };
+		79142F941FBB1E550070C28E /* counponImageNo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "counponImageNo@3x.png"; sourceTree = "<group>"; };
+		79142F951FBB1E550070C28E /* counponImageUse@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "counponImageUse@2x.png"; sourceTree = "<group>"; };
+		79142F9A1FBB22270070C28E /* SettingTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingTableViewCell.h; sourceTree = "<group>"; };
+		79142F9B1FBB22270070C28E /* SettingTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewCell.m; sourceTree = "<group>"; };
+		79142F9C1FBB22270070C28E /* SettingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		79142F9F1FBB23A10070C28E /* gotoImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gotoImage@2x.png"; sourceTree = "<group>"; };
+		79142FA01FBB23A10070C28E /* tellImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tellImage@2x.png"; sourceTree = "<group>"; };
+		79142FA11FBB23A10070C28E /* gotoImage@3x-.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gotoImage@3x-.png"; sourceTree = "<group>"; };
+		79142FA21FBB23A10070C28E /* tellImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tellImage@3x.png"; sourceTree = "<group>"; };
+		79142FAA1FBB2CA00070C28E /* AboutUsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
+		79142FAB1FBB2CA00070C28E /* AboutUsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		79142FAC1FBB2CA00070C28E /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
+		79142FAF1FBB30F70070C28E /* HelpCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
+		79142FB01FBB30F70070C28E /* HelpCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
 		799B1DAF1FB484AF000CB480 /* GuardiansTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuardiansTableViewCell.h; sourceTree = "<group>"; };
 		799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardiansTableViewCell.m; sourceTree = "<group>"; };
 		799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuardiansTableViewCell.xib; sourceTree = "<group>"; };
@@ -393,6 +422,7 @@
 		0AD73BBA1FB2A1F200256654 /* Resourse */ = {
 			isa = PBXGroup;
 			children = (
+				79142F911FBB1E2D0070C28E /* MyImage */,
 				0AEC50871FB2E257009C60E4 /* MainImage */,
 				0AD73BF11FB2A39600256654 /* man@2x.png */,
 				0AD73BEF1FB2A39500256654 /* man@3x.png */,
@@ -480,6 +510,21 @@
 			path = NewAddOldMan;
 			sourceTree = "<group>";
 		};
+		79142F911FBB1E2D0070C28E /* MyImage */ = {
+			isa = PBXGroup;
+			children = (
+				79142F9F1FBB23A10070C28E /* gotoImage@2x.png */,
+				79142FA11FBB23A10070C28E /* gotoImage@3x-.png */,
+				79142FA01FBB23A10070C28E /* tellImage@2x.png */,
+				79142FA21FBB23A10070C28E /* tellImage@3x.png */,
+				79142F931FBB1E550070C28E /* counponImageNo@2x.png */,
+				79142F941FBB1E550070C28E /* counponImageNo@3x.png */,
+				79142F951FBB1E550070C28E /* counponImageUse@2x.png */,
+				79142F921FBB1E550070C28E /* counponImageUse@3x.png */,
+			);
+			path = MyImage;
+			sourceTree = "<group>";
+		};
 		799B1DAE1FB4846F000CB480 /* viewOfService */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,6 +583,14 @@
 			children = (
 				C3108E991FA9AF1C0087C473 /* SettingViewController.h */,
 				C3108E9A1FA9AF1C0087C473 /* SettingViewController.m */,
+				79142F9A1FBB22270070C28E /* SettingTableViewCell.h */,
+				79142F9B1FBB22270070C28E /* SettingTableViewCell.m */,
+				79142F9C1FBB22270070C28E /* SettingTableViewCell.xib */,
+				79142FAA1FBB2CA00070C28E /* AboutUsViewController.h */,
+				79142FAB1FBB2CA00070C28E /* AboutUsViewController.m */,
+				79142FAC1FBB2CA00070C28E /* AboutUsViewController.xib */,
+				79142FAF1FBB30F70070C28E /* HelpCenterViewController.h */,
+				79142FB01FBB30F70070C28E /* HelpCenterViewController.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -869,6 +922,7 @@
 				0AEC50961FB2E257009C60E4 /* theRemoteSupervision@2x.png in Resources */,
 				0AD73BE91FB2A1F200256654 /* orderCell@2x.png in Resources */,
 				0AEC509C1FB2EEB8009C60E4 /* OldManListCollectionViewCell.xib in Resources */,
+				79142F961FBB1E550070C28E /* counponImageUse@3x.png in Resources */,
 				0AEC50911FB2E257009C60E4 /* carePackages@3x.png in Resources */,
 				0AEC50901FB2E257009C60E4 /* carePackages@2x.png in Resources */,
 				799B1DCA1FB48FB6000CB480 /* BloodSugar@2x.png in Resources */,
@@ -876,9 +930,11 @@
 				0AD73BDE1FB2A1F200256654 /* couponCell@3x.png in Resources */,
 				0AD73BF41FB2A39600256654 /* women@2x.png in Resources */,
 				0AD73BD91FB2A1F200256654 /* CarePlanPic@2x.png in Resources */,
+				79142FA61FBB23A10070C28E /* tellImage@3x.png in Resources */,
 				799B1DC51FB48FB6000CB480 /* BloodFat@2x.png in Resources */,
 				799B1DCD1FB48FB6000CB480 /* BodyTemperature@2x.png in Resources */,
 				0AD73BE31FB2A1F200256654 /* oldAccountCell@2x.png in Resources */,
+				79142FA51FBB23A10070C28E /* gotoImage@3x-.png in Resources */,
 				0AEC50941FB2E257009C60E4 /* PhysiologicalData@2x.png in Resources */,
 				0AD73BF31FB2A39600256654 /* man@3x.png in Resources */,
 				799B1DDD1FB85F86000CB480 /* OldAccountTableViewCell.xib in Resources */,
@@ -886,13 +942,16 @@
 				0AD73BED1FB2A1F200256654 /* userCenterMid@2x.png in Resources */,
 				0AD73BF61FB2A39600256654 /* women@3x.png in Resources */,
 				799B1DC71FB48FB6000CB480 /* BloodPressure@2x.png in Resources */,
+				79142FA41FBB23A10070C28E /* tellImage@2x.png in Resources */,
 				0AD73BEE1FB2A1F200256654 /* userCenterMid@3x.png in Resources */,
 				0AD73BD51FB2A1F200256654 /* accountIconDefault@2x.png in Resources */,
 				799B1DC61FB48FB6000CB480 /* BloodFat@3x.png in Resources */,
 				0AEC50921FB2E257009C60E4 /* guardians@2x.png in Resources */,
 				0AE8BFF21FB5B3B5008C981C /* UserCenterTableViewCell.xib in Resources */,
+				79142F9E1FBB22270070C28E /* SettingTableViewCell.xib in Resources */,
 				799B1DB81FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib in Resources */,
 				0AEC50971FB2E257009C60E4 /* theRemoteSupervision@3x.png in Resources */,
+				79142F971FBB1E550070C28E /* counponImageNo@2x.png in Resources */,
 				0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */,
 				C3DE8D3B1FA6CCA1007CE853 /* Assets.xcassets in Resources */,
 				0AD73BDD1FB2A1F200256654 /* couponCell@2x.png in Resources */,
@@ -906,10 +965,12 @@
 				0AD73BDB1FB2A1F200256654 /* CarePlanPic_s@2x.png in Resources */,
 				799B1DE51FB87C89000CB480 /* OldAccountDetailTableViewCell.xib in Resources */,
 				0AD73BE01FB2A1F200256654 /* MePicture@3x.png in Resources */,
+				79142FAE1FBB2CA00070C28E /* AboutUsViewController.xib in Resources */,
 				0AD73BE61FB2A1F200256654 /* oldPic@3x.png in Resources */,
 				799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */,
 				0AEC50BD1FB30705009C60E4 /* addImage@3x.png in Resources */,
 				0AD73BE81FB2A1F200256654 /* oldPic_s@3x.png in Resources */,
+				79142FA31FBB23A10070C28E /* gotoImage@2x.png in Resources */,
 				0AD73BE51FB2A1F200256654 /* oldPic@2x.png in Resources */,
 				799B1DCE1FB48FB6000CB480 /* BodyTemperature@3x.png in Resources */,
 				C3B23CD01FAB02BB00D78E5C /* LoginSubViewControllersConfig.plist in Resources */,
@@ -917,11 +978,13 @@
 				0AD73BD71FB2A1F200256654 /* back@2x.png in Resources */,
 				0AD73BEB1FB2A1F200256654 /* settingCell@2x.png in Resources */,
 				0AEC50B51FB30144009C60E4 /* PhysiologicalDataViewController.xib in Resources */,
+				79142F981FBB1E550070C28E /* counponImageNo@3x.png in Resources */,
 				0AD73C041FB2C8C300256654 /* MainSubViewControllersConfig.plist in Resources */,
 				799B1DCF1FB48FB6000CB480 /* weight@2x.png in Resources */,
 				0AD73BE41FB2A1F200256654 /* oldAccountCell@3x.png in Resources */,
 				0AD73BDF1FB2A1F200256654 /* MePicture@2x.png in Resources */,
 				799B1DCB1FB48FB6000CB480 /* HeartRate@3x.png in Resources */,
+				79142F991FBB1E550070C28E /* counponImageUse@2x.png in Resources */,
 				799B1DCC1FB48FB6000CB480 /* BloodSugar@3x.png in Resources */,
 				0AEC50BA1FB30167009C60E4 /* TheRemoteSupervisionViewController.xib in Resources */,
 				0AEC50931FB2E257009C60E4 /* guardians@3x.png in Resources */,
@@ -960,6 +1023,7 @@
 				C3108E8F1FA9AC780087C473 /* VVGlobalDefine.m in Sources */,
 				C398DA7A1FB2AE6B00D0BED9 /* NBLWebViewController.m in Sources */,
 				C3DE8D411FA6CCA1007CE853 /* main.m in Sources */,
+				79142F9D1FBB22270070C28E /* SettingTableViewCell.m in Sources */,
 				0AD73C021FB2C0E200256654 /* UIView+NIB.m in Sources */,
 				C398DA791FB2AE6A00D0BED9 /* NBLMessage.m in Sources */,
 				799B1DD31FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m in Sources */,
@@ -981,7 +1045,9 @@
 				C3B23CCD1FAB02BB00D78E5C /* ForgetPwdTwoViewController.m in Sources */,
 				C3B23CCE1FAB02BB00D78E5C /* LoginNoPwdViewController.m in Sources */,
 				C3B23CD61FAB031000D78E5C /* UserCenterViewController.m in Sources */,
+				79142FAD1FBB2CA00070C28E /* AboutUsViewController.m in Sources */,
 				C3108E981FA9AF0C0087C473 /* MyCounponViewController.m in Sources */,
+				79142FB11FBB30F70070C28E /* HelpCenterViewController.m in Sources */,
 				79142F8F1FB8993E0070C28E /* MyAccountTableViewCell.m in Sources */,
 				799B1DE41FB87C89000CB480 /* OldAccountDetailTableViewCell.m in Sources */,
 				C398DA6F1FB29D1300D0BED9 /* VFNetAPIClient.m in Sources */,
