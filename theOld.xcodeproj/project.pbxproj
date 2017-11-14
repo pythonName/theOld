@@ -85,6 +85,11 @@
 		79142FAD1FBB2CA00070C28E /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FAB1FBB2CA00070C28E /* AboutUsViewController.m */; };
 		79142FAE1FBB2CA00070C28E /* AboutUsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79142FAC1FBB2CA00070C28E /* AboutUsViewController.xib */; };
 		79142FB11FBB30F70070C28E /* HelpCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FB01FBB30F70070C28E /* HelpCenterViewController.m */; };
+		79142FB51FBB36B30070C28E /* OldManResourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FB41FBB36B30070C28E /* OldManResourseViewController.m */; };
+		79142FB91FBB37440070C28E /* OldManResourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142FB71FBB37440070C28E /* OldManResourseTableViewCell.m */; };
+		79142FBA1FBB37440070C28E /* OldManResourseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79142FB81FBB37440070C28E /* OldManResourseTableViewCell.xib */; };
+		79142FBD1FBB39080070C28E /* resouseTell@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142FBB1FBB39080070C28E /* resouseTell@3x.png */; };
+		79142FBE1FBB39080070C28E /* resouseTell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142FBC1FBB39080070C28E /* resouseTell@2x.png */; };
 		799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */; };
 		799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */; };
 		799B1DB71FB489DC000CB480 /* PhysiologicalDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DB51FB489DC000CB480 /* PhysiologicalDataTableViewCell.m */; };
@@ -251,6 +256,13 @@
 		79142FAC1FBB2CA00070C28E /* AboutUsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutUsViewController.xib; sourceTree = "<group>"; };
 		79142FAF1FBB30F70070C28E /* HelpCenterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpCenterViewController.h; sourceTree = "<group>"; };
 		79142FB01FBB30F70070C28E /* HelpCenterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpCenterViewController.m; sourceTree = "<group>"; };
+		79142FB31FBB36B30070C28E /* OldManResourseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldManResourseViewController.h; sourceTree = "<group>"; };
+		79142FB41FBB36B30070C28E /* OldManResourseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldManResourseViewController.m; sourceTree = "<group>"; };
+		79142FB61FBB37440070C28E /* OldManResourseTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldManResourseTableViewCell.h; sourceTree = "<group>"; };
+		79142FB71FBB37440070C28E /* OldManResourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldManResourseTableViewCell.m; sourceTree = "<group>"; };
+		79142FB81FBB37440070C28E /* OldManResourseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OldManResourseTableViewCell.xib; sourceTree = "<group>"; };
+		79142FBB1FBB39080070C28E /* resouseTell@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resouseTell@3x.png"; sourceTree = "<group>"; };
+		79142FBC1FBB39080070C28E /* resouseTell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resouseTell@2x.png"; sourceTree = "<group>"; };
 		799B1DAF1FB484AF000CB480 /* GuardiansTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuardiansTableViewCell.h; sourceTree = "<group>"; };
 		799B1DB01FB484AF000CB480 /* GuardiansTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuardiansTableViewCell.m; sourceTree = "<group>"; };
 		799B1DB11FB484AF000CB480 /* GuardiansTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuardiansTableViewCell.xib; sourceTree = "<group>"; };
@@ -471,6 +483,8 @@
 		0AEC50871FB2E257009C60E4 /* MainImage */ = {
 			isa = PBXGroup;
 			children = (
+				79142FBC1FBB39080070C28E /* resouseTell@2x.png */,
+				79142FBB1FBB39080070C28E /* resouseTell@3x.png */,
 				799B1DB91FB48FB5000CB480 /* BloodFat@2x.png */,
 				799B1DBA1FB48FB5000CB480 /* BloodFat@3x.png */,
 				799B1DBB1FB48FB5000CB480 /* BloodPressure@2x.png */,
@@ -523,6 +537,18 @@
 				79142F921FBB1E550070C28E /* counponImageUse@3x.png */,
 			);
 			path = MyImage;
+			sourceTree = "<group>";
+		};
+		79142FB21FBB36240070C28E /* OldManResourse */ = {
+			isa = PBXGroup;
+			children = (
+				79142FB31FBB36B30070C28E /* OldManResourseViewController.h */,
+				79142FB41FBB36B30070C28E /* OldManResourseViewController.m */,
+				79142FB61FBB37440070C28E /* OldManResourseTableViewCell.h */,
+				79142FB71FBB37440070C28E /* OldManResourseTableViewCell.m */,
+				79142FB81FBB37440070C28E /* OldManResourseTableViewCell.xib */,
+			);
+			path = OldManResourse;
 			sourceTree = "<group>";
 		};
 		799B1DAE1FB4846F000CB480 /* viewOfService */ = {
@@ -785,6 +811,7 @@
 		C3DE8D521FA6D08E007CE853 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				79142FB21FBB36240070C28E /* OldManResourse */,
 				0A997A651FB2CDFF0015EC1F /* OldManView */,
 				0A997A681FB2CDFF0015EC1F /* ServiceView */,
 				0AD73BFA1FB2B60F00256654 /* View */,
@@ -921,6 +948,7 @@
 				0AD73BFF1FB2B6F900256654 /* HeaderOfMainView.xib in Resources */,
 				0AEC50961FB2E257009C60E4 /* theRemoteSupervision@2x.png in Resources */,
 				0AD73BE91FB2A1F200256654 /* orderCell@2x.png in Resources */,
+				79142FBE1FBB39080070C28E /* resouseTell@2x.png in Resources */,
 				0AEC509C1FB2EEB8009C60E4 /* OldManListCollectionViewCell.xib in Resources */,
 				79142F961FBB1E550070C28E /* counponImageUse@3x.png in Resources */,
 				0AEC50911FB2E257009C60E4 /* carePackages@3x.png in Resources */,
@@ -940,6 +968,7 @@
 				799B1DDD1FB85F86000CB480 /* OldAccountTableViewCell.xib in Resources */,
 				0AD73BDC1FB2A1F200256654 /* CarePlanPic_s@3x.png in Resources */,
 				0AD73BED1FB2A1F200256654 /* userCenterMid@2x.png in Resources */,
+				79142FBD1FBB39080070C28E /* resouseTell@3x.png in Resources */,
 				0AD73BF61FB2A39600256654 /* women@3x.png in Resources */,
 				799B1DC71FB48FB6000CB480 /* BloodPressure@2x.png in Resources */,
 				79142FA41FBB23A10070C28E /* tellImage@2x.png in Resources */,
@@ -956,6 +985,7 @@
 				C3DE8D3B1FA6CCA1007CE853 /* Assets.xcassets in Resources */,
 				0AD73BDD1FB2A1F200256654 /* couponCell@2x.png in Resources */,
 				0AD73BD61FB2A1F200256654 /* accountIconDefault@3x.png in Resources */,
+				79142FBA1FBB37440070C28E /* OldManResourseTableViewCell.xib in Resources */,
 				799B1DC91FB48FB6000CB480 /* HeartRate@2x.png in Resources */,
 				0AD73BEA1FB2A1F200256654 /* orderCell@3x.png in Resources */,
 				799B1DD01FB48FB6000CB480 /* weight@3x.png in Resources */,
@@ -1012,6 +1042,7 @@
 				C3108E921FA9AEE60087C473 /* OrderCenterViewController.m in Sources */,
 				C398DA721FB29D4600D0BED9 /* DataInterface.m in Sources */,
 				0AEC50B91FB30167009C60E4 /* TheRemoteSupervisionViewController.m in Sources */,
+				79142FB51FBB36B30070C28E /* OldManResourseViewController.m in Sources */,
 				C3B23CD11FAB02BB00D78E5C /* LoginViewController.m in Sources */,
 				0AEC509B1FB2EEB8009C60E4 /* OldManListCollectionViewCell.m in Sources */,
 				C3DE8D6A1FA6D0BA007CE853 /* LeveyTabBarController.m in Sources */,
@@ -1042,6 +1073,7 @@
 				0AEC50C21FB30A45009C60E4 /* SearchOldManView.m in Sources */,
 				0AE8BFF11FB5B3B5008C981C /* UserCenterTableViewCell.m in Sources */,
 				C398DA671FB29BFB00D0BED9 /* AFNetworkReachabilityManager.m in Sources */,
+				79142FB91FBB37440070C28E /* OldManResourseTableViewCell.m in Sources */,
 				C3B23CCD1FAB02BB00D78E5C /* ForgetPwdTwoViewController.m in Sources */,
 				C3B23CCE1FAB02BB00D78E5C /* LoginNoPwdViewController.m in Sources */,
 				C3B23CD61FAB031000D78E5C /* UserCenterViewController.m in Sources */,

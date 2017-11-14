@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "HeaderOfMainView.h"
-
+#import "OldManResourseViewController.h"
 
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
@@ -49,7 +49,7 @@
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
     _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 200* ScreenHRatioBaseIphone6);
-    
+  [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
     //下半部分
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];
     
@@ -58,6 +58,11 @@
     [self.view addSubview:_scrollComponent];
    
     _scrollComponent.userInteractionEnabled = YES;
+}
+
+-(void)gotoResourseView {
+    OldManResourseViewController *vv =[[OldManResourseViewController alloc] init];
+    [self.navigationController pushViewController:vv animated:YES];
 }
 
 //PageTurningViewDelegate
