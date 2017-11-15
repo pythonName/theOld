@@ -71,6 +71,7 @@
 		0AEC50C41FB30A50009C60E4 /* SearchOldManView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C31FB30A50009C60E4 /* SearchOldManView.xib */; };
 		0AEC50C71FB30A67009C60E4 /* SearchOldManOfResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */; };
 		0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */; };
+		7910B5AE1FBC7BB000953BD3 /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */; };
 		79142F8F1FB8993E0070C28E /* MyAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */; };
 		79142F961FBB1E550070C28E /* counponImageUse@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F921FBB1E550070C28E /* counponImageUse@3x.png */; };
 		79142F971FBB1E550070C28E /* counponImageNo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79142F931FBB1E550070C28E /* counponImageNo@2x.png */; };
@@ -237,6 +238,8 @@
 		0AEC50C51FB30A67009C60E4 /* SearchOldManOfResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchOldManOfResultView.h; sourceTree = "<group>"; };
 		0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchOldManOfResultView.m; sourceTree = "<group>"; };
 		0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchOldManOfResultView.xib; sourceTree = "<group>"; };
+		7910B5AC1FBC7BAF00953BD3 /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
+		7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FyCalendarView.m; sourceTree = "<group>"; };
 		79142F8B1FB8974C0070C28E /* vvDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vvDefine.h; sourceTree = "<group>"; };
 		79142F8C1FB8993D0070C28E /* MyAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTableViewCell.h; sourceTree = "<group>"; };
 		79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTableViewCell.m; sourceTree = "<group>"; };
@@ -804,6 +807,8 @@
 			children = (
 				C3DE8D701FA6D27D007CE853 /* CarePlanViewController.h */,
 				C3DE8D711FA6D27D007CE853 /* CarePlanViewController.m */,
+				7910B5AC1FBC7BAF00953BD3 /* FyCalendarView.h */,
+				7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */,
 			);
 			path = CarePlan;
 			sourceTree = "<group>";
@@ -1102,6 +1107,7 @@
 				C3B23CCF1FAB02BB00D78E5C /* LoginPwdViewController.m in Sources */,
 				C3DE8D6C1FA6D0BA007CE853 /* UIBadgeView.m in Sources */,
 				C398DA401FAC62F900D0BED9 /* ShiMingViewController.m in Sources */,
+				7910B5AE1FBC7BB000953BD3 /* FyCalendarView.m in Sources */,
 				C398DA3D1FAC62F000D0BED9 /* ChangeIphoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
