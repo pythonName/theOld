@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,6 +15,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgh-iK-Ofs">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                    <connections>
+                        <action selector="gotoResouseButtonClick:" destination="neX-bK-8EZ" eventType="touchUpInside" id="hjl-rZ-AJE"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accountIconDefault.png" translatesAutoresizingMaskIntoConstraints="NO" id="dDV-dX-1Du">
                     <rect key="frame" x="149" y="10" width="76" height="76"/>
                     <constraints>
@@ -50,32 +56,34 @@
                     <state key="normal" title="老人资料卡">
                         <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
-                    <connections>
-                        <action selector="resouseButtonClick:" destination="neX-bK-8EZ" eventType="touchUpInside" id="edG-0E-JrY"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.55294117649999996" green="0.76078431369999999" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="EiS-wG-rJc" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" constant="100" id="4fC-rW-LXL"/>
                 <constraint firstItem="siR-ap-NN3" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="5rM-aa-fku"/>
+                <constraint firstItem="dgh-iK-Ofs" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" id="FgC-SA-byb"/>
                 <constraint firstItem="EiS-wG-rJc" firstAttribute="leading" secondItem="y6w-GO-SpO" secondAttribute="trailing" constant="8" id="Qf9-ha-DYI"/>
                 <constraint firstItem="siR-ap-NN3" firstAttribute="top" secondItem="y6w-GO-SpO" secondAttribute="bottom" constant="14" id="Stg-FI-K1w"/>
+                <constraint firstItem="dgh-iK-Ofs" firstAttribute="leading" secondItem="neX-bK-8EZ" secondAttribute="leading" id="UJI-fR-LHr"/>
                 <constraint firstItem="y6w-GO-SpO" firstAttribute="top" secondItem="dDV-dX-1Du" secondAttribute="bottom" constant="12" id="YYh-oj-e4R"/>
+                <constraint firstAttribute="trailing" secondItem="dgh-iK-Ofs" secondAttribute="trailing" id="cgc-bI-oD2"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" constant="10" id="roU-TE-YK7"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="tir-D1-wQT"/>
                 <constraint firstItem="y6w-GO-SpO" firstAttribute="trailing" secondItem="dDV-dX-1Du" secondAttribute="trailing" id="vkD-t8-4B4"/>
+                <constraint firstAttribute="bottom" secondItem="dgh-iK-Ofs" secondAttribute="bottom" id="zKO-AH-aJe"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="gotoResouseBtn" destination="dgh-iK-Ofs" id="8S4-Fw-pEV"/>
                 <outlet property="headerImageV" destination="dDV-dX-1Du" id="abj-X7-b4A"/>
                 <outlet property="nameLab" destination="y6w-GO-SpO" id="amF-V0-kmI"/>
                 <outlet property="resouseButton" destination="siR-ap-NN3" id="e0n-N0-a29"/>
                 <outlet property="sexImageV" destination="EiS-wG-rJc" id="trQ-ej-1hQ"/>
             </connections>
-            <point key="canvasLocation" x="137" y="-11"/>
+            <point key="canvasLocation" x="136.5" y="-11"/>
         </view>
     </objects>
     <resources>

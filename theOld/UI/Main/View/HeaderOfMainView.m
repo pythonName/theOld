@@ -23,6 +23,7 @@
 }
 
 //老人资料卡
-- (IBAction)resouseButtonClick:(id)sender {
+- (IBAction)gotoResouseButtonClick:(id)sender {
+    
 }
 @end

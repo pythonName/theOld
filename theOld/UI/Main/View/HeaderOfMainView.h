@@ -18,7 +18,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *resouseButton;
 
-- (IBAction)resouseButtonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *gotoResouseBtn;
+
+
+- (IBAction)gotoResouseButtonClick:(id)sender;
 
 + (HeaderOfMainView *)loadHeaderOfMainView;
 
