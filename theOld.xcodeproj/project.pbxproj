@@ -667,6 +667,7 @@
 			children = (
 				C3DE8D301FA6CCA1007CE853 /* theOld */,
 				C3DE8D2F1FA6CCA1007CE853 /* Products */,
+				C3FD2D6F1FBAD35E000B2473 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -804,6 +805,13 @@
 				C3DE8D661FA6D0BA007CE853 /* UIBadgeView.m */,
 			);
 			path = LeveyTabBarController;
+			sourceTree = "<group>";
+		};
+		C3FD2D6F1FBAD35E000B2473 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1121,12 +1129,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N7ACXAH9HH;
+				DEVELOPMENT_TEAM = UQ2VEQX9V3;
 				GCC_PREFIX_HEADER = "theOld/theOld-Prefix.pch";
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1138,12 +1146,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = N7ACXAH9HH;
+				DEVELOPMENT_TEAM = UQ2VEQX9V3;
 				GCC_PREFIX_HEADER = "theOld/theOld-Prefix.pch";
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
