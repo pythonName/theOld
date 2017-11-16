@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A82DAA21FBD5FA200C2D49B /* careOldList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA981FBD5FA000C2D49B /* careOldList@2x.png */; };
+		0A82DAA31FBD5FA200C2D49B /* redimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA991FBD5FA000C2D49B /* redimage@3x.png */; };
+		0A82DAA41FBD5FA200C2D49B /* yellowImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9A1FBD5FA000C2D49B /* yellowImage@2x.png */; };
+		0A82DAA51FBD5FA200C2D49B /* progressImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9B1FBD5FA100C2D49B /* progressImage@3x.png */; };
+		0A82DAA61FBD5FA200C2D49B /* yellowImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9C1FBD5FA100C2D49B /* yellowImage@3x.png */; };
+		0A82DAA71FBD5FA200C2D49B /* blueImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9D1FBD5FA100C2D49B /* blueImage@2x.png */; };
+		0A82DAA81FBD5FA200C2D49B /* blueImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9E1FBD5FA100C2D49B /* blueImage@3x.png */; };
+		0A82DAA91FBD5FA200C2D49B /* careOldList@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DA9F1FBD5FA100C2D49B /* careOldList@3x.png */; };
+		0A82DAAA1FBD5FA200C2D49B /* progressImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DAA01FBD5FA100C2D49B /* progressImage@2x.png */; };
+		0A82DAAB1FBD5FA200C2D49B /* redimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A82DAA11FBD5FA100C2D49B /* redimage@2x.png */; };
 		0A997A6B1FB2CDFF0015EC1F /* OldManListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A997A671FB2CDFF0015EC1F /* OldManListViewController.m */; };
 		0A997A6C1FB2CDFF0015EC1F /* ServiceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A997A6A1FB2CDFF0015EC1F /* ServiceListViewController.m */; };
 		0AD73BD51FB2A1F200256654 /* accountIconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD73BBB1FB2A1F200256654 /* accountIconDefault@2x.png */; };
@@ -160,6 +170,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A82DA981FBD5FA000C2D49B /* careOldList@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "careOldList@2x.png"; sourceTree = "<group>"; };
+		0A82DA991FBD5FA000C2D49B /* redimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redimage@3x.png"; sourceTree = "<group>"; };
+		0A82DA9A1FBD5FA000C2D49B /* yellowImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowImage@2x.png"; sourceTree = "<group>"; };
+		0A82DA9B1FBD5FA100C2D49B /* progressImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage@3x.png"; sourceTree = "<group>"; };
+		0A82DA9C1FBD5FA100C2D49B /* yellowImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yellowImage@3x.png"; sourceTree = "<group>"; };
+		0A82DA9D1FBD5FA100C2D49B /* blueImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueImage@2x.png"; sourceTree = "<group>"; };
+		0A82DA9E1FBD5FA100C2D49B /* blueImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueImage@3x.png"; sourceTree = "<group>"; };
+		0A82DA9F1FBD5FA100C2D49B /* careOldList@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "careOldList@3x.png"; sourceTree = "<group>"; };
+		0A82DAA01FBD5FA100C2D49B /* progressImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage@2x.png"; sourceTree = "<group>"; };
+		0A82DAA11FBD5FA100C2D49B /* redimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redimage@2x.png"; sourceTree = "<group>"; };
 		0A997A661FB2CDFF0015EC1F /* OldManListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OldManListViewController.h; sourceTree = "<group>"; };
 		0A997A671FB2CDFF0015EC1F /* OldManListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OldManListViewController.m; sourceTree = "<group>"; };
 		0A997A691FB2CDFF0015EC1F /* ServiceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceListViewController.h; sourceTree = "<group>"; };
@@ -530,6 +550,16 @@
 		79142F911FBB1E2D0070C28E /* MyImage */ = {
 			isa = PBXGroup;
 			children = (
+				0A82DA9D1FBD5FA100C2D49B /* blueImage@2x.png */,
+				0A82DA9E1FBD5FA100C2D49B /* blueImage@3x.png */,
+				0A82DA981FBD5FA000C2D49B /* careOldList@2x.png */,
+				0A82DA9F1FBD5FA100C2D49B /* careOldList@3x.png */,
+				0A82DAA01FBD5FA100C2D49B /* progressImage@2x.png */,
+				0A82DA9B1FBD5FA100C2D49B /* progressImage@3x.png */,
+				0A82DAA11FBD5FA100C2D49B /* redimage@2x.png */,
+				0A82DA991FBD5FA000C2D49B /* redimage@3x.png */,
+				0A82DA9A1FBD5FA000C2D49B /* yellowImage@2x.png */,
+				0A82DA9C1FBD5FA100C2D49B /* yellowImage@3x.png */,
 				79142F9F1FBB23A10070C28E /* gotoImage@2x.png */,
 				79142FA11FBB23A10070C28E /* gotoImage@3x-.png */,
 				79142FA01FBB23A10070C28E /* tellImage@2x.png */,
@@ -953,8 +983,10 @@
 				0AD73BFF1FB2B6F900256654 /* HeaderOfMainView.xib in Resources */,
 				0AEC50961FB2E257009C60E4 /* theRemoteSupervision@2x.png in Resources */,
 				0AD73BE91FB2A1F200256654 /* orderCell@2x.png in Resources */,
+				0A82DAA51FBD5FA200C2D49B /* progressImage@3x.png in Resources */,
 				79142FBE1FBB39080070C28E /* resouseTell@2x.png in Resources */,
 				0AEC509C1FB2EEB8009C60E4 /* OldManListCollectionViewCell.xib in Resources */,
+				0A82DAA41FBD5FA200C2D49B /* yellowImage@2x.png in Resources */,
 				79142F961FBB1E550070C28E /* counponImageUse@3x.png in Resources */,
 				0AEC50911FB2E257009C60E4 /* carePackages@3x.png in Resources */,
 				0AEC50901FB2E257009C60E4 /* carePackages@2x.png in Resources */,
@@ -964,12 +996,14 @@
 				0AD73BF41FB2A39600256654 /* women@2x.png in Resources */,
 				0AD73BD91FB2A1F200256654 /* CarePlanPic@2x.png in Resources */,
 				79142FA61FBB23A10070C28E /* tellImage@3x.png in Resources */,
+				0A82DAA81FBD5FA200C2D49B /* blueImage@3x.png in Resources */,
 				799B1DC51FB48FB6000CB480 /* BloodFat@2x.png in Resources */,
 				799B1DCD1FB48FB6000CB480 /* BodyTemperature@2x.png in Resources */,
 				0AD73BE31FB2A1F200256654 /* oldAccountCell@2x.png in Resources */,
 				79142FA51FBB23A10070C28E /* gotoImage@3x-.png in Resources */,
 				0AEC50941FB2E257009C60E4 /* PhysiologicalData@2x.png in Resources */,
 				0AD73BF31FB2A39600256654 /* man@3x.png in Resources */,
+				0A82DAAB1FBD5FA200C2D49B /* redimage@2x.png in Resources */,
 				799B1DDD1FB85F86000CB480 /* OldAccountTableViewCell.xib in Resources */,
 				0AD73BDC1FB2A1F200256654 /* CarePlanPic_s@3x.png in Resources */,
 				0AD73BED1FB2A1F200256654 /* userCenterMid@2x.png in Resources */,
@@ -990,10 +1024,12 @@
 				C3DE8D3B1FA6CCA1007CE853 /* Assets.xcassets in Resources */,
 				0AD73BDD1FB2A1F200256654 /* couponCell@2x.png in Resources */,
 				0AD73BD61FB2A1F200256654 /* accountIconDefault@3x.png in Resources */,
+				0A82DAA61FBD5FA200C2D49B /* yellowImage@3x.png in Resources */,
 				79142FBA1FBB37440070C28E /* OldManResourseTableViewCell.xib in Resources */,
 				799B1DC91FB48FB6000CB480 /* HeartRate@2x.png in Resources */,
 				0AD73BEA1FB2A1F200256654 /* orderCell@3x.png in Resources */,
 				799B1DD01FB48FB6000CB480 /* weight@3x.png in Resources */,
+				0A82DAAA1FBD5FA200C2D49B /* progressImage@2x.png in Resources */,
 				0AEC50B01FB30120009C60E4 /* GuardiansViewController.xib in Resources */,
 				0AD73BD81FB2A1F200256654 /* back@3x.png in Resources */,
 				0AEC50951FB2E257009C60E4 /* PhysiologicalData@3x.png in Resources */,
@@ -1007,11 +1043,14 @@
 				0AD73BE81FB2A1F200256654 /* oldPic_s@3x.png in Resources */,
 				79142FA31FBB23A10070C28E /* gotoImage@2x.png in Resources */,
 				0AD73BE51FB2A1F200256654 /* oldPic@2x.png in Resources */,
+				0A82DAA31FBD5FA200C2D49B /* redimage@3x.png in Resources */,
 				799B1DCE1FB48FB6000CB480 /* BodyTemperature@3x.png in Resources */,
 				C3B23CD01FAB02BB00D78E5C /* LoginSubViewControllersConfig.plist in Resources */,
 				0AD73BE21FB2A1F200256654 /* MePicture_s@3x.png in Resources */,
+				0A82DAA21FBD5FA200C2D49B /* careOldList@2x.png in Resources */,
 				0AD73BD71FB2A1F200256654 /* back@2x.png in Resources */,
 				0AD73BEB1FB2A1F200256654 /* settingCell@2x.png in Resources */,
+				0A82DAA71FBD5FA200C2D49B /* blueImage@2x.png in Resources */,
 				0AEC50B51FB30144009C60E4 /* PhysiologicalDataViewController.xib in Resources */,
 				79142F981FBB1E550070C28E /* counponImageNo@3x.png in Resources */,
 				0AD73C041FB2C8C300256654 /* MainSubViewControllersConfig.plist in Resources */,
@@ -1029,6 +1068,7 @@
 				0AD73BE11FB2A1F200256654 /* MePicture_s@2x.png in Resources */,
 				0AD73BE71FB2A1F200256654 /* oldPic_s@2x.png in Resources */,
 				799B1DC81FB48FB6000CB480 /* BloodPressure@3x.png in Resources */,
+				0A82DAA91FBD5FA200C2D49B /* careOldList@3x.png in Resources */,
 				0AEC50AB1FB300F9009C60E4 /* CarePackagesViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
