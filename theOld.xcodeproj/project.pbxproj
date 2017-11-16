@@ -54,6 +54,7 @@
 		0AD73BFF1FB2B6F900256654 /* HeaderOfMainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AD73BFE1FB2B6F900256654 /* HeaderOfMainView.xib */; };
 		0AD73C021FB2C0E200256654 /* UIView+NIB.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD73C001FB2C0E200256654 /* UIView+NIB.m */; };
 		0AD73C041FB2C8C300256654 /* MainSubViewControllersConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AD73C031FB2C8C200256654 /* MainSubViewControllersConfig.plist */; };
+		0ADAC6421FBD75F700791F67 /* AttributedStringAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAC6411FBD75F700791F67 /* AttributedStringAndImage.m */; };
 		0AE8BFF11FB5B3B5008C981C /* UserCenterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AE8BFEF1FB5B3B5008C981C /* UserCenterTableViewCell.m */; };
 		0AE8BFF21FB5B3B5008C981C /* UserCenterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AE8BFF01FB5B3B5008C981C /* UserCenterTableViewCell.xib */; };
 		0AEC50901FB2E257009C60E4 /* carePackages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50881FB2E257009C60E4 /* carePackages@2x.png */; };
@@ -222,6 +223,8 @@
 		0AD73C001FB2C0E200256654 /* UIView+NIB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+NIB.m"; sourceTree = "<group>"; };
 		0AD73C011FB2C0E200256654 /* UIView+NIB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+NIB.h"; sourceTree = "<group>"; };
 		0AD73C031FB2C8C200256654 /* MainSubViewControllersConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MainSubViewControllersConfig.plist; sourceTree = "<group>"; };
+		0ADAC6401FBD75F700791F67 /* AttributedStringAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedStringAndImage.h; sourceTree = "<group>"; };
+		0ADAC6411FBD75F700791F67 /* AttributedStringAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedStringAndImage.m; sourceTree = "<group>"; };
 		0AE8BFEE1FB5B3B5008C981C /* UserCenterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCenterTableViewCell.h; sourceTree = "<group>"; };
 		0AE8BFEF1FB5B3B5008C981C /* UserCenterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCenterTableViewCell.m; sourceTree = "<group>"; };
 		0AE8BFF01FB5B3B5008C981C /* UserCenterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCenterTableViewCell.xib; sourceTree = "<group>"; };
@@ -417,6 +420,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A93E4C61FBD71FF00F8A7F6 /* Attributed */ = {
+			isa = PBXGroup;
+			children = (
+				0ADAC6401FBD75F700791F67 /* AttributedStringAndImage.h */,
+				0ADAC6411FBD75F700791F67 /* AttributedStringAndImage.m */,
+			);
+			path = Attributed;
+			sourceTree = "<group>";
+		};
 		0A997A651FB2CDFF0015EC1F /* OldManView */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +732,7 @@
 		C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				0A93E4C61FBD71FF00F8A7F6 /* Attributed */,
 				C398DA731FB2AE6A00D0BED9 /* NBLWebView */,
 				C398DA581FB29BFB00D0BED9 /* AFNetworking */,
 				C3B23CB31FAABA2600D78E5C /* JMRoundedCorner */,
@@ -1108,6 +1121,7 @@
 				0A997A6B1FB2CDFF0015EC1F /* OldManListViewController.m in Sources */,
 				C3B23CD21FAB02BB00D78E5C /* RegisterViewController.m in Sources */,
 				C3B23CCC1FAB02BB00D78E5C /* ForgetPwdOneViewController.m in Sources */,
+				0ADAC6421FBD75F700791F67 /* AttributedStringAndImage.m in Sources */,
 				C3DE8D331FA6CCA1007CE853 /* AppDelegate.m in Sources */,
 				799B1DDC1FB85F86000CB480 /* OldAccountTableViewCell.m in Sources */,
 				0AEC50B41FB30144009C60E4 /* PhysiologicalDataViewController.m in Sources */,
