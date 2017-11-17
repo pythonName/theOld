@@ -49,6 +49,42 @@
     return shareInstance;
 }
 
+- (void)getMessageCodeRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/confirme/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)registerRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/regist/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)loginRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/login/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)logoutRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
 //- (NSMutableDictionary *)getCommonRequestParams:(NSDictionary *)pra {
 //    NSMutableDictionary *dp = [NSMutableDictionary dictionary];
 //    if (nil != pra) {

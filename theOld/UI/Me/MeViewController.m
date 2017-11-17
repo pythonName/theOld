@@ -91,13 +91,13 @@ static CGFloat CellH = 50;
 }
 
 - (void)centerBtnClick {
-    UIViewController *vc = [[UserCenterViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
-//    if ([UserManager shareInstance].isLogined) {
-//        vc = [[UserCenterViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
-//    }else {
-//        vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
-//
-//    }
+    UIViewController *vc = nil;
+    if ([UserManager shareInstance].isLogined) {
+        vc = [[UserCenterViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+    }else {
+        vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+
+    }
     CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
     [self.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
         

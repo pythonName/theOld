@@ -10,6 +10,7 @@
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
 #import "ForgetPwdOneViewController.h"
+#import "DataInterface.h"
 
 @interface RegisterViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -126,11 +127,19 @@
 }
 
 - (void)registerBtnClick:(UIButton *)sender{
-    
+    NSDictionary *dic = @{@"username":self.userNameTextField.text,
+                          @"password":self.passWordTextField.text,
+                          @"code":self.codeTextField.text
+                          };
+    [[DataInterface shareInstance] registerRequest:dic complication:^(NSDictionary *resultDic) {
+        
+    }];
 }
 
 - (void)getYanzhengma {
-    
+    [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
+        NSLog(@"resultDic = %@",resultDic);
+    }];
 }
 
 - (void)forgetPWDBtnClick {
