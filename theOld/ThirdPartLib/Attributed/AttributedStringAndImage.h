@@ -38,4 +38,5 @@
                                                  withFont2:(CGFloat)font2
                                                 withColor2:(UIColor*)color2;
 
++ (float) heightForString:(NSString *)value andWidth:(float)width;
 @end

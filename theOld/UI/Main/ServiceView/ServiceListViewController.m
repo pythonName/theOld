@@ -48,10 +48,14 @@
     
     CGFloat width = 153* ScreenHRatioBaseIphone6;
     CGFloat height = 114 * ScreenHRatioBaseIphone6;
+    CGFloat topLeading = 10;
+    if (ScreenHRatioBaseIphone6>=1) {
+        topLeading = 30;
+    }
     for(int i=0 ;i<titleArr.count;i++) {
         NSDictionary *dic = titleArr[i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(30*ScreenHRatioBaseIphone6+(i%2)*(9+width), 30*ScreenHRatioBaseIphone6+i/2*(9+height), width, height);
+        btn.frame = CGRectMake(30*ScreenHRatioBaseIphone6+(i%2)*(9+width), topLeading*ScreenHRatioBaseIphone6+i/2*(9+height), width, height);
         [self.view addSubview:btn];
         [btn addTarget:self action:@selector(buttonsClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.backgroundColor = [UIColor whiteColor];

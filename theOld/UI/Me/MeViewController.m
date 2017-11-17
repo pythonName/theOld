@@ -80,9 +80,9 @@ static CGFloat CellH = 50;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    if (!self.leveyTabBarController.tabBarHidden) {
-//        [self.leveyTabBarController hideTabBar:YES];
-//    }
+    if (!self.leveyTabBarController.tabBarHidden) {
+        [self.leveyTabBarController hideTabBar:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

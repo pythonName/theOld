@@ -9,7 +9,7 @@
 #import "MainViewController.h"
 #import "HeaderOfMainView.h"
 #import "OldManResourseViewController.h"
-
+#import "LeveyTabBarController.h"
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
     HeaderOfMainView *_headerOfMainView;
@@ -48,7 +48,7 @@
     //头部信息
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
-    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 200* ScreenHRatioBaseIphone6);
+    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 190 );
   [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
     //下半部分
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];
@@ -73,6 +73,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (!self.leveyTabBarController.tabBarHidden) {
+        [self.leveyTabBarController hideTabBar:YES];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.leveyTabBarController showTabBar:YES];
 }
 
 @end

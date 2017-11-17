@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OldManResourseTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *tellImageV;
+@property (weak, nonatomic) IBOutlet UILabel *contentTextLab;
 
 @end

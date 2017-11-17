@@ -18,6 +18,8 @@
 #import "PhysiologicalDataTableViewHeader.h"
 #import "MainViewController.h"
 #import "LeveyTabBarController.h"
+#import <Social/Social.h>
+
 
 static NSString *cellIdet = @"UserCenterTableViewCell";
 static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
@@ -132,8 +134,16 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     
 }
 
+//邀请监护人事件
 -(void)rightButtonClick {
-   
+ 
+    UIImage *imageToShare = [UIImage imageNamed:@"userCenterMid.png"];
+    NSURL *urlToShare = [NSURL URLWithString:@"http://www.vshare.com/down_vshare_vip/"];
+    NSString *textToShare = [NSString stringWithFormat:@"分享的文本内容"];
+    
+    NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+    UIActivityViewController *activityController=[[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+    [self.navigationController presentViewController:activityController animated:YES completion:nil];
 }
 
 -(void)leftButtonClick {

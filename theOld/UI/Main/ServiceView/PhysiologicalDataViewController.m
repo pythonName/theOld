@@ -87,7 +87,7 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 {
     PhysiologicalDataTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdent];
     
-    headerView.dateLabel.text = @"nihao";
+    headerView.dateLabel.text = @"2017-09-09";
     return headerView;
     
 }

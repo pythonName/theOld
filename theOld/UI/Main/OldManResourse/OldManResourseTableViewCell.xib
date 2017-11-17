@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -56,6 +56,10 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="contentTextLab" destination="8LS-cZ-jqq" id="lZq-mu-Ipi"/>
+                <outlet property="tellImageV" destination="Bta-ov-6sB" id="wTI-tD-RmM"/>
+            </connections>
             <point key="canvasLocation" x="24.5" y="52"/>
         </tableViewCell>
     </objects>

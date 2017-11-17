@@ -83,7 +83,7 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     OldManListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdent forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    
     cell.layer.cornerRadius = 10;
     
     if (self.dataArr.count == indexPath.row) {
@@ -91,7 +91,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
         cell.nameLab.text = @"新增老人";
     }else{
         //正常数据
-        
+        cell.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
+        cell.nameLab.text = @"李大帅";
     }
     
     return cell;

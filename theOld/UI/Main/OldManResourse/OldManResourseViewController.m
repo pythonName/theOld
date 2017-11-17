@@ -65,7 +65,7 @@ static NSString *cellIdent = @"OldManResourseTableViewCell";
     
     //头部信息
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
-    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 150* ScreenHRatioBaseIphone6);
+    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 150);
     _headerOfMainView.resouseButton.hidden = YES;
     self.mainTableView.tableHeaderView = _headerOfMainView;
 }
@@ -82,6 +82,11 @@ static NSString *cellIdent = @"OldManResourseTableViewCell";
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OldManResourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(indexPath.section == 1){
+        cell.tellImageV.hidden = YES;
+    }else{
+         cell.tellImageV.hidden = NO;
+    }
     return cell;
 }
 

@@ -27,8 +27,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = UIColorFromRGB(0xf8f8f8);
-//        self.backgroundColor = [UIColor redColor];
-        _buttonImageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 25.5, 25.5)];
+ 
+        _buttonImageView=[[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 26, 23)];
         _buttonImageView.center = CGPointMake(self.frame.size.width/2, _buttonImageView.center.y);
         [self addSubview:_buttonImageView];
         _buttonImageView.backgroundColor = [UIColor clearColor];

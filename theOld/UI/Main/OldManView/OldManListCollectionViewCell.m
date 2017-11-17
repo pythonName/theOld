@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    self.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
 }
 
 @end

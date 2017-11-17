@@ -11,6 +11,7 @@
 #import "AboutUsViewController.h"
 #import "HelpCenterViewController.h"
 
+static NSString *tellStr =@"13691850416";
 static NSString *cellIdent = @"SettingTableViewCell";
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>{
     CGRect _frame;
@@ -56,7 +57,7 @@ static NSString *cellIdent = @"SettingTableViewCell";
     self.title = @"系统设置";
     
     [self.dataArr addObject:@"关于我们"];
-    [self.dataArr addObject:@"意见反馈"];
+//    [self.dataArr addObject:@"意见反馈"];
     [self.dataArr addObject:@"帮助中心"];
     [self.dataArr addObject:@"客服热线"];
 
@@ -82,6 +83,10 @@ static NSString *cellIdent = @"SettingTableViewCell";
     if (self.dataArr.count-1 == indexPath.row) {
         cell.imageV.hidden = YES;
         cell.tellLab.hidden = NO;
+        NSString *tellString = [NSString stringWithFormat:@"  %@",tellStr];
+        NSMutableAttributedString *attributed = [AttributedStringAndImage initNSMutableAttributedString:tellString withFont1:12 withColor1:UIColorFromRGB(0x8DC21F) withRange1:NSMakeRange(0, tellString.length) withImage:@"tellImage" withImagePrefix:YES];
+        cell.tellLab.attributedText = attributed;
+//        tellImage
     }else{
         cell.imageV.hidden = NO;
         cell.tellLab.hidden = YES;
@@ -97,16 +102,17 @@ static NSString *cellIdent = @"SettingTableViewCell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0){
+        //关于我们
         AboutUsViewController *vv = [[AboutUsViewController alloc] init];
         [self.navigationController pushViewController:vv animated:YES];
-    }else if (indexPath.row == 2){
+    }else if (indexPath.row == 1){
+        //帮助中心
         HelpCenterViewController *vv = [[HelpCenterViewController alloc] initWithFrame:self.view.bounds withURLString:@"http://www.baidu.com"];
         [self.navigationController pushViewController:vv animated:YES];
         
-    }
-    else if (indexPath.row == 3) {
+    }else if (indexPath.row == 2) {
         //打电话
-        NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"186xxxx6979"];
+        NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",@"13691850416"];
         // NSLog(@"str======%@",str);
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
     }

@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-   
+    self.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

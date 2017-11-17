@@ -96,6 +96,12 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
     _textFiledView.layer.borderColor = [UIColor lightTextColor].CGColor;
     _textFiledView.placeholder = @"请输入优惠码";
     _textFiledView.font = [UIFont systemFontOfSize:13];
+    //缩进
+    UIView *leftViewUser = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 0)];
+    leftViewUser.backgroundColor = [UIColor clearColor];
+    _textFiledView.leftView = leftViewUser;
+    _textFiledView.leftViewMode = UITextFieldViewModeAlways;
+    
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(CGRectGetMaxX(_textFiledView.frame)-1, (110-40*ScreenHRatioBaseIphone6)/2, 110*ScreenHRatioBaseIphone6,CGRectGetHeight(_textFiledView.frame));
