@@ -9,6 +9,7 @@
 #import "LoginNoPwdViewController.h"
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
+#import "DataInterface.h"
 
 @interface LoginNoPwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -98,11 +99,19 @@
 }
 
 - (void)loginBtnClick:(UIButton *)sender{
-    
+    NSDictionary *dic = @{@"username":self.userNameTextField.text,
+                          @"password":self.passWordTextField.text,
+                          @"logintype":@"code"
+                          };
+    [[DataInterface shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
+        
+    }];
 }
 
 - (void)getYanzhengma {
-    
+    [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
+        NSLog(@"resultDic = %@",resultDic);
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

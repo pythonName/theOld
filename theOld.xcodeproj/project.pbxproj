@@ -1016,6 +1016,7 @@
 				C3DE8D301FA6CCA1007CE853 /* theOld */,
 				C3DE8D2F1FA6CCA1007CE853 /* Products */,
 				0ADAC70C1FBEAE0900791F67 /* Frameworks */,
+				C3FD2D6F1FBAD35E000B2473 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1156,6 +1157,13 @@
 				C3DE8D661FA6D0BA007CE853 /* UIBadgeView.m */,
 			);
 			path = LeveyTabBarController;
+			sourceTree = "<group>";
+		};
+		C3FD2D6F1FBAD35E000B2473 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1540,7 +1548,7 @@
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1557,7 +1565,7 @@
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theOldd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

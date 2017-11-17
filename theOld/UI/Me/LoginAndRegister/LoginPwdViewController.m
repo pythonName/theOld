@@ -9,6 +9,7 @@
 #import "LoginPwdViewController.h"
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
+#import "DataInterface.h"
 
 @interface LoginPwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -83,7 +84,13 @@
 }
 
 - (void)loginBtnClick:(UIButton *)sender{
-    
+    NSDictionary *dic = @{@"username":self.userNameTextField.text,
+                          @"password":self.passWordTextField.text,
+                          @"logintype":@"pwd"
+                          };
+    [[DataInterface shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
+        
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

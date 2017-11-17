@@ -16,8 +16,17 @@ typedef void(^faildur)(NSError *error);
 
 + (instancetype)shareInstance;
 
-////更新打包请求
-//- (void)postUpdataPackageRequest: (id)params complication:(resultDic)comlication;
+//获取验证码
+- (void)getMessageCodeRequest: (id)params complication:(resultDic)comlication;
+
+//用户注册
+- (void)registerRequest: (id)params complication:(resultDic)comlication;
+
+//用户登录
+- (void)loginRequest: (id)params complication:(resultDic)comlication;
+
+//用户登出
+- (void)logoutRequest: (id)params complication:(resultDic)comlication;
 //
 ////上传此udid对应打包过已安装的应用
 //- (void)uploadInstalledPackageRequest: (id)params method:(VFNetworkMethod)method complication:(resultDic)comlication;
