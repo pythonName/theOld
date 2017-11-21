@@ -24,7 +24,7 @@
 {
     
     
-    _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0,ScreenWidth, 30)];
+    _dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0,ScreenWidth-30, 30)];
     _dateLabel.textAlignment = NSTextAlignmentLeft;
     _dateLabel.font = [UIFont systemFontOfSize:11];
     _dateLabel.textColor = UIColorFromRGB(0xaaaaaa);

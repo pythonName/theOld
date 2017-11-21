@@ -8,16 +8,29 @@
 
 #import "FyCalendarView.h"
 
-@interface FyCalendarView ()
+#define buttonsTag 1000
+@interface FyCalendarView ()  {
+    NSInteger _currentDayIndex;
+    CGFloat itemW  ;
+    CGFloat itemH ;
+}
 @property (nonatomic, strong) UIButton *selectBtn;
 @property (nonatomic, strong) NSMutableArray *daysArray;
 @property (nonatomic, strong) UILabel *selectBtnColorsView;
-
+@property (nonatomic, strong) NSMutableArray *daysDateArray;
+@property (nonatomic, assign) BOOL  isBigFrameView;
 @end
 
 @implementation FyCalendarView
+-(NSMutableArray *)daysDateArray {
+    if (!_daysDateArray) {
+        _daysDateArray = [NSMutableArray array];
+    }
+    return _daysDateArray;
+}
+
 -(UILabel*)selectBtnColorsView  {
-   
+    
     if (!_selectBtnColorsView) {
         _selectBtnColorsView = [[UILabel alloc] initWithFrame:CGRectMake(-50, -50, self.frame.size.width / 7/2, self.frame.size.width / 7/2)];
         _selectBtnColorsView.layer.cornerRadius =self.frame.size.width / 7/4;
@@ -35,6 +48,8 @@
     if (self) {
         self.currentYear = 0;
         self.currentMonth = 0;
+        _currentDayIndex = -1;
+        self.isBigFrameView = YES;
         [self setupDate];
         [self setupNextAndLastMonthView];
     }
@@ -47,6 +62,7 @@
         UIButton *button = [[UIButton alloc] init];
         [self addSubview:button];
         [_daysArray addObject:button];
+        button.tag =buttonsTag+i;
         [button addTarget:self action:@selector(logDate:) forControlEvents:UIControlEventTouchUpInside];
     }
     [self addSubview:self.selectBtnColorsView];
@@ -88,8 +104,8 @@
 
 - (void)createCalendarViewWith:(NSDate *)date{
     
-    CGFloat itemW     = self.frame.size.width / 7;
-    CGFloat itemH     = self.frame.size.width / 7;
+    itemW     = self.frame.size.width / 7;
+    itemH     = self.frame.size.width / 7;
     
     // 1.year month
     self.headlabel = [[UILabel alloc] init];
@@ -99,15 +115,15 @@
     NSLog(@"%@", self.headlabel.text);
     self.headlabel.font     = [UIFont systemFontOfSize:14];
     self.headlabel.frame           = CGRectMake(0, 0, self.frame.size.width, itemH);
-//    self.headlabel.textAlignment   = NSTextAlignmentCenter;
-//    self.headlabel.textColor = self.headColor;
-//    [self addSubview: self.headlabel];
-//
-//    UIButton *headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    headBtn.backgroundColor = [UIColor clearColor];
-//    headBtn.frame = CGRectMake(0, 0, self.frame.size.width, itemH);
-//    [headBtn addTarget:self action:@selector(chooseMonth:) forControlEvents:UIControlEventTouchUpInside];
-//    [self addSubview:self.headlabel];
+    //    self.headlabel.textAlignment   = NSTextAlignmentCenter;
+    //    self.headlabel.textColor = self.headColor;
+    //    [self addSubview: self.headlabel];
+    //
+    //    UIButton *headBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    //    headBtn.backgroundColor = [UIColor clearColor];
+    //    headBtn.frame = CGRectMake(0, 0, self.frame.size.width, itemH);
+    //    [headBtn addTarget:self action:@selector(chooseMonth:) forControlEvents:UIControlEventTouchUpInside];
+    //    [self addSubview:self.headlabel];
     
     // 2.weekday
     NSArray *array = @[@"日", @"一", @"二", @"三", @"四", @"五", @"六"];
@@ -126,7 +142,7 @@
         week.textColor       = self.weekDaysColor;
         [self.weekBg addSubview:week];
     }
-    
+    NSMutableArray *muArr = [NSMutableArray array];
     //  3.days (1-31)
     for (int i = 0; i < 42; i++) {
         
@@ -137,7 +153,7 @@
         dayButton.frame = CGRectMake(x, y, itemW, itemH);
         dayButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
         dayButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-//        dayButton.layer.cornerRadius = 5.0f;
+        //        dayButton.layer.cornerRadius = 5.0f;
         [dayButton addTarget:self action:@selector(logDate:) forControlEvents:UIControlEventTouchUpInside];
         dayButton.backgroundColor = [UIColor whiteColor];
         dayButton.layer.borderWidth = 0.5;
@@ -176,9 +192,99 @@
             }else if(i ==  todayIndex){
                 [self setStyle_Today:dayButton];
             }
+         
+            _currentDayIndex = todayIndex/7;
+            
+        }
+        
+        [muArr addObject:dayButton];
+        int m = i+1;
+        if (m%7==0 ) {
+            
+            NSMutableArray *btnArr = [[NSMutableArray alloc] initWithArray:muArr];
+            [self.daysDateArray addObject:btnArr];
+            [muArr removeAllObjects];
+            
+        }
+        
+    }
+}
+
+//便宜变大，frame变小
+-(void)refreshViewWhenContentYBig {
+    //  3.days (1-31)
+    if (self.isBigFrameView) {
+        for (int i = 0; i < 6; i++) {
+            NSArray *btnArr = self.daysDateArray[i];
+            if (i==_currentDayIndex) {
+                for (int j=0;j<btnArr.count;j++) {
+                    int x = (j % 7) * itemW ;
+                    int y = CGRectGetMaxY(self.weekBg.frame);
+                    UIButton *btn = btnArr[j];
+                    btn.frame = CGRectMake(x, y, itemW, itemH);
+                }
+            }else{
+                for (UIButton *btn in btnArr) {
+                    btn.hidden = YES;
+                }
+            }
+            
+            if (i == 5) {
+                self.isBigFrameView = NO;
+                [self refreshSelectBtnColorsViewIfY:NO];
+            }
             
         }
     }
+    
+}
+
+//便宜变小，frame变大
+-(void)refreshViewWhenContentYSmall {
+    if (self.isBigFrameView == NO) {
+        for (int i = 0; i < 6; i++) {
+            NSArray *btnArr = self.daysDateArray[i];
+            if (i==_currentDayIndex) {
+                for (int j=0;j<btnArr.count;j++) {
+                    int x = (j % 7) * itemW ;
+                    int y = _currentDayIndex * itemH +CGRectGetMaxY(self.weekBg.frame);
+                    UIButton *btn = btnArr[j];
+                    btn.frame = CGRectMake(x, y, itemW, itemH);
+                }
+            }else{
+                for (UIButton *btn in btnArr) {
+                    btn.hidden = NO;
+                }
+            }
+            
+            if (i == 5) {
+                self.isBigFrameView = YES;
+                //
+                [self refreshSelectBtnColorsViewIfY:YES];
+            }
+            
+        }
+    }
+    
+}
+
+-(void)refreshSelectBtnColorsViewIfY:(BOOL)isZero {
+    
+    NSInteger tagNum  = self.selectBtnColorsView.tag - buttonsTag - 100;
+    
+    if (tagNum/7== _currentDayIndex) {
+        int y = CGRectGetMaxY(self.weekBg.frame);
+        if (isZero) {
+            y = (tagNum/7) * itemH +CGRectGetMaxY(self.weekBg.frame);
+        }
+        self.selectBtnColorsView.frame = CGRectMake(CGRectGetMinX(self.selectBtnColorsView.frame), y+CGRectGetHeight(self.selectBtnColorsView.frame)/2, CGRectGetWidth(self.selectBtnColorsView.frame), CGRectGetHeight(self.selectBtnColorsView.frame));
+    }else{
+        return;
+    }
+    
+    
+    
+    
 }
 
 #pragma mark - chooseMonth
@@ -195,17 +301,17 @@
     dayBtn.selected = YES;
     self.selectBtn = dayBtn;
     
-//    dayBtn.layer.cornerRadius = dayBtn.frame.size.height / 4;
     dayBtn.layer.masksToBounds = YES;
     [dayBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [dayBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-//    [dayBtn setBackgroundColor:self.dateColor];
+    //    [dayBtn setBackgroundColor:self.dateColor];
     self.selectBtnColorsView.backgroundColor = self.dateColor;
     self.selectBtnColorsView.center = dayBtn.center;
     self.selectBtnColorsView.text = dayBtn.titleLabel.text;
+    self.selectBtnColorsView.tag = dayBtn.tag+100;
     NSInteger day = [[dayBtn titleForState:UIControlStateNormal] integerValue];
     
-//    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
+    //    NSDateComponents *comp = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay) fromDate:self.date];
     
     if (self.calendarBlock) {
         self.calendarBlock(day, self.currentMonth, self.currentYear);//[comp year]
@@ -253,11 +359,11 @@
 
 - (void)setStyle_Today:(UIButton *)btn
 {
-   
-//    btn.layer.masksToBounds = YES;
+    
+    //    btn.layer.masksToBounds = YES;
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-//    [btn setBackgroundColor:[UIColor greenColor]];
+    //    [btn setBackgroundColor:[UIColor greenColor]];
     
     UILabel *stateView = [[UILabel alloc] initWithFrame:CGRectMake(btn.frame.size.width/4, btn.frame.size.width/4, btn.frame.size.width/2, btn.frame.size.height/2)];
     stateView.layer.cornerRadius = btn.frame.size.height / 4;
@@ -281,8 +387,8 @@
             stateView.layer.masksToBounds = YES;
             stateView.backgroundColor = self.allDaysColor;
             
-//            stateView.image = self.allDaysImage;
-//            stateView.alpha = 0.5;
+            //            stateView.image = self.allDaysImage;
+            //            stateView.alpha = 0.5;
             [btn addSubview:stateView];
             stateView.text =btn.titleLabel.text;
             stateView.textColor = [UIColor whiteColor];
@@ -296,8 +402,8 @@
             stateView.layer.cornerRadius = btn.frame.size.height / 4;
             stateView.layer.masksToBounds = YES;
             stateView.backgroundColor = self.partDaysColor;
-//            stateView.image = self.partDaysImage;
-//            stateView.alpha = 0.5;
+            //            stateView.image = self.partDaysImage;
+            //            stateView.alpha = 0.5;
             [btn addSubview:stateView];
             stateView.text =btn.titleLabel.text;
             stateView.textColor = [UIColor whiteColor];

@@ -67,7 +67,11 @@
  */
 //- (void)setLastMonth:(NSDate *)date;
 - (NSDate *)lastMonth:(NSDate *)date;
+//便宜变大，frame变小
+-(void)refreshViewWhenContentYBig;
 
+//便宜变小，frame变大
+-(void)refreshViewWhenContentYSmall;
 /**
  *  nextMonth and lastMonth
  */

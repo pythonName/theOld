@@ -143,6 +143,8 @@
 		0AEC50C71FB30A67009C60E4 /* SearchOldManOfResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */; };
 		0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */; };
 		7910B5AE1FBC7BB000953BD3 /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */; };
+		7910B5B21FC3093900953BD3 /* CarePlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910B5B01FC3093900953BD3 /* CarePlanTableViewCell.m */; };
+		7910B5B31FC3093900953BD3 /* CarePlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7910B5B11FC3093900953BD3 /* CarePlanTableViewCell.xib */; };
 		79142F8F1FB8993E0070C28E /* MyAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */; };
 		79142F9D1FBB22270070C28E /* SettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79142F9B1FBB22270070C28E /* SettingTableViewCell.m */; };
 		79142F9E1FBB22270070C28E /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79142F9C1FBB22270070C28E /* SettingTableViewCell.xib */; };
@@ -389,6 +391,9 @@
 		0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchOldManOfResultView.xib; sourceTree = "<group>"; };
 		7910B5AC1FBC7BAF00953BD3 /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
 		7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FyCalendarView.m; sourceTree = "<group>"; };
+		7910B5AF1FC3093900953BD3 /* CarePlanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePlanTableViewCell.h; sourceTree = "<group>"; };
+		7910B5B01FC3093900953BD3 /* CarePlanTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePlanTableViewCell.m; sourceTree = "<group>"; };
+		7910B5B11FC3093900953BD3 /* CarePlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarePlanTableViewCell.xib; sourceTree = "<group>"; };
 		79142F8B1FB8974C0070C28E /* vvDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vvDefine.h; sourceTree = "<group>"; };
 		79142F8C1FB8993D0070C28E /* MyAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTableViewCell.h; sourceTree = "<group>"; };
 		79142F8D1FB8993D0070C28E /* MyAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTableViewCell.m; sourceTree = "<group>"; };
@@ -1075,6 +1080,9 @@
 			children = (
 				C3DE8D701FA6D27D007CE853 /* CarePlanViewController.h */,
 				C3DE8D711FA6D27D007CE853 /* CarePlanViewController.m */,
+				7910B5AF1FC3093900953BD3 /* CarePlanTableViewCell.h */,
+				7910B5B01FC3093900953BD3 /* CarePlanTableViewCell.m */,
+				7910B5B11FC3093900953BD3 /* CarePlanTableViewCell.xib */,
 				7910B5AC1FBC7BAF00953BD3 /* FyCalendarView.h */,
 				7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */,
 			);
@@ -1295,6 +1303,7 @@
 				0ADAC6A71FBE801A00791F67 /* weight@2x.png in Resources */,
 				0ADAC7281FBEDA0E00791F67 /* imageX@2x.png in Resources */,
 				0AD73BD71FB2A1F200256654 /* back@2x.png in Resources */,
+				7910B5B31FC3093900953BD3 /* CarePlanTableViewCell.xib in Resources */,
 				0ADAC6971FBE801A00791F67 /* BodyTemperature@2x.png in Resources */,
 				0ADAC6521FBE7FD100791F67 /* CarePlanPic@3x.png in Resources */,
 				0ADAC6BE1FBE801A00791F67 /* yellowImage@3x.png in Resources */,
@@ -1351,6 +1360,7 @@
 				C3108E8F1FA9AC780087C473 /* VVGlobalDefine.m in Sources */,
 				0ADAC6FB1FBE960100791F67 /* YYTextMagnifier.m in Sources */,
 				C398DA7A1FB2AE6B00D0BED9 /* NBLWebViewController.m in Sources */,
+				7910B5B21FC3093900953BD3 /* CarePlanTableViewCell.m in Sources */,
 				0ADAC7021FBE960100791F67 /* NSAttributedString+YYText.m in Sources */,
 				C3DE8D411FA6CCA1007CE853 /* main.m in Sources */,
 				79142F9D1FBB22270070C28E /* SettingTableViewCell.m in Sources */,
