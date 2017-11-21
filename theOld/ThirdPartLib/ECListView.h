@@ -47,6 +47,10 @@ typedef enum {
 
 - (id)initWithFrame:(CGRect)frame textItems:(NSArray *)items listStyle:(ListStyle)style;
 
+- (id)initWithFrame:(CGRect)frame listStyle:(ListStyle)style;
+
+-(void)refreshViewWithTextItems:(NSArray *)items;
+
 - (void)rebuildList;
 
 - (CGFloat)calHeight;

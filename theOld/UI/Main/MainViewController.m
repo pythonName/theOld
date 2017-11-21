@@ -10,10 +10,13 @@
 #import "HeaderOfMainView.h"
 #import "OldManResourseViewController.h"
 #import "LeveyTabBarController.h"
+#import "InfoViewController.h"
+
+
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
     HeaderOfMainView *_headerOfMainView;
-    
+    UILabel *_redLab;
 }
 
 
@@ -44,12 +47,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+
     //头部信息
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
     _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 190 );
-  [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
+   [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
     //下半部分
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];
     
@@ -58,6 +61,29 @@
     [self.view addSubview:_scrollComponent];
    
     _scrollComponent.userInteractionEnabled = YES;
+    
+    //消息按钮
+//    infoImage
+    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    infoBtn.frame = CGRectMake(0, 0, 38, 30);
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateNormal];
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateHighlighted];
+     [infoBtn addTarget:self action:@selector(infoButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBI=[[UIBarButtonItem alloc] initWithCustomView:infoBtn];
+    self.navigationItem.rightBarButtonItem = rightBI;
+    _redLab = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 18, 18)];
+    [infoBtn addSubview:_redLab];
+//    _redLab.backgroundColor = [UIColor redColor];
+    _redLab.textAlignment = NSTextAlignmentCenter;
+    _redLab.textColor = [UIColor whiteColor];
+    _redLab.font = [UIFont systemFontOfSize:10];
+    _redLab.text = @"10";
+    [_redLab jm_setCornerRadius:9 withBackgroundColor:[UIColor redColor]];
+}
+
+-(void)infoButtonClick {
+    InfoViewController *info = [[InfoViewController alloc] init];
+    [self.navigationController pushViewController:info animated:YES];
 }
 
 -(void)gotoResourseView {

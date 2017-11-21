@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="InfoTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="132"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="131.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017年11月23日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-il-LKj">
+                        <rect key="frame" x="8" y="11" width="359" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="Ml5-TU-LqN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2bh-mi-vQ6">
+                        <rect key="frame" x="8" y="37" width="359" height="95"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老人在玩手机的过程中由于太过激动，导致心跳加速，建议多放松" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVD-4P-Kaf">
+                                <rect key="frame" x="20" y="16" width="319" height="63"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fVD-4P-Kaf" firstAttribute="top" secondItem="2bh-mi-vQ6" secondAttribute="top" constant="16" id="CwY-DV-ec2"/>
+                            <constraint firstAttribute="bottom" secondItem="fVD-4P-Kaf" secondAttribute="bottom" constant="16" id="Wza-QH-8bO"/>
+                            <constraint firstAttribute="trailing" secondItem="fVD-4P-Kaf" secondAttribute="trailing" constant="20" id="cDr-Av-o9v"/>
+                            <constraint firstItem="fVD-4P-Kaf" firstAttribute="leading" secondItem="2bh-mi-vQ6" secondAttribute="leading" constant="20" id="qea-sf-r8O"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="T4j-il-LKj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="2Ky-19-PcE"/>
+                    <constraint firstItem="2bh-mi-vQ6" firstAttribute="top" secondItem="T4j-il-LKj" secondAttribute="bottom" constant="10" id="3H0-nU-pLt"/>
+                    <constraint firstItem="T4j-il-LKj" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="ApB-DZ-ftM"/>
+                    <constraint firstAttribute="trailing" secondItem="2bh-mi-vQ6" secondAttribute="trailing" constant="8" id="Pqd-9E-Ouu"/>
+                    <constraint firstItem="2bh-mi-vQ6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="e8z-RW-UOO"/>
+                    <constraint firstItem="T4j-il-LKj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="gpy-D0-ARf"/>
+                    <constraint firstAttribute="bottom" secondItem="2bh-mi-vQ6" secondAttribute="bottom" id="xmt-eA-djj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94509803920000002" green="0.96470588239999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="dateLab" destination="T4j-il-LKj" id="Knc-iE-sqi"/>
+                <outlet property="infoLab" destination="fVD-4P-Kaf" id="tkT-RT-YvZ"/>
+                <outlet property="whiteView" destination="2bh-mi-vQ6" id="Urn-VV-S1s"/>
+            </connections>
+            <point key="canvasLocation" x="24.5" y="52"/>
+        </tableViewCell>
+    </objects>
+</document>

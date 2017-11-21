@@ -131,11 +131,13 @@
                           @"password":self.passWordTextField.text,
                           @"code":self.codeTextField.text
                           };
+    //用户注册请求
     [[DataInterface shareInstance] registerRequest:dic complication:^(NSDictionary *resultDic) {
         
     }];
 }
 
+//获取验证码请求
 - (void)getYanzhengma {
     [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
         NSLog(@"resultDic = %@",resultDic);

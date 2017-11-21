@@ -135,5 +135,19 @@
 //        comlication(nil);
 //    }];
 //}
-
+//测试接口
++ (void)MainTheOverviewOfCareRequestWithModel:(MainTheOverviewOfCareRequestModel *)model toGetResult:(void (^) (MainTheOverviewOfCareResponseModel *result, NSError *error))completionBlock{
+    
+//    NSDictionary *postDict = [MainTheOverviewOfCareRequestModel covertToDictWithModelObject:model];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        MainTheOverviewOfCareResponseModel *response = [MainTheOverviewOfCareResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+    
+}
 @end
