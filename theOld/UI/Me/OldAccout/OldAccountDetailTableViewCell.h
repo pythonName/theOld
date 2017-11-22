@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECListView.h"
 
 @interface OldAccountDetailTableViewCell : UITableViewCell
 
@@ -14,6 +15,11 @@
 //续费按钮
 @property (weak, nonatomic) IBOutlet UIButton *renewalBtn;
 
+@property (strong, nonatomic) ECListView *listView;
+
 - (IBAction)renewalBtnClick:(id)sender;
+
+
+-(void)refreshUIWithData:(id)data;
 
 @end

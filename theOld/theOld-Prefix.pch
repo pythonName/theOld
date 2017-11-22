@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 //#import "LocalizationSystem.h"
-//#import "VVGlobalDefine.h"
+#import "YKNetworkBaseModel.h"
 #import "YYText.h"
 #import "AttributedStringAndImage.h"
 #import "vvDefine.h"

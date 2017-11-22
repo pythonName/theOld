@@ -27,7 +27,7 @@ static NSString *cellIdent = @"OldAccountDetailTableViewCell";
 
 -(UITableView*)mainTableView {
     if (!_mainTableView) {
-        _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(self.view.frame)) style:UITableViewStylePlain];
+        _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, CGRectGetHeight(self.view.frame)-64) style:UITableViewStylePlain];
         _mainTableView.delegate = self;
         _mainTableView.dataSource  =self;
     }
@@ -37,9 +37,19 @@ static NSString *cellIdent = @"OldAccountDetailTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
    self.title = @"xx老人的账户";
-    
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
+    NSArray *items = [NSArray arrayWithObjects:
+                      @"This is the first list view item. ",
+                      @"This is the second one that will trigger a line break.",
+                      @"Code4App.com",
+                      @"This is the first list view item. ",
+                      @"This is the second one that will trigger a line break.",
+                      @"Code4App.com",
+                      @"This is the first list view item. ",
+                      @"This is the second one that will trigger a line break.",
+                      @"Code4App.com",
+                      nil];
+    [self.dataArr addObject:items];
+    [self.dataArr addObject:items];
     self.mainTableView.backgroundColor = UIColorFromRGB(0xF5F8FC);
     [self.view addSubview:self.mainTableView];
     [self.mainTableView registerNib:[UINib nibWithNibName:@"OldAccountDetailTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdent];
@@ -54,11 +64,25 @@ static NSString *cellIdent = @"OldAccountDetailTableViewCell";
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OldAccountDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell refreshUIWithData:self.dataArr[indexPath.row]];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 188;
+    NSArray *arr = self.dataArr[indexPath.row];
+    
+    return [self loadTextHeightWithData:arr]+110;
+}
+
+//计算高度
+-(CGFloat )loadTextHeightWithData:(NSArray*)dataArr {
+    CGFloat height = 0;
+    for (NSString *str in dataArr) {
+        CGFloat hh = [AttributedStringAndImage heightForString:str andWidth:ScreenWidth-24];
+        height = height+hh+24;
+    }
+    
+    return height;
 }
 
 - (void)didReceiveMemoryWarning {

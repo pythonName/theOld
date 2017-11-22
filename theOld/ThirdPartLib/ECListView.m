@@ -54,6 +54,24 @@
     return self;
 }
 
+- (id)initWithFrame:(CGRect)frame listStyle:(ListStyle)style {
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+        self.listStyle = style;
+        
+        self.backgroundColor = [UIColor clearColor];
+        
+       
+    }
+    return self;
+}
+
+-(void)refreshViewWithTextItems:(NSArray *)items {
+     self.items = items;
+     [self rebuildList];
+}
+
 - (void)dealloc {
     [_items release];
     [_font release];

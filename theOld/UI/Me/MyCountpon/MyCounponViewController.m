@@ -118,8 +118,9 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
      self.mainTableView.tableHeaderView = whiterView;
 }
 
+//兑换按钮事件
 -(void)exchangeButtonClick{
-    
+    //发送请求，刷新数据列表，就是在原列表中在增加一条信息
 }
 
 - (void)didReceiveMemoryWarning {

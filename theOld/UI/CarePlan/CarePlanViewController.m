@@ -8,7 +8,7 @@
 
 @interface CarePlanViewController (){
     CGRect _frame;
-
+    UILabel *_redLab;
 }
 @property (strong, nonatomic) FyCalendarView *calendarView;
 @property (nonatomic, strong) NSDate *date;
@@ -33,6 +33,28 @@
     [super viewDidLoad];
     self.date = [NSDate date];
     [self setupCalendarView];
+    
+    //消息按钮
+    //    infoImage
+    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    infoBtn.frame = CGRectMake(0, 0, 38, 30);
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateNormal];
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateHighlighted];
+    [infoBtn addTarget:self action:@selector(infoButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBI=[[UIBarButtonItem alloc] initWithCustomView:infoBtn];
+    self.navigationItem.rightBarButtonItem = rightBI;
+    _redLab = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 18, 18)];
+    [infoBtn addSubview:_redLab];
+    //    _redLab.backgroundColor = [UIColor redColor];
+    _redLab.textAlignment = NSTextAlignmentCenter;
+    _redLab.textColor = [UIColor whiteColor];
+    _redLab.font = [UIFont systemFontOfSize:10];
+    _redLab.text = @"10";
+    [_redLab jm_setCornerRadius:9 withBackgroundColor:[UIColor redColor]];
+}
+
+-(void)infoButtonClick {
+    
 }
 
 - (void)setupCalendarView {

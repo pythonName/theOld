@@ -7,7 +7,8 @@
 //
 
 #import "VFNetAPIClient.h"
-
+#import "MainTheOverviewOfCareRequestModel.h"
+#import "MainTheOverviewOfCareResponseModel.h"
 typedef void(^resultDic)(NSDictionary *resultDic);
 typedef void(^resultObj)(id obj);
 typedef void(^faildur)(NSError *error);
@@ -34,4 +35,6 @@ typedef void(^faildur)(NSError *error);
 ////删除已经打好的包
 //- (void)deletePackageRequest: (id)params complication:(resultDic)comlication;
 
+//测试接口
++ (void)MainTheOverviewOfCareRequestWithModel:(MainTheOverviewOfCareRequestModel *)model toGetResult:(void (^) (MainTheOverviewOfCareResponseModel *result, NSError *error))completionBlock;
 @end

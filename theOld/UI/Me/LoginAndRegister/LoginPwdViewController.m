@@ -88,6 +88,7 @@
                           @"password":self.passWordTextField.text,
                           @"logintype":@"pwd"
                           };
+    //用户登录请求
     [[DataInterface shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
         
     }];

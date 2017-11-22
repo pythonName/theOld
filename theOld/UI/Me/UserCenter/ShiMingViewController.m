@@ -15,9 +15,12 @@
 }
 @property (nonatomic, strong) UITextField *accountTextField;
 @property (nonatomic, strong) UITextField *nameTextField;
-@property (nonatomic, strong) UITextField *sexTextField;
+@property (nonatomic, strong) UIView *sexView;
 @property (nonatomic, strong) UITextField *idTextField;
 @property (nonatomic, strong) UIButton *submitBtn;
+@property (nonatomic, strong) UIButton *manBtn;
+@property (nonatomic, strong) UIButton *womanBtn;
+@property (nonatomic, strong) UIImageView *womanBtnImageV;
 @end
 
 @implementation ShiMingViewController
@@ -102,34 +105,64 @@
     [self.view addSubview:line2];
     
     //性别
-    self.sexTextField  = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.nameTextField.frame), CGRectGetWidth(self.nameTextField.frame), CGRectGetHeight(self.nameTextField.frame))];
-    self.sexTextField.textColor = UIColorFromRGB(0xaaaaaa);
-    self.sexTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
-    self.sexTextField.textAlignment = NSTextAlignmentRight;
-    self.sexTextField.placeholder = @"请输入真实性别";
-    self.sexTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.sexTextField.delegate = self;
-    self.sexTextField.keyboardType = UIKeyboardTypeDefault;
+    self.sexView  = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.nameTextField.frame), CGRectGetWidth(self.nameTextField.frame), CGRectGetHeight(self.nameTextField.frame))];
+    
+//    self.sexTextField.textColor = UIColorFromRGB(0xaaaaaa);
+//    self.sexTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
+//    self.sexTextField.textAlignment = NSTextAlignmentRight;
+//    self.sexTextField.placeholder = @"请输入真实性别";
+//    self.sexTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    self.sexTextField.delegate = self;
+//    self.sexTextField.keyboardType = UIKeyboardTypeDefault;
     //缩进
-    UIView *leftViewSEX = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 0)];
-    leftViewSEX.backgroundColor = [UIColor clearColor];
-    self.sexTextField.rightView = leftViewSEX;
-    self.sexTextField.rightViewMode = UITextFieldViewModeAlways;
-    [self.view addSubview:self.sexTextField];
+//    UIView *leftViewSEX = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 0)];
+//    leftViewSEX.backgroundColor = [UIColor clearColor];
+//    self.sexTextField.rightView = leftViewSEX;
+//    self.sexTextField.rightViewMode = UITextFieldViewModeAlways;
+    [self.view addSubview:self.sexView];
     //左侧label
-    UILabel *sexLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 100, CGRectGetHeight(self.sexTextField.frame))];
+    UILabel *sexLabel = [[UILabel alloc] initWithFrame:CGRectMake(12, 0, 100, CGRectGetHeight(self.sexView.frame))];
     sexLabel.text = @"性别";
     sexLabel.textColor = UIColorFromRGB(0x333333);
     sexLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0];
-    [self.sexTextField addSubview:sexLabel];
+    [self.sexView addSubview:sexLabel];
     
+    //性别男
+    self.manBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.manBtn.frame = CGRectMake(ScreenWidth-142, 15*ScreenHRatioBaseIphone6, 61, 21*ScreenHRatioBaseIphone6);
+    [self.sexView addSubview:self.manBtn];
+    [self.manBtn setTitle:@"男" forState:UIControlStateNormal];
+    [self.manBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
+    [self.manBtn addTarget:self action:@selector(manButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.manBtn.layer.borderWidth = 0.5;
+    self.manBtn.layer.borderColor = UIColorFromRGB(0x888888).CGColor;
+    self.manBtn.layer.cornerRadius = 3;
+    self.manBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    self.manBtn.userInteractionEnabled = YES;
+    //性别女
+    self.womanBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.womanBtn.frame = CGRectMake(ScreenWidth-71, 15*ScreenHRatioBaseIphone6, 61, 21*ScreenHRatioBaseIphone6);
+    [self.sexView addSubview:self.womanBtn];
+    [self.womanBtn setTitle:@"女" forState:UIControlStateNormal];
+    [self.womanBtn setTitleColor:baseColor forState:UIControlStateNormal];
+    [self.womanBtn addTarget:self action:@selector(womanButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    self.womanBtn.layer.borderWidth = 0.5;
+    self.womanBtn.layer.borderColor = baseColor.CGColor;
+    self.womanBtn.layer.cornerRadius = 3;
+    self.womanBtn.selected = YES;
+    self.womanBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    self.womanBtn.userInteractionEnabled = YES;
+    //选中图片
+    self.womanBtnImageV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-23, 25*ScreenHRatioBaseIphone6, 12, 12)];
+    [self.sexView addSubview:self.womanBtnImageV];
+    self.womanBtnImageV.image = [UIImage imageNamed:@"selectedSex.png"];
     //分割线
-    UIView *line3 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sexTextField.frame), CGRectGetWidth(self.sexTextField.frame), 0.5)];
+    UIView *line3 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sexView.frame), CGRectGetWidth(self.sexView.frame), 0.5)];
     line3.backgroundColor = UIColorFromRGB(0xdddddd);
     [self.view addSubview:line3];
     
     //身份证
-    self.idTextField  = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sexTextField.frame), CGRectGetWidth(self.sexTextField.frame), CGRectGetHeight(self.sexTextField.frame))];
+    self.idTextField  = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sexView.frame), CGRectGetWidth(self.sexView.frame), CGRectGetHeight(self.sexView.frame))];
     self.idTextField.textColor = UIColorFromRGB(0xaaaaaa);
     self.idTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
     self.idTextField.textAlignment = NSTextAlignmentRight;
@@ -167,9 +200,36 @@
     [self.view addSubview:self.submitBtn];
 }
 
-
+//提交按钮事件
 - (void)submitBtnClick:(UIButton *)sender{
     
+}
+
+-(void)manButtonClick {
+//
+    self.manBtn.selected = YES;
+    self.womanBtn.selected = NO;
+    
+    self.womanBtn.layer.borderColor = UIColorFromRGB(0x888888).CGColor;
+    self.manBtn.layer.borderColor = baseColor.CGColor;
+    
+    [self.manBtn setTitleColor:baseColor forState:UIControlStateNormal];
+    [self.womanBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
+
+    self.womanBtnImageV.frame = CGRectMake(ScreenWidth-93, 25*ScreenHRatioBaseIphone6, 12, 12);
+}
+
+-(void)womanButtonClick {
+    self.manBtn.selected = NO;
+    self.womanBtn.selected = YES;
+    
+    self.womanBtn.layer.borderColor = baseColor.CGColor;
+    self.manBtn.layer.borderColor = UIColorFromRGB(0x888888).CGColor;
+    
+    self.womanBtnImageV.frame = CGRectMake(ScreenWidth-23, 25*ScreenHRatioBaseIphone6, 12, 12);
+    
+    [self.womanBtn setTitleColor:baseColor forState:UIControlStateNormal];
+    [self.manBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -178,13 +238,15 @@
         [self.nameTextField becomeFirstResponder];
     }else if (textField == self.nameTextField) {
         [self.nameTextField resignFirstResponder];
-         [self.sexTextField becomeFirstResponder];
-    }else if (textField == self.sexTextField) {
-        [self.sexTextField resignFirstResponder];
-        [self.idTextField becomeFirstResponder];
-    }else if (textField == self.idTextField) {
+         [self.idTextField becomeFirstResponder];
+    }
+//    else if (textField == self.sexTextField) {
+//        [self.sexTextField resignFirstResponder];
+//        [self.idTextField becomeFirstResponder];
+//    }
+    else if (textField == self.idTextField) {
         [self.idTextField resignFirstResponder];
-        [self.sexTextField resignFirstResponder];
+//        [self.sexTextField resignFirstResponder];
         [self.nameTextField resignFirstResponder];
         [self.accountTextField resignFirstResponder];
     }
