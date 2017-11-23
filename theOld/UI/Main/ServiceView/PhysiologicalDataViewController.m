@@ -9,6 +9,7 @@
 #import "PhysiologicalDataViewController.h"
 #import "PhysiologicalDataTableViewCell.h"
 #import "PhysiologicalDataTableViewHeader.h"
+#import "NoNetDataView.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
@@ -19,10 +20,20 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 @property (nonatomic, strong)NSMutableArray *dataArr;
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+@property (nonatomic, strong)NoNetDataView *noDataView;
+
 
 @end
 
 @implementation PhysiologicalDataViewController
+
+-(NoNetDataView *)noDataView {
+    if (!_noDataView) {
+        _noDataView =  [NoNetDataView loadNoNetDataView];
+        _noDataView.hidden = YES;
+    }
+    return _noDataView;
+}
 
 -(NSMutableArray *)dataArr  {
     if (!_dataArr) {
@@ -34,10 +45,10 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   self.title = @"生理数据";
-    
-    [self.dataArr addObject:@"dd"];
-    [self.dataArr addObject:@"dd"];
+    self.title = @"生理数据";
+    //
+        [self.dataArr addObject:@"dd"];
+        [self.dataArr addObject:@"dd"];
     
     _titleArr = @[
                   @{@"imageName":@"weight",@"title":@"体重"},
@@ -45,7 +56,7 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
                   @{@"imageName":@"HeartRate",@"title":@"心率"},
                   @{@"imageName":@"BloodPressure.png",@"title":@"血压"},
                   @{@"imageName":@"BloodSugar.png",@"title":@"血糖"},
-                  @{@"imageName":@"BloodFat.png",@"title":@"血脂"} 
+                  @{@"imageName":@"BloodFat.png",@"title":@"血脂"}
                   ];
     
     
@@ -56,22 +67,38 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
     self.mainTableView.dataSource = self;
     self.mainTableView.tableFooterView = [[UIView alloc] init];
     [self makeHeaderView];
+    
+    [self.view addSubview: self.noDataView];
+    
+    [self loadDataMethod];
 }
 
+#pragma mark 请求数据
+-(void)loadDataMethod {
+    
+}
+
+#pragma mark ------- tableView代理
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    if (self.dataArr.count == 0) {
+        self.noDataView.hidden = NO;
+    }else{
+        self.noDataView.hidden = YES;
+    }
     return self.dataArr.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-      return _titleArr.count;
+    return _titleArr.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   PhysiologicalDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
-    
+    PhysiologicalDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [_noDataView removeFromSuperview];
     cell.imageV.image  = [UIImage imageNamed:_titleArr[indexPath.row][@"imageName"]];
     cell.titleLab.text  = _titleArr[indexPath.row][@"title"];
+    
     return cell;
 }
 

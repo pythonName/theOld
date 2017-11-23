@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "CustomNavigationController.h"
 #import "UserCenterViewController.h"
-
+#import "ShiMingViewController.h"
 @interface MeViewController ()<UITableViewDelegate,UITableViewDataSource>{
     CGRect _frame;
     UITableView *_mainTableView;
@@ -150,6 +150,7 @@ static CGFloat CellH = 50;
         {
             OrderCenterViewController *orderVC=[[OrderCenterViewController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight) withURLString:@"https://www.baidu.com"];
             [self.navigationController pushViewController:orderVC animated:YES];
+         
         }
             
             break;

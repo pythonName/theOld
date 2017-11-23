@@ -13,7 +13,7 @@
 
 static NSString *tellStr =@"13691850416";
 static NSString *cellIdent = @"SettingTableViewCell";
-@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>{
     CGRect _frame;
 }
 @property (nonatomic, strong)UITableView *mainTableView;
@@ -119,7 +119,7 @@ static NSString *cellIdent = @"SettingTableViewCell";
 }
 
 -(void)initHeaderView {
-    UIView *whiterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 110+15)];
+    UIView *whiterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 270*ScreenHRatioBaseIphone6)];
     whiterView.backgroundColor = UIColorFromRGB(0xF5F8FC);
  
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -140,9 +140,27 @@ static NSString *cellIdent = @"SettingTableViewCell";
     self.mainTableView.tableHeaderView = headerV;
 }
 
+//退出登录
 -(void)unloginButtonClick {
     
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"退出后不会删除历史数据" message:nil preferredStyle: UIAlertControllerStyleActionSheet];
+ 
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction*action) {
+        NSLog(@"点击了确定按钮");
+        
+    }];
+    
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:deleteAction];
+ 
+    [self presentViewController:alertController animated:YES completion:nil];
+    
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

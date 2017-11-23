@@ -135,5 +135,205 @@
 //        comlication(nil);
 //    }];
 //}
+//首页数据请求
++ (void)mainTheOverviewOfCareRequestWithModel:(MainTheOverviewOfCareRequestModel *)model toGetResult:(void (^) (MainTheOverviewOfCareResponseModel *result, NSError *error))completionBlock{
+    
+//    NSDictionary *postDict = [MainTheOverviewOfCareRequestModel covertToDictWithModelObject:model];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        MainTheOverviewOfCareResponseModel *response = [MainTheOverviewOfCareResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+    
+}
+
+
+//关注老人列表数据请求
++ (void)careOldManListRequestWithModel:(CareOldManListRequsetModel *)model toGetResult:(void (^) (CareOldManListResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        CareOldManListResponseModel *response = [CareOldManListResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+
+//关注老人列表--根据身份证查询老人 数据请求
++ (void)careOldManSearchRequestWithModel:(CareOldManSearchRequestModel *)model toGetResult:(void (^) (CareOldManSearchResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        CareOldManSearchResponseModel *response = [CareOldManSearchResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+
+//关注老人列表--- 添加老人数据请求
++ (void)careOldManAddDataRequestWithModel:(CareOldManAddDataRequestModel *)model toGetResult:(void (^) (CareOldManAddDataResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        CareOldManAddDataResponseModel *response = [CareOldManAddDataResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+
+//照护套餐数据请求
++ (void)carePackagesRequestWithModel:(CarePackagesRequestModel *)model toGetResult:(void (^) (CarePackagesResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        CarePackagesResponseModel *response = [CarePackagesResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+
+//生理数据请求
++ (void)physiologicalDataRequestWithModel:(PhysiologicalRequestModel *)model toGetResult:(void (^) (PhysiologicalResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        PhysiologicalResponseModel *response = [PhysiologicalResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+
+//监护人列表数据请求
++ (void)theGuardianListRequestWithModel:(TheGuardianListRequestModel *)model toGetResult:(void (^) (TheGuardianListResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        TheGuardianListResponseModel *response = [TheGuardianListResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+    
+}
+
+//照护计划数据请求
++ (void)theCarePlanRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        TheCarePlanResponseModel *response = [TheCarePlanResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+//个人中心数据请求
++ (void)userCenterRequestWithModel:(UserCenterRequestModel *)model toGetResult:(void (^) (UserCenterResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        UserCenterResponseModel *response = [UserCenterResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+
+//老人账户列表数据请求
++ (void)theOldAccountRequestWithModel:(TheOldAccountRequestModel *)model toGetResult:(void (^) (TheOldAccountResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        TheOldAccountResponseModel *response = [TheOldAccountResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+
+//老人账户详情数据请求
++ (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        TheOldAccountDetailResponseModel *response = [TheOldAccountDetailResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+
+//我的优惠券列表数据请求
++ (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        ListOfCouponsResponseModel *response = [ListOfCouponsResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+
+//我的优惠券兑换数据请求
++ (void)couponsForRequestWithModel:(CouponsForRequestModel *)model toGetResult:(void (^) (CouponsForResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        CouponsForResponseModel *response = [CouponsForResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+
+//退出登录数据请求
++ (void)logOutCareRequestWithModel:(LogOutCareRequestModel *)model toGetResult:(void (^) (LogOutCareResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        LogOutCareResponseModel *response = [LogOutCareResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+//实名信息数据请求
++ (void)realNameInformationRequestWithModel:(RealNameInformationRequestModel *)model toGetResult:(void (^) (RealNameInformationResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
+    id params = @"";
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        RealNameInformationResponseModel *response = [RealNameInformationResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
 
 @end

@@ -14,7 +14,24 @@
     [super awakeFromNib];
    
     [self.renewalBtn jm_setCornerRadius:2 withBackgroundColor:UIColorFromRGB(0xff9c31)];
+    
+    // numeric list view
+    self.listView = [[ECListView alloc] initWithFrame:CGRectMake(12, 44.0, ScreenWidth-24, 0.0) listStyle:ListStyleNumbered];
+    
+    // optional configuration
+    self.listView.indentation = 8.0;
+    self.listView.itemsSpacing = 10.0;
+    self.listView.textColor = [UIColor darkGrayColor];
+    self.listView.font = [UIFont systemFontOfSize:18.0];
+    [self.contentView addSubview:self.listView];
+   
+    
 }
+
+-(void)refreshUIWithData:(id)data {
+    [self.listView refreshViewWithTextItems:data];
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

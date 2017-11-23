@@ -46,7 +46,7 @@
     listView.itemsSpacing = 10.0;
     listView.textColor = [UIColor darkGrayColor];
     listView.font = [UIFont systemFontOfSize:18.0];
-    [self.view addSubview:listView];
+//    [self.view addSubview:listView];
   
     [self.mainScrollView addSubview:listView];
      self.textHeight.constant = textLeading+25;

@@ -13,7 +13,7 @@ static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString  *cellIdent = @"CarePlanTableViewCell";
 @interface CarePlanViewController ()<UITableViewDelegate,UITableViewDataSource>{
     CGRect _frame;
-
+    UILabel *_redLab;
 }
 @property (nonatomic, strong)UITableView *mainTableView;
 @property (nonatomic, strong)NSMutableArray *dataArr;
@@ -62,13 +62,37 @@ static NSString  *cellIdent = @"CarePlanTableViewCell";
     //日历
     self.date = [NSDate date];
     [self setupCalendarView];
+ 
     //tableview
     [self.view addSubview:self.mainTableView];
 //    self.mainTableView.tableHeaderView = self.calendarView;
     self.mainTableView.tableFooterView = [[UIView alloc] init];
     [self.mainTableView registerNib:[UINib nibWithNibName:@"CarePlanTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdent];
     [self.mainTableView registerClass:[PhysiologicalDataTableViewHeader class] forHeaderFooterViewReuseIdentifier:headerIdent];
+    
+    //消息按钮
+    //    infoImage
+    UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    infoBtn.frame = CGRectMake(0, 0, 38, 30);
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateNormal];
+    [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateHighlighted];
+    [infoBtn addTarget:self action:@selector(infoButtonClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBI=[[UIBarButtonItem alloc] initWithCustomView:infoBtn];
+    self.navigationItem.rightBarButtonItem = rightBI;
+    _redLab = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 18, 18)];
+    [infoBtn addSubview:_redLab];
+    //    _redLab.backgroundColor = [UIColor redColor];
+    _redLab.textAlignment = NSTextAlignmentCenter;
+    _redLab.textColor = [UIColor whiteColor];
+    _redLab.font = [UIFont systemFontOfSize:10];
+    _redLab.text = @"10";
+    [_redLab jm_setCornerRadius:9 withBackgroundColor:[UIColor redColor]];
 }
+
+-(void)infoButtonClick {
+    
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -125,6 +149,7 @@ static NSString  *cellIdent = @"CarePlanTableViewCell";
         
     }
     _mainTableView.frame =  CGRectMake(0, CGRectGetMaxY(self.calendarView.frame), ScreenWidth, CGRectGetHeight(_frame)-CGRectGetMaxY(self.calendarView.frame));
+  
 }
 
 - (void)setupCalendarView {
