@@ -10,9 +10,11 @@
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
 #import "DataInterface.h"
+#import "UserManager.h"
 
 @interface LoginNoPwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
+    id _superDelegate;
 }
 @property (nonatomic, strong) UITextField *userNameTextField;
 @property (nonatomic, strong) UITextField *passWordTextField;
@@ -32,6 +34,10 @@
 - (void)loadView {
     self.view = [[UIView alloc] initWithFrame:_frame];
     [self.view setBackgroundColor:UIColorRGB(248, 248, 248)];
+}
+
+- (void)setupDelegate:(id)dd {
+    _superDelegate = dd;
 }
 
 - (void)viewDidLoad {
@@ -104,8 +110,13 @@
                           @"logintype":@"code"
                           };
     //用户登录请求
-    [[DataInterface shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
-        
+    [[UserManager shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
+        if([UserManager shareInstance].isLogined) {
+            [[Toast makeText:@"登录成功"] show];
+            if(nil != _superDelegate && [_superDelegate respondsToSelector:@selector(backbuttonclick)]) {
+                [_superDelegate performSelector:@selector(backbuttonclick)];
+            }
+        }
     }];
 }
 

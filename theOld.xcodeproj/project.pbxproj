@@ -185,6 +185,8 @@
 		C3108E9B1FA9AF1C0087C473 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E9A1FA9AF1C0087C473 /* SettingViewController.m */; };
 		C3108E9E1FA9C35A0087C473 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E9D1FA9C35A0087C473 /* UserManager.m */; };
 		C3108EE11FA9D94F0087C473 /* PageTurningView.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108EE01FA9D94F0087C473 /* PageTurningView.m */; };
+		C35EBDA71FC6783900CBC8D5 /* NSObject+Runtime.m in Sources */ = {isa = PBXBuildFile; fileRef = C35EBDA61FC6783900CBC8D5 /* NSObject+Runtime.m */; };
+		C35EBDAA1FC67CCD00CBC8D5 /* Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = C35EBDA81FC67CCC00CBC8D5 /* Toast.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C398DA3A1FAC5EE300D0BED9 /* ChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA391FAC5EE300D0BED9 /* ChangePwdViewController.m */; };
 		C398DA3D1FAC62F000D0BED9 /* ChangeIphoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA3C1FAC62F000D0BED9 /* ChangeIphoneViewController.m */; };
 		C398DA401FAC62F900D0BED9 /* ShiMingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C398DA3F1FAC62F900D0BED9 /* ShiMingViewController.m */; };
@@ -477,6 +479,10 @@
 		C3108E9D1FA9C35A0087C473 /* UserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		C3108EDF1FA9D94F0087C473 /* PageTurningView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTurningView.h; sourceTree = "<group>"; };
 		C3108EE01FA9D94F0087C473 /* PageTurningView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTurningView.m; sourceTree = "<group>"; };
+		C35EBDA51FC6783900CBC8D5 /* NSObject+Runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Runtime.h"; sourceTree = "<group>"; };
+		C35EBDA61FC6783900CBC8D5 /* NSObject+Runtime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Runtime.m"; sourceTree = "<group>"; };
+		C35EBDA81FC67CCC00CBC8D5 /* Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toast.m; sourceTree = "<group>"; };
+		C35EBDA91FC67CCC00CBC8D5 /* Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toast.h; sourceTree = "<group>"; };
 		C398DA381FAC5EE300D0BED9 /* ChangePwdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePwdViewController.h; sourceTree = "<group>"; };
 		C398DA391FAC5EE300D0BED9 /* ChangePwdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePwdViewController.m; sourceTree = "<group>"; };
 		C398DA3B1FAC62F000D0BED9 /* ChangeIphoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeIphoneViewController.h; sourceTree = "<group>"; };
@@ -1096,6 +1102,10 @@
 			children = (
 				0ADAC7191FBEBF4A00791F67 /* ECListView.h */,
 				0ADAC71A1FBEBF4B00791F67 /* ECListView.m */,
+				C35EBDA51FC6783900CBC8D5 /* NSObject+Runtime.h */,
+				C35EBDA61FC6783900CBC8D5 /* NSObject+Runtime.m */,
+				C35EBDA91FC67CCC00CBC8D5 /* Toast.h */,
+				C35EBDA81FC67CCC00CBC8D5 /* Toast.m */,
 				0ADAC6BF1FBE960100791F67 /* YYText */,
 				0A93E4C61FBD71FF00F8A7F6 /* Attributed */,
 				C398DA731FB2AE6A00D0BED9 /* NBLWebView */,
@@ -1524,6 +1534,7 @@
 				0AEC50B41FB30144009C60E4 /* PhysiologicalDataViewController.m in Sources */,
 				C3B23CB81FAABA2600D78E5C /* UIImage+RoundedCorner.m in Sources */,
 				0ADAC7071FBE960100791F67 /* YYTextTransaction.m in Sources */,
+				C35EBDA71FC6783900CBC8D5 /* NSObject+Runtime.m in Sources */,
 				C398DA661FB29BFB00D0BED9 /* AFHTTPSessionManager.m in Sources */,
 				799B1DB21FB484AF000CB480 /* GuardiansTableViewCell.m in Sources */,
 				C3DE8D721FA6D27D007CE853 /* CarePlanViewController.m in Sources */,
@@ -1549,6 +1560,7 @@
 				0ADAC7001FBE960100791F67 /* YYTextRubyAnnotation.m in Sources */,
 				79142FB11FBB30F70070C28E /* HelpCenterViewController.m in Sources */,
 				0ADAC7061FBE960100791F67 /* YYTextAsyncLayer.m in Sources */,
+				C35EBDAA1FC67CCD00CBC8D5 /* Toast.m in Sources */,
 				0A687B6C1FC42C7700734E17 /* InfoViewController.m in Sources */,
 				0ADAC6FC1FBE960100791F67 /* YYTextSelectionView.m in Sources */,
 				0ADAC6FD1FBE960100791F67 /* YYTextArchiver.m in Sources */,
@@ -1708,7 +1720,7 @@
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1725,7 +1737,7 @@
 				INFOPLIST_FILE = theOld/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qaty.aup23.theO1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -85,6 +85,57 @@
     }];
 }
 
+- (void)searchOldIDRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/select-olders/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)addOldRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/add-attention/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)followOldersListRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/homepage/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)physiologicalDataRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/physiological-data/",TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
+- (void)registerDeviceRequest: (id)params complication:(resultDic)comlication {
+    NSString *requestUrl = @"http://open.umtrix.com/h/skkaN/device/reg_device";
+    NSDictionary *dic = @{@"av":@1,
+                          @"device_sn":@"Ay0000000000002107UM",
+                          @"store_id":@1009,
+                          @"store_name":@"李大叔",
+                          @"area":@"深圳市"
+                          };
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:dic withMethodType:Get successBlock:^(id value) {
+        comlication(value);
+    } failureBlock:^(id value) {
+        comlication(nil);
+    }];
+}
+
 //- (NSMutableDictionary *)getCommonRequestParams:(NSDictionary *)pra {
 //    NSMutableDictionary *dp = [NSMutableDictionary dictionary];
 //    if (nil != pra) {

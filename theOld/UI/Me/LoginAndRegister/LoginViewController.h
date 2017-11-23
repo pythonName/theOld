@@ -10,4 +10,5 @@
 
 @interface LoginViewController : UIViewController
 - (id)initWithFrame:(CGRect)frame;
+-(void)backbuttonclick;
 @end

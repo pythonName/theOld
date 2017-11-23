@@ -9,6 +9,8 @@
 #import "PhysiologicalDataViewController.h"
 #import "PhysiologicalDataTableViewCell.h"
 #import "PhysiologicalDataTableViewHeader.h"
+#import "DataInterface.h"
+#import "UserManager.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
@@ -35,7 +37,9 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
    self.title = @"生理数据";
-    
+    [[DataInterface shareInstance] physiologicalDataRequest:@{@"ID_number":[UserManager shareInstance].defaultSelectedOldID} complication:^(NSDictionary *resultDic) {
+        
+    }];
     [self.dataArr addObject:@"dd"];
     [self.dataArr addObject:@"dd"];
     

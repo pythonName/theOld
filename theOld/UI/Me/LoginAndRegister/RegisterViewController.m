@@ -133,7 +133,11 @@
                           };
     //用户注册请求
     [[DataInterface shareInstance] registerRequest:dic complication:^(NSDictionary *resultDic) {
-        
+        int code = [[resultDic objectForKey:@"code"] intValue];
+        if(200 == code){
+            [[Toast makeText:@"注册成功"] show];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }];
 }
 
