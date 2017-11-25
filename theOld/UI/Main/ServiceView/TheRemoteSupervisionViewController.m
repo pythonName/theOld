@@ -7,6 +7,7 @@
 //
 
 #import "TheRemoteSupervisionViewController.h"
+#import "DataInterface.h"
 
 @interface TheRemoteSupervisionViewController ()
 
@@ -17,6 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"远程看护";
+    [[DataInterface shareInstance] registerDeviceRequest:nil complication:^(NSDictionary *resultDic) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

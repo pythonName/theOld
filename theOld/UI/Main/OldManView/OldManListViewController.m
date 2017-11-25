@@ -9,6 +9,7 @@
 #import "OldManListViewController.h"
 #import "OldManListCollectionViewCell.h"
 #import "NewAdditionOldManViewController.h"
+#import "DataInterface.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
@@ -51,6 +52,36 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     [self.dataArr addObject:@"1"];
     [self.dataArr addObject:@"1"];
     [self.dataArr addObject:@"1"];
+    
+    [[DataInterface shareInstance] followOldersListRequest:nil complication:^(NSDictionary *resultDic) {
+//        code = 200;
+//        data =     (
+//                    {
+//                        "ID_number" = 420521199910100011;
+//                        address = xxxxxx;
+//                        age = 50;
+//                        area = "\U6e56\U5317\U6b66\U6c49";
+//                        "cell_phone" = 13928400211;
+//                        "fixed_phone" = 1521111212;
+//                        name = "\U9648xx";
+//                        photo = "";
+//                        sex = "\U7537";
+//                    },
+//                    {
+//                        "ID_number" = 420521199910100012;
+//                        address = xxxxxx;
+//                        age = 50;
+//                        area = "\U6e56\U5317\U6b66\U6c49";
+//                        "cell_phone" = 13928400211;
+//                        "fixed_phone" = 1521111212;
+//                        name = "\U738bxx";
+//                        photo = "";
+//                        sex = "\U5973";
+//                    }
+//                    );
+//        msg = "login success!";
+//        total = 2;
+    }];
     
     [self makeMainView];
 }

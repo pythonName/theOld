@@ -7,6 +7,7 @@
 //
 
 #import "VFNetAPIClient.h"
+#import "UserManager.h"
 
 @interface VFNetAPIClient() {
     
@@ -36,6 +37,8 @@
     self.responseSerializer = [AFJSONResponseSerializer serializer];
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/plain", @"text/javascript", @"text/json", @"text/html", nil];
     self.requestSerializer.timeoutInterval = 20;
+
+    
     return self;
     
 }
@@ -46,6 +49,7 @@
                                      successBlock:(JsonDataCallBack)successBlock failureBlock:(JsonDataCallBack)failureBlock
 {
     //self.responseSerializer = [AFJSONResponseSerializer serializer];
+    [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Cookie"];
     NSURLSessionDataTask *requestTask = nil;
     switch (method) {
         case Get:{
@@ -62,6 +66,13 @@
             requestTask = [self POST:path parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                if([path containsString:@"api/login"]) {//只有登录接口才有session
+                    NSHTTPURLResponse *r = (NSHTTPURLResponse *)task.response;
+                    NSDictionary *dic = r.allHeaderFields;
+                    
+                    [UserManager shareInstance].session = [dic objectForKey:@"Set-Cookie"];
+                }
+                
                 successBlock(responseObject);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 failureBlock(error);
