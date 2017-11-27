@@ -9,9 +9,11 @@
 #import "ForgetPwdOneViewController.h"
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
+#import "VerifyIdentityCard.h"
 
 @interface ForgetPwdOneViewController ()<UITextFieldDelegate>{
     CGRect _frame;
+    UIButton *_getCodeBtn;
 }
 @property (nonatomic, strong) UITextField *userNameTextField;
 @property (nonatomic, strong) UITextField *passWordTextField;
@@ -63,6 +65,8 @@
     btn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [btn addTarget:self action:@selector(getYanzhengma) forControlEvents:UIControlEventTouchUpInside];
     [self.userNameTextField addSubview:btn];
+     _getCodeBtn=btn;
+    btn.userInteractionEnabled = YES;
     //按钮左边框
     CALayer *leftBorder = [CALayer layer];
     leftBorder.frame = CGRectMake(0.0f, 0.0f, 0.5, CGRectGetHeight(btn.frame));
@@ -98,14 +102,60 @@
     [self.view addSubview:self.loginBtn];
 }
 
+//提交按钮
 - (void)loginBtnClick:(UIButton *)sender{
     
 }
 
 - (void)getYanzhengma {
+    if (self.userNameTextField.text != nil && [VerifyIdentityCard isPhoneNumber:self.userNameTextField.text]) {
+        [self startTime];
+        [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
+            NSLog(@"resultDic = %@",resultDic);
+            [[Toast makeText:@"验证码发送成功"] show];
+        }];
+    }else{
+        [[Toast makeText:@"请输入正确的手机号"] show];
+    }
+}
+-(void)startTime{
+    __block int timeout=59; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
+    
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){ //倒计时结束，关闭
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置（倒计时结束后调用）
+                [_getCodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+                //设置不可点击
+                _getCodeBtn.userInteractionEnabled = YES;
+                
+                [_getCodeBtn setTitleColor:baseColor forState:UIControlStateNormal];
+            });
+        }else{
+            //            int minutes = timeout / 60;    //这里注释掉了，这个是用来测试多于60秒时计算分钟的。
+            int seconds = timeout % 60;
+            NSString *strTime = [NSString stringWithFormat:@"%d", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //设置界面的按钮显示 根据自己需求设置
+                NSLog(@"____%@",strTime);
+                //设置界面的按钮显示 根据自己需求设置（倒计时结束后调用）
+                [_getCodeBtn setTitle:[NSString stringWithFormat:@"%@s",strTime] forState:UIControlStateNormal];
+                //设置不可点击
+                _getCodeBtn.userInteractionEnabled = NO;
+                
+                [_getCodeBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
+            });
+            timeout--;
+        }
+    });
+    
+    dispatch_resume(_timer);
     
 }
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.userNameTextField) {
         [self.userNameTextField resignFirstResponder];

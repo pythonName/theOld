@@ -112,7 +112,7 @@
 	v.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7];
 	v.layer.cornerRadius = 5;
 	
-	UIWindow *window = [[[UIApplication sharedApplication] windows] lastObject];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;//[[[UIApplication sharedApplication] windows] lastObject];
 	
 	CGPoint point = CGPointMake(window.frame.size.width/2, window.frame.size.height/2);
 	

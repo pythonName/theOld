@@ -1,3 +1,4 @@
+
 //
 //  LoginPwdViewController.m
 //  theOld
@@ -89,6 +90,14 @@
 }
 
 - (void)loginBtnClick:(UIButton *)sender{
+    if(self.userNameTextField.text.length==0){
+        [[Toast makeText:@"用户名不能为空"] show];
+        return;
+    }
+    if (self.passWordTextField.text.length==0) {
+        [[Toast makeText:@"密码不能为空"] show];
+        return;
+    }
     NSDictionary *dic = @{@"username":self.userNameTextField.text,
                           @"password":self.passWordTextField.text,
                           @"logintype":@"pwd"

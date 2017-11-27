@@ -150,6 +150,10 @@ static NSString *cellIdent = @"SettingTableViewCell";
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction*action) {
         NSLog(@"点击了确定按钮");
         
+        [[DataInterface shareInstance] logoutRequest:nil complication:^(NSDictionary *resultDic) {
+            
+        }];
+    
     }];
     
     

@@ -22,5 +22,5 @@
 #import "UIView+RoundedCorner.h"
 #import "NoNetDataView.h"
 #import "DataInterface.h"
-
+ 
 #endif

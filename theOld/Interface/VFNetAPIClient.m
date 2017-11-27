@@ -48,7 +48,7 @@
                                    withMethodType:(VFNetworkMethod)method
                                      successBlock:(JsonDataCallBack)successBlock failureBlock:(JsonDataCallBack)failureBlock
 {
-    //self.responseSerializer = [AFJSONResponseSerializer serializer];
+//    self.responseSerializer = [AFJSONResponseSerializer serializer];
     [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Cookie"];
     NSURLSessionDataTask *requestTask = nil;
     switch (method) {
