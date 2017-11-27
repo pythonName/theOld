@@ -49,7 +49,11 @@
                                      successBlock:(JsonDataCallBack)successBlock failureBlock:(JsonDataCallBack)failureBlock
 {
     //self.responseSerializer = [AFJSONResponseSerializer serializer];
-    [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Cookie"];
+    NSString *ss = [UserManager shareInstance].session;
+    if (ss.length > 0) {
+        [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Cookie"];
+    }
+    
     NSURLSessionDataTask *requestTask = nil;
     switch (method) {
         case Get:{

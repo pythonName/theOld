@@ -104,12 +104,12 @@
 }
 
 - (void)followOldersListRequest: (id)params complication:(resultDic)comlication {
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/homepage/",TESTHOST];
-    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
-        comlication(value);
-    } failureBlock:^(id value) {
-        comlication(nil);
-    }];
+//    NSString *requestUrl = [NSString stringWithFormat:@"%@api/homepage/",TESTHOST];
+//    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+//        comlication(value);
+//    } failureBlock:^(id value) {
+//        comlication(nil);
+//    }];
 }
 
 - (void)physiologicalDataRequest: (id)params complication:(resultDic)comlication {
