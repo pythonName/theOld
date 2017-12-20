@@ -117,7 +117,7 @@
     }
    
     NSDictionary *dic = @{@"username":self.userNameTextField.text,
-                          @"password":self.passWordTextField.text,
+                          @"code":self.passWordTextField.text,
                           @"logintype":@"code"
                           };
     //用户登录请求
@@ -172,7 +172,7 @@
             NSString *strTime = [NSString stringWithFormat:@"%d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
-                NSLog(@"____%@",strTime);
+//                NSLog(@"____%@",strTime);
                 //设置界面的按钮显示 根据自己需求设置（倒计时结束后调用）
                 [_getCodeBtn setTitle:[NSString stringWithFormat:@"%@s",strTime] forState:UIControlStateNormal];
                 //设置不可点击

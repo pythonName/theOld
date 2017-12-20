@@ -61,8 +61,8 @@ typedef void (^callBackBlock)(id sender);
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
 #pragma mark - 程序接口
-//#define TESTHOST @"http://192.168.16.241:8899/"
-#define TESTHOST @"http://sanatorium.appvv.com/"
+
+#define TESTHOST @"http://sanatorium.appvv.com/"//@"http://192.168.16.241:8899/"//
 
 #define HOST @"http://api.apiappvv.com/" //正式环境
 

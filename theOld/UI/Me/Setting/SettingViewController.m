@@ -10,7 +10,7 @@
 #import "SettingTableViewCell.h"
 #import "AboutUsViewController.h"
 #import "HelpCenterViewController.h"
-
+#import "UserManager.h"
 static NSString *tellStr =@"13691850416";
 static NSString *cellIdent = @"SettingTableViewCell";
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIActionSheetDelegate>{
@@ -151,7 +151,15 @@ static NSString *cellIdent = @"SettingTableViewCell";
         NSLog(@"点击了确定按钮");
         
         [[DataInterface shareInstance] logoutRequest:nil complication:^(NSDictionary *resultDic) {
-            
+            if([resultDic[@"code"] integerValue] == 200) {
+                [UserManager shareInstance].isLogined = NO;
+                [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isLogined"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[Toast makeText:@"您已退出登录"] show];
+            }else{
+                [[Toast makeText:@"请检查您的网络"] show];
+
+            }
         }];
     
     }];

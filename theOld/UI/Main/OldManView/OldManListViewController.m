@@ -10,10 +10,11 @@
 #import "OldManListCollectionViewCell.h"
 #import "NewAdditionOldManViewController.h"
 #import "DataInterface.h"
+#import "ShiMingViewController.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
-@interface OldManListViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>{
+@interface OldManListViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIAlertViewDelegate>{
     CGRect _frame;
     
 }
@@ -47,11 +48,6 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
     
     [[DataInterface shareInstance] followOldersListRequest:nil complication:^(NSDictionary *resultDic) {
 //        code = 200;
@@ -85,6 +81,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     
     [self makeMainView];
 }
+
+ 
 
 -(void)makeMainView {
     //UICollection
@@ -144,16 +142,32 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (self.dataArr.count == indexPath.row) {
-        //@"新增老人";
-        UIViewController *vc = (UIViewController *)self.delegate;
+        if(self.dataArr.count == 0){
+            //弹出完善信息提示
+            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"关注老人" message:@"请完善您的个人信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即完善", nil];
+            [alter show];
+        }else{
+            //@"新增老人";
+            UIViewController *vc = (UIViewController *)self.delegate;
+            
+            NewAdditionOldManViewController *vv = [[NewAdditionOldManViewController alloc] init];
+            [vc.navigationController pushViewController:vv animated:YES];
+        }
         
-        NewAdditionOldManViewController *vv = [[NewAdditionOldManViewController alloc] init];
-        [vc.navigationController pushViewController:vv animated:YES];
     }else{
         //普通数据点击更新界面
     }
 }
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        UIViewController *vc = (UIViewController *)self.delegate;
+        
+        ShiMingViewController *vv = [[ShiMingViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        [vc.navigationController pushViewController:vv animated:YES];
+
+    }
+}
 
 - (void)setupDelegate:(id)delegate {
     self.delegate = delegate;

@@ -81,6 +81,7 @@
             self.isLogined = YES;
             [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"isLogined"];
             [[NSUserDefaults standardUserDefaults] synchronize];
+           
         }
         
         comlication(resultDic);

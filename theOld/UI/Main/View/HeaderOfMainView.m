@@ -8,11 +8,18 @@
 
 #import "HeaderOfMainView.h"
 #import "UIView+NIB.h"
+#import "UserManager.h"
 @implementation HeaderOfMainView
 
 + (HeaderOfMainView *)loadHeaderOfMainView{
     HeaderOfMainView *vv = (HeaderOfMainView *)[self loadFromNIB];
-    
+    if([UserManager shareInstance].defaultSelectedOldID == nil) {
+        vv.nameLab.text = @"请先关注老人";
+        vv.sexImageV.hidden = YES;
+    }else{
+        vv.nameLab.text = @"请先关注老人";
+        vv.sexImageV.hidden = NO;
+    }
     return vv;
 }
 

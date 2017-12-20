@@ -11,7 +11,7 @@
 #import "OldManResourseViewController.h"
 #import "LeveyTabBarController.h"
 #import "InfoViewController.h"
-
+#import "UserManager.h"
 
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
@@ -53,6 +53,9 @@
     [self.view addSubview:_headerOfMainView];
     _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 190 );
    [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
+   
+    
+    
     //下半部分
     NSString *plistFilePath = plistFilePath = [[NSBundle mainBundle] pathForResource:@"MainSubViewControllersConfig" ofType:@"plist"];
     
