@@ -100,15 +100,18 @@
     }
     NSDictionary *dic = @{@"username":self.userNameTextField.text,
                           @"password":self.passWordTextField.text,
-                          @"logintype":@"pwd"
+                          @"logintype":@"pwd",
+                          @"code" : @""
                           };
     //用户登录请求
     [[UserManager shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
-        if([UserManager shareInstance].isLogined) {
+        if([[resultDic objectForKey:@"code"] integerValue] == 200) {
             [[Toast makeText:@"登录成功"] show];
             if(nil != _superDelegate && [_superDelegate respondsToSelector:@selector(backbuttonclick)]) {
                 [_superDelegate performSelector:@selector(backbuttonclick)];
             }
+        }else{
+            [[Toast makeText:@"账号或密码错误!"] show];
         }
     }];
 }

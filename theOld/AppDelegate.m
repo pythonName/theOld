@@ -15,6 +15,8 @@
 #import "MeViewController.h"
 #import "LeveyTabBarController.h"
 
+#import "AppDelegate+ConfigThird.h"
+
 @interface AppDelegate ()
 
 @end
@@ -32,6 +34,9 @@
     
     
     [self loadiPhone_Controller];
+    
+    //配置第三方库
+    [self configThirdParty];
     
     return YES;
 }

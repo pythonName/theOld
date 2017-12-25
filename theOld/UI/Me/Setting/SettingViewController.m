@@ -150,17 +150,23 @@ static NSString *cellIdent = @"SettingTableViewCell";
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction*action) {
         NSLog(@"点击了确定按钮");
         
-        [[DataInterface shareInstance] logoutRequest:nil complication:^(NSDictionary *resultDic) {
-            if([resultDic[@"code"] integerValue] == 200) {
-                [UserManager shareInstance].isLogined = NO;
-                [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isLogined"];
-                [[NSUserDefaults standardUserDefaults] synchronize];
-                [[Toast makeText:@"您已退出登录"] show];
-            }else{
-                [[Toast makeText:@"请检查您的网络"] show];
-
-            }
-        }];
+        [UserManager shareInstance].isLogined = NO;
+        [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isLogined"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[Toast makeText:@"您已退出登录"] show];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+//        [[DataInterface shareInstance] logoutRequest:nil complication:^(NSDictionary *resultDic) {
+//            if([resultDic[@"code"] integerValue] == 200) {
+//                [UserManager shareInstance].isLogined = NO;
+//                [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isLogined"];
+//                [[NSUserDefaults standardUserDefaults] synchronize];
+//                [[Toast makeText:@"您已退出登录"] show];
+//            }else{
+//                [[Toast makeText:@"请检查您的网络"] show];
+//
+//            }
+//        }];
     
     }];
     
