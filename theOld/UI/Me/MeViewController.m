@@ -151,7 +151,8 @@ static CGFloat CellH = 50;
 //    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userManagerKey"];
     if (![UserManager shareInstance].isLogined) {
         LoginViewController *loginVC = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
-        [self presentViewController:loginVC animated:YES completion:nil];
+        CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:loginVC];
+        [self presentViewController:navAppBrowserController animated:YES completion:nil];
         return;
     }
     

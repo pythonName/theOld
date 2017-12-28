@@ -63,7 +63,7 @@ typedef void (^callBackBlock)(id sender);
 #pragma mark - 程序接口
 
 #define TESTHOST @"http://61.155.215.48:5000/" //@"http://sanatorium.appvv.com/"//@"http://192.168.16.241:8899/"//
-
+//#define TESTHOST @"http://61.155.215.48:5001/"
 #define HOST @"http://api.apiappvv.com/" //正式环境
 
 
