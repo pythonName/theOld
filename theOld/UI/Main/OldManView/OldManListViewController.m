@@ -11,6 +11,7 @@
 #import "NewAdditionOldManViewController.h"
 #import "DataInterface.h"
 #import "ShiMingViewController.h"
+#import "CareOldManModel.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
@@ -22,6 +23,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 @property (strong, nonatomic) UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray *dataArr;
+
+@property (nonatomic) NSInteger selectIndex;
 
 @end
 
@@ -44,12 +47,26 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 
 - (void)loadView {
     self.view = [[UIView alloc] initWithFrame:_frame];
-    self.view.backgroundColor = [UIColor yellowColor];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[DataInterface shareInstance] followOldersListRequest:nil complication:^(NSDictionary *resultDic) {
+    
+    [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if ([model.code integerValue] == 200) {
+            NSLog(@"%@", model.data);
+            self.dataArr = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
+            [self.collectionView reloadData];
+        }
+        
+    }];
+    
+//    [[DataInterface shareInstance] followOldersListRequest:nil complication:^(NSDictionary *resultDic) {
 //        code = 200;
 //        data =     (
 //                    {
@@ -77,7 +94,7 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 //                    );
 //        msg = "login success!";
 //        total = 2;
-    }];
+//    }];
     
     [self makeMainView];
 }
@@ -98,7 +115,7 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     self.collectionView.dataSource = self;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.view addSubview:self.collectionView];
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = UIColorFromRGB(0xf5f9fd);
     [self.collectionView registerNib:[UINib nibWithNibName:@"OldManListCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellIdent];
 }
 
@@ -121,7 +138,16 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     }else{
         //正常数据
         cell.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
-        cell.nameLab.text = @"李大帅";
+        CareOldManModel *model = [self.dataArr objectAtIndex:indexPath.row];
+        cell.nameLab.text = model.name;
+        if (_selectIndex == indexPath.row) {
+            cell.nameLab.backgroundColor = baseColor;
+            cell.nameLab.textColor = [UIColor whiteColor];
+        }
+        else{
+            cell.nameLab.backgroundColor = [UIColor whiteColor];
+            cell.nameLab.textColor = [UIColor blackColor];
+        }
     }
     
     return cell;
@@ -143,9 +169,9 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (self.dataArr.count == indexPath.row) {
         if(self.dataArr.count == 0){
-            //弹出完善信息提示
-            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"关注老人" message:@"请完善您的个人信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即完善", nil];
-            [alter show];
+//            //弹出完善信息提示
+//            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"关注老人" message:@"请完善您的个人信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即完善", nil];
+//            [alter show];
         }else{
             //@"新增老人";
             UIViewController *vc = (UIViewController *)self.delegate;
@@ -156,6 +182,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
         
     }else{
         //普通数据点击更新界面
+        self.selectIndex = indexPath.row;
+        [collectionView reloadData];
     }
 }
 

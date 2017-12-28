@@ -17,4 +17,5 @@
 + (NoNetDataView *)loadNoNetDataView;
 
 + (NoNetDataView *)loadNoDataViewWithSuccess;
+
 @end

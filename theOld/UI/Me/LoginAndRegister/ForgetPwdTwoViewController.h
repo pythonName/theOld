@@ -10,4 +10,7 @@
 
 @interface ForgetPwdTwoViewController : UIViewController
 - (id)initWithFrame:(CGRect)frame;
+
+@property (nonatomic, copy) NSString *username;
+@property (nonatomic, copy) NSString *code;
 @end

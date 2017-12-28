@@ -22,6 +22,14 @@
 
 }
 
++ (NSMutableArray *)covertToArrayWithDictArray:(NSArray *)array{
+    NSMutableArray *mutlArray = [NSMutableArray array];
+    for (NSDictionary *dict in array) {
+        [mutlArray addObject:[self covertToModelWithDict:dict]];
+    }
+    return mutlArray;
+}
+
 + (NSString *)toJsonStringWithModel:(id)Obj
 {
     return [Obj yy_modelToJSONString];

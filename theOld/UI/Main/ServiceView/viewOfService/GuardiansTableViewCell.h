@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GuardianModel.h"
 
 @interface GuardiansTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) GuardianModel *model;
 
 @property (weak, nonatomic) IBOutlet UIImageView *personImageV;
 

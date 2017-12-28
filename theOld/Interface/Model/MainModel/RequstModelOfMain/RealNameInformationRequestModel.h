@@ -10,4 +10,8 @@
 
 @interface RealNameInformationRequestModel : YKNetworkBaseModel
 
+@property (nonatomic, copy) NSString *name;     //昵称
+@property (nonatomic, copy) NSString *sex;      //性别
+@property (nonatomic, copy) NSString *ID_number;    //身份证
+
 @end

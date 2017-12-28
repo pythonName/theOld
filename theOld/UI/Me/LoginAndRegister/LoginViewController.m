@@ -12,6 +12,7 @@
 #import "VVConfig.h"
 #import "RegisterViewController.h"
 
+
 @interface LoginViewController (){
     CGRect _frame;
     PageTurningView *_scrollComponent;
@@ -56,7 +57,7 @@
     self.navigationItem.leftBarButtonItem = bbi;
     
     //右侧注册按钮
-    UIButton *registerBtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 28, 28)];//ios11 上此尺寸设置已无效，完全按图片的尺寸来 2x 3x这样
+    UIButton *registerBtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40,44)];//ios11 上此尺寸设置已无效，完全按图片的尺寸来 2x 3x这样
     [registerBtn setTitle:@"注册" forState: UIControlStateNormal];
     [registerBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     registerBtn.titleLabel.font = [UIFont systemFontOfSize:14.0];

@@ -94,14 +94,17 @@ static CGFloat CellH = 50;
     UIViewController *vc = nil;
     if ([UserManager shareInstance].isLogined) {
         vc = [[UserCenterViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        [self.navigationController pushViewController:vc animated:YES];
     }else {
         vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
+        NSLog(@"ling VC frame --%@", NSStringFromCGRect(CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)));
+        [self.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
+            
+        }];
 
     }
-    CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
-    [self.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
-        
-    }];
+    
 }
 
 #pragma mark - tableViewDelegate
@@ -144,6 +147,13 @@ static CGFloat CellH = 50;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    UserManager *userManager = [UserManager shareInstance];
+//    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userManagerKey"];
+    if (![UserManager shareInstance].isLogined) {
+        LoginViewController *loginVC = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        [self presentViewController:loginVC animated:YES completion:nil];
+        return;
+    }
     
     switch (indexPath.row) {
         case 0:

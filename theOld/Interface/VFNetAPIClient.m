@@ -51,8 +51,14 @@
     //self.responseSerializer = [AFJSONResponseSerializer serializer];
     NSString *ss = [UserManager shareInstance].session;
     if (ss.length > 0) {
-        [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Cookie"];
+        [self.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Authorization"];
     }
+    
+    if ([@"api/login" isEqualToString:path]) {
+        [self.requestSerializer setValue:@"" forHTTPHeaderField:@"Authorization"];
+    }
+    
+    NSLog(@"%@", [UserManager shareInstance].session);
  
     NSURLSessionDataTask *requestTask = nil;
     switch (method) {
@@ -70,7 +76,8 @@
             requestTask = [self POST:path parameters:params progress:^(NSProgress * _Nonnull uploadProgress) {
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                if([path containsString:@"api/login"]) {//只有登录接口才有session
+                
+                if([path containsString:@"api/login"]) {//只有登录接口才有session， 为什么不放在登录接口
                     NSHTTPURLResponse *r = (NSHTTPURLResponse *)task.response;
                     NSDictionary *dic = r.allHeaderFields;
                     

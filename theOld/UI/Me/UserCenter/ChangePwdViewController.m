@@ -9,6 +9,8 @@
 #import "ChangePwdViewController.h"
 #import "VVConfig.h"
 #import "UIView+RoundedCorner.h"
+#import "CommonResponseModel.h"
+#import "UserManager.h"
 
 @interface ChangePwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -88,12 +90,39 @@
     self.loginBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:15.0];
     [self.loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.loginBtn.center = CGPointMake(CGRectGetWidth(_frame)/2, self.loginBtn.center.y);
-    [self.loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.loginBtn addTarget:self action:@selector(changePassword:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginBtn];
 }
 
-- (void)loginBtnClick:(UIButton *)sender{
+- (void)changePassword:(UIButton *)sender{
+    if (self.passWordTextField.text.length == 0) {
+        [self showInfoMsg:@"请输入原密码！"];
+        return;
+    }
     
+    if (self.nnPassWordTextField.text.length == 0) {
+        [self showInfoMsg:@"请输入新密码！"];
+        return;
+    }
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:self.passWordTextField.text forKey:@"old_password"];
+    [params setObject:self.nnPassWordTextField.text forKey:@"new_password"];
+    [DataInterface changePasswordRequest:params result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return;
+        }
+        
+        if ([model.code integerValue] == 200) {
+            [self showInfoMsg:@"修改成功！"];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            [[UserManager shareInstance] logout];
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

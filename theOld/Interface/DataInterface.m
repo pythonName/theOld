@@ -112,14 +112,16 @@
     }];
 }
 
-- (void)physiologicalDataRequest: (id)params complication:(resultDic)comlication {
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/physiological-data/",TESTHOST];
-    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
-        comlication(value);
++ (void)physiologicalDataRequest: (id)params complication:(CompleteBlock)completeBlock {
+    NSString *requestUrl = [self requestStrWithPath:@"api/physiological-data/"];
+    
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {
-        comlication(nil);
+        completeBlock(nil, value);
     }];
 }
+
 
 - (void)registerDeviceRequest: (id)params complication:(resultDic)comlication {
     NSString *requestUrl = @"http://open.umtrix.com/h/skkaN/device/reg_device";
@@ -376,14 +378,76 @@
 }
 
 //实名信息数据请求
-+ (void)realNameInformationRequestWithModel:(RealNameInformationRequestModel *)model toGetResult:(void (^) (RealNameInformationResponseModel *result, NSError *error))completionBlock{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
-    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
-        RealNameInformationResponseModel *response = [RealNameInformationResponseModel covertToModelWithDict:value];
-        completionBlock(response,nil);
++ (void)realNameInformationRequestWithModel:(RealNameInformationRequestModel *)model toGetResult:(void (^) (id result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/perfect-information/",TESTHOST];
+    id params = [RealNameInformationRequestModel covertToDictWithModelObject:model];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
+//        RealNameInformationResponseModel *response = [RealNameInformationResponseModel covertToModelWithDict:value];
+        completionBlock(value,nil);
     } failureBlock:^(id value) {
         completionBlock(nil,value);
+    }];
+}
+
++ (void)resetPasswordRequest:(NSDictionary *)param toGetResult:(void (^)(CommonResponseModel *, NSError *))completeBlock{
+    NSString *requestURL = [NSString stringWithFormat:@"%@api/forget-password/", TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestURL withParams:param withMethodType:Post successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
++ (void)changePasswordRequest:(NSDictionary *)param result:(void (^)(CommonResponseModel *, NSError *))completeBlock{
+    NSString *requestStr = [NSString stringWithFormat:@"%@api/change-password/", TESTHOST];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:param withMethodType:Post successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+    
+}
+
++ (NSString *)requestStrWithPath:(NSString *)path{
+    return [NSString stringWithFormat:@"%@%@", TESTHOST, path];
+}
+
++ (NSString *)requestStrWithPath:(NSString *)path params:(NSDictionary *)params{
+    NSString *requestUrl = [self requestStrWithPath:path];
+    NSArray *keys = [params allKeys];
+    requestUrl = [requestUrl stringByAppendingString:@"?"];
+    for (NSString *key in keys) {
+        requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
+    }
+    return requestUrl;
+}
+
++ (void)careOldManListRequest:(id)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/get_focus/"];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
++ (void)verifyCodeRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/judge_confirm/"];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:params withMethodType:Post successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
+//获取监护人列表数据
++ (void)guardianListRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/get_guars/" params:params];
+    
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
     }];
 }
 

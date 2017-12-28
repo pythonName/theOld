@@ -37,11 +37,13 @@
 #import "LogOutCareResponseModel.h"
 #import "RealNameInformationRequestModel.h"
 #import "RealNameInformationResponseModel.h"
+#import "CommonResponseModel.h"
 
 
 typedef void(^resultDic)(NSDictionary *resultDic);
 typedef void(^resultObj)(id obj);
 typedef void(^faildur)(NSError *error);
+typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 
 @interface DataInterface : NSObject
 
@@ -69,7 +71,7 @@ typedef void(^faildur)(NSError *error);
 - (void)followOldersListRequest: (id)params complication:(resultDic)comlication;
 
 //生理数据 首页
-- (void)physiologicalDataRequest: (id)params complication:(resultDic)comlication;
++ (void)physiologicalDataRequest: (id)params complication:(CompleteBlock)completeBlock;
 
 //设备注册
 - (void)registerDeviceRequest: (id)params complication:(resultDic)comlication;
@@ -85,6 +87,8 @@ typedef void(^faildur)(NSError *error);
 
 //关注老人列表数据请求
 + (void)careOldManListRequestWithModel:(CareOldManListRequsetModel *)model toGetResult:(void (^) (CareOldManListResponseModel *result, NSError *error))completionBlock;
+
++ (void)careOldManListRequest:(id)params result:(CompleteBlock)completeBlock;
 
 //关注老人列表--根据身份证查询老人 数据请求
 + (void)careOldManSearchRequestWithModel:(CareOldManSearchRequestModel *)model toGetResult:(void (^) (CareOldManSearchResponseModel *result, NSError *error))completionBlock;
@@ -123,7 +127,18 @@ typedef void(^faildur)(NSError *error);
 + (void)logOutCareRequestWithModel:(LogOutCareRequestModel *)model toGetResult:(void (^) (LogOutCareResponseModel *result, NSError *error))completionBlock;
 
 //实名信息数据请求
-+ (void)realNameInformationRequestWithModel:(RealNameInformationRequestModel *)model toGetResult:(void (^) (RealNameInformationResponseModel *result, NSError *error))completionBlock;
++ (void)realNameInformationRequestWithModel:(RealNameInformationRequestModel *)model toGetResult:(void (^) (id result, NSError *error))completionBlock;
 
+//忘记密码-重新设置密码
++ (void)resetPasswordRequest:(NSDictionary *)param toGetResult:(void(^)(CommonResponseModel *model, NSError *error))completeBlock;
+
+//修改用户密码
++ (void)changePasswordRequest:(NSDictionary *)param result:(void(^)(CommonResponseModel *model, NSError *error))completeBlock;
+
+//校验短信验证码
++(void)verifyCodeRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
+//获取监护人列表数据
++ (void)guardianListRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
 @end

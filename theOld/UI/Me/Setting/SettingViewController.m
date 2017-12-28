@@ -150,9 +150,8 @@ static NSString *cellIdent = @"SettingTableViewCell";
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction*action) {
         NSLog(@"点击了确定按钮");
         
-        [UserManager shareInstance].isLogined = NO;
-        [[NSUserDefaults standardUserDefaults] setObject:@"no" forKey:@"isLogined"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [[UserManager shareInstance] logout];
+        
         [[Toast makeText:@"您已退出登录"] show];
         [self.navigationController popViewControllerAnimated:YES];
         

@@ -11,6 +11,7 @@
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
 #import "UserManager.h"
+#import "ForgetPwdOneViewController.h"
 
 @interface LoginPwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -87,7 +88,24 @@
     self.loginBtn.center = CGPointMake(CGRectGetWidth(_frame)/2, self.loginBtn.center.y);
     [self.loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginBtn];
+    
+//    UIButton *forgetPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [forgetPwdBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
+//    [forgetPwdBtn setTitleColor:baseColor forState:UIControlStateNormal];
+//    forgetPwdBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:10.0];
+//    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:forgetPwdBtn];
+//    [forgetPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.loginBtn);
+//        make.top.equalTo(self.loginBtn.mas_bottom);
+//        make.height.mas_equalTo(40);
+//    }];
 }
+
+//- (void)forgetPwdBtnClick:(UIButton *)sender{
+//    ForgetPwdOneViewController *forgetVC = [[ForgetPwdOneViewController alloc] init];
+//    [self.navigationController pushViewController:forgetVC animated:YES];
+//}
 
 - (void)loginBtnClick:(UIButton *)sender{
     if(self.userNameTextField.text.length==0){

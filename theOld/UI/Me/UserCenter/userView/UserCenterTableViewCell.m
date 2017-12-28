@@ -7,6 +7,8 @@
 //
 
 #import "UserCenterTableViewCell.h"
+#import "UserManager.h"
+#import "UIImageView+WebCache.h"
 
 @implementation UserCenterTableViewCell
 
@@ -15,7 +17,15 @@
     //头像图标
     self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-35-40, 13, 40, 40)];
     _iconImageView.userInteractionEnabled = YES;
-    _iconImageView.image = [UIImage imageNamed:@"accountIconDefault.png"];
+    UserManager *userManager = [UserManager shareInstance];
+    if (![UserManager shareInstance].photo) {
+        NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, userManager.photo];
+        [_iconImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"accountIconDefault.png"]];
+    }
+    else{
+       _iconImageView.image = [UIImage imageNamed:@"accountIconDefault.png"];
+    }
+    
     [self.contentView addSubview:_iconImageView];
     
     //箭头图标
@@ -26,7 +36,7 @@
     
     //账号label
     self.accountLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenWidth-20-150, 10, 150, 30)];
-    _accountLabel.text = @"15817297889";
+    _accountLabel.text = [UserManager shareInstance].userName;
     _accountLabel.textColor = UIColorFromRGB(0x999999);
     _accountLabel.textAlignment = NSTextAlignmentRight;
     _accountLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:14.0];
@@ -38,7 +48,12 @@
     _factNameView.textAlignment = NSTextAlignmentCenter;
     _factNameView.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:10.0];
     [_factNameView jm_setCornerRadius:CGRectGetHeight(_factNameView.frame)/2 withBackgroundColor:UIColorFromRGB(0xff9c31)];
-    _factNameView.text = @"未完善";
+    if ([@"yes" isEqualToString:userManager.complete]) {
+        _factNameView.text = @"已认证";
+    }
+    else{
+        _factNameView.text = @"未完善";
+    }
     _factNameView.textColor = UIColorFromRGB(0xffffff);
     [self.contentView addSubview:_factNameView];
 }
@@ -62,10 +77,17 @@
              self.accessoryType=UITableViewCellAccessoryNone;
         }else{
             self.accountLabel.frame = CGRectMake(ScreenWidth-35-150, 10, 150, 30);
+            self.accountLabel.hidden = YES;
         }
         //其他信息
         self.accountLabel.hidden = NO;
         self.iconImageView.hidden = YES;
+    }
+    
+    if (indexPath.section == 1) {
+        if (indexPath.row == 1) {
+            self.accountLabel.text = nil;
+        }
     }
 }
 

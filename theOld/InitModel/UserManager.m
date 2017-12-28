@@ -35,6 +35,8 @@
 - (id)init {
     self = [super init];
     if (self) {
+        
+        
         NSString *ii = [[NSUserDefaults standardUserDefaults] objectForKey:@"isLogined"];
         self.isLogined = ([ii isEqualToString:@"yes"] ? YES:NO);
         NSString *session = [[NSUserDefaults standardUserDefaults] objectForKey:@"session"];
@@ -45,12 +47,21 @@
     return self;
 }
 
+static UserManager *shareInstance = nil;
 + (instancetype)shareInstance
 {
-    static UserManager *shareInstance = nil;
+    
+    
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        shareInstance = [[self alloc] init];
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userManagerData"];
+        if (data != nil) {
+            UserManager *userManager = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+            shareInstance = userManager;
+        }
+        else{
+            shareInstance = [[self alloc] init];
+        }
     });
     return shareInstance;
 }
@@ -74,17 +85,54 @@
     }
 }
 
+#define userManagerKey  @"userManagerKey"
 - (void)loginRequest: (id)params complication:(resultDic)comlication {
     [[DataInterface shareInstance] loginRequest:params complication:^(NSDictionary *resultDic) {
         int code = [[resultDic objectForKey:@"code"] intValue];
         if(200 == code){
             self.isLogined = YES;
-            [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"isLogined"];
+            NSDictionary *userDict = [[resultDic objectForKey:@"data"] objectForKey:@"user"];
+            self.userName = [userDict objectForKey:@"username"];
+            self.session = [[resultDic objectForKey:@"data"] objectForKey:@"token"];
+            NSLog(@"%@===", self.session);
+            self.complete = [[resultDic objectForKey:@"data"] objectForKey:@"complete"];
+            self.name = [userDict objectForKey:@"name"];
+            self.IDCard = [userDict objectForKey:@"ID_number"];
+            self.sex = [userDict objectForKey:@"sex"];
+            self.dateTime = [userDict objectForKey:@"datetime"];
+            self.photo = [userDict objectForKey:@"photo"];
+//            [[NSUserDefaults standardUserDefaults] setObject:@"yes" forKey:@"isLogined"];
+
+            NSData *managerData = [NSKeyedArchiver archivedDataWithRootObject:self];
+            [[NSUserDefaults standardUserDefaults] setObject:managerData forKey:userManagerKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            
         }
         
         comlication(resultDic);
     }];
+}
+
+
+- (void)resetPassword:(id)params commlication:(CompleteBlock)completeBlock{
+    [DataInterface resetPasswordRequest:params toGetResult:^(CommonResponseModel *model, NSError *error) {
+        completeBlock(model, error);
+    }];
+}
+
+
+- (void)logout{
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:userManagerKey];
+    self.userName = nil;
+    self.name = nil;
+    self.IDCard = nil;
+    self.sex = nil;
+    self.photo = nil;
+    self.photo = nil;
+    self.isLogined = NO;
+    self.dateTime = nil;
+    self.session = nil;
+    self.complete = nil;
 }
 
 @end

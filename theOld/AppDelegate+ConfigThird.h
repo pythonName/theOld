@@ -16,4 +16,7 @@
 /**配置高德地图*/
 - (void)configAMap;
 
+/**检查用户登录状态*/
+- (void)checkUserLogin;
+
 @end

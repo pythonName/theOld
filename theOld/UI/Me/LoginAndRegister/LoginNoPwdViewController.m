@@ -12,6 +12,8 @@
 #import "DataInterface.h"
 #import "UserManager.h"
 #import "VerifyIdentityCard.h"
+#import "ForgetPwdOneViewController.h"
+
 @interface LoginNoPwdViewController ()<UITextFieldDelegate>{
     CGRect _frame;
     UIButton *_getCodeBtn;
@@ -61,21 +63,47 @@
     self.userNameTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:self.userNameTextField];
     
-    //获取验证码按钮
+//    //获取验证码按钮
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.frame = CGRectMake(CGRectGetWidth(self.userNameTextField.frame)-80,  0, 80, CGRectGetHeight(self.userNameTextField.frame) );
+//    [btn setTitle:@"获取验证码" forState: UIControlStateNormal];
+//    [btn setTitleColor:baseColor forState:UIControlStateNormal];
+//    btn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+//    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+//    [btn addTarget:self action:@selector(getYanzhengma) forControlEvents:UIControlEventTouchUpInside];
+//    [self.userNameTextField addSubview:btn];
+//    _getCodeBtn =btn;
+//    //按钮左边框
+//    CALayer *leftBorder = [CALayer layer];
+//    leftBorder.frame = CGRectMake(0.0f, 0.0f, 0.5, CGRectGetHeight(btn.frame));
+//    leftBorder.backgroundColor = UIColorFromRGB(0xdddddd).CGColor;
+//    [btn.layer addSublayer:leftBorder];
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(CGRectGetWidth(self.userNameTextField.frame)-80,  0, 80, CGRectGetHeight(self.userNameTextField.frame) );
     [btn setTitle:@"获取验证码" forState: UIControlStateNormal];
     [btn setTitleColor:baseColor forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:12.0];
     btn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [btn addTarget:self action:@selector(getYanzhengma) forControlEvents:UIControlEventTouchUpInside];
-    [self.userNameTextField addSubview:btn];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.userNameTextField);
+        make.top.equalTo(self.userNameTextField);
+        make.bottom.equalTo(self.userNameTextField);
+        make.width.mas_equalTo(80);
+    }];
     _getCodeBtn =btn;
     //按钮左边框
-    CALayer *leftBorder = [CALayer layer];
-    leftBorder.frame = CGRectMake(0.0f, 0.0f, 0.5, CGRectGetHeight(btn.frame));
-    leftBorder.backgroundColor = UIColorFromRGB(0xdddddd).CGColor;
-    [btn.layer addSublayer:leftBorder];
+    UIView *leftBorder = [[UIView alloc] init];
+    leftBorder.backgroundColor = UIColorFromRGB(0xdddddd);
+    [self.view addSubview:leftBorder];
+    [leftBorder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn.mas_left);
+        make.centerY.equalTo(btn);
+        make.height.equalTo(btn);
+        make.width.mas_equalTo(0.5);
+    }];
+    
     
     //验证密码
     self.passWordTextField  = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.userNameTextField.frame), CGRectGetMaxY(self.userNameTextField.frame) + 10, CGRectGetWidth(self.userNameTextField.frame), CGRectGetHeight(self.userNameTextField.frame))];
@@ -104,7 +132,24 @@
     self.loginBtn.center = CGPointMake(CGRectGetWidth(_frame)/2, self.loginBtn.center.y);
     [self.loginBtn addTarget:self action:@selector(loginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.loginBtn];
+    
+//    UIButton *forgetPwdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [forgetPwdBtn setTitle:@"忘记密码" forState:UIControlStateNormal];
+//    [forgetPwdBtn setTitleColor:baseColor forState:UIControlStateNormal];
+//    forgetPwdBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:10.0];
+//    [forgetPwdBtn addTarget:self action:@selector(forgetPwdBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:forgetPwdBtn];
+//    [forgetPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self.loginBtn);
+//        make.top.equalTo(self.loginBtn.mas_bottom);
+//        make.height.mas_equalTo(40);
+//    }];
 }
+
+//- (void)forgetPwdBtnClick:(UIButton *)sender{
+//    ForgetPwdOneViewController *forgetVC = [[ForgetPwdOneViewController alloc] init];
+//    [self.navigationController pushViewController:forgetVC animated:YES];
+//}
 
 - (void)loginBtnClick:(UIButton *)sender{
     if(self.userNameTextField.text.length==0){
@@ -112,13 +157,15 @@
         return;
     }
     if (self.passWordTextField.text.length==0) {
-        [[Toast makeText:@"密码不能为空"] show];
+        [[Toast makeText:@"验证码不能为空"] show];
         return;
     }
    
     NSDictionary *dic = @{@"username":self.userNameTextField.text,
+                          @"logintype":@"code",
+                          @"password" : @"",
                           @"code":self.passWordTextField.text,
-                          @"logintype":@"code"
+                          
                           };
     //用户登录请求
     [[UserManager shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
@@ -127,6 +174,8 @@
             if(nil != _superDelegate && [_superDelegate respondsToSelector:@selector(backbuttonclick)]) {
                 [_superDelegate performSelector:@selector(backbuttonclick)];
             }
+        }else{
+            [[Toast makeText:@"账号或验证码错误!"] show];
         }
     }];
 }
@@ -136,7 +185,10 @@
     
     if (self.userNameTextField.text != nil && [VerifyIdentityCard isPhoneNumber:self.userNameTextField.text]) {
         [self startTime];
-        [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
+        NSMutableDictionary *parmams = [NSMutableDictionary dictionary];
+        [parmams setObject:self.userNameTextField.text forKey:@"username"];
+        [parmams setObject:@"login" forKey:@"type"];
+        [[DataInterface shareInstance] getMessageCodeRequest:parmams complication:^(NSDictionary *resultDic) {
             NSLog(@"resultDic = %@",resultDic);
             [[Toast makeText:@"验证码发送成功"] show];
         }];

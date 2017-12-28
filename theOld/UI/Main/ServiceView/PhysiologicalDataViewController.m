@@ -12,6 +12,7 @@
 #import "NoNetDataView.h"
 #import "DataInterface.h"
 #import "UserManager.h"
+#import "PhysiologyDataModel.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
@@ -23,6 +24,7 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (nonatomic, strong)NoNetDataView *noDataView;
+@property (nonatomic, strong) NSArray *keyArray;
 
 
 @end
@@ -49,11 +51,6 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
     [super viewDidLoad];
  
    self.title = @"生理数据";
-    [[DataInterface shareInstance] physiologicalDataRequest:@{@"ID_number":[UserManager shareInstance].defaultSelectedOldID} complication:^(NSDictionary *resultDic) {
-        
-    }];
-    [self.dataArr addObject:@"dd"];
-    [self.dataArr addObject:@"dd"];
  
     _titleArr = @[
                   @{@"imageName":@"weight",@"title":@"体重"},
@@ -63,6 +60,7 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
                   @{@"imageName":@"BloodSugar.png",@"title":@"血糖"},
                   @{@"imageName":@"BloodFat.png",@"title":@"血脂"}
                   ];
+    _keyArray = @[@"weight",@"temperature",@"heart_rate",@"blood_pressure",@"blood_sugar",@"blood_fat"];
     
     
     [self.mainTableView registerNib:[UINib nibWithNibName:@"PhysiologicalDataTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdent];
@@ -80,7 +78,22 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 
 #pragma mark 请求数据
 -(void)loadDataMethod {
-    
+    NSDictionary *params = @{@"ID_number" : @"420521199910100014"};
+    [DataInterface physiologicalDataRequest:params complication:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if (model.code.integerValue == REQUEST_SUCCESS_CODE) {
+            NSArray *array = [model.data objectForKey:@"Physics"];
+            self.dataArr = [PhysiologyDataModel covertToArrayWithDictArray:array];
+            [self.mainTableView reloadData];
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
 }
 
 #pragma mark ------- tableView代理
@@ -103,6 +116,9 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
     [_noDataView removeFromSuperview];
     cell.imageV.image  = [UIImage imageNamed:_titleArr[indexPath.row][@"imageName"]];
     cell.titleLab.text  = _titleArr[indexPath.row][@"title"];
+    PhysiologyDataModel *model = [self.dataArr objectAtIndex:indexPath.section];
+    NSString *key = [_keyArray objectAtIndex:indexPath.row];
+    cell.describeLab.text = [model valueForKey:key];
     
     return cell;
 }
@@ -118,8 +134,8 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     PhysiologicalDataTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:headerIdent];
-    
-    headerView.dateLabel.text = @"2017-09-09";
+    PhysiologyDataModel *model = [self.dataArr objectAtIndex:section];
+    headerView.dateLabel.text = model.daytime;
     return headerView;
     
 }

@@ -58,7 +58,7 @@
     self.userNameTextField.textColor = UIColorFromRGB(0xaaaaaa);
     self.userNameTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
     [self.userNameTextField jm_setCornerRadius:6.0 withBorderColor:UIColorFromRGB(0xdddddd) borderWidth:0.5];
-    self.userNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+//    self.userNameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.userNameTextField.keyboardType = UIKeyboardTypeNumberPad;
     self.userNameTextField.placeholder = @"请输入手机号";
     self.userNameTextField.delegate = self;
@@ -84,6 +84,8 @@
     self.codeTextField.leftView = leftViewCode;
     self.codeTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:self.codeTextField];
+    
+    /*
     //获取验证码按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(CGRectGetWidth(self.userNameTextField.frame)-80, 0, 80, CGRectGetHeight(self.userNameTextField.frame));
@@ -99,6 +101,32 @@
     leftBorder.frame = CGRectMake(0.0f, 0.0f, 0.5, CGRectGetHeight(btn.frame));
     leftBorder.backgroundColor = UIColorFromRGB(0xdddddd).CGColor;
     [btn.layer addSublayer:leftBorder];
+     */
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"获取验证码" forState: UIControlStateNormal];
+    [btn setTitleColor:baseColor forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [btn addTarget:self action:@selector(getYanzhengma:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.userNameTextField);
+        make.top.equalTo(self.userNameTextField);
+        make.bottom.equalTo(self.userNameTextField);
+        make.width.mas_equalTo(80);
+    }];
+    _getCodeBtn =btn;
+    //按钮左边框
+    UIView *leftBorder = [[UIView alloc] init];
+    leftBorder.backgroundColor = UIColorFromRGB(0xdddddd);
+    [self.view addSubview:leftBorder];
+    [leftBorder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn.mas_left);
+        make.centerY.equalTo(btn);
+        make.height.equalTo(btn);
+        make.width.mas_equalTo(0.5);
+    }];
     
     //设置密码输入框
     self.passWordTextField  = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.codeTextField.frame), CGRectGetMaxY(self.codeTextField.frame) + 10, CGRectGetWidth(self.codeTextField.frame), CGRectGetHeight(self.codeTextField.frame))];
@@ -151,18 +179,24 @@
                           @"password":self.passWordTextField.text,
                           @"code":self.codeTextField.text
                           };
-    //用户注册请求
-    [[DataInterface shareInstance] registerRequest:dic complication:^(NSDictionary *resultDic) {
-        int code = [[resultDic objectForKey:@"code"] intValue];
-        if(200 == code){
-            [[Toast makeText:@"注册成功"] show];
-            [self.navigationController popViewControllerAnimated:YES];
-        }else  if(500 == code ){
-            [[Toast makeText:@"用户已存在"] show];
-        }else{
-            [[Toast makeText:@"请检查您的网络"] show];
-        }
-    }];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //用户注册请求
+        [[DataInterface shareInstance] registerRequest:dic complication:^(NSDictionary *resultDic) {
+            if (resultDic == nil) {
+                [[Toast makeText:@"请检查您的网络！"] show];
+                return;
+            }
+            int code = [[resultDic objectForKey:@"code"] intValue];
+            if(200 == code){
+                [[Toast makeText:@"注册成功!"] show];
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                NSString *message = [resultDic objectForKey:@"msg"];
+                [[Toast makeText:message] show];
+            }
+        }];
+    });
 }
 
 //获取验证码请求
@@ -170,9 +204,19 @@
     
     if (self.userNameTextField.text != nil && [VerifyIdentityCard isPhoneNumber:self.userNameTextField.text]) {
          [self startTime];
-        [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
-            NSLog(@"resultDic = %@",resultDic);
-            [[Toast makeText:@"验证码发送成功"] show];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:self.userNameTextField.text forKey:@"username"];
+        [params setObject:@"regist" forKey:@"type"];
+        [[DataInterface shareInstance] getMessageCodeRequest:params complication:^(NSDictionary *resultDic) {
+//            NSLog(@"resultDic = %@",resultDic);
+            NSInteger code = [[resultDic objectForKey:@"code"] integerValue];
+            if (code == 200) {
+                [[Toast makeText:@"验证码发送成功！"] show];
+            }
+            else{
+                [[Toast makeText:@"验证码发送失败！"] show];
+            }
+            
         }];
     }else{
        [[Toast makeText:@"请输入正确的手机号"] show];

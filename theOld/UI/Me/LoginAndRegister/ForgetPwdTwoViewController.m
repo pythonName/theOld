@@ -9,6 +9,9 @@
 #import "ForgetPwdTwoViewController.h"
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
+#import "UserManager.h"
+#import "CommonResponseModel.h"
+#import "LoginViewController.h"
 
 @interface ForgetPwdTwoViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -36,6 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"找回密码";
     
     //新密码
     self.nnPasswordTextField  = [[UITextField alloc] initWithFrame:CGRectMake(12*ScreenWRatioBaseIphone6, 30*ScreenHRatioBaseIphone6, CGRectGetWidth(_frame)-2*12*ScreenWRatioBaseIphone6, 45*ScreenHRatioBaseIphone6)];
@@ -83,7 +87,34 @@
 }
 
 - (void)loginBtnClick:(UIButton *)sender{
+    if (![self.passWordTextField.text isEqualToString:self.nnPasswordTextField.text]) {
+        [self showInfoMsg:@"两次输入的密码不一致！请重新输入！"];
+        return;
+    }
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:self.username forKey:@"username"];
+    [params setObject:self.code forKey:@"code"];
+    [params setObject:self.passWordTextField.text forKey:@"new_password"];
     
+    [[UserManager shareInstance  ]resetPassword:params commlication:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if (model.code.integerValue == 200) {
+            [self showInfoMsg:@"修改成功！"];
+            for (UIViewController *controller in self.navigationController.viewControllers) {
+                if ([controller isKindOfClass:[LoginViewController class]]) {
+                    [self.navigationController popToViewController:controller animated:YES];
+                }
+            }
+            
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

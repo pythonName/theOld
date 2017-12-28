@@ -9,6 +9,10 @@
 #import "ShiMingViewController.h"
 #import "VVConfig.h"
 #import "UIView+RoundedCorner.h"
+#import "UserManager.h"
+
+
+static UserManager *userManager;
 
 @interface ShiMingViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -16,6 +20,7 @@
 @property (nonatomic, strong) UITextField *accountTextField;
 @property (nonatomic, strong) UITextField *nameTextField;
 @property (nonatomic, strong) UIView *sexView;
+@property (nonatomic, copy) NSString *sex;
 @property (nonatomic, strong) UITextField *idTextField;
 @property (nonatomic, strong) UIButton *submitBtn;
 @property (nonatomic, strong) UIButton *manBtn;
@@ -42,6 +47,8 @@
     [super viewDidLoad];
     self.title = @"实名信息";
     
+    userManager = [UserManager shareInstance];
+    
     //顶部提示view
     UILabel *tipV = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_frame), 33)];
     tipV.backgroundColor = UIColorFromRGB(0xf4f8fd);
@@ -57,7 +64,7 @@
     self.accountTextField.textAlignment = NSTextAlignmentRight;
     self.accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.accountTextField.keyboardType = UIKeyboardTypeNumberPad;
-    self.accountTextField.text = @"15567876543";
+    self.accountTextField.text = [UserManager shareInstance].userName;
     self.accountTextField.delegate = self;
     //缩进
     UIView *leftViewUser = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 16, 0)];
@@ -77,11 +84,18 @@
     line1.backgroundColor = UIColorFromRGB(0xdddddd);
     [self.view addSubview:line1];
     
+   
     //姓名
     self.nameTextField  = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.accountTextField.frame), CGRectGetWidth(self.accountTextField.frame), CGRectGetHeight(self.accountTextField.frame))];
     self.nameTextField.textColor = UIColorFromRGB(0xaaaaaa);
     self.nameTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
-    self.nameTextField.placeholder = @"请输入真实姓名";
+    if (userManager.name.length > 0) {
+        self.nameTextField.text = userManager.name;
+    }
+    else{
+        self.nameTextField.placeholder = @"请输入真实姓名";
+    }
+    
     self.nameTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.nameTextField.delegate = self;
     self.nameTextField.textAlignment = NSTextAlignmentRight;
@@ -161,12 +175,21 @@
     line3.backgroundColor = UIColorFromRGB(0xdddddd);
     [self.view addSubview:line3];
     
+    if ([userManager.sex isEqualToString:@"男"]) {
+        [self manButtonClick];
+    }
+    
     //身份证
     self.idTextField  = [[UITextField alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sexView.frame), CGRectGetWidth(self.sexView.frame), CGRectGetHeight(self.sexView.frame))];
     self.idTextField.textColor = UIColorFromRGB(0xaaaaaa);
     self.idTextField.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:12.0];
     self.idTextField.textAlignment = NSTextAlignmentRight;
-    self.idTextField.placeholder = @"请输入真实身份证号";
+    if (userManager.IDCard.length > 0) {
+        self.idTextField.text = userManager.IDCard;
+    }
+    else{
+        self.idTextField.placeholder = @"请输入真实身份证号";
+    }
     self.idTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.idTextField.delegate = self;
     self.idTextField.keyboardType = UIKeyboardTypeDefault;
@@ -202,6 +225,25 @@
 
 //提交按钮事件
 - (void)submitBtnClick:(UIButton *)sender{
+    RealNameInformationRequestModel *model = [[RealNameInformationRequestModel alloc] init];
+    model.name = self.nameTextField.text;
+    model.sex = self.sex;
+    model.ID_number = self.idTextField.text;
+
+    [DataInterface realNameInformationRequestWithModel:model toGetResult:^(id result, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+        }
+        NSInteger code = [[result objectForKey:@"code"] integerValue];
+        if (200 == code) {
+            [self showInfoMsg:@"提交成功！"];
+        }
+        else{
+            NSString *msg = [result objectForKey:@"msg"];
+            [self showInfoMsg:msg];
+        }
+        
+    }];
     
 }
 
@@ -217,6 +259,7 @@
     [self.womanBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
 
     self.womanBtnImageV.frame = CGRectMake(ScreenWidth-93, 25*ScreenHRatioBaseIphone6, 12, 12);
+    self.sex = @"男";
 }
 
 -(void)womanButtonClick {
@@ -230,6 +273,7 @@
     
     [self.womanBtn setTitleColor:baseColor forState:UIControlStateNormal];
     [self.manBtn setTitleColor:UIColorFromRGB(0x888888) forState:UIControlStateNormal];
+    self.sex = @"女";
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

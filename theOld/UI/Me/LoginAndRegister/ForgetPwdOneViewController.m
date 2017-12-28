@@ -10,6 +10,8 @@
 #import "UIView+RoundedCorner.h"
 #import "VVConfig.h"
 #import "VerifyIdentityCard.h"
+#import "UserManager.h"
+#import "ForgetPwdTwoViewController.h"
 
 @interface ForgetPwdOneViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -56,6 +58,7 @@
     self.userNameTextField.leftViewMode = UITextFieldViewModeAlways;
     [self.view addSubview:self.userNameTextField];
     
+    /*
     //获取验证码按钮
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(CGRectGetWidth(self.userNameTextField.frame)-80, 8*ScreenHRatioBaseIphone6, 80, CGRectGetHeight(self.userNameTextField.frame)-2*8*ScreenHRatioBaseIphone6);
@@ -72,6 +75,32 @@
     leftBorder.frame = CGRectMake(0.0f, 0.0f, 0.5, CGRectGetHeight(btn.frame));
     leftBorder.backgroundColor = UIColorFromRGB(0xdddddd).CGColor;
     [btn.layer addSublayer:leftBorder];
+     */
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setTitle:@"获取验证码" forState: UIControlStateNormal];
+    [btn setTitleColor:baseColor forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:12.0];
+    btn.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [btn addTarget:self action:@selector(getYanzhengma) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.userNameTextField);
+        make.top.equalTo(self.userNameTextField);
+        make.bottom.equalTo(self.userNameTextField);
+        make.width.mas_equalTo(80);
+    }];
+    _getCodeBtn =btn;
+    //按钮左边框
+    UIView *leftBorder = [[UIView alloc] init];
+    leftBorder.backgroundColor = UIColorFromRGB(0xdddddd);
+    [self.view addSubview:leftBorder];
+    [leftBorder mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(btn.mas_left);
+        make.centerY.equalTo(btn);
+        make.height.equalTo(btn);
+        make.width.mas_equalTo(0.5);
+    }];
+    
     
     //验证密码
     self.passWordTextField  = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.userNameTextField.frame), CGRectGetMaxY(self.userNameTextField.frame) + 10, CGRectGetWidth(self.userNameTextField.frame), CGRectGetHeight(self.userNameTextField.frame))];
@@ -105,12 +134,53 @@
 //提交按钮
 - (void)loginBtnClick:(UIButton *)sender{
     
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:self.userNameTextField.text forKey:@"username"];
+    [params setObject:self.passWordTextField.text forKey:@"code"];
+    [params setObject:@"forget" forKey:@"type"];
+    [DataInterface verifyCodeRequest:params result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if ([model.code integerValue] == 200) {
+            ForgetPwdTwoViewController *forgetVC = [[ForgetPwdTwoViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+            forgetVC.username = self.userNameTextField.text;
+            forgetVC.code = self.passWordTextField.text;
+            [self.navigationController pushViewController:forgetVC animated:YES];
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
+    
+//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+//    [params setObject:self.userNameTextField.text forKey:@"username"];
+//    [params setObject:self.passWordTextField.text forKey:@"new_password"];
+//    [[UserManager shareInstance  ]resetPassword:params commlication:^(CommonResponseModel *model, NSError *error) {
+//        if (error) {
+//            [self showNetworkError];
+//            return ;
+//        }
+//        
+//        if (model.code.integerValue == 200) {
+//            [self showInfoMsg:@"修改成功！"];
+//        }
+//        else{
+//            [self showInfoMsg:model.msg];
+//        }
+//    }];
 }
 
 - (void)getYanzhengma {
     if (self.userNameTextField.text != nil && [VerifyIdentityCard isPhoneNumber:self.userNameTextField.text]) {
         [self startTime];
-        [[DataInterface shareInstance] getMessageCodeRequest:@{@"username":self.userNameTextField.text} complication:^(NSDictionary *resultDic) {
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setObject:self.userNameTextField.text forKey:@"username"];
+        [params setObject:@"forget" forKey:@"type"];
+        [[DataInterface shareInstance] getMessageCodeRequest:params complication:^(NSDictionary *resultDic) {
             NSLog(@"resultDic = %@",resultDic);
             [[Toast makeText:@"验证码发送成功"] show];
         }];

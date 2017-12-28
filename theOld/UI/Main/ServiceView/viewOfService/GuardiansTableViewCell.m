@@ -21,4 +21,17 @@
     // Configure the view for the selected state
 }
 
+- (void)setModel:(GuardianModel *)model{
+    _model = model;
+    
+    [self updateUI];
+}
+
+- (void)updateUI{
+    self.nameLab.text = _model.name;
+    self.sonLab.text = _model.relation;
+    self.telNumberLab.text = _model.username;
+}
+
+
 @end

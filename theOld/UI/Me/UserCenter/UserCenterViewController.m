@@ -53,11 +53,11 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 -(void)initNavgationView {
     self.title = @"个人中心";
     //返回按钮
-    UIButton *leftnButton = [[UIButton alloc] initWithFrame:BACK_IMAGE_VFRAME];
-    [leftnButton setImage:BACK_IMAGE forState:UIControlStateNormal];
-    [leftnButton addTarget:self action:@selector(backbuttonclick) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *bbi=[[UIBarButtonItem alloc] initWithCustomView:leftnButton];
-    self.navigationItem.leftBarButtonItem = bbi;
+//    UIButton *leftnButton = [[UIButton alloc] initWithFrame:BACK_IMAGE_VFRAME];
+//    [leftnButton setImage:BACK_IMAGE forState:UIControlStateNormal];
+//    [leftnButton addTarget:self action:@selector(backbuttonclick) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *bbi=[[UIBarButtonItem alloc] initWithCustomView:leftnButton];
+//    self.navigationItem.leftBarButtonItem = bbi;
 }
 
 - (void)viewDidLoad {
@@ -147,16 +147,17 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 }
 
 -(void)leftButtonClick {
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
-    LeveyTabBarController *tabVC = (LeveyTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-    
-    MainViewController *mainController=[[MainViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight*ScreenRatio, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight*ScreenRatio)];
-    NSInteger pageInde = 0;
-    CustomNavigationController *ctl =[tabVC.viewControllers objectAtIndex:pageInde];
-    tabVC.selectedIndex = 0;
-    [ctl  pushViewController:mainController animated:YES];
-    mainController.pageIndex = 1;
+//    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//    }];
+//    LeveyTabBarController *tabVC = (LeveyTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+//
+//    MainViewController *mainController=[[MainViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight*ScreenRatio, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight*ScreenRatio)];
+//    NSInteger pageInde = 0;
+//    CustomNavigationController *ctl =[tabVC.viewControllers objectAtIndex:pageInde];
+//    tabVC.selectedIndex = 0;
+//    [ctl  pushViewController:mainController animated:YES];
+//    mainController.pageIndex = 1;
 }
 
 #pragma mark - tableViewDelegate
@@ -287,6 +288,9 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     picImageView.image = chosenImage;
     chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
     NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
+    [DataInterface logOutCareRequestWithModel:nil toGetResult:^(LogOutCareResponseModel *result, NSError *error) {
+        
+    }];
     //    [self saveImage:chosenImage withName:@"avatar.png"];
     //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
     //将图片上传到服务器

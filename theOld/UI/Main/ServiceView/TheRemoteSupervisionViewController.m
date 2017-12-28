@@ -92,7 +92,7 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     
-    //更新PlayerLayer的frame否则无法显示视频
+    //自动布局等到view的frame确定后，更新PlayerLayer的frame否则无法显示视频
     [self.playerView updatePlayerLayerFrame];
     [self.playerView2 updatePlayerLayerFrame];
 }

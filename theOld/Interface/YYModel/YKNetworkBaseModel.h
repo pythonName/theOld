@@ -35,4 +35,6 @@
  *  @return 返回JSON字符串
  */
 + (NSString *)toJsonStringWithModel:(id)Obj;
+
++ (NSMutableArray *)covertToArrayWithDictArray:(NSArray *)array;
 @end
