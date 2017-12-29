@@ -141,4 +141,7 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 //获取监护人列表数据
 + (void)guardianListRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
+//上传用户头像
++ (void)uploadPortraitRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
 @end

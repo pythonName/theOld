@@ -16,4 +16,6 @@
 /**显示一般提示信息*/
 - (void)showInfoMsg:(NSString *)msg;
 
+- (void)presentViewControllerFromRootController:(UIViewController *)viewControllerToPresent  animated:(BOOL)flag completion:(void (^)(void))completion;
+
 @end

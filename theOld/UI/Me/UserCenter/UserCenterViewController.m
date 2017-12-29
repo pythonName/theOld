@@ -19,6 +19,8 @@
 #import "MainViewController.h"
 #import "LeveyTabBarController.h"
 #import <Social/Social.h>
+#import "AppDelegate.h"
+#import "AFNetworking.h"
 
 
 static NSString *cellIdet = @"UserCenterTableViewCell";
@@ -180,8 +182,10 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    PhysiologicalDataTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:cellHeaderIdet];
-    headerView.dateLabel.hidden = YES;
+//    PhysiologicalDataTableViewHeader *headerView = [tableView dequeueReusableHeaderFooterViewWithIdentifier:cellHeaderIdet];
+//    headerView.dateLabel.hidden = YES;
+    UIView *headerView = [[UIView alloc] init];
+    headerView.backgroundColor = UIColorRGB(245, 249, 252);
     return headerView;
     
 }
@@ -245,7 +249,8 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
                 imagePicker.delegate = self;
                 imagePicker.allowsEditing = YES;
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentViewController:imagePicker animated:YES completion:nil];
+                [self presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
+                
             }
             
         }];
@@ -257,7 +262,8 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
                 imagePicker.delegate = self;
                 imagePicker.allowsEditing = YES;
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-                [self presentViewController:imagePicker animated:YES completion:nil];
+//                [self presentViewController:imagePicker animated:YES completion:nil];
+                [self presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
             }
             
         }];
@@ -269,7 +275,8 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
         [alert addAction:takingPicAction];
         [alert addAction:okAction];
         [alert addAction:cancelAction];
-        [self presentViewController:alert animated:YES completion:nil];
+//        [self presentViewController:alert animated:YES completion:nil];
+        [self presentViewControllerFromRootController:alert animated:YES completion:nil];
         
         
     }else{
@@ -288,9 +295,22 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     picImageView.image = chosenImage;
     chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
     NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
-    [DataInterface logOutCareRequestWithModel:nil toGetResult:^(LogOutCareResponseModel *result, NSError *error) {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer.timeoutInterval = 20;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
+    [manager.requestSerializer setValue:[UserManager shareInstance].session forHTTPHeaderField:@"Authorization"];
+    [manager POST:@"http://61.155.215.48:5000/api/upload_pic/" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        [formData appendPartWithFileData:imageData name:@"pic" fileName:@"jpg" mimeType:@"image/png"];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
         
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"上传成功！");
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"上传失败！");
     }];
+    
+
     //    [self saveImage:chosenImage withName:@"avatar.png"];
     //    NSURL * filePath = [NSURL fileURLWithPath:[self documentFolderPath]];
     //将图片上传到服务器
@@ -317,7 +337,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 //        NSLog(@"上传图片-- 失败  -%@",error);
 //    }];
     [picker dismissViewControllerAnimated:YES completion:^{
-        
+
     }];
     
 }

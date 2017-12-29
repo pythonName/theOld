@@ -7,6 +7,7 @@
 //
 
 #import "UIViewController+Common.h"
+#import "AppDelegate.h"
 
 @implementation UIViewController (Common)
 
@@ -16,6 +17,12 @@
 
 - (void)showInfoMsg:(NSString *)msg{
     [[Toast makeText:msg] show];
+}
+
+- (void)presentViewControllerFromRootController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
+    UIApplication *application = [UIApplication sharedApplication];
+    AppDelegate *appDelegate = (AppDelegate *)application.delegate;
+    [appDelegate.window.rootViewController presentViewController:viewControllerToPresent animated:YES completion:nil];
 }
 
 @end

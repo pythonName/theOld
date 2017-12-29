@@ -451,4 +451,13 @@
     }];
 }
 
++ (void)uploadPortraitRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/upload_pic"];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:params withMethodType:Post successBlock:^(id value) {
+        
+    } failureBlock:^(id value) {
+        
+    }];
+}
+
 @end
