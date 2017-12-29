@@ -462,4 +462,14 @@
     }];
 }
 
+//绑定新的手机号码即用户登录名
++ (void)changePhoneRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/change-username/"];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:params withMethodType:Post successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
 @end

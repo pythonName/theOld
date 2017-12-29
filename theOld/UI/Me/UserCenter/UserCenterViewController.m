@@ -293,7 +293,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     UIImage * chosenImage = info[UIImagePickerControllerEditedImage];
     UIImageView * picImageView = (UIImageView *)[self.view viewWithTag:500];
     picImageView.image = chosenImage;
-    chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(60, 60)];
+    chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(150, 150)];
     NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -305,9 +305,21 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"上传成功！");
+        CommonResponseModel *model = [CommonResponseModel covertToModelWithDict:responseObject];
+        if (model.code.integerValue == 200) {
+            [self showInfoMsg:@"上传成功！"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_INFO object:nil];
+                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+            });
+           
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"上传失败！");
+        [self showNetworkError];
     }];
     
 

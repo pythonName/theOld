@@ -22,6 +22,8 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *sex;
+@property (nonatomic, copy) NSString *pack_progress;    //服务进度
+@property (nonatomic) NSInteger count;  //监护人数量
 
 
 @end

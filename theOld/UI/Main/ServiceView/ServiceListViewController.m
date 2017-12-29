@@ -11,10 +11,15 @@
 #import "GuardiansViewController.h"
 #import "PhysiologicalDataViewController.h"
 #import "TheRemoteSupervisionViewController.h"
+#import "CareOldManModel.h"
+#import "MainDataManager.h"
 
 @interface ServiceListViewController (){
     CGRect _frame;
 }
+
+@property (nonatomic, strong) UILabel *serviceProgressLabel;
+@property (nonatomic, strong) UILabel *guardianCountLabel;
 
 @end
 
@@ -35,15 +40,22 @@
     [super viewDidLoad];
     
     [self makeUIView];
+    
+    [self selectOldMan:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectOldMan:) name:SELECT_OLDMAN_NOTIFICATION object:nil];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void)makeUIView {
-    
     NSArray *titleArr = @[
-                          @{@"image":@"carePackages.png",@"name":@"照护套餐",@"describe":@"服务进度50%"},
+                          @{@"image":@"carePackages.png",@"name":@"照护套餐",@"describe": @"服务进度0%"},
                           @{@"image":@"PhysiologicalData.png",@"name":@"生理数据",@"describe":@"人工测量"},
                           @{@"image":@"theRemoteSupervision.png",@"name":@"远程监护",@"describe":@"实时监控"},
-                          @{@"image":@"guardians.png",@"name":@"监护人",@"describe":@"监护人"}
+                          @{@"image":@"guardians.png",@"name":@"监护人",@"describe":@"已有0名"}
                           ];
     
     CGFloat width = 153* ScreenHRatioBaseIphone6;
@@ -80,13 +92,33 @@
         lab.font = [UIFont systemFontOfSize:13];
         lab.text = dic[@"describe"];
         lab.textColor = UIColorFromRGB(0x888888);
+        if (i == 0) {
+            _serviceProgressLabel = lab;
+        }
+        
+        if (i == 3) {
+            _guardianCountLabel = lab;
+        }
     }
     
     
 }
 
+
 - (void)setupDelegate:(id)delegate {
     self.delegate = delegate;
+}
+
+- (void)selectOldMan:(NSNotification *)notification{
+    CareOldManModel *model = [[MainDataManager sharedInstance] selectModel];
+    if (model) {
+        _serviceProgressLabel.text = [NSString stringWithFormat:@"服务进度进度%@", model.pack_progress];
+        _guardianCountLabel.text = [NSString stringWithFormat:@"已有%ld名", model.count];
+    }
+    else{
+        _serviceProgressLabel.text = @"服务进度0%";
+        _guardianCountLabel.text = @"已有0名";
+    }
 }
 
 -(void)buttonsClick:(UIButton*)btn  {

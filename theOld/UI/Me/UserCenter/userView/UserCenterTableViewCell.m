@@ -8,7 +8,7 @@
 
 #import "UserCenterTableViewCell.h"
 #import "UserManager.h"
-#import "UIImageView+WebCache.h"
+#import "ImageViewUtil.h"
 
 @implementation UserCenterTableViewCell
 
@@ -17,10 +17,14 @@
     //头像图标
     self.iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenWidth-35-40, 13, 40, 40)];
     _iconImageView.userInteractionEnabled = YES;
+    _iconImageView.layer.cornerRadius = 20;
+    _iconImageView.clipsToBounds = YES;
     UserManager *userManager = [UserManager shareInstance];
-    if (![UserManager shareInstance].photo) {
-        NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, userManager.photo];
-        [_iconImageView sd_setImageWithURL:[NSURL URLWithString:imageStr] placeholderImage:[UIImage imageNamed:@"accountIconDefault.png"]];
+    if ([UserManager shareInstance].photo.length > 0) {
+        
+        NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length - 1)]];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
+        _iconImageView.image = [[UIImage alloc] initWithData:imageData];
     }
     else{
        _iconImageView.image = [UIImage imageNamed:@"accountIconDefault.png"];
@@ -63,9 +67,19 @@
     self.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     self.factNameView.hidden = YES;
     self.accountLabel.hidden = YES;
+    UserManager *userManager = [UserManager shareInstance];
     if (indexPath.row == 0 && indexPath.section ==  0) {
         //头像
          self.iconImageView.hidden = NO;
+        if ([UserManager shareInstance].photo.length > 0) {
+            
+            NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length - 1)]];
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
+            _iconImageView.image = [[UIImage alloc] initWithData:imageData];
+        }
+        else{
+            _iconImageView.image = [UIImage imageNamed:@"accountIconDefault.png"];
+        }
     }else if (indexPath.row == 2 && indexPath.section  == 0){
         //实名信息
         self.factNameView.hidden = NO;

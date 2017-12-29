@@ -13,13 +13,14 @@
 
 + (HeaderOfMainView *)loadHeaderOfMainView{
     HeaderOfMainView *vv = (HeaderOfMainView *)[self loadFromNIB];
-    if([UserManager shareInstance].defaultSelectedOldID == nil) {
-        vv.nameLab.text = @"请先关注老人";
-        vv.sexImageV.hidden = YES;
-    }else{
-        vv.nameLab.text = @"请先关注老人";
-        vv.sexImageV.hidden = NO;
-    }
+    [vv updateUI];
+//    if(!vv.model) {
+//        vv.nameLab.text = @"请先关注老人";
+//        vv.sexImageV.hidden = YES;
+//    }else{
+//        vv.nameLab.text = @"请先关注老人";
+//        vv.sexImageV.hidden = NO;
+//    }
     return vv;
 }
 
@@ -33,4 +34,29 @@
 - (IBAction)gotoResouseButtonClick:(id)sender {
     
 }
+
+- (void)setModel:(CareOldManModel *)model{
+    _model = model;
+    
+    [self updateUI];
+}
+
+- (void)updateUI{
+    if (_model) {
+        _sexImageV.hidden = NO;
+        if ([_model.sex isEqualToString:@"男"]) {
+            _sexImageV.image = [UIImage imageNamed:@"man.png"];
+        }
+        else{
+            _sexImageV.image = [UIImage imageNamed:@"women.png"];
+        }
+        self.nameLab.text = [NSString stringWithFormat:@"%@  %ld岁", _model.name, _model.age];
+    }
+    else{
+        self.nameLab.text = @"请先关注老人";
+        self.sexImageV.hidden = YES;
+    }
+    
+}
+
 @end

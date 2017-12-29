@@ -125,6 +125,7 @@
     [[UserManager shareInstance] loginRequest:dic complication:^(NSDictionary *resultDic) {
         if([[resultDic objectForKey:@"code"] integerValue] == 200) {
             [[Toast makeText:@"登录成功"] show];
+            [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_INFO object:nil];
             if(nil != _superDelegate && [_superDelegate respondsToSelector:@selector(backbuttonclick)]) {
                 [_superDelegate performSelector:@selector(backbuttonclick)];
             }

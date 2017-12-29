@@ -106,6 +106,7 @@ static UserManager *shareInstance = nil;
             NSData *managerData = [NSKeyedArchiver archivedDataWithRootObject:self];
             [[NSUserDefaults standardUserDefaults] setObject:managerData forKey:userManagerKey];
             [[NSUserDefaults standardUserDefaults] synchronize];
+            [[NSNotificationCenter defaultCenter] postNotificationName:USER_LOGIN_NOTIFICATION object:nil];
             
         }
         
@@ -133,6 +134,7 @@ static UserManager *shareInstance = nil;
     self.dateTime = nil;
     self.session = nil;
     self.complete = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:USER_LOGOUT_NOTIFICATION object:nil];
 }
 
 @end

@@ -12,13 +12,20 @@
 #import "LeveyTabBarController.h"
 #import "InfoViewController.h"
 #import "UserManager.h"
+#import "CareOldManModel.h"
+#import "UIAlertController+Custom.h"
+#import "UIAlertAction+Custom.h"
+#import "OldManListViewController.h"
+#import "MainDataManager.h"
+
+
 
 @interface MainViewController ()<PageTurningViewDelegate>{
     CGRect _frame;
     HeaderOfMainView *_headerOfMainView;
     UILabel *_redLab;
 }
-
+//@property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
@@ -65,6 +72,8 @@
    
     _scrollComponent.userInteractionEnabled = YES;
     
+
+    
     //消息按钮
 //    infoImage
     UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,6 +95,32 @@
 //    [LoadingView showCirleView];
 //    [self performSelector:@selector(infoButtonClick) withObject:nil afterDelay:8];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:USER_LOGIN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectOldMan:) name:SELECT_OLDMAN_NOTIFICATION object:nil];
+    
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)selectOldMan:(NSNotification *)notification{
+    _headerOfMainView.model = [[MainDataManager sharedInstance] selectModel];
+}
+
+- (void)loadData{
+    [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            return ;
+        }
+        
+        if ([model.code integerValue] == 200) {
+            MainDataManager *dataManager = [MainDataManager sharedInstance];
+            dataManager.dataArray = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
+            _headerOfMainView.model = [dataManager selectModel];
+        }
+        
+    }];
 }
 
 -(void)infoButtonClick {
@@ -95,8 +130,35 @@
 }
 
 -(void)gotoResourseView {
-    OldManResourseViewController *vv =[[OldManResourseViewController alloc] init];
-    [self.navigationController pushViewController:vv animated:YES];
+    UserManager *userManager = [UserManager shareInstance];
+    if (userManager.isLogined && [userManager.complete isEqualToString:@"yes"]) {
+        OldManResourseViewController *vv =[[OldManResourseViewController alloc] init];
+        [self.navigationController pushViewController:vv animated:YES];
+    }
+    else{
+        
+        UIAlertController *alertView = [UIAlertController alertControllerWithTitle:@"关注老人"
+                                                                           message:@"请先完善您的个人信息"
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+        [alertView setTitleFont:[UIFont systemFontOfSize:14.0] color:[UIColor blackColor]];
+        [alertView setmessageFont:[UIFont systemFontOfSize:14.0] color:[UIColor blackColor]];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
+                                                         style:UIAlertActionStyleCancel
+                                                       handler:nil];
+        [cancelAction setTitleColor:[UIColor grayColor]];
+        
+        UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"立即完善"
+                                                             style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * _Nonnull action) {
+                                                               NSLog(@"");
+                                                           }];
+        [sureAction setTitleColor:baseColor];
+        [alertView addAction:cancelAction];
+        [alertView addAction:sureAction];
+        [self presentViewControllerFromRootController:alertView animated:YES completion:nil];
+    }
+    
 }
 
 //PageTurningViewDelegate

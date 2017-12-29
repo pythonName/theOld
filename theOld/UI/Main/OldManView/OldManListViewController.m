@@ -12,8 +12,12 @@
 #import "DataInterface.h"
 #import "ShiMingViewController.h"
 #import "CareOldManModel.h"
+#import "MJRefresh.h"
+#import "MainDataManager.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
+
+static MainDataManager *dataManager;
 
 @interface OldManListViewController () <UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIAlertViewDelegate>{
     CGRect _frame;
@@ -22,7 +26,7 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 
 @property (strong, nonatomic) UICollectionView *collectionView;
 
-@property (strong, nonatomic) NSMutableArray *dataArr;
+//@property (strong, nonatomic) NSMutableArray *dataArr;
 
 @property (nonatomic) NSInteger selectIndex;
 
@@ -30,12 +34,12 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 
 @implementation OldManListViewController
 
--(NSMutableArray*)dataArr {
-    if (!_dataArr) {
-        _dataArr = [NSMutableArray array];
-    }
-    return _dataArr;
-}
+//-(NSMutableArray*)dataArr {
+//    if (!_dataArr) {
+//        _dataArr = [NSMutableArray array];
+//    }
+//    return _dataArr;
+//}
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super init];
@@ -51,55 +55,29 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    dataManager = [MainDataManager sharedInstance];
     
+    [self makeMainView];
+    
+    [self loadData];
+}
+
+- (void)loadData{
     [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
+        [self.collectionView.mj_header endRefreshing];
         if (error) {
             [self showNetworkError];
             return ;
         }
         
         if ([model.code integerValue] == 200) {
-            NSLog(@"%@", model.data);
-            self.dataArr = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
+            MainDataManager *dataManager = [MainDataManager sharedInstance];
+            dataManager.dataArray = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
             [self.collectionView reloadData];
         }
         
     }];
-    
-//    [[DataInterface shareInstance] followOldersListRequest:nil complication:^(NSDictionary *resultDic) {
-//        code = 200;
-//        data =     (
-//                    {
-//                        "ID_number" = 420521199910100011;
-//                        address = xxxxxx;
-//                        age = 50;
-//                        area = "\U6e56\U5317\U6b66\U6c49";
-//                        "cell_phone" = 13928400211;
-//                        "fixed_phone" = 1521111212;
-//                        name = "\U9648xx";
-//                        photo = "";
-//                        sex = "\U7537";
-//                    },
-//                    {
-//                        "ID_number" = 420521199910100012;
-//                        address = xxxxxx;
-//                        age = 50;
-//                        area = "\U6e56\U5317\U6b66\U6c49";
-//                        "cell_phone" = 13928400211;
-//                        "fixed_phone" = 1521111212;
-//                        name = "\U738bxx";
-//                        photo = "";
-//                        sex = "\U5973";
-//                    }
-//                    );
-//        msg = "login success!";
-//        total = 2;
-//    }];
-    
-    [self makeMainView];
 }
-
- 
 
 -(void)makeMainView {
     //UICollection
@@ -117,13 +95,16 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     [self.view addSubview:self.collectionView];
     self.collectionView.backgroundColor = UIColorFromRGB(0xf5f9fd);
     [self.collectionView registerNib:[UINib nibWithNibName:@"OldManListCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:cellIdent];
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData];
+    }];
 }
 
 #pragma mark - UICollectionViewDataSource method
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return self.dataArr.count+1;
+    return [MainDataManager sharedInstance].dataArray.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -132,13 +113,13 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
     
     cell.layer.cornerRadius = 10;
     
-    if (self.dataArr.count == indexPath.row) {
+    if (dataManager.dataArray.count == indexPath.row) {
         cell.personImageV.image = [UIImage imageNamed:@"addImage.png"];
         cell.nameLab.text = @"新增老人";
     }else{
         //正常数据
         cell.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
-        CareOldManModel *model = [self.dataArr objectAtIndex:indexPath.row];
+        CareOldManModel *model = [[MainDataManager sharedInstance].dataArray objectAtIndex:indexPath.row];
         cell.nameLab.text = model.name;
         if (_selectIndex == indexPath.row) {
             cell.nameLab.backgroundColor = baseColor;
@@ -167,8 +148,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    if (self.dataArr.count == indexPath.row) {
-        if(self.dataArr.count == 0){
+    if (dataManager.dataArray.count == indexPath.row) {
+        if(dataManager.dataArray.count == 0){
 //            //弹出完善信息提示
 //            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"关注老人" message:@"请完善您的个人信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即完善", nil];
 //            [alter show];
@@ -184,6 +165,8 @@ static NSString *cellIdent = @"OldManListCollectionViewCell";
         //普通数据点击更新界面
         self.selectIndex = indexPath.row;
         [collectionView reloadData];
+        [MainDataManager sharedInstance].selectIndex = indexPath.row;
+        [[NSNotificationCenter defaultCenter] postNotificationName:SELECT_OLDMAN_NOTIFICATION object:nil];
     }
 }
 

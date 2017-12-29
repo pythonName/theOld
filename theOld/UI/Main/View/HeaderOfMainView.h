@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CareOldManModel.h"
 
 @interface HeaderOfMainView : UIView
 
@@ -19,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *resouseButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *gotoResouseBtn;
+
+@property (nonatomic, weak) CareOldManModel *model;
 
 
 - (IBAction)gotoResouseButtonClick:(id)sender;

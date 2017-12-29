@@ -170,4 +170,10 @@ typedef void (^callBackBlock)(id sender);
 
 #define PROGRESS_TIME    30
 
-#define REQUEST_SUCCESS_CODE  200
+#define REQUEST_SUCCESS_CODE  200       //网络请求成功标识
+
+#define UPDATE_USER_INFO   @"updateUserINFO"     //用户信息变更时发送通知
+#define USER_LOGIN_NOTIFICATION @"userLoginNotification"    //用户登录通知
+#define USER_LOGOUT_NOTIFICATION @"userLogoutNotification"  //用户登出通知
+
+#define SELECT_OLDMAN_NOTIFICATION @"selectOldManNotification"  //选择关注老人列表的通知

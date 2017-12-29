@@ -12,6 +12,9 @@
 #import "CustomNavigationController.h"
 #import "UserCenterViewController.h"
 #import "ShiMingViewController.h"
+#import "ImageViewUtil.h"
+
+
 @interface MeViewController ()<UITableViewDelegate,UITableViewDataSource>{
     CGRect _frame;
     UITableView *_mainTableView;
@@ -19,6 +22,7 @@
 @property (nonatomic, strong) NSArray *labelNameArr;
 @property (nonatomic, strong) NSArray *labelImageNameArr;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIButton *centerButton;
 
 @end
 
@@ -49,11 +53,17 @@ static CGFloat CellH = 50;
     
     //中心按钮
     UIButton *centerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [centerBtn setImage:[UIImage imageNamed:@"userCenterMid"] forState:UIControlStateNormal];
+    self.centerButton = centerBtn;
+    [self updateUserInfo];
     centerBtn.frame = CGRectMake(CGRectGetWidth(headerV.frame)/2-40, 40*ScreenHRatioBaseIphone6, 80, 80);
+    centerBtn.layer.cornerRadius = 40;
+    centerBtn.clipsToBounds = YES;
     //centerBtn.center = CGPointMake(CGRectGetWidth(headerV.frame)/2, CGRectGetHeight(headerV.frame)/2);
     [centerBtn addTarget:self action:@selector(centerBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [headerV addSubview:centerBtn];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo) name:UPDATE_USER_INFO object:nil];
+    
     
     UILabel *tt = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(centerBtn.frame)+13, CGRectGetWidth(headerV.frame), 20)];
     tt.text = @"个人中心";
@@ -90,6 +100,10 @@ static CGFloat CellH = 50;
     [self.leveyTabBarController showTabBar:YES];
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)centerBtnClick {
     UIViewController *vc = nil;
     if ([UserManager shareInstance].isLogined) {
@@ -105,6 +119,18 @@ static CGFloat CellH = 50;
 
     }
     
+}
+
+- (void)updateUserInfo{
+    UserManager *userManager = [UserManager shareInstance];
+    if (userManager.photo.length > 0) {
+        NSString *imageURL = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length -1)]];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+        [self.centerButton setImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
+    }
+    else{
+        [self.centerButton setImage:[UIImage imageNamed:@"userCenterMid"] forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark - tableViewDelegate
