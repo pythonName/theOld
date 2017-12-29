@@ -203,7 +203,7 @@
 - (void)getYanzhengma:(UIButton*)btn {
     
     if (self.userNameTextField.text != nil && [VerifyIdentityCard isPhoneNumber:self.userNameTextField.text]) {
-         [self startTime];
+        
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setObject:self.userNameTextField.text forKey:@"username"];
         [params setObject:@"regist" forKey:@"type"];
@@ -211,10 +211,12 @@
 //            NSLog(@"resultDic = %@",resultDic);
             NSInteger code = [[resultDic objectForKey:@"code"] integerValue];
             if (code == 200) {
+                [self startTime];
                 [[Toast makeText:@"验证码发送成功！"] show];
             }
             else{
                 [[Toast makeText:@"验证码发送失败！"] show];
+                
             }
             
         }];

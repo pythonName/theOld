@@ -314,9 +314,11 @@
 
 
 //老人账户列表数据请求
-+ (void)theOldAccountRequestWithModel:(TheOldAccountRequestModel *)model toGetResult:(void (^) (TheOldAccountResponseModel *result, NSError *error))completionBlock{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
+- (void)theOldAccountRequestWithModel:(TheOldAccountRequestModel *)model toGetResult:(void (^) (TheOldAccountResponseModel *result, NSError *error))completionBlock{
+    
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/old_pack/",TESTHOST];
+    id params = [TheOldAccountRequestModel covertToDictWithModelObject:model];
+
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
         TheOldAccountResponseModel *response = [TheOldAccountResponseModel covertToModelWithDict:value];
         completionBlock(response,nil);
@@ -327,7 +329,7 @@
 
 
 //老人账户详情数据请求
-+ (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock{
+- (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock{
     NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
     id params = @"";
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {

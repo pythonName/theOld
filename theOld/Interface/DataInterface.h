@@ -112,10 +112,10 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 + (void)userCenterRequestWithModel:(UserCenterRequestModel *)model toGetResult:(void (^) (UserCenterResponseModel *result, NSError *error))completionBlock;
 
 //老人账户列表数据请求
-+ (void)theOldAccountRequestWithModel:(TheOldAccountRequestModel *)model toGetResult:(void (^) (TheOldAccountResponseModel *result, NSError *error))completionBlock;
+- (void)theOldAccountRequestWithModel:(TheOldAccountRequestModel *)model toGetResult:(void (^) (TheOldAccountResponseModel *result, NSError *error))completionBlock;
 
 //老人账户详情数据请求
-+ (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock;
+- (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock;
 
 //我的优惠券列表数据请求
 + (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock;

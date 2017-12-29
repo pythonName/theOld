@@ -54,13 +54,23 @@ static NSString *cellIdent = @"OldAccountTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"老人账户";
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
+//    [self.dataArr addObject:@"1"];
+//    [self.dataArr addObject:@"1"];
+    [self loadOldManAccountList];
     self.mainTableView.backgroundColor = UIColorFromRGB(0xF5F8FC);
     [self.view addSubview:self.mainTableView];
     [self.mainTableView registerNib:[UINib nibWithNibName:@"OldAccountTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdent];
     self.mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.mainTableView.tableFooterView = [[UIView alloc] init];
+}
+
+-(void)loadOldManAccountList  {
+    TheOldAccountRequestModel *model  =[[TheOldAccountRequestModel alloc] init];
+    model.ID_number = @0;
+    [[DataInterface shareInstance] theOldAccountRequestWithModel:model toGetResult:^(TheOldAccountResponseModel *result, NSError *error) {
+        
+    }];
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

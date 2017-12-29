@@ -10,4 +10,6 @@
 
 @interface TheOldAccountRequestModel : YKNetworkBaseModel
 
+@property (nonnull, strong)NSNumber *ID_number;
+
 @end
