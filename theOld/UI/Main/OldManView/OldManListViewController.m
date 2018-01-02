@@ -14,6 +14,7 @@
 #import "CareOldManModel.h"
 #import "MJRefresh.h"
 #import "MainDataManager.h"
+#import "UserManager.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
@@ -59,7 +60,10 @@ static MainDataManager *dataManager;
     
     [self makeMainView];
     
-    [self loadData];
+    if ([UserManager shareInstance].isLogined) {
+        [self loadData];
+    }
+    
 }
 
 - (void)loadData{

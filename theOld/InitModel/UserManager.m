@@ -10,6 +10,9 @@
 #import "NSObject+Runtime.h"
 #import "DataInterface.h"
 
+#define userManagerKey  @"userManagerKey"
+
+
 @implementation UserManager
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -54,7 +57,7 @@ static UserManager *shareInstance = nil;
     
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"userManagerData"];
+        NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:userManagerKey];
         if (data != nil) {
             UserManager *userManager = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             shareInstance = userManager;
@@ -85,7 +88,7 @@ static UserManager *shareInstance = nil;
     }
 }
 
-#define userManagerKey  @"userManagerKey"
+
 - (void)loginRequest: (id)params complication:(resultDic)comlication {
     [[DataInterface shareInstance] loginRequest:params complication:^(NSDictionary *resultDic) {
         int code = [[resultDic objectForKey:@"code"] intValue];
