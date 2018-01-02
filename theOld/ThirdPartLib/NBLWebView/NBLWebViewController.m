@@ -7,7 +7,7 @@
 //
 
 #import "NBLWebViewController.h"
-
+#import "UserManager.h"
 //handler name
 static NSString *baseMessagehandler = @"baseMessagehandler";
 
@@ -54,6 +54,10 @@ static NSString *goBack = @"goBack";
 {
     self = [super init];
     if (self) {
+        NSString *ss = [UserManager shareInstance].session;
+        if (ss.length > 0) {
+            urlString = [NSString stringWithFormat:@"%@?token=%@",urlString,[UserManager shareInstance].session];
+        }
         _urlString = urlString;
     }
     

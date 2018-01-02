@@ -10,4 +10,7 @@
 
 @interface OldAccountDetailViewController : UIViewController
 
+@property (nonatomic, copy) NSString *ID_number;
+
+
 @end

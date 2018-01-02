@@ -10,4 +10,14 @@
 
 @implementation ListOfCouponsResponseModel
 
+
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"data" : [CouponListData class]};
+}
+
 @end
+
+@implementation CouponListData
+
+@end
+

@@ -53,10 +53,12 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"优惠券";
     [self initHeaderView];
-    [self.dataArr addObject:@"1"];
-    [self.dataArr addObject:@"1"];
+//    [self.dataArr addObject:@"1"];
+//    [self.dataArr addObject:@"1"];
+    [self loadCounponData];
+    
     self.mainTableView.backgroundColor = UIColorFromRGB(0xF5F8FC);
     [self.view addSubview:self.mainTableView];
     [self.mainTableView registerClass:[MyAccountTableViewCell class] forCellReuseIdentifier:cellIdent];
@@ -66,6 +68,15 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
     
 }
 
+-(void)loadCounponData {
+    [[DataInterface shareInstance] listOfCouponsRequestWithModel:nil toGetResult:^(ListOfCouponsResponseModel *result, NSError *error) {
+        if (result.code == 200) {
+            self.dataArr = [NSMutableArray arrayWithArray:result.data];
+            [self.mainTableView reloadData];
+        }
+    }];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;
 }
@@ -73,6 +84,8 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MyAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    CouponListData *model = self.dataArr[indexPath.row];
+    [cell refreshUIViewWith:model];
     return cell;
 }
 
@@ -121,6 +134,14 @@ static NSString *cellIdent = @"MyAccountTableViewCell";
 //兑换按钮事件
 -(void)exchangeButtonClick{
     //发送请求，刷新数据列表，就是在原列表中在增加一条信息
+    CouponsForRequestModel *model = [[CouponsForRequestModel alloc] init];
+    model.number = _textFiledView.text;
+    [[DataInterface shareInstance] couponsForRequestWithModel:model toGetResult:^(CouponsForResponseModel *result, NSError *error) {
+        [self showInfoMsg:result.msg];
+        if(result.code == 200) {
+            [self loadCounponData];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

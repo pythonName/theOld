@@ -149,17 +149,17 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 }
 
 -(void)leftButtonClick {
-//    [self.navigationController popViewControllerAnimated:YES];
-//    [self dismissViewControllerAnimated:YES completion:^{
-//    }];
-//    LeveyTabBarController *tabVC = (LeveyTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
-//
-//    MainViewController *mainController=[[MainViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight*ScreenRatio, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight*ScreenRatio)];
-//    NSInteger pageInde = 0;
-//    CustomNavigationController *ctl =[tabVC.viewControllers objectAtIndex:pageInde];
-//    tabVC.selectedIndex = 0;
-//    [ctl  pushViewController:mainController animated:YES];
-//    mainController.pageIndex = 1;
+    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+    LeveyTabBarController *tabVC = (LeveyTabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+
+    MainViewController *mainController=[[MainViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight*ScreenRatio, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight*ScreenRatio)];
+    NSInteger pageInde = 0;
+    CustomNavigationController *ctl =[tabVC.viewControllers objectAtIndex:pageInde];
+    tabVC.selectedIndex = 0;
+    [ctl  pushViewController:mainController animated:YES];
+    mainController.pageIndex = 1;
 }
 
 #pragma mark - tableViewDelegate

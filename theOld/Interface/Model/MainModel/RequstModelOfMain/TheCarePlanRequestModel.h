@@ -10,4 +10,9 @@
 
 @interface TheCarePlanRequestModel : YKNetworkBaseModel
 
+@property (nonatomic, strong)NSString *ID_number;
+
+@property (nonatomic, strong)NSString *date;
+
+
 @end

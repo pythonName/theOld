@@ -9,5 +9,6 @@
 #import "YKNetworkBaseModel.h"
 
 @interface TheOldAccountDetailRequestModel : YKNetworkBaseModel
+@property (nonnull, strong)NSString *ID_number;
 
 @end

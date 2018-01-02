@@ -10,4 +10,6 @@
 
 @interface CouponsForRequestModel : YKNetworkBaseModel
 
+@property (nonatomic, strong)NSString *number;
+
 @end

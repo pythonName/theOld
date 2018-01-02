@@ -10,4 +10,12 @@
 
 @implementation TheOldAccountDetailResponseModel
 
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"data" : [OldAccountDataList class]};
+}
+
+@end
+
+@implementation OldAccountDataList
+
 @end

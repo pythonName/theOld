@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLab;
 //续费按钮
 @property (weak, nonatomic) IBOutlet UIButton *renewalBtn;
+@property (weak, nonatomic) IBOutlet UILabel *titleLab;
 
 @property (strong, nonatomic) ECListView *listView;
 

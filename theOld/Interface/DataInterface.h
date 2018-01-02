@@ -106,7 +106,11 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 + (void)theGuardianListRequestWithModel:(TheGuardianListRequestModel *)model toGetResult:(void (^) (TheGuardianListResponseModel *result, NSError *error))completionBlock;
 
 //照护计划数据请求
-+ (void)theCarePlanRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock;
+- (void)theCarePlanRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock;
+
+//照护计划数据请求
+- (void)theCarePlanContentRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock;
+
 
 //个人中心数据请求
 + (void)userCenterRequestWithModel:(UserCenterRequestModel *)model toGetResult:(void (^) (UserCenterResponseModel *result, NSError *error))completionBlock;
@@ -118,10 +122,10 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 - (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock;
 
 //我的优惠券列表数据请求
-+ (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock;
+- (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock;
 
 //我的优惠券兑换数据请求
-+ (void)couponsForRequestWithModel:(CouponsForRequestModel *)model toGetResult:(void (^) (CouponsForResponseModel *result, NSError *error))completionBlock;
+- (void)couponsForRequestWithModel:(CouponsForRequestModel *)model toGetResult:(void (^) (CouponsForResponseModel *result, NSError *error))completionBlock;
 
 //退出登录数据请求
 + (void)logOutCareRequestWithModel:(LogOutCareRequestModel *)model toGetResult:(void (^) (LogOutCareResponseModel *result, NSError *error))completionBlock;

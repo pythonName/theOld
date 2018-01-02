@@ -10,4 +10,12 @@
 
 @implementation TheCarePlanResponseModel
 
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"data" : [DateModel class]};
+}
+
+@end
+
+@implementation DateModel
+
 @end
