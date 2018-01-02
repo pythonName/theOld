@@ -185,7 +185,7 @@ static CGFloat CellH = 50;
     switch (indexPath.row) {
         case 0:
         {
-            OrderCenterViewController *orderVC=[[OrderCenterViewController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight) withURLString:@"https://www.baidu.com"];
+            OrderCenterViewController *orderVC=[[OrderCenterViewController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight) withURLString:[NSString stringWithFormat:@"%@api/order_index/",TESTHOST]];
             [self.navigationController pushViewController:orderVC animated:YES];
          
         }

@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *ID_number;
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *addtime;
-@property (nonatomic) NSInteger age;
+//@property (nonatomic) NSInteger age;
 @property (nonatomic, copy) NSString *area;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *cell_phone;
@@ -23,7 +23,9 @@
 @property (nonatomic, copy) NSString *photo;
 @property (nonatomic, copy) NSString *sex;
 @property (nonatomic, copy) NSString *pack_progress;    //服务进度
-@property (nonatomic) NSInteger count;  //监护人数量
-
+@property (nonatomic,assign) NSInteger count;  //监护人数量
+@property (nonatomic,assign) NSInteger age;//
 
 @end
+
+ 

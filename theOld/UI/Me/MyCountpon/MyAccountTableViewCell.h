@@ -10,4 +10,18 @@
 
 @interface MyAccountTableViewCell : UITableViewCell
 
+@property(nonatomic, strong)UIImageView *imagebackView;
+
+@property(nonatomic, strong)UILabel *priceLab;
+
+@property(nonatomic, strong)UILabel *nameLab;
+
+@property(nonatomic, strong)UILabel *changeDateLab;
+
+@property(nonatomic, strong)UILabel *effectiveDateLab;
+
+
+-(void)refreshUIViewWith:(CouponListData*)dataModel;
+
+
 @end

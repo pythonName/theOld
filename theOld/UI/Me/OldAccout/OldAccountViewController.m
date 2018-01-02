@@ -9,7 +9,9 @@
 #import "OldAccountViewController.h"
 #import "OldAccountTableViewCell.h"
 #import "OldAccountDetailViewController.h"
-
+#import "UserManager.h"
+#import "UIImageView+WebCache.h"
+#import "CareOldManModel.h"
 static NSString *cellIdent = @"OldAccountTableViewCell";
 @interface OldAccountViewController ()<UITableViewDelegate,UITableViewDataSource>{
     CGRect _frame;
@@ -65,11 +67,22 @@ static NSString *cellIdent = @"OldAccountTableViewCell";
 }
 
 -(void)loadOldManAccountList  {
-    TheOldAccountRequestModel *model  =[[TheOldAccountRequestModel alloc] init];
-    model.ID_number = @0;
-    [[DataInterface shareInstance] theOldAccountRequestWithModel:model toGetResult:^(TheOldAccountResponseModel *result, NSError *error) {
-        
-    }];
+   
+        [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
+//            [self.collectionView.mj_header endRefreshing];
+            if (error) {
+                [self showNetworkError];
+                return ;
+            }
+            
+            if ([model.code integerValue] == 200) {
+ 
+                self.dataArr = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
+                [self.mainTableView reloadData];
+            }
+            
+        }];
+
     
 }
 
@@ -80,6 +93,12 @@ static NSString *cellIdent = @"OldAccountTableViewCell";
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OldAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    CareOldManModel *dataModel =self.dataArr[indexPath.row];
+    [cell.iconImageV sd_setImageWithURL:[NSURL URLWithString:dataModel.photo] placeholderImage:[UIImage imageNamed:@"accountIconDefault.png"]];
+cell.nameLab.text = dataModel.name;
+
+    cell.ageLab.text = [NSString stringWithFormat:@"%@ %ld",dataModel.sex,(long)dataModel.age];
+//    cell.s
     return cell;
 }
 
@@ -89,6 +108,8 @@ static NSString *cellIdent = @"OldAccountTableViewCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OldAccountDetailViewController *vv = [[OldAccountDetailViewController alloc] init];
+    CareOldManModel *dataModel =self.dataArr[indexPath.row];
+    vv.ID_number = dataModel.ID_number;
     [self.navigationController pushViewController:vv animated:YES];
 }
 

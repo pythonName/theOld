@@ -289,9 +289,20 @@
 }
 
 //照护计划数据请求
-+ (void)theCarePlanRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock {
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
+- (void)theCarePlanRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/get_care_plan/",TESTHOST];
+    id params = [TheOldAccountDetailRequestModel covertToDictWithModelObject:model];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+        TheCarePlanResponseModel *response = [TheCarePlanResponseModel covertToModelWithDict:value];
+        completionBlock(response,nil);
+    } failureBlock:^(id value) {
+        completionBlock(nil,value);
+    }];
+}
+
+- (void)theCarePlanContentRequestWithModel:(TheCarePlanRequestModel *)model toGetResult:(void (^) (TheCarePlanResponseModel *result, NSError *error))completionBlock {
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/get_care_plan/",TESTHOST];
+    id params = [TheOldAccountDetailRequestModel covertToDictWithModelObject:model];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
         TheCarePlanResponseModel *response = [TheCarePlanResponseModel covertToModelWithDict:value];
         completionBlock(response,nil);
@@ -330,22 +341,22 @@
 
 //老人账户详情数据请求
 - (void)theOldAccountDetailRequestWithModel:(TheOldAccountDetailRequestModel *)model toGetResult:(void (^) (TheOldAccountDetailResponseModel *result, NSError *error))completionBlock{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/old_pack/",TESTHOST];
+    id params = [TheOldAccountDetailRequestModel covertToDictWithModelObject:model];
+    
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
         TheOldAccountDetailResponseModel *response = [TheOldAccountDetailResponseModel covertToModelWithDict:value];
         completionBlock(response,nil);
     } failureBlock:^(id value) {
         completionBlock(nil,value);
-    }];
-}
+    }];}
 
 
 //我的优惠券列表数据请求
-+ (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
-    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+- (void)listOfCouponsRequestWithModel:(ListOfCouponsRequestModel *)model toGetResult:(void (^) (ListOfCouponsResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/get_coupon/",TESTHOST];
+    
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:nil withMethodType:Get successBlock:^(id value) {
         ListOfCouponsResponseModel *response = [ListOfCouponsResponseModel covertToModelWithDict:value];
         completionBlock(response,nil);
     } failureBlock:^(id value) {
@@ -355,10 +366,11 @@
 
 
 //我的优惠券兑换数据请求
-+ (void)couponsForRequestWithModel:(CouponsForRequestModel *)model toGetResult:(void (^) (CouponsForResponseModel *result, NSError *error))completionBlock{
-    NSString *requestUrl = [NSString stringWithFormat:@"%@api/logout/",TESTHOST];
-    id params = @"";
-    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Get successBlock:^(id value) {
+- (void)couponsForRequestWithModel:(CouponsForRequestModel *)model toGetResult:(void (^) (CouponsForResponseModel *result, NSError *error))completionBlock{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@api/exchange_coupon/",TESTHOST];
+    id params = [CouponsForRequestModel covertToDictWithModelObject:model];
+
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
         CouponsForResponseModel *response = [CouponsForResponseModel covertToModelWithDict:value];
         completionBlock(response,nil);
     } failureBlock:^(id value) {

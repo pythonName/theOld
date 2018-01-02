@@ -2461,7 +2461,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34Y7VA8GFC;
+				DEVELOPMENT_TEAM = N7ACXAH9HH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/AMAPKIt",
@@ -2475,7 +2475,7 @@
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/OpenPlayer",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lixt.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lixt.theOldo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2487,7 +2487,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34Y7VA8GFC;
+				DEVELOPMENT_TEAM = N7ACXAH9HH;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/AMAPKIt",
@@ -2501,7 +2501,7 @@
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/OpenPlayer",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lixt.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lixt.theOldo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

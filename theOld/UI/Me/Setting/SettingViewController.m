@@ -107,7 +107,7 @@ static NSString *cellIdent = @"SettingTableViewCell";
         [self.navigationController pushViewController:vv animated:YES];
     }else if (indexPath.row == 1){
         //帮助中心
-        HelpCenterViewController *vv = [[HelpCenterViewController alloc] initWithFrame:self.view.bounds withURLString:@"http://www.baidu.com"];
+        HelpCenterViewController *vv = [[HelpCenterViewController alloc] initWithFrame:self.view.bounds withURLString:[NSString stringWithFormat:@"%@api/help_center/",TESTHOST]];
         [self.navigationController pushViewController:vv animated:YES];
         
     }else if (indexPath.row == 2) {

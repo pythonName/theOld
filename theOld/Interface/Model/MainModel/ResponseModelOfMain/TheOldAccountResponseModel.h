@@ -10,4 +10,8 @@
 
 @interface TheOldAccountResponseModel : YKNetworkBaseModel
 
+
+
 @end
+
+

@@ -70,7 +70,7 @@
 -(CGFloat )loadTextHeightWithData:(NSArray*)dataArr {
     CGFloat height = 0;
     for (NSString *str in dataArr) {
-       CGFloat hh = [AttributedStringAndImage heightForString:str andWidth:ScreenWidth-24];
+       CGFloat hh = [AttributedStringAndImage heightForString:str andWidth:ScreenWidth-24 fontSize:14];
         height = height+hh+24;
     }
     

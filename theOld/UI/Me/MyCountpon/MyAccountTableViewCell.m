@@ -7,7 +7,7 @@
 //
 
 #import "MyAccountTableViewCell.h"
-
+//#import "UIImagev"
 @implementation MyAccountTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -24,35 +24,47 @@
     //背景图片
     UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(18*ScreenHRatioBaseIphone6, 7, ScreenWidth-30*ScreenHRatioBaseIphone6, 100*ScreenHRatioBaseIphone6)];
     [self.contentView addSubview:imageV];
-    imageV.image = [UIImage imageNamed:@"counponImageNo.png"];
-  
+    self.imagebackView = imageV;
     //价格lab
-    UILabel *priceLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, CGRectGetHeight(imageV.frame), CGRectGetHeight(imageV.frame))];
-    [imageV addSubview:priceLab];
-    priceLab.text = @"600元";
-    priceLab.textAlignment = NSTextAlignmentCenter;
-    priceLab.textColor = [UIColor whiteColor];
+    self.priceLab = [[UILabel alloc] initWithFrame:CGRectMake(5, 0, CGRectGetHeight(imageV.frame), CGRectGetHeight(imageV.frame))];
+    [imageV addSubview:self.priceLab];
+    self.priceLab.textAlignment = NSTextAlignmentCenter;
+    self.priceLab.textColor = [UIColor whiteColor];
     
     //现金券
-    UILabel *nameLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15, 15, CGRectGetWidth(imageV.frame), 25)];
-    [imageV addSubview:nameLab];
-    nameLab.text = @"现金券";
-    nameLab.font = [UIFont systemFontOfSize:15];
+    self.nameLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15, 15, CGRectGetWidth(imageV.frame), 25)];
+    [imageV addSubview:self.nameLab];
+    self.nameLab.font = [UIFont systemFontOfSize:15];
     
     //兑换日期
-    UILabel *changeDateLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15, CGRectGetHeight(imageV.frame)/2-4, CGRectGetWidth(imageV.frame), 20)];
-    [imageV addSubview:changeDateLab];
-    changeDateLab.text = @"兑换日期：2099-09-09";
+    self.changeDateLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15, CGRectGetHeight(imageV.frame)/2-4, CGRectGetWidth(imageV.frame), 20)];
+    [imageV addSubview:self.changeDateLab];
     
-    changeDateLab.textColor = UIColorFromRGB(0x666666);
-    changeDateLab.font = [UIFont systemFontOfSize:11];
+    self.changeDateLab.textColor = UIColorFromRGB(0x666666);
+    self.changeDateLab.font = [UIFont systemFontOfSize:11];
     //有效日期
-    UILabel *effectiveDateLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15,  CGRectGetHeight(imageV.frame)/2+17, CGRectGetWidth(imageV.frame), 20)];
-    [imageV addSubview:effectiveDateLab];
-    effectiveDateLab.text = @"有效日期：2099-09-09";
+    self.effectiveDateLab = [[UILabel alloc] initWithFrame:CGRectMake(100*ScreenHRatioBaseIphone6 +15,  CGRectGetHeight(imageV.frame)/2+17, CGRectGetWidth(imageV.frame), 20)];
+    [imageV addSubview:self.effectiveDateLab];
  
-    effectiveDateLab.textColor = UIColorFromRGB(0x666666);
-    effectiveDateLab.font = [UIFont systemFontOfSize:11];
+    self.effectiveDateLab.textColor = UIColorFromRGB(0x666666);
+    self.effectiveDateLab.font = [UIFont systemFontOfSize:11];
+}
+
+-(void)refreshUIViewWith:(CouponListData*)dataModel {
+    
+    self.nameLab.text = dataModel.type;//@"现金券";
+    self.priceLab.text = [NSString stringWithFormat:@"%ld",dataModel.price];
+    if(dataModel.available == 1){
+        //未使用
+        self.imagebackView.image= [UIImage imageNamed:@"counponImageNo.png"];
+
+    }else{
+        self.imagebackView.image= [UIImage imageNamed:@"counponImageUse.png"];
+    }
+
+    self.effectiveDateLab.text = [NSString stringWithFormat:@"有效日期:%@",dataModel.start_time]; //@"有效日期：2099-09-09";
+    self.changeDateLab.text = [NSString stringWithFormat:@"兑换日期:%@",dataModel.end_time];//@"兑换日期：2099-09-09";
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

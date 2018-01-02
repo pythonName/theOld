@@ -63,7 +63,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专业版个旧市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ng8-oZ-2Ao">
-                        <rect key="frame" x="12" y="17" width="86" height="21"/>
+                        <rect key="frame" x="8" y="17" width="86" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="M0p-Ar-IIp"/>
                         </constraints>
@@ -83,7 +83,7 @@
                     <constraint firstItem="dN0-P7-Z7k" firstAttribute="top" secondItem="u0s-PZ-iTy" secondAttribute="bottom" constant="10" id="gYk-av-e9F"/>
                     <constraint firstAttribute="trailing" secondItem="heP-lq-ckQ" secondAttribute="trailing" id="gep-uN-tke"/>
                     <constraint firstItem="c6u-vN-md4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lhx-3D-v7t"/>
-                    <constraint firstItem="Ng8-oZ-2Ao" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="mqH-d2-kFS"/>
+                    <constraint firstItem="Ng8-oZ-2Ao" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mqH-d2-kFS"/>
                     <constraint firstItem="heP-lq-ckQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pIX-uo-O5b"/>
                     <constraint firstItem="KUY-2I-Zcl" firstAttribute="top" secondItem="c6u-vN-md4" secondAttribute="bottom" constant="8.5" id="rKH-BN-mLi"/>
                     <constraint firstItem="heP-lq-ckQ" firstAttribute="top" secondItem="dN0-P7-Z7k" secondAttribute="bottom" id="saY-vG-Mct"/>
@@ -93,8 +93,9 @@
             <connections>
                 <outlet property="dateLab" destination="u0s-PZ-iTy" id="Ypg-Uy-joT"/>
                 <outlet property="renewalBtn" destination="KUY-2I-Zcl" id="97X-vb-fh6"/>
+                <outlet property="titleLab" destination="Ng8-oZ-2Ao" id="5iO-dS-4KE"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="59"/>
+            <point key="canvasLocation" x="-99" y="49"/>
         </tableViewCell>
     </objects>
 </document>

@@ -9,5 +9,10 @@
 #import "YKNetworkBaseModel.h"
 
 @interface CouponsForResponseModel : YKNetworkBaseModel
+@property (nonatomic, copy) NSString *msg;
+
+@property (nonatomic, assign) id  data;
+
+@property (nonatomic, assign) NSInteger code;
 
 @end
