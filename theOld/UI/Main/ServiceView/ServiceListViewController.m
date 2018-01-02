@@ -13,6 +13,11 @@
 #import "TheRemoteSupervisionViewController.h"
 #import "CareOldManModel.h"
 #import "MainDataManager.h"
+#import "UserManager.h"
+#import "LoginViewController.h"
+#import "CustomNavigationController.h"
+#import "MainViewController.h"
+#import "LeveyTabBarController.h"
 
 @interface ServiceListViewController (){
     CGRect _frame;
@@ -48,6 +53,15 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)userLoginNotification:(NSNotification *)notification{
+    [self selectOldMan:nil];
+}
+
+- (void)userLogoutNotification:(NSNotification *)notification{
+    [[MainDataManager sharedInstance] clearData];
+    [self selectOldMan:nil];
 }
 
 -(void)makeUIView {
@@ -125,6 +139,15 @@
     NSInteger tag = btn.tag-1000;
     
     UIViewController *vc = (UIViewController *)self.delegate;
+    if (![UserManager shareInstance].isLogined) {
+        LoginViewController *vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
+        [vc.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
+            
+        }];
+        return;
+    }
+    
     if (tag == 0) {
         //看护套餐
         CarePackagesViewController *vv = [[CarePackagesViewController alloc] init];

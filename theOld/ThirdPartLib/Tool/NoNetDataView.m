@@ -32,4 +32,14 @@
     self.descriptionLab.text = @"无数据的视图";
 }
 
+- (void)updateNoDataView{
+    [self resetUIView];
+}
+
+- (IBAction)buttonClick:(id)sender {
+    if (self.reloadDataBlock) {
+        self.reloadDataBlock();
+    }
+}
+
 @end

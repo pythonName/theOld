@@ -236,6 +236,9 @@
 		524E07931FF34CBB003684D4 /* CommonResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E07921FF34CBB003684D4 /* CommonResponseModel.m */; };
 		524E07961FF39FC6003684D4 /* CareOldManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E07951FF39FC6003684D4 /* CareOldManModel.m */; };
 		52508C451FF0D61700E0115B /* LTAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52508C441FF0D61700E0115B /* LTAVPlayerView.m */; };
+		527809271FFB54A2001E783F /* CarePackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 527809261FFB54A2001E783F /* CarePackageModel.m */; };
+		527809301FFB5BA8001E783F /* CarePackagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5278092E1FFB5BA8001E783F /* CarePackagesTableViewCell.m */; };
+		527809311FFB5BA8001E783F /* CarePackagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5278092F1FFB5BA8001E783F /* CarePackagesTableViewCell.xib */; };
 		7910B5AE1FBC7BB000953BD3 /* FyCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */; };
 		7910B5B21FC3093900953BD3 /* CarePlanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7910B5B01FC3093900953BD3 /* CarePlanTableViewCell.m */; };
 		7910B5B31FC3093900953BD3 /* CarePlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7910B5B11FC3093900953BD3 /* CarePlanTableViewCell.xib */; };
@@ -692,6 +695,11 @@
 		524E07951FF39FC6003684D4 /* CareOldManModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CareOldManModel.m; sourceTree = "<group>"; };
 		52508C431FF0D61700E0115B /* LTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAVPlayerView.h; sourceTree = "<group>"; };
 		52508C441FF0D61700E0115B /* LTAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAVPlayerView.m; sourceTree = "<group>"; };
+		527809251FFB54A2001E783F /* CarePackageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePackageModel.h; sourceTree = "<group>"; };
+		527809261FFB54A2001E783F /* CarePackageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePackageModel.m; sourceTree = "<group>"; };
+		5278092D1FFB5BA8001E783F /* CarePackagesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePackagesTableViewCell.h; sourceTree = "<group>"; };
+		5278092E1FFB5BA8001E783F /* CarePackagesTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePackagesTableViewCell.m; sourceTree = "<group>"; };
+		5278092F1FFB5BA8001E783F /* CarePackagesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarePackagesTableViewCell.xib; sourceTree = "<group>"; };
 		7910B5AC1FBC7BAF00953BD3 /* FyCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyCalendarView.h; sourceTree = "<group>"; };
 		7910B5AD1FBC7BAF00953BD3 /* FyCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FyCalendarView.m; sourceTree = "<group>"; };
 		7910B5AF1FC3093900953BD3 /* CarePlanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePlanTableViewCell.h; sourceTree = "<group>"; };
@@ -1004,6 +1012,7 @@
 		0ABCFF9A1FC3F26900379CBB /* MainModel */ = {
 			isa = PBXGroup;
 			children = (
+				527809321FFB63AA001E783F /* OldManModel */,
 				5213DDF81FF48EAB00D14432 /* ServiceModel */,
 				0ABCFFA11FC3F34A00379CBB /* ResponseModelOfMain */,
 				0ABCFFA01FC3F32F00379CBB /* RequstModelOfMain */,
@@ -1437,6 +1446,8 @@
 				5213DDFA1FF48F3900D14432 /* PhysiologyDataModel.m */,
 				5213DDFC1FF4D1FB00D14432 /* GuardianModel.h */,
 				5213DDFD1FF4D1FB00D14432 /* GuardianModel.m */,
+				527809251FFB54A2001E783F /* CarePackageModel.h */,
+				527809261FFB54A2001E783F /* CarePackageModel.m */,
 			);
 			path = ServiceModel;
 			sourceTree = "<group>";
@@ -1560,6 +1571,13 @@
 			path = LTPlayerView;
 			sourceTree = "<group>";
 		};
+		527809321FFB63AA001E783F /* OldManModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OldManModel;
+			sourceTree = "<group>";
+		};
 		7910B5B71FC46C4300953BD3 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1608,6 +1626,9 @@
 				799B1DB61FB489DC000CB480 /* PhysiologicalDataTableViewCell.xib */,
 				799B1DD11FB492E6000CB480 /* PhysiologicalDataTableViewHeader.h */,
 				799B1DD21FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m */,
+				5278092D1FFB5BA8001E783F /* CarePackagesTableViewCell.h */,
+				5278092E1FFB5BA8001E783F /* CarePackagesTableViewCell.m */,
+				5278092F1FFB5BA8001E783F /* CarePackagesTableViewCell.xib */,
 			);
 			path = viewOfService;
 			sourceTree = "<group>";
@@ -2099,6 +2120,7 @@
 				0ADAC6951FBE801A00791F67 /* BloodSugar@2x.png in Resources */,
 				799B1DE51FB87C89000CB480 /* OldAccountDetailTableViewCell.xib in Resources */,
 				79142FAE1FBB2CA00070C28E /* AboutUsViewController.xib in Resources */,
+				527809311FFB5BA8001E783F /* CarePackagesTableViewCell.xib in Resources */,
 				799B1DB31FB484AF000CB480 /* GuardiansTableViewCell.xib in Resources */,
 				7910B5C31FC46E7500953BD3 /* loadingNoData@3x.png in Resources */,
 				C3B23CD01FAB02BB00D78E5C /* LoginSubViewControllersConfig.plist in Resources */,
@@ -2237,6 +2259,7 @@
 				7910B5DA1FC5453E00953BD3 /* CarePackagesRequestModel.m in Sources */,
 				0ADAC6F91FBE960100791F67 /* YYTextLayout.m in Sources */,
 				0ADAC70B1FBE960100791F67 /* YYTextView.m in Sources */,
+				527809271FFB54A2001E783F /* CarePackageModel.m in Sources */,
 				5213DDFE1FF4D1FB00D14432 /* GuardianModel.m in Sources */,
 				0ADAC6FF1FBE960100791F67 /* YYTextParser.m in Sources */,
 				524E07811FF33D7C003684D4 /* SDWebImageFrame.m in Sources */,
@@ -2323,6 +2346,7 @@
 				523FC6A81FECA2090078B111 /* MASConstraint.m in Sources */,
 				0ADAC6FE1FBE960100791F67 /* YYTextAttribute.m in Sources */,
 				524E077C1FF33D7C003684D4 /* SDWebImageCoderHelper.m in Sources */,
+				527809301FFB5BA8001E783F /* CarePackagesTableViewCell.m in Sources */,
 				524E077F1FF33D7C003684D4 /* SDWebImageDownloader.m in Sources */,
 				7910B5B61FC4668100953BD3 /* LoadingView.m in Sources */,
 				524E078C1FF33D7C003684D4 /* UIView+WebCache.m in Sources */,

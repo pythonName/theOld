@@ -73,8 +73,8 @@
          self.iconImageView.hidden = NO;
         if ([UserManager shareInstance].photo.length > 0) {
             
-            NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length - 1)]];
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageStr]];
+//            NSString *imageStr = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length - 1)]];
+            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:userManager.photo]];
             _iconImageView.image = [[UIImage alloc] initWithData:imageData];
         }
         else{

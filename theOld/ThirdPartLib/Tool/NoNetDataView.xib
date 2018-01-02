@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,14 +31,24 @@
                         <constraint firstAttribute="width" constant="132" id="PSF-yp-SGR"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RW3-nb-rYW">
+                    <rect key="frame" x="121" y="193" width="132" height="114"/>
+                    <connections>
+                        <action selector="buttonClick:" destination="GIG-wa-bC7" eventType="touchUpInside" id="DIb-f7-IKK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Twp-76-WQh" firstAttribute="leading" secondItem="GIG-wa-bC7" secondAttribute="leading" constant="12" id="047-cc-8Ij"/>
                 <constraint firstItem="FLG-7L-iU8" firstAttribute="top" secondItem="GIG-wa-bC7" secondAttribute="top" constant="193" id="AtZ-nn-3wI"/>
+                <constraint firstItem="RW3-nb-rYW" firstAttribute="bottom" secondItem="FLG-7L-iU8" secondAttribute="bottom" id="Cn8-Jw-R1m"/>
+                <constraint firstItem="RW3-nb-rYW" firstAttribute="trailing" secondItem="FLG-7L-iU8" secondAttribute="trailing" id="RfD-Pb-yrA"/>
                 <constraint firstAttribute="trailing" secondItem="Twp-76-WQh" secondAttribute="trailing" constant="13" id="Xwl-Qt-NZY"/>
+                <constraint firstItem="RW3-nb-rYW" firstAttribute="top" secondItem="FLG-7L-iU8" secondAttribute="top" id="dDe-Hw-t2E"/>
                 <constraint firstItem="FLG-7L-iU8" firstAttribute="centerX" secondItem="GIG-wa-bC7" secondAttribute="centerX" id="egF-ew-lcC"/>
                 <constraint firstItem="Twp-76-WQh" firstAttribute="top" secondItem="FLG-7L-iU8" secondAttribute="bottom" constant="25" id="f1q-zM-AHy"/>
+                <constraint firstItem="RW3-nb-rYW" firstAttribute="leading" secondItem="FLG-7L-iU8" secondAttribute="leading" id="o6L-dL-CpI"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

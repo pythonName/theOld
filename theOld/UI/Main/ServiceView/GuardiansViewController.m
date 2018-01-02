@@ -10,6 +10,8 @@
 #import "GuardiansTableViewCell.h"
 #import "GuardianModel.h"
 #import "NoNetDataView.h"
+#import "MainDataManager.h"
+#import "CareOldManModel.h"
 
 
 static NSString *cellIdent = @"GuardiansTableViewCell";
@@ -67,7 +69,8 @@ static NSString *cellIdent = @"GuardiansTableViewCell";
 
 #pragma mark - LoadData
 - (void)loadData{
-    NSDictionary *params = @{@"ID_number" : @"420521199910100014"};
+    CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    NSDictionary *params = @{@"ID_number" : model.ID_number};
     [DataInterface guardianListRequest:params result:^(CommonResponseModel *model, NSError *error) {
         if (error) {
             [self showNetworkError];

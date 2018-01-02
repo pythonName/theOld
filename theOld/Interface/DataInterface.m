@@ -85,21 +85,21 @@
     }];
 }
 
-- (void)searchOldIDRequest: (id)params complication:(resultDic)comlication {
+- (void)searchOldIDRequest: (id)params completeBlock:(CompleteBlock)completeBlock {
     NSString *requestUrl = [NSString stringWithFormat:@"%@api/select-olders/",TESTHOST];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
-        comlication(value);
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {
-        comlication(nil);
+        completeBlock(nil, value);
     }];
 }
 
-- (void)addOldRequest: (id)params complication:(resultDic)comlication {
+- (void)addOldRequest: (id)params completeBlock:(CompleteBlock)completeBlock {
     NSString *requestUrl = [NSString stringWithFormat:@"%@api/add-attention/",TESTHOST];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
-        comlication(value);
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {
-        comlication(nil);
+        completeBlock(nil, value);
     }];
 }
 
@@ -466,6 +466,16 @@
 + (void)changePhoneRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
     NSString *requestStr = [self requestStrWithPath:@"api/change-username/"];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:params withMethodType:Post successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
+//老人照护套餐
++ (void)carePackagesRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/old_pack/" params:params];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
         completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {
         completeBlock(nil, value);

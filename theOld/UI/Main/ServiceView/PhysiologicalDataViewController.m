@@ -13,6 +13,7 @@
 #import "DataInterface.h"
 #import "UserManager.h"
 #import "PhysiologyDataModel.h"
+#import "MJRefresh.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
@@ -34,7 +35,11 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 -(NoNetDataView *)noDataView {
     if (!_noDataView) {
         _noDataView =  [NoNetDataView loadNoNetDataView];
-        _noDataView.hidden = YES;
+//        _noDataView.hidden = YES;   //hidden属性失效了
+        VFWeakSelf(self)
+        _noDataView.reloadDataBlock = ^{
+            [weakself loadDataMethod];
+        };
     }
     return _noDataView;
 }
@@ -69,9 +74,11 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
     self.mainTableView.delegate = self;
     self.mainTableView.dataSource = self;
     self.mainTableView.tableFooterView = [[UIView alloc] init];
+    VFWeakSelf(self)
+    self.mainTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakself loadDataMethod];
+    }];
     [self makeHeaderView];
-    
-    [self.view addSubview: self.noDataView];
     
     [self loadDataMethod];
 }
@@ -80,15 +87,23 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 -(void)loadDataMethod {
     NSDictionary *params = @{@"ID_number" : @"420521199910100014"};
     [DataInterface physiologicalDataRequest:params complication:^(CommonResponseModel *model, NSError *error) {
+        [self.noDataView removeFromSuperview];
         if (error) {
-            [self showNetworkError];
+            [self.view addSubview:self.noDataView];
             return ;
         }
         
         if (model.code.integerValue == REQUEST_SUCCESS_CODE) {
             NSArray *array = [model.data objectForKey:@"Physics"];
-            self.dataArr = [PhysiologyDataModel covertToArrayWithDictArray:array];
-            [self.mainTableView reloadData];
+            if (array.count == 0) {
+                [self.noDataView updateNoDataView];
+                [self.view addSubview:self.noDataView];
+            }
+            else{
+                self.dataArr = [PhysiologyDataModel covertToArrayWithDictArray:array];
+                [self.mainTableView reloadData];
+            }
+            
         }
         else{
             [self showInfoMsg:model.msg];

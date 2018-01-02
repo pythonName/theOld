@@ -19,4 +19,6 @@
 
 - (CareOldManModel *)selectModel;
 
+- (void)clearData;
+
 @end

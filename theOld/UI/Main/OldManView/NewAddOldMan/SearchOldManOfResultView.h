@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CareOldManModel.h"
 
 @interface SearchOldManOfResultView : UIView
 
@@ -22,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *identLab;
 
 @property (weak, nonatomic) IBOutlet UIButton *addAttentionBtn;
+
+@property (nonatomic, strong) CareOldManModel *model;
 
 - (IBAction)addAttentionBtnClick:(id)sender;
 

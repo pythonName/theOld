@@ -25,4 +25,17 @@
     self.addAttentionBtn.layer.cornerRadius = 45/2;
 }
 
+- (void)setModel:(CareOldManModel *)model{
+    _model = model;
+    [self updateUI];
+}
+
+- (void)updateUI{
+    self.nameLab.text = _model.name;
+    self.ageLab.text = [NSString stringWithFormat:@"%ld", _model.age];
+    self.sexLba.text = _model.sex;
+    self.identLab.text = _model.ID_number;
+    
+}
+
 @end

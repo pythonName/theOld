@@ -62,10 +62,10 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 - (void)logoutRequest: (id)params complication:(resultDic)comlication;
 
 //根据身份证号查询老人
-- (void)searchOldIDRequest: (id)params complication:(resultDic)comlication;
+- (void)searchOldIDRequest: (id)params completeBlock:(CompleteBlock)completeBlock;
 
 //根据身份证号添加关注老人
-- (void)addOldRequest: (id)params complication:(resultDic)comlication;
+- (void)addOldRequest: (id)params completeBlock:(CompleteBlock)completeBlock;
 
 //已关注老人列表 首页
 - (void)followOldersListRequest: (id)params complication:(resultDic)comlication;
@@ -146,5 +146,8 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 
 //绑定新的手机号码即用户登录名
 + (void)changePhoneRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
+//老人照护套餐
++ (void)carePackagesRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
 @end

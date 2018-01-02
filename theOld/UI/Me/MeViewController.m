@@ -124,7 +124,7 @@ static CGFloat CellH = 50;
 - (void)updateUserInfo{
     UserManager *userManager = [UserManager shareInstance];
     if (userManager.photo.length > 0) {
-        NSString *imageURL = [NSString stringWithFormat:@"%@%@", TESTHOST, [userManager.photo substringWithRange:NSMakeRange(1, userManager.photo.length -1)]];
+        NSString *imageURL = userManager.photo;
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
         [self.centerButton setImage:[UIImage imageWithData:imageData] forState:UIControlStateNormal];
     }

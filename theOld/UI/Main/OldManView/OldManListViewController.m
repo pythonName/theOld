@@ -64,8 +64,26 @@ static MainDataManager *dataManager;
         [self loadData];
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginNotification:) name:USER_LOGIN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogoutNotification:) name:USER_LOGOUT_NOTIFICATION object:nil];
+    
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - 用户登录登出通知
+- (void)userLoginNotification:(NSNotification *)notification{
+    [self loadData];
+}
+
+- (void)userLogoutNotification:(NSNotification *)notification{
+    [[MainDataManager sharedInstance] clearData];
+    [self.collectionView reloadData];
+}
+
+//加载数据
 - (void)loadData{
     [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
         [self.collectionView.mj_header endRefreshing];
@@ -78,6 +96,7 @@ static MainDataManager *dataManager;
             MainDataManager *dataManager = [MainDataManager sharedInstance];
             dataManager.dataArray = [CareOldManModel covertToArrayWithDictArray:model.data[@"focus_list"]];
             [self.collectionView reloadData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:SELECT_OLDMAN_NOTIFICATION object:nil];
         }
         
     }];

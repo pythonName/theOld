@@ -95,6 +95,10 @@
 //    [LoadingView showCirleView];
 //    [self performSelector:@selector(infoButtonClick) withObject:nil afterDelay:8];
     
+    if ([UserManager shareInstance].isLogined) {
+        [self loadData];
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:USER_LOGIN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectOldMan:) name:SELECT_OLDMAN_NOTIFICATION object:nil];
     
@@ -106,6 +110,12 @@
 
 - (void)selectOldMan:(NSNotification *)notification{
     _headerOfMainView.model = [[MainDataManager sharedInstance] selectModel];
+}
+
+- (void)userLogout:(NSNotification *)notification{
+    [[MainDataManager sharedInstance] clearData];
+    _headerOfMainView.model = nil;
+    
 }
 
 - (void)loadData{

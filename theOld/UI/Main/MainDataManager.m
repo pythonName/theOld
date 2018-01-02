@@ -29,4 +29,9 @@ static MainDataManager *instance;
     return nil;
 }
 
+- (void)clearData{
+    self.dataArray = nil;
+    self.selectIndex = 0;
+}
+
 @end
