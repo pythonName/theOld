@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家庭固话" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENg-53-0gd">
-                        <rect key="frame" x="15" y="18" width="53.5" height="16"/>
+                        <rect key="frame" x="23" y="21" width="53.5" height="16"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="XsS-wF-IoN"/>
                         </constraints>
@@ -29,7 +29,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="未设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8LS-cZ-jqq">
-                        <rect key="frame" x="15" y="39" width="43" height="20"/>
+                        <rect key="frame" x="23" y="42" width="43" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="6XV-YB-WNa"/>
                         </constraints>
@@ -38,26 +38,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="resouseTell.png" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-ov-6sB">
-                        <rect key="frame" x="322" y="15" width="40" height="40"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="UZx-QQ-KrU"/>
-                            <constraint firstAttribute="width" constant="40" id="tnt-pn-69E"/>
-                        </constraints>
+                        <rect key="frame" x="314" y="16" width="40" height="40"/>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Bta-ov-6sB" secondAttribute="bottom" constant="8.5" id="BdD-nb-vLg"/>
+                    <constraint firstItem="Bta-ov-6sB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0oc-Lm-1VG"/>
                     <constraint firstItem="8LS-cZ-jqq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="G3U-qu-xdY"/>
                     <constraint firstItem="ENg-53-0gd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="J8c-kE-vQn"/>
                     <constraint firstItem="ENg-53-0gd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="7" id="VK5-S5-Nwd"/>
-                    <constraint firstItem="Bta-ov-6sB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="7" id="eSq-t4-pqK"/>
-                    <constraint firstItem="Bta-ov-6sB" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-5" id="oWt-mr-Nut"/>
+                    <constraint firstAttribute="trailing" secondItem="Bta-ov-6sB" secondAttribute="trailing" constant="21" id="lnL-C5-wAL"/>
                     <constraint firstItem="8LS-cZ-jqq" firstAttribute="top" secondItem="ENg-53-0gd" secondAttribute="bottom" constant="5" id="y5K-Vd-d8n"/>
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="contentTextLab" destination="8LS-cZ-jqq" id="lZq-mu-Ipi"/>
+                <outlet property="headerLabel" destination="ENg-53-0gd" id="q0c-zE-6hg"/>
                 <outlet property="tellImageV" destination="Bta-ov-6sB" id="wTI-tD-RmM"/>
             </connections>
             <point key="canvasLocation" x="24.5" y="52"/>

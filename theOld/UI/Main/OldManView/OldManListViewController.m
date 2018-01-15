@@ -15,6 +15,9 @@
 #import "MJRefresh.h"
 #import "MainDataManager.h"
 #import "UserManager.h"
+#import "LoginViewController.h"
+#import "CustomNavigationController.h"
+#import "LeveyTabBarController.h"
 
 static NSString *cellIdent = @"OldManListCollectionViewCell";
 
@@ -60,9 +63,9 @@ static MainDataManager *dataManager;
     
     [self makeMainView];
     
-    if ([UserManager shareInstance].isLogined) {
-        [self loadData];
-    }
+//    if ([UserManager shareInstance].isLogined) {
+//        [self loadData];
+//    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLoginNotification:) name:USER_LOGIN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogoutNotification:) name:USER_LOGOUT_NOTIFICATION object:nil];
@@ -139,11 +142,11 @@ static MainDataManager *dataManager;
     if (dataManager.dataArray.count == indexPath.row) {
         cell.personImageV.image = [UIImage imageNamed:@"addImage.png"];
         cell.nameLab.text = @"新增老人";
+        cell.nameLab.backgroundColor = [UIColor whiteColor];
+        cell.nameLab.textColor = [UIColor blackColor];
     }else{
         //正常数据
-        cell.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
-        CareOldManModel *model = [[MainDataManager sharedInstance].dataArray objectAtIndex:indexPath.row];
-        cell.nameLab.text = model.name;
+        cell.model = [[MainDataManager sharedInstance].dataArray objectAtIndex:indexPath.row];
         if (_selectIndex == indexPath.row) {
             cell.nameLab.backgroundColor = baseColor;
             cell.nameLab.textColor = [UIColor whiteColor];
@@ -172,24 +175,28 @@ static MainDataManager *dataManager;
 {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (dataManager.dataArray.count == indexPath.row) {
-        if(dataManager.dataArray.count == 0){
-//            //弹出完善信息提示
-//            UIAlertView *alter = [[UIAlertView alloc] initWithTitle:@"关注老人" message:@"请完善您的个人信息" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"立即完善", nil];
-//            [alter show];
-        }else{
-            //@"新增老人";
+//        if(dataManager.dataArray.count == 0){
+//        }else{
+//        }
+        if ([UserManager shareInstance].isLogined) {
             UIViewController *vc = (UIViewController *)self.delegate;
-            
             NewAdditionOldManViewController *vv = [[NewAdditionOldManViewController alloc] init];
             [vc.navigationController pushViewController:vv animated:YES];
+        }
+        else{
+            LoginViewController *vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+            CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
+            [vc.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
+                
+            }];
         }
         
     }else{
         //普通数据点击更新界面
         self.selectIndex = indexPath.row;
-        [collectionView reloadData];
         [MainDataManager sharedInstance].selectIndex = indexPath.row;
         [[NSNotificationCenter defaultCenter] postNotificationName:SELECT_OLDMAN_NOTIFICATION object:nil];
+        [collectionView reloadData];
     }
 }
 

@@ -97,6 +97,8 @@ static UserManager *shareInstance = nil;
             NSDictionary *userDict = [[resultDic objectForKey:@"data"] objectForKey:@"user"];
             self.userName = [userDict objectForKey:@"username"];
             self.session = [[resultDic objectForKey:@"data"] objectForKey:@"token"];
+            self.focus_count = [[[resultDic objectForKey:@"data"] objectForKey:@"focus_count"] integerValue];
+            self.invite_count = [[[resultDic objectForKey:@"data"] objectForKey:@"invite_count"] integerValue];
             NSLog(@"%@===", self.session);
             self.complete = [[resultDic objectForKey:@"data"] objectForKey:@"complete"];
             self.name = [userDict objectForKey:@"name"];

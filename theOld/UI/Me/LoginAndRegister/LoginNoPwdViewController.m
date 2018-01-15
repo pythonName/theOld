@@ -176,7 +176,8 @@
                 [_superDelegate performSelector:@selector(backbuttonclick)];
             }
         }else{
-            [[Toast makeText:@"账号或验证码错误!"] show];
+//            [[Toast makeText:@"账号或验证码错误!"] show];
+            [self showInfoMsg:[resultDic objectForKey:@"msg"]];
         }
     }];
 }
@@ -189,9 +190,13 @@
         NSMutableDictionary *parmams = [NSMutableDictionary dictionary];
         [parmams setObject:self.userNameTextField.text forKey:@"username"];
         [parmams setObject:@"login" forKey:@"type"];
-        [[DataInterface shareInstance] getMessageCodeRequest:parmams complication:^(NSDictionary *resultDic) {
-            NSLog(@"resultDic = %@",resultDic);
-            [[Toast makeText:@"验证码发送成功"] show];
+        [[DataInterface shareInstance] getMessageCodeRequest:parmams completeBlock:^(CommonResponseModel *model, NSError *error) {
+            if (error) {
+                [self showNetworkError];
+                return ;
+            }
+            
+            [self showInfoMsg:model.msg];
         }];
     }else{
         [[Toast makeText:@"请输入正确的手机号"] show];

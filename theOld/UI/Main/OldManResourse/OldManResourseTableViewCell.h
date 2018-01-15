@@ -11,5 +11,6 @@
 @interface OldManResourseTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *tellImageV;
 @property (weak, nonatomic) IBOutlet UILabel *contentTextLab;
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @end

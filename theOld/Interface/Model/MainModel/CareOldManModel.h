@@ -8,12 +8,11 @@
 
 #import "YKNetworkBaseModel.h"
 
-@interface CareOldManModel : YKNetworkBaseModel
+@interface CareOldManModel : YKNetworkBaseModel <NSCoding>
 
 @property (nonatomic, copy) NSString *ID_number;
 @property (nonatomic, copy) NSString *address;
 @property (nonatomic, copy) NSString *addtime;
-//@property (nonatomic) NSInteger age;
 @property (nonatomic, copy) NSString *area;
 @property (nonatomic, copy) NSString *body;
 @property (nonatomic, copy) NSString *cell_phone;

@@ -25,6 +25,8 @@
 
 static NSString *cellIdet = @"UserCenterTableViewCell";
 static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
+static UserManager *userManager;
+
 @interface UserCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>{
     CGRect _frame;
     UITableView *_mainTableView;
@@ -64,6 +66,8 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    userManager = [UserManager shareInstance];
     //加载导航
     [self initNavgationView];
     
@@ -75,7 +79,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
- 
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView reloadData];
     [self.view addSubview:self.tableView];
@@ -87,6 +91,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 
 //关注老人／邀请监护
 -(void)loadFooterView {
+    
     //底部cell视图
     _buttonCellView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_frame), 102)];
     _buttonCellView.backgroundColor = [UIColor whiteColor];
@@ -101,7 +106,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     leftBtn.center = CGPointMake(CGRectGetWidth(_frame)/4, leftBtn.center.y);
     leftBtn.titleLabel.font = [UIFont systemFontOfSize:30.0];
     leftBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [leftBtn setTitle:@"3" forState:UIControlStateNormal];
+    [leftBtn setTitle:[NSString stringWithFormat:@"%ld", userManager.focus_count] forState:UIControlStateNormal];
     [leftBtn setTitleColor:UIColorFromRGB(0xff9c31) forState:UIControlStateNormal];
     [leftBtn setTitleEdgeInsets:UIEdgeInsetsMake(-13, 0, 0, 0)];
     [_buttonCellView addSubview:leftBtn];
@@ -120,7 +125,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     rightBtn.center = CGPointMake(3*CGRectGetWidth(_frame)/4, rightBtn.center.y);
     
     [rightBtn setTitleColor:UIColorFromRGB(0xff9c31) forState:UIControlStateNormal];
-    [rightBtn setTitle:@"1" forState:UIControlStateNormal];
+    [rightBtn setTitle:[NSString stringWithFormat:@"%ld", userManager.focus_count] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = leftBtn.titleLabel.font;
     rightBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     [rightBtn setTitleEdgeInsets:UIEdgeInsetsMake(-13, 0, 0, 0)];
@@ -235,6 +240,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
 
 #pragma mark - photo
 - (void)photo {
+    VFWeakSelf(self)
     if ([UIDevice currentDevice].systemVersion.floatValue >= 8.0) {
         
         self.modalPresentationStyle = UIModalPresentationOverCurrentContext;
@@ -246,10 +252,10 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 
                 UIImagePickerController * imagePicker = [[UIImagePickerController alloc]init];
-                imagePicker.delegate = self;
+                imagePicker.delegate = weakself;
                 imagePicker.allowsEditing = YES;
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-                [self presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
+                [weakself presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
                 
             }
             
@@ -259,11 +265,11 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
             
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {
                 UIImagePickerController * imagePicker = [[UIImagePickerController alloc]init];
-                imagePicker.delegate = self;
+                imagePicker.delegate = weakself;
                 imagePicker.allowsEditing = YES;
                 imagePicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
 //                [self presentViewController:imagePicker animated:YES completion:nil];
-                [self presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
+                [weakself presentViewControllerFromRootController:imagePicker animated:YES completion:nil];
             }
             
         }];
@@ -296,6 +302,7 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     chosenImage = [self imageWithImageSimple:chosenImage scaledToSize:CGSizeMake(150, 150)];
     NSData * imageData = UIImageJPEGRepresentation(chosenImage, 0.9);
     
+    VFWeakSelf(self)
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer.timeoutInterval = 20;
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/plain", @"multipart/form-data", @"application/json", @"text/html", @"image/jpeg", @"image/png", @"application/octet-stream", @"text/json", nil];
@@ -307,19 +314,20 @@ static NSString *cellHeaderIdet = @"PhysiologicalDataTableViewHeader";
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         CommonResponseModel *model = [CommonResponseModel covertToModelWithDict:responseObject];
         if (model.code.integerValue == 200) {
-            [self showInfoMsg:@"上传成功！"];
+            [UserManager shareInstance].photo = [model.data objectForKey:@"photo"];
+            [weakself showInfoMsg:@"上传成功！"];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:UPDATE_USER_INFO object:nil];
-                 [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                 [weakself.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
             });
            
         }
         else{
-            [self showInfoMsg:model.msg];
+            [weakself showInfoMsg:model.msg];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self showNetworkError];
+        [weakself showNetworkError];
     }];
     
 

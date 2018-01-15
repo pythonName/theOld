@@ -78,8 +78,9 @@
     
     //自定义返回按钮
     if (self.viewControllers.count > 0) {
-        UIButton *backButton=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 20, 18)];
-        [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+        UIButton *backButton=[[UIButton alloc] initWithFrame:BACK_IMAGE_VFRAME];
+        backButton.imageEdgeInsets = BACK_IMAGE_INSETS;
+        [backButton setImage:BACK_IMAGE forState:UIControlStateNormal];
         [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
        
         UIBarButtonItem *bbi=[[UIBarButtonItem alloc] initWithCustomView:backButton];

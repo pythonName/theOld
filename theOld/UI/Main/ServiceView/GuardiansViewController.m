@@ -70,6 +70,9 @@ static NSString *cellIdent = @"GuardiansTableViewCell";
 #pragma mark - LoadData
 - (void)loadData{
     CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    if (!model.ID_number.length > 0) {
+        return;
+    }
     NSDictionary *params = @{@"ID_number" : model.ID_number};
     [DataInterface guardianListRequest:params result:^(CommonResponseModel *model, NSError *error) {
         if (error) {

@@ -10,6 +10,8 @@
 #import "OldManResourseTableViewCell.h"
 #import "PhysiologicalDataTableViewHeader.h"
 #import "HeaderOfMainView.h"
+#import "MainDataManager.h"
+#import "CareOldManModel.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 
@@ -67,7 +69,9 @@ static NSString *cellIdent = @"OldManResourseTableViewCell";
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 150);
     _headerOfMainView.resouseButton.hidden = YES;
+    _headerOfMainView.model = [MainDataManager sharedInstance].selectModel;
     self.mainTableView.tableHeaderView = _headerOfMainView;
+    
 }
 
 #pragma mark  tableView  delegate
@@ -82,10 +86,25 @@ static NSString *cellIdent = @"OldManResourseTableViewCell";
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OldManResourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if(indexPath.section == 1){
-        cell.tellImageV.hidden = YES;
+    NSString *headerStr = [[_titleArr objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.headerLabel.text = headerStr;
+    CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    if(indexPath.section == 0){
+        cell.tellImageV.hidden = NO;
+        if (indexPath.row == 0) {
+            cell.contentTextLab.text = model.fix_phone;
+        }
+        else{
+            cell.contentTextLab.text = model.cell_phone;
+        }
     }else{
-         cell.tellImageV.hidden = NO;
+         cell.tellImageV.hidden = YES;
+        if (indexPath.row == 0) {
+            cell.contentTextLab.text = model.area;
+        }
+        else{
+            cell.contentTextLab.text = model.address;
+        }
     }
     return cell;
 }

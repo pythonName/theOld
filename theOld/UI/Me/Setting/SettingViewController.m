@@ -147,13 +147,14 @@ static NSString *cellIdent = @"SettingTableViewCell";
  
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     
+    VFWeakSelf(self)
     UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction*action) {
         NSLog(@"点击了确定按钮");
         
         [[UserManager shareInstance] logout];
         
         [[Toast makeText:@"您已退出登录"] show];
-        [self.navigationController popViewControllerAnimated:YES];
+        [weakself.navigationController popViewControllerAnimated:YES];
         
 //        [[DataInterface shareInstance] logoutRequest:nil complication:^(NSDictionary *resultDic) {
 //            if([resultDic[@"code"] integerValue] == 200) {

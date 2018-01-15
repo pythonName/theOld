@@ -58,7 +58,7 @@
         [self.requestSerializer setValue:@"" forHTTPHeaderField:@"Authorization"];
     }
     
-    NSLog(@"%@", [UserManager shareInstance].session);
+//    NSLog(@"%@", [UserManager shareInstance].session);
  
     NSURLSessionDataTask *requestTask = nil;
     switch (method) {

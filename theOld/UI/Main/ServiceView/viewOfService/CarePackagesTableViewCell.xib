@@ -46,22 +46,13 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FQZ-4Q-nSI" userLabel="Bottom View">
                         <rect key="frame" x="16" y="123.5" width="353" height="70"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RaU-XU-H5b">
-                                <rect key="frame" x="157" y="5.5" width="38" height="20"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="kWi-nf-75v">
+                                <rect key="frame" x="4" y="29.5" width="345" height="4"/>
+                                <color key="tintColor" red="0.55294117647058827" green="0.76078431372549016" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="BEo-RC-Ew9"/>
-                                    <constraint firstAttribute="width" constant="38" id="a0h-Lz-VPw"/>
+                                    <constraint firstAttribute="height" constant="4" id="PP8-fR-xLL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
-                                <state key="normal" title="60%" backgroundImage="progressImage.png"/>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olb-ue-gGC">
-                                <rect key="frame" x="4" y="30" width="345" height="4"/>
-                                <color key="backgroundColor" red="0.55294117647058827" green="0.76078431372549016" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="4" id="SvY-Yr-N08"/>
-                                </constraints>
-                            </view>
+                            </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间：2017-12-12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hc0-1m-wxU">
                                 <rect key="frame" x="4" y="42" width="124.5" height="17"/>
                                 <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="12"/>
@@ -77,22 +68,29 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Olb-ue-gGC" secondAttribute="trailing" constant="4" id="4Vm-gg-urZ"/>
-                            <constraint firstItem="Olb-ue-gGC" firstAttribute="top" secondItem="FQZ-4Q-nSI" secondAttribute="top" constant="30" id="AIM-En-eVV"/>
-                            <constraint firstItem="Hc0-1m-wxU" firstAttribute="top" secondItem="Olb-ue-gGC" secondAttribute="bottom" constant="8" id="D9q-G7-6jh"/>
+                            <constraint firstItem="Hc0-1m-wxU" firstAttribute="top" secondItem="kWi-nf-75v" secondAttribute="bottom" constant="8.5" id="77S-fa-e2x"/>
+                            <constraint firstItem="kWi-nf-75v" firstAttribute="top" secondItem="FQZ-4Q-nSI" secondAttribute="top" constant="30" id="Bce-YJ-IId"/>
+                            <constraint firstAttribute="trailing" secondItem="kWi-nf-75v" secondAttribute="trailing" constant="4" id="FS9-lq-Hg5"/>
                             <constraint firstAttribute="height" constant="70" id="JGJ-qx-Gef"/>
-                            <constraint firstItem="Hc0-1m-wxU" firstAttribute="leading" secondItem="Olb-ue-gGC" secondAttribute="leading" id="Mhi-H9-yYC"/>
-                            <constraint firstItem="RaU-XU-H5b" firstAttribute="centerX" secondItem="Olb-ue-gGC" secondAttribute="centerX" id="bw4-b9-Sum"/>
-                            <constraint firstItem="TtQ-Fh-lLG" firstAttribute="trailing" secondItem="Olb-ue-gGC" secondAttribute="trailing" id="c3N-a8-f28"/>
-                            <constraint firstItem="Olb-ue-gGC" firstAttribute="top" secondItem="RaU-XU-H5b" secondAttribute="bottom" constant="4" id="fyC-dR-TO9"/>
-                            <constraint firstItem="Olb-ue-gGC" firstAttribute="leading" secondItem="FQZ-4Q-nSI" secondAttribute="leading" constant="4" id="jY6-Ue-BiA"/>
+                            <constraint firstItem="kWi-nf-75v" firstAttribute="leading" secondItem="FQZ-4Q-nSI" secondAttribute="leading" constant="4" id="dax-fz-76X"/>
+                            <constraint firstItem="Hc0-1m-wxU" firstAttribute="leading" secondItem="kWi-nf-75v" secondAttribute="leading" id="fnQ-Ba-EDr"/>
+                            <constraint firstItem="TtQ-Fh-lLG" firstAttribute="trailing" secondItem="kWi-nf-75v" secondAttribute="trailing" id="kiC-f8-2lT"/>
                             <constraint firstItem="TtQ-Fh-lLG" firstAttribute="centerY" secondItem="Hc0-1m-wxU" secondAttribute="centerY" id="zxN-Fo-0AJ"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jh9-cd-Fnd" userLabel="Bottom Line View">
+                        <rect key="frame" x="0.0" y="201" width="385" height="0.5"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="S5E-nu-6lb"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="jh9-cd-Fnd" secondAttribute="trailing" id="0oE-Bw-upa"/>
                     <constraint firstItem="FQZ-4Q-nSI" firstAttribute="top" secondItem="x7C-vE-g6N" secondAttribute="bottom" id="4EH-Fy-3Jt"/>
                     <constraint firstItem="EUm-KY-J6I" firstAttribute="trailing" secondItem="ncN-L8-2FC" secondAttribute="trailing" id="4EQ-13-nXf"/>
+                    <constraint firstAttribute="bottom" secondItem="jh9-cd-Fnd" secondAttribute="bottom" id="58X-qL-UMa"/>
                     <constraint firstItem="FQZ-4Q-nSI" firstAttribute="trailing" secondItem="x7C-vE-g6N" secondAttribute="trailing" id="5bg-Rh-gMW"/>
                     <constraint firstAttribute="bottom" secondItem="FQZ-4Q-nSI" secondAttribute="bottom" constant="8" id="5z9-8V-49E"/>
                     <constraint firstItem="FQZ-4Q-nSI" firstAttribute="leading" secondItem="x7C-vE-g6N" secondAttribute="leading" id="Djz-La-SfN"/>
@@ -100,6 +98,7 @@
                     <constraint firstItem="x7C-vE-g6N" firstAttribute="trailing" secondItem="ncN-L8-2FC" secondAttribute="trailing" id="K0N-MV-Wvm"/>
                     <constraint firstItem="EUm-KY-J6I" firstAttribute="top" secondItem="ncN-L8-2FC" secondAttribute="bottom" id="QRZ-Sa-KJR"/>
                     <constraint firstItem="ncN-L8-2FC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qn7-PP-B1k"/>
+                    <constraint firstItem="jh9-cd-Fnd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="mV0-GM-9TY"/>
                     <constraint firstItem="x7C-vE-g6N" firstAttribute="leading" secondItem="ncN-L8-2FC" secondAttribute="leading" id="pkM-l0-kBP"/>
                     <constraint firstAttribute="trailing" secondItem="ncN-L8-2FC" secondAttribute="trailing" constant="16" id="trP-ox-Yht"/>
                     <constraint firstItem="EUm-KY-J6I" firstAttribute="leading" secondItem="ncN-L8-2FC" secondAttribute="leading" id="vQe-qG-6Ba"/>
@@ -108,16 +107,15 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomView" destination="FQZ-4Q-nSI" id="R7z-LX-X7W"/>
                 <outlet property="contentLabel" destination="EUm-KY-J6I" id="hZc-8G-4V0"/>
                 <outlet property="contentListView" destination="x7C-vE-g6N" id="h1Y-vj-sTo"/>
                 <outlet property="endDateLabel" destination="TtQ-Fh-lLG" id="f3v-te-v0b"/>
+                <outlet property="progressView" destination="kWi-nf-75v" id="N4I-Gt-eDT"/>
                 <outlet property="startDateLabel" destination="Hc0-1m-wxU" id="qF8-gB-f8Y"/>
                 <outlet property="titleLabel" destination="ncN-L8-2FC" id="Zaq-HW-dVy"/>
             </connections>
             <point key="canvasLocation" x="57.5" y="131"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="progressImage.png" width="37" height="18"/>
-    </resources>
 </document>

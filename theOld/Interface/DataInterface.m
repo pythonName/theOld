@@ -49,12 +49,12 @@
     return shareInstance;
 }
 
-- (void)getMessageCodeRequest: (id)params complication:(resultDic)comlication {
+- (void)getMessageCodeRequest: (id)params completeBlock:(CompleteBlock)completeBlock {
     NSString *requestUrl = [NSString stringWithFormat:@"%@api/confirme/",TESTHOST];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestUrl withParams:params withMethodType:Post successBlock:^(id value) {
-        comlication(value);
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {
-        comlication(nil);
+        completeBlock(nil, value);
     }];
 }
 
@@ -487,6 +487,16 @@
 //老人照护套餐
 + (void)carePackagesRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
     NSString *requestStr = [self requestStrWithPath:@"api/old_pack/" params:params];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
+//远程看护设备
++ (void)remoteSupervisionRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/nurse/" params:params];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
         completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {

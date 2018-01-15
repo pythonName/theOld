@@ -50,7 +50,7 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 + (instancetype)shareInstance;
 
 //获取验证码
-- (void)getMessageCodeRequest: (id)params complication:(resultDic)comlication;
+- (void)getMessageCodeRequest: (id)params completeBlock:(CompleteBlock)completeBlock;
 
 //用户注册
 - (void)registerRequest: (id)params complication:(resultDic)comlication;
@@ -153,5 +153,8 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 
 //老人照护套餐
 + (void)carePackagesRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
+//远程看护设备请求
++ (void)remoteSupervisionRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
 @end

@@ -18,6 +18,9 @@
 
 @end
 
+static NSString *context = @"lixt";
+static NSString *keyPath = @"status";
+
 @implementation LTAVPlayerView
 
 - (instancetype)init
@@ -37,17 +40,13 @@
     return self;
 }
 
+
+
 - (void)addAVPlayer{
-    _player = [[AVPlayer alloc] init];
-    _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
-    _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    _playerLayer.frame = self.bounds;
-    [self.layer addSublayer:_playerLayer];
+    [self.layer addSublayer:self.playerLayer];
     
-    _playerItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:_videoURL]];
-    [_player replaceCurrentItemWithPlayerItem:_playerItem];
-    
-    [_playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
+
 }
 
 - (void)setVedioURL:(NSString *)videoURL{
@@ -62,16 +61,20 @@
         AVPlayerItem *playerItem = object;
         if (playerItem.status == AVPlayerItemStatusReadyToPlay) {
             [_player play];
+            if (self.playerReadyBlock) {
+                self.playerReadyBlock();
+            }
         }
     }
 }
 
 - (void)stopPlay{
     [_player pause];
-    [_playerItem removeObserver:self forKeyPath:@"status"];
+//    [_playerItem removeObserver:self forKeyPath:@"status"];
 }
 
 - (void)dealloc{
+    [_playerItem removeObserver:self forKeyPath:@"status" context:nil];
     [_playerLayer removeFromSuperlayer];
     _playerLayer = nil;
     [_player replaceCurrentItemWithPlayerItem:nil];
@@ -80,8 +83,27 @@
 }
 
 - (void)updatePlayerLayerFrame{
-    _playerLayer.frame = self.bounds;
+//    _playerLayer.frame = self.bounds;
+    self.playerLayer.frame = self.bounds;
 }
 
+#pragma mark - getter setter
+
+- (AVPlayerLayer *)playerLayer{
+    if (!_playerLayer) {
+        _player = [[AVPlayer alloc] init];
+        _playerLayer = [AVPlayerLayer playerLayerWithPlayer:_player];
+        _playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    }
+    return _playerLayer;
+}
+
+- (AVPlayerItem *)playerItem{
+    if (!_playerItem) {
+        _playerItem = [[AVPlayerItem alloc] initWithURL:[NSURL URLWithString:_videoURL]];
+        [_playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return _playerItem;
+}
 
 @end

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,9 +29,8 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李大帅 88" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6w-GO-SpO">
-                    <rect key="frame" x="51" y="113" width="174" height="21"/>
+                    <rect key="frame" x="148" y="113" width="79" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="174" id="96B-BD-YHb"/>
                         <constraint firstAttribute="height" constant="21" id="boP-RZ-dmm"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -39,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man.png" translatesAutoresizingMaskIntoConstraints="NO" id="EiS-wG-rJc">
-                    <rect key="frame" x="233" y="115" width="16" height="16"/>
+                    <rect key="frame" x="235" y="115" width="16" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="16" id="fkH-WV-okt"/>
                         <constraint firstAttribute="height" constant="16" id="woq-mT-LCt"/>
@@ -66,11 +65,11 @@
                 <constraint firstItem="EiS-wG-rJc" firstAttribute="leading" secondItem="y6w-GO-SpO" secondAttribute="trailing" constant="8" id="Qf9-ha-DYI"/>
                 <constraint firstItem="siR-ap-NN3" firstAttribute="top" secondItem="y6w-GO-SpO" secondAttribute="bottom" constant="10" id="Stg-FI-K1w"/>
                 <constraint firstItem="dgh-iK-Ofs" firstAttribute="leading" secondItem="neX-bK-8EZ" secondAttribute="leading" id="UJI-fR-LHr"/>
+                <constraint firstItem="y6w-GO-SpO" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="XVO-ZJ-zol"/>
                 <constraint firstItem="y6w-GO-SpO" firstAttribute="top" secondItem="dDV-dX-1Du" secondAttribute="bottom" constant="17" id="YYh-oj-e4R"/>
                 <constraint firstAttribute="trailing" secondItem="dgh-iK-Ofs" secondAttribute="trailing" id="cgc-bI-oD2"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="top" secondItem="neX-bK-8EZ" secondAttribute="top" constant="20" id="roU-TE-YK7"/>
                 <constraint firstItem="dDV-dX-1Du" firstAttribute="centerX" secondItem="neX-bK-8EZ" secondAttribute="centerX" id="tir-D1-wQT"/>
-                <constraint firstItem="y6w-GO-SpO" firstAttribute="trailing" secondItem="dDV-dX-1Du" secondAttribute="trailing" id="vkD-t8-4B4"/>
                 <constraint firstAttribute="bottom" secondItem="dgh-iK-Ofs" secondAttribute="bottom" id="zKO-AH-aJe"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

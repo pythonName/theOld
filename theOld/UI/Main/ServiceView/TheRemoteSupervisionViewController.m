@@ -11,6 +11,8 @@
 #import <MAMapKit/MAMapKit.h>
 #import "Masonry.h"
 #import "LTAVPlayerView.h"
+#import "MainDataManager.h"
+#import "CareOldManModel.h"
 
 static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m3u8?sign=1513839731-48cc1f190412b437c8adf20abd836054&device_sn=Ay0000000000002107UM&video_rate=700&channel_id=1&customer=60875_103875";
 
@@ -42,29 +44,31 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"远程看护";
-//    [[DataInterface shareInstance] registerDeviceRequest:nil complication:^(NSDictionary *resultDic) {
-//        
-//    }];
     
-    
+    //全屏地图及视频播放器
     [self.view addSubview:self.videoView];
     [self.videoView addSubview:self.playerView2];
     [self.view addSubview:self.mapView2];
     
     
+    //左上角小地图
     [self.view addSubview:self.smallMapView];
     [self.smallMapView addSubview:self.mapView1];
     [self.view addSubview:self.smallMapViewBtn];
     
+    //左上角的视频缩略图
     [self.view addSubview:self.smallVideoView];
     [self.smallVideoView addSubview:self.playerView];
     [self.view addSubview:self.smallVideoViewBtn];
     
+    //底部老人心率及联系方式
     [self.view addSubview:self.bottomBackView];
     [self.bottomBackView addSubview:self.heartLabel];
     [self.bottomBackView addSubview:self.contactButton];
     
     [self lxt_addConstraints];
+    
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -86,6 +90,34 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     [self.playerView stopPlay];
     [self.playerView2 stopPlay];
 }
+
+#pragma mark - 请求数据
+- (void)loadData{
+    CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:model.ID_number forKey:@"ID_number"];
+    [DataInterface remoteSupervisionRequest:params result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if (model.code.integerValue == 200) {
+            NSArray *dataArray = model.data;
+            if (dataArray.count > 0) {
+                NSDictionary *dict = [dataArray firstObject];
+                cloudURL = [dict objectForKey:@"m3u8_url"];
+                [self.playerView setVedioURL:cloudURL];
+                [self.playerView2 setVedioURL:cloudURL];
+            }
+            
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
+}
+
 
 #pragma mark - updateConstraints
 
@@ -188,6 +220,12 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 //联系老人
 - (void)contactOldMan{
     NSLog(@"联系老人");
+    CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",model.cell_phone];
+    UIWebView *callWebview = [[UIWebView alloc] init];
+    [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
+    [self.view addSubview:callWebview];
+    
 }
 
 #pragma mark - getter setter
@@ -195,7 +233,7 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 - (UIView *)videoView{
     if (!_videoView) {
         _videoView = [[UIView alloc] init];
-        _videoView.backgroundColor = [UIColor blueColor];
+        _videoView.backgroundColor = [UIColor clearColor];
     }
     
     return _videoView;
@@ -217,6 +255,7 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
         _smallVideoView = [[UIView alloc] init];
         _smallVideoView.layer.borderWidth = 2.0;
         _smallVideoView.layer.borderColor = [UIColor grayColor].CGColor;
+        _smallVideoView.hidden = YES;
     }
     return _smallVideoView;
 }
@@ -295,7 +334,15 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 - (LTAVPlayerView *)playerView{
     if (!_playerView) {
         _playerView = [[LTAVPlayerView alloc] init];
-        [_playerView setVedioURL:cloudURL];
+        VFWeakSelf(self)
+        _playerView.playerReadyBlock = ^{
+            weakself.smallVideoView.alpha = 0.0;
+            weakself.smallVideoView.hidden = NO;
+            [UIView animateWithDuration:0.3 animations:^{
+                weakself.smallVideoView.alpha = 1.0;
+            }];
+        };
+//        [_playerView setVedioURL:cloudURL];
     }
     
     return _playerView;
@@ -304,7 +351,7 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 - (LTAVPlayerView *)playerView2{
     if (!_playerView2) {
         _playerView2 = [[LTAVPlayerView alloc] init];
-        [_playerView2 setVedioURL:cloudURL];
+//        [_playerView2 setVedioURL:cloudURL];
     }
     return _playerView2;
 }

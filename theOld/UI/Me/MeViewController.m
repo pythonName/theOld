@@ -13,6 +13,7 @@
 #import "UserCenterViewController.h"
 #import "ShiMingViewController.h"
 #import "ImageViewUtil.h"
+#import "OrderCenterController.h"
 
 
 @interface MeViewController ()<UITableViewDelegate,UITableViewDataSource>{
@@ -63,7 +64,8 @@ static CGFloat CellH = 50;
     [headerV addSubview:centerBtn];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo) name:UPDATE_USER_INFO object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo) name:USER_LOGOUT_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo) name:USER_LOGIN_NOTIFICATION object:nil];
     
     UILabel *tt = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(centerBtn.frame)+13, CGRectGetWidth(headerV.frame), 20)];
     tt.text = @"个人中心";
@@ -185,7 +187,9 @@ static CGFloat CellH = 50;
     switch (indexPath.row) {
         case 0:
         {
-            OrderCenterViewController *orderVC=[[OrderCenterViewController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight) withURLString:[NSString stringWithFormat:@"%@api/order_index/",TESTHOST]];
+//            OrderCenterViewController *orderVC=[[OrderCenterViewController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight) withURLString:[NSString stringWithFormat:@"%@api/order_index/",TESTHOST]];
+//            OrderCenterController *orderVC=[[OrderCenterController alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-NavigationBarHeight-StatusBarHeight)];
+            OrderCenterController *orderVC = [[OrderCenterController alloc] init];
             [self.navigationController pushViewController:orderVC animated:YES];
          
         }

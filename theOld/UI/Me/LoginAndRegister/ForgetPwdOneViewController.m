@@ -180,9 +180,13 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         [params setObject:self.userNameTextField.text forKey:@"username"];
         [params setObject:@"forget" forKey:@"type"];
-        [[DataInterface shareInstance] getMessageCodeRequest:params complication:^(NSDictionary *resultDic) {
-            NSLog(@"resultDic = %@",resultDic);
-            [[Toast makeText:@"验证码发送成功"] show];
+        [[DataInterface shareInstance] getMessageCodeRequest:params completeBlock:^(CommonResponseModel *model, NSError *error) {
+            if (error) {
+                [self showNetworkError];
+                return ;
+            }
+            
+            [self showInfoMsg:model.msg];
         }];
     }else{
         [[Toast makeText:@"请输入正确的手机号"] show];

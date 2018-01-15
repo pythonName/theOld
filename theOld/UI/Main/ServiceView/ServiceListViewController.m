@@ -126,7 +126,7 @@
 - (void)selectOldMan:(NSNotification *)notification{
     CareOldManModel *model = [[MainDataManager sharedInstance] selectModel];
     if (model) {
-        _serviceProgressLabel.text = [NSString stringWithFormat:@"服务进度进度%@", model.pack_progress];
+        _serviceProgressLabel.text = [NSString stringWithFormat:@"服务进度%@%%", model.pack_progress];
         _guardianCountLabel.text = [NSString stringWithFormat:@"已有%ld名", model.count];
     }
     else{
@@ -145,6 +145,19 @@
         [vc.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
             
         }];
+        return;
+    }
+    
+    if (![MainDataManager sharedInstance].selectModel) {
+        
+        UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"请先关注老人" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertVC addAction:action];
+        
+        [self presentViewController:alertVC animated:YES completion:nil];
         return;
     }
     

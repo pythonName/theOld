@@ -153,7 +153,8 @@ typedef void (^callBackBlock)(id sender);
 
 //zh-Hans
 #define BACK_IMAGE [UIImage imageNamed:@"back"]
-#define BACK_IMAGE_VFRAME CGRectMake(0, 0, 20, 18)
+#define BACK_IMAGE_VFRAME CGRectMake(0, 0, 44, 44)
+#define BACK_IMAGE_INSETS UIEdgeInsetsMake(0, -20, 0, 20)
 
 
 //新版本用户登入注册
@@ -177,3 +178,8 @@ typedef void (^callBackBlock)(id sender);
 #define USER_LOGOUT_NOTIFICATION @"userLogoutNotification"  //用户登出通知
 
 #define SELECT_OLDMAN_NOTIFICATION @"selectOldManNotification"  //选择关注老人列表的通知
+
+//定义字体
+#define PingFang_SC_Medium  @"PingFang-SC-Medium"
+
+#define PLACE_HOLDER_PORTRAIT @"accountIconDefault.png"

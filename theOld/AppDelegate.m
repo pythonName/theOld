@@ -29,6 +29,8 @@
     
     [[VVConfig shareInstance] initialization];
     
+    sleep(2);
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -97,6 +99,24 @@ static NSString *kKeyNeedNavigationWrapper = @"needNavigationWrapper";
     [self.window addSubview:tabBarController.view];
     self.window.rootViewController = tabBarController;
     [self.window makeKeyAndVisible];
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options{
+    //支付宝钱包返回URL处理方法
+    [self alipayWithURL:url];
+    return YES;
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application{
+    
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+    //保存需要缓存的数据
+    [self storeCacheData];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application{
 }
 
 @end

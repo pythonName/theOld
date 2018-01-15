@@ -19,6 +19,20 @@
 
 - (CareOldManModel *)selectModel;
 
+/**
+ 清除用户登录数据
+ */
 - (void)clearData;
+
+/**
+ 用户登录后没有退出，但是应用被系统kill掉 此时需要缓存老人数据以便下次打开应用的时候显示
+ */
+- (void)storeCacheData;
+
+/**
+ 加载用户缓存数据
+ */
+- (void)loadCacheData;
+
 
 @end

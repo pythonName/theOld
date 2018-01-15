@@ -28,20 +28,33 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4x-gA-qXh">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="09L-nt-Arc">
                         <rect key="frame" x="0.0" y="0.0" width="152" height="152"/>
-                    </imageView>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="C4x-gA-qXh">
+                                <rect key="frame" x="62" y="62" width="28" height="28"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C4x-gA-qXh" firstAttribute="centerY" secondItem="09L-nt-Arc" secondAttribute="centerY" id="0U3-l4-Pz8"/>
+                            <constraint firstItem="C4x-gA-qXh" firstAttribute="centerX" secondItem="09L-nt-Arc" secondAttribute="centerX" id="Bvb-Gk-rtV"/>
+                            <constraint firstItem="C4x-gA-qXh" firstAttribute="height" relation="lessThanOrEqual" secondItem="09L-nt-Arc" secondAttribute="height" id="HKq-ut-Ylh"/>
+                            <constraint firstItem="C4x-gA-qXh" firstAttribute="width" relation="lessThanOrEqual" secondItem="09L-nt-Arc" secondAttribute="width" id="d9S-a4-Sp8"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="C4x-gA-qXh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1dZ-3L-uVl"/>
                 <constraint firstAttribute="bottom" secondItem="4I3-Ht-XGR" secondAttribute="bottom" id="7qQ-Ic-BzX"/>
-                <constraint firstItem="4I3-Ht-XGR" firstAttribute="leading" secondItem="C4x-gA-qXh" secondAttribute="leading" id="Nmp-Ea-fYB"/>
-                <constraint firstItem="C4x-gA-qXh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="VUT-Uo-MNY"/>
-                <constraint firstItem="4I3-Ht-XGR" firstAttribute="trailing" secondItem="C4x-gA-qXh" secondAttribute="trailing" id="cfb-mh-3c8"/>
-                <constraint firstAttribute="trailing" secondItem="C4x-gA-qXh" secondAttribute="trailing" id="gsg-X9-qDZ"/>
-                <constraint firstItem="4I3-Ht-XGR" firstAttribute="top" secondItem="C4x-gA-qXh" secondAttribute="bottom" id="lEc-kT-1HZ"/>
+                <constraint firstItem="09L-nt-Arc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Hl8-RZ-Jg2"/>
+                <constraint firstItem="4I3-Ht-XGR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WWV-iU-gIv"/>
+                <constraint firstItem="09L-nt-Arc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bGB-Gn-qlr"/>
+                <constraint firstAttribute="trailing" secondItem="09L-nt-Arc" secondAttribute="trailing" id="gs5-HH-oky"/>
+                <constraint firstAttribute="trailing" secondItem="4I3-Ht-XGR" secondAttribute="trailing" id="jnl-nv-iBv"/>
+                <constraint firstItem="4I3-Ht-XGR" firstAttribute="top" secondItem="09L-nt-Arc" secondAttribute="bottom" id="nag-06-fL1"/>
             </constraints>
             <size key="customSize" width="146" height="148"/>
             <connections>
@@ -51,4 +64,7 @@
             <point key="canvasLocation" x="72" y="100.5"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="addImage.png" width="28" height="28"/>
+    </resources>
 </document>

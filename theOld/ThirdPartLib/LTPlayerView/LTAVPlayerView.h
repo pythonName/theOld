@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^PlayerIsReadyBlock)();
+
 @interface LTAVPlayerView : UIView
+
+@property (nonatomic, copy) PlayerIsReadyBlock playerReadyBlock;
+
 /**设置视频播放地址*/
 - (void)setVedioURL:(NSString *)videoURL;
 

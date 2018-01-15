@@ -8,6 +8,7 @@
 
 #import "UIViewController+Common.h"
 #import "AppDelegate.h"
+#import <objc/runtime.h>
 
 @implementation UIViewController (Common)
 
@@ -24,5 +25,30 @@
     AppDelegate *appDelegate = (AppDelegate *)application.delegate;
     [appDelegate.window.rootViewController presentViewController:viewControllerToPresent animated:YES completion:nil];
 }
+
+//- (void)dealloc{
+//    NSLog(@"*******************%@ dealloc******************", self);
+//}
+
++ (void)load{
+    [self exchangeViewDidLoad];
+}
+
++ (void)exchangeViewDidLoad{
+    SEL oldSel = @selector(viewDidLoad);
+    SEL newSel = @selector(lxt_viewDidLoad);
+    
+    Method oldMethod = class_getInstanceMethod([self class], oldSel);
+    Method newMethod = class_getInstanceMethod([self class], newSel);
+    
+    method_exchangeImplementations(oldMethod, newMethod);
+}
+
+- (void)lxt_viewDidLoad{
+    NSLog(@"===========%@=============", self);
+    [self lxt_viewDidLoad];
+}
+
+
 
 @end

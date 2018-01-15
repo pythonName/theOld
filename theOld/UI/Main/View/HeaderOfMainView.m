@@ -9,6 +9,7 @@
 #import "HeaderOfMainView.h"
 #import "UIView+NIB.h"
 #import "UserManager.h"
+#import "UIImageView+WebCache.h"
 @implementation HeaderOfMainView
 
 + (HeaderOfMainView *)loadHeaderOfMainView{
@@ -27,6 +28,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.resouseButton.layer.cornerRadius = 10;
+    self.headerImageV.layer.cornerRadius = 38;
+    self.headerImageV.clipsToBounds = YES;
     
 }
 
@@ -51,10 +54,15 @@
             _sexImageV.image = [UIImage imageNamed:@"women.png"];
         }
         self.nameLab.text = [NSString stringWithFormat:@"%@  %ld岁", _model.name, _model.age];
+        
+        if (_model.photo.length > 0) {
+            [_headerImageV sd_setImageWithURL:[NSURL URLWithString:_model.photo] placeholderImage:[UIImage imageNamed:PLACE_HOLDER_PORTRAIT]];
+        }
     }
     else{
         self.nameLab.text = @"请先关注老人";
         self.sexImageV.hidden = YES;
+        [self.headerImageV setImage:[UIImage imageNamed:PLACE_HOLDER_PORTRAIT]];
     }
     
 }

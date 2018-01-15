@@ -8,6 +8,11 @@
 
 #import "OldManResourseTableViewCell.h"
 
+@interface OldManResourseTableViewCell()
+
+
+@end
+
 @implementation OldManResourseTableViewCell
 
 - (void)awakeFromNib {

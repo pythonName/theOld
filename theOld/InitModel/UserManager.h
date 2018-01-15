@@ -21,10 +21,12 @@ typedef void(^CompleteBlock) (CommonResponseModel *model, NSError *error);
 @property (nonatomic,copy) NSString *userName; //姓名
 @property (nonatomic, copy) NSString *name;     //昵称
 @property (nonatomic, copy) NSString *IDCard;   //省份证
-@property (nonatomic, copy) NSString *sex;
-@property (nonatomic, copy) NSString *dateTime;
-@property (nonatomic, copy) NSString *photo;
-@property (nonatomic, copy) NSString *complete;
+@property (nonatomic, copy) NSString *sex;      //性别
+@property (nonatomic, copy) NSString *dateTime; //注册日期
+@property (nonatomic, copy) NSString *photo;    //头像
+@property (nonatomic, copy) NSString *complete; //是否完善实名信息
+@property (nonatomic) NSInteger focus_count;    //关注老人数量
+@property (nonatomic) NSInteger invite_count;   //邀请监护人数量
 
 //@property (nonatomic,copy) NSString *vshareVersion; //发布时的版本号
 //@property (nonatomic,copy) NSString *vshareVersion; //发布时的版本号

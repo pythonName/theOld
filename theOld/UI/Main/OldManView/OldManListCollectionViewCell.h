@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CareOldManModel.h"
 
 @interface OldManListCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *personImageV;
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
+
+@property (nonatomic, weak) CareOldManModel *model;
 
 //@property (nonatomic , strong) 
 

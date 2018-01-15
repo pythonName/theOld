@@ -17,6 +17,10 @@
 #import "UIAlertAction+Custom.h"
 #import "OldManListViewController.h"
 #import "MainDataManager.h"
+#import "ShiMingViewController.h"
+#import "CustomNavigationController.h"
+#import "LoginViewController.h"
+//#import "LeveyTabBarController.h"
 
 
 
@@ -58,6 +62,7 @@
     //头部信息
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
+    _headerOfMainView.model = [MainDataManager sharedInstance].selectModel;
     _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 190 );
    [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
    
@@ -73,9 +78,8 @@
     _scrollComponent.userInteractionEnabled = YES;
     
 
-    
+    /*
     //消息按钮
-//    infoImage
     UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     infoBtn.frame = CGRectMake(0, 0, 38, 30);
     [infoBtn setImage:[UIImage imageNamed:@"infoImage"] forState:UIControlStateNormal];
@@ -85,19 +89,19 @@
     self.navigationItem.rightBarButtonItem = rightBI;
     _redLab = [[UILabel alloc] initWithFrame:CGRectMake(23, 0, 14, 14)];
     [infoBtn addSubview:_redLab];
-//    _redLab.backgroundColor = [UIColor redColor];
     _redLab.textAlignment = NSTextAlignmentCenter;
     _redLab.textColor = [UIColor whiteColor];
     _redLab.font = [UIFont systemFontOfSize:10];
     _redLab.text = @"10";
     [_redLab jm_setCornerRadius:7 withBackgroundColor:[UIColor redColor]];
+     */
     
 //    [LoadingView showCirleView];
 //    [self performSelector:@selector(infoButtonClick) withObject:nil afterDelay:8];
     
-    if ([UserManager shareInstance].isLogined) {
-        [self loadData];
-    }
+//    if ([UserManager shareInstance].isLogined) {
+//        [self loadData];
+//    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:USER_LOGIN_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectOldMan:) name:SELECT_OLDMAN_NOTIFICATION object:nil];
@@ -141,7 +145,17 @@
 
 -(void)gotoResourseView {
     UserManager *userManager = [UserManager shareInstance];
-    if (userManager.isLogined && [userManager.complete isEqualToString:@"yes"]) {
+    
+    if (!userManager.isLogined) {
+        LoginViewController *vc = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+        CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:vc];
+        [self.leveyTabBarController presentViewController:navAppBrowserController animated:YES completion:^{
+            
+        }];
+        return;
+    }
+    
+    if ([userManager.complete isEqualToString:@"yes"]) {
         OldManResourseViewController *vv =[[OldManResourseViewController alloc] init];
         [self.navigationController pushViewController:vv animated:YES];
     }
@@ -161,7 +175,8 @@
         UIAlertAction *sureAction = [UIAlertAction actionWithTitle:@"立即完善"
                                                              style:UIAlertActionStyleDefault
                                                            handler:^(UIAlertAction * _Nonnull action) {
-                                                               NSLog(@"");
+                                                               ShiMingViewController *controller = [[ShiMingViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+                                                               [self.navigationController pushViewController:controller animated:YES];
                                                            }];
         [sureAction setTitleColor:baseColor];
         [alertView addAction:cancelAction];

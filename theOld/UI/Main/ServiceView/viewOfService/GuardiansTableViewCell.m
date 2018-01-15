@@ -7,12 +7,15 @@
 //
 
 #import "GuardiansTableViewCell.h"
+#import "ImageViewUtil.h"
 
 @implementation GuardiansTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.personImageV.image = [UIImage imageNamed:@"accountIconDefault.png"];
+    self.personImageV.layer.cornerRadius = 40;
+    self.personImageV.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -31,6 +34,9 @@
     self.nameLab.text = _model.name;
     self.sonLab.text = _model.relation;
     self.telNumberLab.text = _model.username;
+    if (_model.photo.length > 0) {
+        [ImageViewUtil setImage:self.personImageV imageURL:_model.photo placeholder:PLACE_HOLDER_PORTRAIT];
+    }
 }
 
 

@@ -69,7 +69,7 @@ static NSString  *cellIdent = @"CarePlanTableViewCell";
     self.date = [NSDate date];
  
    
-    
+    /*
     //消息按钮
     //    infoImage
     UIButton *infoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,6 +87,7 @@ static NSString  *cellIdent = @"CarePlanTableViewCell";
     _redLab.font = [UIFont systemFontOfSize:10];
     _redLab.text = @"10";
     [_redLab jm_setCornerRadius:9 withBackgroundColor:[UIColor redColor]];
+     */
 }
 
 //请求特殊日期有哪些

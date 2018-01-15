@@ -52,6 +52,7 @@
     //返回按钮
     leftnButton = [[UIButton alloc] initWithFrame:BACK_IMAGE_VFRAME];
     [leftnButton setImage:BACK_IMAGE forState:UIControlStateNormal];
+    leftnButton.imageEdgeInsets = BACK_IMAGE_INSETS;
     [leftnButton addTarget:self action:@selector(backbuttonclick) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *bbi=[[UIBarButtonItem alloc] initWithCustomView:leftnButton];
     self.navigationItem.leftBarButtonItem = bbi;
