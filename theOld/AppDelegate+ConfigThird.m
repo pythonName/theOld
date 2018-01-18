@@ -16,10 +16,13 @@
 @implementation AppDelegate (ConfigThird)
 
 - (void)configThirdParty{
+    //配置高德地图
     [self configAMap];
     
+    //开启网络检测
     [self checkNetwork];
     
+    //检查用户是否登陆
     [self checkUserLogin];
     
     //加载缓存数据
