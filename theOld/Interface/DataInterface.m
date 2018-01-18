@@ -432,6 +432,7 @@
     requestUrl = [requestUrl stringByAppendingString:@"?"];
     for (NSString *key in keys) {
         requestUrl = [requestUrl stringByAppendingString:[NSString stringWithFormat:@"%@=%@", key, [params objectForKey:key]]];
+        requestUrl = [requestUrl stringByAppendingString:@"&"];
     }
     return requestUrl;
 }
@@ -497,6 +498,26 @@
 //远程看护设备
 + (void)remoteSupervisionRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock{
     NSString *requestStr = [self requestStrWithPath:@"api/nurse/" params:params];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
+//查询指定日期的照护计划数据
++ (void)carePlanRequestWithDate:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/time_care_plan/" params:params];
+    [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
+        completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
+    } failureBlock:^(id value) {
+        completeBlock(nil, value);
+    }];
+}
+
+//根据月份获取当月的照护计划数据
++ (void)carePlanRequestWithMoth:(NSDictionary *)params result:(CompleteBlock)completeBlock{
+    NSString *requestStr = [self requestStrWithPath:@"api/month_care_plan/" params:params];
     [[VFNetAPIClient netWorkClient] requestJsonDataWithPath:requestStr withParams:nil withMethodType:Get successBlock:^(id value) {
         completeBlock([CommonResponseModel covertToModelWithDict:value], nil);
     } failureBlock:^(id value) {

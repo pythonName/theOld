@@ -229,14 +229,22 @@ static UserManager *userManager;
     model.name = self.nameTextField.text;
     model.sex = self.sex;
     model.ID_number = self.idTextField.text;
-
+    
+    
+    [self showLoading];
     [DataInterface realNameInformationRequestWithModel:model toGetResult:^(id result, NSError *error) {
+        [self dismissLoading];
         if (error) {
             [self showNetworkError];
         }
         NSInteger code = [[result objectForKey:@"code"] integerValue];
         if (200 == code) {
             [self showInfoMsg:@"提交成功！"];
+            userManager.complete = @"yes";
+            userManager.IDCard = self.idTextField.text;
+            userManager.sex = self.sex;
+            userManager.name = self.nameTextField.text;
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else{
             NSString *msg = [result objectForKey:@"msg"];

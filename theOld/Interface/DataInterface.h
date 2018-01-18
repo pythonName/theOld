@@ -157,4 +157,15 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 //远程看护设备请求
 + (void)remoteSupervisionRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
+/**
+ 根据指定日期的照护计划数据
+ */
++ (void)carePlanRequestWithDate:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
+/**
+ 根据月份获取当月的照护计划数据
+ */
+
++ (void)carePlanRequestWithMoth:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
 @end

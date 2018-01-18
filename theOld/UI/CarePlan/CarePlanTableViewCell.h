@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CarePlanModel.h"
 
 @interface CarePlanTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
+@property (nonatomic, weak) CarePlanModel *model;
 
 @end

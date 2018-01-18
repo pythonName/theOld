@@ -10,6 +10,7 @@
 #import "VVConfig.h"
 #import "UIView+RoundedCorner.h"
 #import "VerifyIdentityCard.h"
+#import "UserManager.h"
 
 @interface ChangeIphoneViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -119,17 +120,25 @@
 
 #pragma mark 提交按钮
 - (void)loginBtnClick:(UIButton *)sender{
-    [DataInterface changePhoneRequest:nil result:^(CommonResponseModel *model, NSError *error) {
+    NSDictionary *params = @{
+                             @"new_username" : self.phoneNumberTextField.text,
+                             @"code" : self.nnphoneNumberTextField.text
+                             
+                             };
+    VFWeakSelf(self)
+    [DataInterface changePhoneRequest:params result:^(CommonResponseModel *model, NSError *error) {
         if (error) {
-            [self showNetworkError];
+            [weakself showNetworkError];
             return ;
         }
         
         if (model.code.integerValue == 200) {
-            [self showInfoMsg:@"绑定手机号码成功！"];
+            [weakself showInfoMsg:@"绑定手机号码成功！"];
+            [[UserManager shareInstance] logout];
+            [weakself.navigationController popToRootViewControllerAnimated:YES];
         }
         else{
-            [self showInfoMsg:model.msg];
+            [weakself showInfoMsg:model.msg];
         }
     }];
 }

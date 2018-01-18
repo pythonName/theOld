@@ -16,6 +16,16 @@
 /**显示一般提示信息*/
 - (void)showInfoMsg:(NSString *)msg;
 
+/**
+ 正则加载动画
+ */
+- (void)showLoading;
+
+/**
+ 隐藏加载动画
+ */
+- (void)dismissLoading;
+
 - (void)presentViewControllerFromRootController:(UIViewController *)viewControllerToPresent  animated:(BOOL)flag completion:(void (^)(void))completion;
 
 @end

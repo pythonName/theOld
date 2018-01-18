@@ -156,6 +156,11 @@
 		0AEC50C41FB30A50009C60E4 /* SearchOldManView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C31FB30A50009C60E4 /* SearchOldManView.xib */; };
 		0AEC50C71FB30A67009C60E4 /* SearchOldManOfResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */; };
 		0AEC50C91FB30A71009C60E4 /* SearchOldManOfResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */; };
+		52033E17200EF426009DF7F8 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52033E0E200EF426009DF7F8 /* SVIndefiniteAnimatedView.m */; };
+		52033E18200EF426009DF7F8 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52033E10200EF426009DF7F8 /* SVProgressAnimatedView.m */; };
+		52033E19200EF426009DF7F8 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52033E12200EF426009DF7F8 /* SVProgressHUD.bundle */; };
+		52033E1A200EF426009DF7F8 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 52033E14200EF426009DF7F8 /* SVProgressHUD.m */; };
+		52033E1B200EF426009DF7F8 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52033E16200EF426009DF7F8 /* SVRadialGradientLayer.m */; };
 		520B96E02004BFF000E6DD54 /* OrderHistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 520B96DF2004BFF000E6DD54 /* OrderHistoryController.m */; };
 		520ED5991FF5E8C5000D97A7 /* ImageViewUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 520ED5981FF5E8C5000D97A7 /* ImageViewUtil.m */; };
 		520ED5C91FF620FB000D97A7 /* MJRefreshAutoFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 520ED59D1FF620FB000D97A7 /* MJRefreshAutoFooter.m */; };
@@ -242,6 +247,23 @@
 		524E07931FF34CBB003684D4 /* CommonResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E07921FF34CBB003684D4 /* CommonResponseModel.m */; };
 		524E07961FF39FC6003684D4 /* CareOldManModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E07951FF39FC6003684D4 /* CareOldManModel.m */; };
 		52508C451FF0D61700E0115B /* LTAVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52508C441FF0D61700E0115B /* LTAVPlayerView.m */; };
+		52539979200D9DA800BE9A98 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52539955200D9DA800BE9A98 /* Info.plist */; };
+		5253997A200D9DA800BE9A98 /* JTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539959200D9DA800BE9A98 /* JTCalendarManager.m */; };
+		5253997B200D9DA800BE9A98 /* JTCalendarSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253995B200D9DA800BE9A98 /* JTCalendarSettings.m */; };
+		5253997C200D9DA800BE9A98 /* JTDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253995D200D9DA800BE9A98 /* JTDateHelper.m */; };
+		5253997D200D9DA800BE9A98 /* JTCalendarDelegateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539960200D9DA800BE9A98 /* JTCalendarDelegateManager.m */; };
+		5253997E200D9DA800BE9A98 /* JTCalendarScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539962200D9DA800BE9A98 /* JTCalendarScrollManager.m */; };
+		5253997F200D9DA800BE9A98 /* JTCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253996C200D9DA800BE9A98 /* JTCalendarDayView.m */; };
+		52539980200D9DA800BE9A98 /* JTCalendarMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253996E200D9DA800BE9A98 /* JTCalendarMenuView.m */; };
+		52539981200D9DA800BE9A98 /* JTCalendarPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539970200D9DA800BE9A98 /* JTCalendarPageView.m */; };
+		52539982200D9DA800BE9A98 /* JTCalendarWeekDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539972200D9DA800BE9A98 /* JTCalendarWeekDayView.m */; };
+		52539983200D9DA800BE9A98 /* JTCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539974200D9DA800BE9A98 /* JTCalendarWeekView.m */; };
+		52539984200D9DA800BE9A98 /* JTHorizontalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539976200D9DA800BE9A98 /* JTHorizontalCalendarView.m */; };
+		52539985200D9DA800BE9A98 /* JTVerticalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539978200D9DA800BE9A98 /* JTVerticalCalendarView.m */; };
+		5253998B200D9DD200BE9A98 /* LXTWeekMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539989200D9DD200BE9A98 /* LXTWeekMenuView.m */; };
+		5253998C200D9DD200BE9A98 /* LXTCalenderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5253998A200D9DD200BE9A98 /* LXTCalenderView.m */; };
+		52539993200DD32400BE9A98 /* CarePlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539992200DD32400BE9A98 /* CarePlanModel.m */; };
+		52539997200DD4FD00BE9A98 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 52539996200DD4FD00BE9A98 /* DateUtil.m */; };
 		527809271FFB54A2001E783F /* CarePackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 527809261FFB54A2001E783F /* CarePackageModel.m */; };
 		527809301FFB5BA8001E783F /* CarePackagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5278092E1FFB5BA8001E783F /* CarePackagesTableViewCell.m */; };
 		527809311FFB5BA8001E783F /* CarePackagesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5278092F1FFB5BA8001E783F /* CarePackagesTableViewCell.xib */; };
@@ -552,6 +574,16 @@
 		0AEC50C51FB30A67009C60E4 /* SearchOldManOfResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchOldManOfResultView.h; sourceTree = "<group>"; };
 		0AEC50C61FB30A67009C60E4 /* SearchOldManOfResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchOldManOfResultView.m; sourceTree = "<group>"; };
 		0AEC50C81FB30A71009C60E4 /* SearchOldManOfResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchOldManOfResultView.xib; sourceTree = "<group>"; };
+		52033E0D200EF426009DF7F8 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		52033E0E200EF426009DF7F8 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		52033E0F200EF426009DF7F8 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		52033E10200EF426009DF7F8 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		52033E11200EF426009DF7F8 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		52033E12200EF426009DF7F8 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		52033E13200EF426009DF7F8 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		52033E14200EF426009DF7F8 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		52033E15200EF426009DF7F8 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		52033E16200EF426009DF7F8 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		520B96DE2004BFF000E6DD54 /* OrderHistoryController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderHistoryController.h; sourceTree = "<group>"; };
 		520B96DF2004BFF000E6DD54 /* OrderHistoryController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderHistoryController.m; sourceTree = "<group>"; };
 		520ED5971FF5E8C5000D97A7 /* ImageViewUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewUtil.h; sourceTree = "<group>"; };
@@ -710,6 +742,47 @@
 		524E07951FF39FC6003684D4 /* CareOldManModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CareOldManModel.m; sourceTree = "<group>"; };
 		52508C431FF0D61700E0115B /* LTAVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAVPlayerView.h; sourceTree = "<group>"; };
 		52508C441FF0D61700E0115B /* LTAVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAVPlayerView.m; sourceTree = "<group>"; };
+		52539955200D9DA800BE9A98 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52539956200D9DA800BE9A98 /* JTCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendar.h; sourceTree = "<group>"; };
+		52539957200D9DA800BE9A98 /* JTCalendarDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarDelegate.h; sourceTree = "<group>"; };
+		52539958200D9DA800BE9A98 /* JTCalendarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarManager.h; sourceTree = "<group>"; };
+		52539959200D9DA800BE9A98 /* JTCalendarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarManager.m; sourceTree = "<group>"; };
+		5253995A200D9DA800BE9A98 /* JTCalendarSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarSettings.h; sourceTree = "<group>"; };
+		5253995B200D9DA800BE9A98 /* JTCalendarSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarSettings.m; sourceTree = "<group>"; };
+		5253995C200D9DA800BE9A98 /* JTDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTDateHelper.h; sourceTree = "<group>"; };
+		5253995D200D9DA800BE9A98 /* JTDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTDateHelper.m; sourceTree = "<group>"; };
+		5253995F200D9DA800BE9A98 /* JTCalendarDelegateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarDelegateManager.h; sourceTree = "<group>"; };
+		52539960200D9DA800BE9A98 /* JTCalendarDelegateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarDelegateManager.m; sourceTree = "<group>"; };
+		52539961200D9DA800BE9A98 /* JTCalendarScrollManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarScrollManager.h; sourceTree = "<group>"; };
+		52539962200D9DA800BE9A98 /* JTCalendarScrollManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarScrollManager.m; sourceTree = "<group>"; };
+		52539964200D9DA800BE9A98 /* JTCalendarDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarDay.h; sourceTree = "<group>"; };
+		52539965200D9DA800BE9A98 /* JTCalendarPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarPage.h; sourceTree = "<group>"; };
+		52539966200D9DA800BE9A98 /* JTCalendarWeek.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarWeek.h; sourceTree = "<group>"; };
+		52539967200D9DA800BE9A98 /* JTCalendarWeekDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarWeekDay.h; sourceTree = "<group>"; };
+		52539968200D9DA800BE9A98 /* JTContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTContent.h; sourceTree = "<group>"; };
+		52539969200D9DA800BE9A98 /* JTMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTMenu.h; sourceTree = "<group>"; };
+		5253996B200D9DA800BE9A98 /* JTCalendarDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarDayView.h; sourceTree = "<group>"; };
+		5253996C200D9DA800BE9A98 /* JTCalendarDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarDayView.m; sourceTree = "<group>"; };
+		5253996D200D9DA800BE9A98 /* JTCalendarMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarMenuView.h; sourceTree = "<group>"; };
+		5253996E200D9DA800BE9A98 /* JTCalendarMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarMenuView.m; sourceTree = "<group>"; };
+		5253996F200D9DA800BE9A98 /* JTCalendarPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarPageView.h; sourceTree = "<group>"; };
+		52539970200D9DA800BE9A98 /* JTCalendarPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarPageView.m; sourceTree = "<group>"; };
+		52539971200D9DA800BE9A98 /* JTCalendarWeekDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarWeekDayView.h; sourceTree = "<group>"; };
+		52539972200D9DA800BE9A98 /* JTCalendarWeekDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarWeekDayView.m; sourceTree = "<group>"; };
+		52539973200D9DA800BE9A98 /* JTCalendarWeekView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTCalendarWeekView.h; sourceTree = "<group>"; };
+		52539974200D9DA800BE9A98 /* JTCalendarWeekView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTCalendarWeekView.m; sourceTree = "<group>"; };
+		52539975200D9DA800BE9A98 /* JTHorizontalCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTHorizontalCalendarView.h; sourceTree = "<group>"; };
+		52539976200D9DA800BE9A98 /* JTHorizontalCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTHorizontalCalendarView.m; sourceTree = "<group>"; };
+		52539977200D9DA800BE9A98 /* JTVerticalCalendarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JTVerticalCalendarView.h; sourceTree = "<group>"; };
+		52539978200D9DA800BE9A98 /* JTVerticalCalendarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JTVerticalCalendarView.m; sourceTree = "<group>"; };
+		52539987200D9DD100BE9A98 /* LXTCalenderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXTCalenderView.h; sourceTree = "<group>"; };
+		52539988200D9DD100BE9A98 /* LXTWeekMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXTWeekMenuView.h; sourceTree = "<group>"; };
+		52539989200D9DD200BE9A98 /* LXTWeekMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXTWeekMenuView.m; sourceTree = "<group>"; };
+		5253998A200D9DD200BE9A98 /* LXTCalenderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXTCalenderView.m; sourceTree = "<group>"; };
+		52539991200DD32400BE9A98 /* CarePlanModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePlanModel.h; sourceTree = "<group>"; };
+		52539992200DD32400BE9A98 /* CarePlanModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePlanModel.m; sourceTree = "<group>"; };
+		52539995200DD4FD00BE9A98 /* DateUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		52539996200DD4FD00BE9A98 /* DateUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 		527809251FFB54A2001E783F /* CarePackageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePackageModel.h; sourceTree = "<group>"; };
 		527809261FFB54A2001E783F /* CarePackageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarePackageModel.m; sourceTree = "<group>"; };
 		5278092D1FFB5BA8001E783F /* CarePackagesTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarePackagesTableViewCell.h; sourceTree = "<group>"; };
@@ -1023,7 +1096,7 @@
 		0ABCFF991FC3F26900379CBB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7910B5C51FC53E9100953BD3 /* PlanModel */,
+				52539990200DD30C00BE9A98 /* CarePlanModel */,
 				0ABCFF9A1FC3F26900379CBB /* MainModel */,
 			);
 			path = Model;
@@ -1366,6 +1439,23 @@
 			path = NewAddOldMan;
 			sourceTree = "<group>";
 		};
+		52033E0C200EF426009DF7F8 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				52033E0D200EF426009DF7F8 /* SVIndefiniteAnimatedView.h */,
+				52033E0E200EF426009DF7F8 /* SVIndefiniteAnimatedView.m */,
+				52033E0F200EF426009DF7F8 /* SVProgressAnimatedView.h */,
+				52033E10200EF426009DF7F8 /* SVProgressAnimatedView.m */,
+				52033E11200EF426009DF7F8 /* SVProgressHUD-Prefix.pch */,
+				52033E12200EF426009DF7F8 /* SVProgressHUD.bundle */,
+				52033E13200EF426009DF7F8 /* SVProgressHUD.h */,
+				52033E14200EF426009DF7F8 /* SVProgressHUD.m */,
+				52033E15200EF426009DF7F8 /* SVRadialGradientLayer.h */,
+				52033E16200EF426009DF7F8 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		520ED59A1FF620FB000D97A7 /* MJRefresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -1602,6 +1692,99 @@
 			path = LTPlayerView;
 			sourceTree = "<group>";
 		};
+		52539954200D9DA800BE9A98 /* JTCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				52539955200D9DA800BE9A98 /* Info.plist */,
+				52539956200D9DA800BE9A98 /* JTCalendar.h */,
+				52539957200D9DA800BE9A98 /* JTCalendarDelegate.h */,
+				52539958200D9DA800BE9A98 /* JTCalendarManager.h */,
+				52539959200D9DA800BE9A98 /* JTCalendarManager.m */,
+				5253995A200D9DA800BE9A98 /* JTCalendarSettings.h */,
+				5253995B200D9DA800BE9A98 /* JTCalendarSettings.m */,
+				5253995C200D9DA800BE9A98 /* JTDateHelper.h */,
+				5253995D200D9DA800BE9A98 /* JTDateHelper.m */,
+				5253995E200D9DA800BE9A98 /* Managers */,
+				52539963200D9DA800BE9A98 /* Protocols */,
+				5253996A200D9DA800BE9A98 /* Views */,
+			);
+			path = JTCalendar;
+			sourceTree = "<group>";
+		};
+		5253995E200D9DA800BE9A98 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5253995F200D9DA800BE9A98 /* JTCalendarDelegateManager.h */,
+				52539960200D9DA800BE9A98 /* JTCalendarDelegateManager.m */,
+				52539961200D9DA800BE9A98 /* JTCalendarScrollManager.h */,
+				52539962200D9DA800BE9A98 /* JTCalendarScrollManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		52539963200D9DA800BE9A98 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				52539964200D9DA800BE9A98 /* JTCalendarDay.h */,
+				52539965200D9DA800BE9A98 /* JTCalendarPage.h */,
+				52539966200D9DA800BE9A98 /* JTCalendarWeek.h */,
+				52539967200D9DA800BE9A98 /* JTCalendarWeekDay.h */,
+				52539968200D9DA800BE9A98 /* JTContent.h */,
+				52539969200D9DA800BE9A98 /* JTMenu.h */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5253996A200D9DA800BE9A98 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5253996B200D9DA800BE9A98 /* JTCalendarDayView.h */,
+				5253996C200D9DA800BE9A98 /* JTCalendarDayView.m */,
+				5253996D200D9DA800BE9A98 /* JTCalendarMenuView.h */,
+				5253996E200D9DA800BE9A98 /* JTCalendarMenuView.m */,
+				5253996F200D9DA800BE9A98 /* JTCalendarPageView.h */,
+				52539970200D9DA800BE9A98 /* JTCalendarPageView.m */,
+				52539971200D9DA800BE9A98 /* JTCalendarWeekDayView.h */,
+				52539972200D9DA800BE9A98 /* JTCalendarWeekDayView.m */,
+				52539973200D9DA800BE9A98 /* JTCalendarWeekView.h */,
+				52539974200D9DA800BE9A98 /* JTCalendarWeekView.m */,
+				52539975200D9DA800BE9A98 /* JTHorizontalCalendarView.h */,
+				52539976200D9DA800BE9A98 /* JTHorizontalCalendarView.m */,
+				52539977200D9DA800BE9A98 /* JTVerticalCalendarView.h */,
+				52539978200D9DA800BE9A98 /* JTVerticalCalendarView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		52539986200D9DB200BE9A98 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				52539987200D9DD100BE9A98 /* LXTCalenderView.h */,
+				5253998A200D9DD200BE9A98 /* LXTCalenderView.m */,
+				52539988200D9DD100BE9A98 /* LXTWeekMenuView.h */,
+				52539989200D9DD200BE9A98 /* LXTWeekMenuView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		52539990200DD30C00BE9A98 /* CarePlanModel */ = {
+			isa = PBXGroup;
+			children = (
+				52539991200DD32400BE9A98 /* CarePlanModel.h */,
+				52539992200DD32400BE9A98 /* CarePlanModel.m */,
+			);
+			path = CarePlanModel;
+			sourceTree = "<group>";
+		};
+		52539994200DD4E700BE9A98 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52539995200DD4FD00BE9A98 /* DateUtil.h */,
+				52539996200DD4FD00BE9A98 /* DateUtil.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		527809321FFB63AA001E783F /* OldManModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1634,13 +1817,6 @@
 				520ED5981FF5E8C5000D97A7 /* ImageViewUtil.m */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		7910B5C51FC53E9100953BD3 /* PlanModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PlanModel;
 			sourceTree = "<group>";
 		};
 		79142FB21FBB36240070C28E /* OldManResourse */ = {
@@ -1800,6 +1976,8 @@
 		C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */ = {
 			isa = PBXGroup;
 			children = (
+				52033E0C200EF426009DF7F8 /* SVProgressHUD */,
+				52539954200D9DA800BE9A98 /* JTCalendar */,
 				5224BC50200312A200534BB0 /* AplipaySDK */,
 				520ED59A1FF620FB000D97A7 /* MJRefresh */,
 				524E07471FF33D7C003684D4 /* SDWebImage */,
@@ -1900,6 +2078,7 @@
 				523FC6881FEC9FF60078B111 /* AppDelegate+ConfigThird.h */,
 				523FC6891FEC9FF60078B111 /* AppDelegate+ConfigThird.m */,
 				C3DE8D4F1FA6CF8A007CE853 /* theOld-Prefix.pch */,
+				52539994200DD4E700BE9A98 /* Utils */,
 				C3B23CB21FAABA0A00D78E5C /* ThirdPartLib */,
 				C3DE8D3A1FA6CCA1007CE853 /* Assets.xcassets */,
 				C3DE8D3F1FA6CCA1007CE853 /* Info.plist */,
@@ -1934,6 +2113,7 @@
 		C3DE8D511FA6D08E007CE853 /* CarePlan */ = {
 			isa = PBXGroup;
 			children = (
+				52539986200D9DB200BE9A98 /* View */,
 				C3DE8D701FA6D27D007CE853 /* CarePlanViewController.h */,
 				C3DE8D711FA6D27D007CE853 /* CarePlanViewController.m */,
 				7910B5AF1FC3093900953BD3 /* CarePlanTableViewCell.h */,
@@ -2141,6 +2321,7 @@
 				0ADAC6AA1FBE801A00791F67 /* women@3x.png in Resources */,
 				0A687B671FC4280B00734E17 /* infoImage@3x.png in Resources */,
 				C3DE8D3B1FA6CCA1007CE853 /* Assets.xcassets in Resources */,
+				52033E19200EF426009DF7F8 /* SVProgressHUD.bundle in Resources */,
 				0ADAC6B31FBE801A00791F67 /* gotoImage@2x.png in Resources */,
 				0AD73BDD1FB2A1F200256654 /* couponCell@2x.png in Resources */,
 				0ADAC6BC1FBE801A00791F67 /* tellImage@3x.png in Resources */,
@@ -2195,6 +2376,7 @@
 				0ADAC6BA1FBE801A00791F67 /* settingCell@3x.png in Resources */,
 				0ADAC69C1FBE801A00791F67 /* guardians@3x.png in Resources */,
 				0AEC50C41FB30A50009C60E4 /* SearchOldManView.xib in Resources */,
+				52539979200D9DA800BE9A98 /* Info.plist in Resources */,
 				7910B5C11FC46E7500953BD3 /* loadingFail@2x.png in Resources */,
 				0AEC50AB1FB300F9009C60E4 /* CarePackagesViewController.xib in Resources */,
 				0ADAC6B91FBE801A00791F67 /* settingCell@2x.png in Resources */,
@@ -2215,11 +2397,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C3108E951FA9AEFB0087C473 /* OldAccountViewController.m in Sources */,
+				52539982200D9DA800BE9A98 /* JTCalendarWeekDayView.m in Sources */,
 				520ED5CD1FF620FC000D97A7 /* MJRefreshHeader.m in Sources */,
 				C3108EE11FA9D94F0087C473 /* PageTurningView.m in Sources */,
 				7910B5CB1FC53F4500953BD3 /* PhysiologicalRequestModel.m in Sources */,
 				520ED5DB1FF620FC000D97A7 /* UIScrollView+MJRefresh.m in Sources */,
 				C3108E8C1FA9AC0D0087C473 /* VVConfig.m in Sources */,
+				5253997E200D9DA800BE9A98 /* JTCalendarScrollManager.m in Sources */,
 				520ED5D21FF620FC000D97A7 /* MJRefreshBackNormalFooter.m in Sources */,
 				520ED5DC1FF620FC000D97A7 /* UIView+MJExtension.m in Sources */,
 				0AD73BFD1FB2B6E400256654 /* HeaderOfMainView.m in Sources */,
@@ -2227,6 +2411,7 @@
 				0ADAC6F51FBE960100791F67 /* YYTextDebugOption.m in Sources */,
 				523FC6AD1FECA2090078B111 /* NSArray+MASAdditions.m in Sources */,
 				C398DA721FB29D4600D0BED9 /* DataInterface.m in Sources */,
+				52539985200D9DA800BE9A98 /* JTVerticalCalendarView.m in Sources */,
 				520B96E02004BFF000E6DD54 /* OrderHistoryController.m in Sources */,
 				0ADAC6F71FBE960100791F67 /* YYTextInput.m in Sources */,
 				0AEC50B91FB30167009C60E4 /* TheRemoteSupervisionViewController.m in Sources */,
@@ -2251,6 +2436,8 @@
 				7910B6011FC6736600953BD3 /* ListOfCouponsResponseModel.m in Sources */,
 				0ADAC6FB1FBE960100791F67 /* YYTextMagnifier.m in Sources */,
 				C398DA7A1FB2AE6B00D0BED9 /* NBLWebViewController.m in Sources */,
+				5253997C200D9DA800BE9A98 /* JTDateHelper.m in Sources */,
+				52539993200DD32400BE9A98 /* CarePlanModel.m in Sources */,
 				7910B5B21FC3093900953BD3 /* CarePlanTableViewCell.m in Sources */,
 				7910B6161FC6B2F500953BD3 /* ECListView.m in Sources */,
 				0ADAC7021FBE960100791F67 /* NSAttributedString+YYText.m in Sources */,
@@ -2261,12 +2448,14 @@
 				C398DA791FB2AE6A00D0BED9 /* NBLMessage.m in Sources */,
 				799B1DD31FB492E6000CB480 /* PhysiologicalDataTableViewHeader.m in Sources */,
 				C398DA691FB29BFB00D0BED9 /* AFURLRequestSerialization.m in Sources */,
+				52539984200D9DA800BE9A98 /* JTHorizontalCalendarView.m in Sources */,
 				520ED5ED1FF63F06000D97A7 /* MainDataManager.m in Sources */,
 				7910B5E01FC5457B00953BD3 /* TheGuardianListRequestModel.m in Sources */,
 				524E07771FF33D7C003684D4 /* NSData+ImageContentType.m in Sources */,
 				799B1DB71FB489DC000CB480 /* PhysiologicalDataTableViewCell.m in Sources */,
 				0A997A6B1FB2CDFF0015EC1F /* OldManListViewController.m in Sources */,
 				523FC6AE1FECA2090078B111 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				5253997A200D9DA800BE9A98 /* JTCalendarManager.m in Sources */,
 				0ADAC6F81FBE960100791F67 /* YYTextKeyboardManager.m in Sources */,
 				7910B5FB1FC6732B00953BD3 /* TheOldAccountDetailResponseModel.m in Sources */,
 				524E077B1FF33D7C003684D4 /* SDWebImageCoder.m in Sources */,
@@ -2274,16 +2463,19 @@
 				520ED5CF1FF620FC000D97A7 /* MJRefreshAutoNormalFooter.m in Sources */,
 				C3B23CD21FAB02BB00D78E5C /* RegisterViewController.m in Sources */,
 				C3B23CCC1FAB02BB00D78E5C /* ForgetPwdOneViewController.m in Sources */,
+				52539980200D9DA800BE9A98 /* JTCalendarMenuView.m in Sources */,
 				0ADAC6421FBD75F700791F67 /* AttributedStringAndImage.m in Sources */,
 				524E07891FF33D7C003684D4 /* UIImage+MultiFormat.m in Sources */,
 				0ABCFFA61FC3F5BD00379CBB /* MainTheOverviewOfCareRequestModel.m in Sources */,
 				0ABCFF9E1FC3F26900379CBB /* YYClassInfo.m in Sources */,
 				C3DE8D331FA6CCA1007CE853 /* AppDelegate.m in Sources */,
+				52033E1A200EF426009DF7F8 /* SVProgressHUD.m in Sources */,
 				524E07861FF33D7C003684D4 /* UIButton+WebCache.m in Sources */,
 				799B1DDC1FB85F86000CB480 /* OldAccountTableViewCell.m in Sources */,
 				0ADAC7031FBE960100791F67 /* NSParagraphStyle+YYText.m in Sources */,
 				520ED5D51FF620FC000D97A7 /* MJRefreshNormalHeader.m in Sources */,
 				0AEC50B41FB30144009C60E4 /* PhysiologicalDataViewController.m in Sources */,
+				52033E18200EF426009DF7F8 /* SVProgressAnimatedView.m in Sources */,
 				C3B23CB81FAABA2600D78E5C /* UIImage+RoundedCorner.m in Sources */,
 				0ADAC7071FBE960100791F67 /* YYTextTransaction.m in Sources */,
 				C35EBDA71FC6783900CBC8D5 /* NSObject+Runtime.m in Sources */,
@@ -2295,12 +2487,14 @@
 				523FC6A91FECA2090078B111 /* MASConstraintMaker.m in Sources */,
 				0AEC50C21FB30A45009C60E4 /* SearchOldManView.m in Sources */,
 				524E078A1FF33D7C003684D4 /* UIImageView+HighlightedWebCache.m in Sources */,
+				5253997B200D9DA800BE9A98 /* JTCalendarSettings.m in Sources */,
 				7910B6131FC6740000953BD3 /* RealNameInformationResponseModel.m in Sources */,
 				523FC6AF1FECA2090078B111 /* View+MASAdditions.m in Sources */,
 				0ADAC7041FBE960100791F67 /* UIPasteboard+YYText.m in Sources */,
 				0AE8BFF11FB5B3B5008C981C /* UserCenterTableViewCell.m in Sources */,
 				C398DA671FB29BFB00D0BED9 /* AFNetworkReachabilityManager.m in Sources */,
 				523FC6AC1FECA2090078B111 /* MASViewConstraint.m in Sources */,
+				52539981200D9DA800BE9A98 /* JTCalendarPageView.m in Sources */,
 				0ADAC6FA1FBE960100791F67 /* YYTextLine.m in Sources */,
 				520ED5CA1FF620FC000D97A7 /* MJRefreshBackFooter.m in Sources */,
 				7910B6101FC673E900953BD3 /* RealNameInformationRequestModel.m in Sources */,
@@ -2311,6 +2505,7 @@
 				5213DDFE1FF4D1FB00D14432 /* GuardianModel.m in Sources */,
 				0ADAC6FF1FBE960100791F67 /* YYTextParser.m in Sources */,
 				524E07811FF33D7C003684D4 /* SDWebImageFrame.m in Sources */,
+				52033E1B200EF426009DF7F8 /* SVRadialGradientLayer.m in Sources */,
 				79142FB91FBB37440070C28E /* OldManResourseTableViewCell.m in Sources */,
 				C3B23CCD1FAB02BB00D78E5C /* ForgetPwdTwoViewController.m in Sources */,
 				7910B5DD1FC5455900953BD3 /* CarePackagesResponseModel.m in Sources */,
@@ -2366,6 +2561,7 @@
 				C3DE8D681FA6D0BA007CE853 /* UIView+Badge.m in Sources */,
 				520ED5D11FF620FC000D97A7 /* MJRefreshBackGifFooter.m in Sources */,
 				520ED5DA1FF620FC000D97A7 /* UIScrollView+MJExtension.m in Sources */,
+				5253997D200D9DA800BE9A98 /* JTCalendarDelegateManager.m in Sources */,
 				0ABCFFAF1FC3F6CA00379CBB /* CareOldManListResponseModel.m in Sources */,
 				C3DE8D6F1FA6D1DA007CE853 /* CustomNavigationController.m in Sources */,
 				0AEC50AF1FB30120009C60E4 /* GuardiansViewController.m in Sources */,
@@ -2384,6 +2580,8 @@
 				799B1DE01FB87C5F000CB480 /* OldAccountDetailViewController.m in Sources */,
 				524E07881FF33D7C003684D4 /* UIImage+GIF.m in Sources */,
 				0AEC50AA1FB300F9009C60E4 /* CarePackagesViewController.m in Sources */,
+				5253997F200D9DA800BE9A98 /* JTCalendarDayView.m in Sources */,
+				5253998C200D9DD200BE9A98 /* LXTCalenderView.m in Sources */,
 				7910B5EF1FC672BC00953BD3 /* UserCenterResponseModel.m in Sources */,
 				524E077E1FF33D7C003684D4 /* SDWebImageCompat.m in Sources */,
 				C3108E9E1FA9C35A0087C473 /* UserManager.m in Sources */,
@@ -2393,18 +2591,21 @@
 				C3DE8D691FA6D0BA007CE853 /* LeveyTabBar.m in Sources */,
 				7910B5E31FC5458F00953BD3 /* TheGuardianListResponseModel.m in Sources */,
 				523FC6A81FECA2090078B111 /* MASConstraint.m in Sources */,
+				5253998B200D9DD200BE9A98 /* LXTWeekMenuView.m in Sources */,
 				0ADAC6FE1FBE960100791F67 /* YYTextAttribute.m in Sources */,
 				5224BC5B2003159900534BB0 /* OrderCenterController.m in Sources */,
 				524E077C1FF33D7C003684D4 /* SDWebImageCoderHelper.m in Sources */,
 				527809301FFB5BA8001E783F /* CarePackagesTableViewCell.m in Sources */,
 				524E077F1FF33D7C003684D4 /* SDWebImageDownloader.m in Sources */,
 				7910B5B61FC4668100953BD3 /* LoadingView.m in Sources */,
+				52539997200DD4FD00BE9A98 /* DateUtil.m in Sources */,
 				524E078C1FF33D7C003684D4 /* UIView+WebCache.m in Sources */,
 				524E07871FF33D7C003684D4 /* UIImage+ForceDecode.m in Sources */,
 				C398DA3A1FAC5EE300D0BED9 /* ChangePwdViewController.m in Sources */,
 				7910B5D71FC5450800953BD3 /* CareOldManAddDataResponseModel.m in Sources */,
 				524E07801FF33D7C003684D4 /* SDWebImageDownloaderOperation.m in Sources */,
 				520ED5991FF5E8C5000D97A7 /* ImageViewUtil.m in Sources */,
+				52539983200D9DA800BE9A98 /* JTCalendarWeekView.m in Sources */,
 				C3B23CCF1FAB02BB00D78E5C /* LoginPwdViewController.m in Sources */,
 				C3DE8D6C1FA6D0BA007CE853 /* UIBadgeView.m in Sources */,
 				524E077A1FF33D7C003684D4 /* SDImageCacheConfig.m in Sources */,
@@ -2419,6 +2620,7 @@
 				523FC6AA1FECA2090078B111 /* MASLayoutConstraint.m in Sources */,
 				0ADAC7081FBE960100791F67 /* YYTextUtilities.m in Sources */,
 				520ED5D31FF620FC000D97A7 /* MJRefreshBackStateFooter.m in Sources */,
+				52033E17200EF426009DF7F8 /* SVIndefiniteAnimatedView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

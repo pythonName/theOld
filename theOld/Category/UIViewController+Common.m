@@ -9,6 +9,7 @@
 #import "UIViewController+Common.h"
 #import "AppDelegate.h"
 #import <objc/runtime.h>
+#import "SVProgressHUD.h"
 
 @implementation UIViewController (Common)
 
@@ -18,6 +19,16 @@
 
 - (void)showInfoMsg:(NSString *)msg{
     [[Toast makeText:msg] show];
+}
+
+//正则加载动画
+- (void)showLoading{
+    [SVProgressHUD show];
+}
+
+//隐藏加载动画
+- (void)dismissLoading{
+    [SVProgressHUD dismiss];
 }
 
 - (void)presentViewControllerFromRootController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion{
@@ -45,7 +56,7 @@
 }
 
 - (void)lxt_viewDidLoad{
-    NSLog(@"===========%@=============", self);
+    NSLog(@"==%@==", self);
     [self lxt_viewDidLoad];
 }
 
