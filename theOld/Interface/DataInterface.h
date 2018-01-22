@@ -168,4 +168,10 @@ typedef void (^CompleteBlock) (CommonResponseModel *model, NSError *error);
 
 + (void)carePlanRequestWithMoth:(NSDictionary *)params result:(CompleteBlock)completeBlock;
 
+/**
+ *获取老人心率及定位信息
+ */
++ (void)remoteLocationRequest:(NSDictionary *)params result:(CompleteBlock)completeBlock;
+
+
 @end

@@ -58,6 +58,9 @@
         if (_model.photo.length > 0) {
             [_headerImageV sd_setImageWithURL:[NSURL URLWithString:_model.photo] placeholderImage:[UIImage imageNamed:PLACE_HOLDER_PORTRAIT]];
         }
+        else{
+            _headerImageV.image = [UIImage imageNamed:PLACE_HOLDER_PORTRAIT];
+        }
     }
     else{
         self.nameLab.text = @"请先关注老人";

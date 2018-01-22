@@ -11,6 +11,8 @@
 #import "UIView+RoundedCorner.h"
 #import "VerifyIdentityCard.h"
 #import "UserManager.h"
+#import "CustomNavigationController.h"
+#import "LoginViewController.h"
 
 @interface ChangeIphoneViewController ()<UITextFieldDelegate>{
     CGRect _frame;
@@ -131,11 +133,19 @@
             [weakself showNetworkError];
             return ;
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [weakself.navigationController popToRootViewControllerAnimated:NO];
+        });
+        
         
         if (model.code.integerValue == 200) {
             [weakself showInfoMsg:@"绑定手机号码成功！"];
             [[UserManager shareInstance] logout];
-            [weakself.navigationController popToRootViewControllerAnimated:YES];
+            
+            LoginViewController *loginVC = [[LoginViewController alloc] initWithFrame:CGRectMake(0, StatusBarHeight + NavigationBarHeight, ScreenWidth, ScreenHeight - StatusBarHeight - NavigationBarHeight)];
+            CustomNavigationController *navAppBrowserController=[[CustomNavigationController alloc] initWithRootViewController:loginVC];
+            [self presentViewController:navAppBrowserController animated:YES completion:nil];
+
         }
         else{
             [weakself showInfoMsg:model.msg];

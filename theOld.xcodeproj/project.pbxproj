@@ -370,6 +370,8 @@
 		C3DE8D6F1FA6D1DA007CE853 /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DE8D6D1FA6D1DA007CE853 /* CustomNavigationController.m */; };
 		C3DE8D721FA6D27D007CE853 /* CarePlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DE8D711FA6D27D007CE853 /* CarePlanViewController.m */; };
 		C3DE8D751FA6D284007CE853 /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3DE8D741FA6D283007CE853 /* MeViewController.m */; };
+		DFD2D918201084C800612710 /* CustomAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD2D917201084C800612710 /* CustomAnnotationView.m */; };
+		DFD2D91B201084DC00612710 /* CustomCalloutView.m in Sources */ = {isa = PBXBuildFile; fileRef = DFD2D91A201084DC00612710 /* CustomCalloutView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -984,6 +986,10 @@
 		C3DE8D711FA6D27D007CE853 /* CarePlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarePlanViewController.m; sourceTree = "<group>"; };
 		C3DE8D731FA6D283007CE853 /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		C3DE8D741FA6D283007CE853 /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		DFD2D916201084C800612710 /* CustomAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnnotationView.h; sourceTree = "<group>"; };
+		DFD2D917201084C800612710 /* CustomAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnnotationView.m; sourceTree = "<group>"; };
+		DFD2D919201084DB00612710 /* CustomCalloutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCalloutView.h; sourceTree = "<group>"; };
+		DFD2D91A201084DC00612710 /* CustomCalloutView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCalloutView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1845,6 +1851,10 @@
 				5278092D1FFB5BA8001E783F /* CarePackagesTableViewCell.h */,
 				5278092E1FFB5BA8001E783F /* CarePackagesTableViewCell.m */,
 				5278092F1FFB5BA8001E783F /* CarePackagesTableViewCell.xib */,
+				DFD2D916201084C800612710 /* CustomAnnotationView.h */,
+				DFD2D917201084C800612710 /* CustomAnnotationView.m */,
+				DFD2D919201084DB00612710 /* CustomCalloutView.h */,
+				DFD2D91A201084DC00612710 /* CustomCalloutView.m */,
 			);
 			path = viewOfService;
 			sourceTree = "<group>";
@@ -2512,6 +2522,7 @@
 				0ADAC6F41FBE960100791F67 /* YYTextContainerView.m in Sources */,
 				524E078B1FF33D7C003684D4 /* UIImageView+WebCache.m in Sources */,
 				0ABCFFAC1FC3F6B800379CBB /* CareOldManListRequsetModel.m in Sources */,
+				DFD2D91B201084DC00612710 /* CustomCalloutView.m in Sources */,
 				520ED5D91FF620FC000D97A7 /* NSBundle+MJRefresh.m in Sources */,
 				520ED5D61FF620FC000D97A7 /* MJRefreshStateHeader.m in Sources */,
 				524E07821FF33D7C003684D4 /* SDWebImageGIFCoder.m in Sources */,
@@ -2586,6 +2597,7 @@
 				524E077E1FF33D7C003684D4 /* SDWebImageCompat.m in Sources */,
 				C3108E9E1FA9C35A0087C473 /* UserManager.m in Sources */,
 				520ED5C91FF620FB000D97A7 /* MJRefreshAutoFooter.m in Sources */,
+				DFD2D918201084C800612710 /* CustomAnnotationView.m in Sources */,
 				524E078D1FF33D7C003684D4 /* UIView+WebCacheOperation.m in Sources */,
 				524E07831FF33D7C003684D4 /* SDWebImageImageIOCoder.m in Sources */,
 				C3DE8D691FA6D0BA007CE853 /* LeveyTabBar.m in Sources */,
@@ -2737,7 +2749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34Y7VA8GFC;
+				DEVELOPMENT_TEAM = 3T8FFXH4ZJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/AMAPKIt",
@@ -2752,7 +2764,7 @@
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/OpenPlayer",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lxt.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lijun.theOld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2764,7 +2776,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 34Y7VA8GFC;
+				DEVELOPMENT_TEAM = 3T8FFXH4ZJ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/AMAPKIt",
@@ -2779,7 +2791,7 @@
 					"$(PROJECT_DIR)/theOld/ThirdPartLib/OpenPlayer",
 				);
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lxt.theOld;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lijun.theOld;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

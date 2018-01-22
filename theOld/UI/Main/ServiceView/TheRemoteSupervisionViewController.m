@@ -13,10 +13,11 @@
 #import "LTAVPlayerView.h"
 #import "MainDataManager.h"
 #import "CareOldManModel.h"
+#import "CustomAnnotationView.h"
 
 static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m3u8?sign=1513839731-48cc1f190412b437c8adf20abd836054&device_sn=Ay0000000000002107UM&video_rate=700&channel_id=1&customer=60875_103875";
 
-@interface TheRemoteSupervisionViewController ()
+@interface TheRemoteSupervisionViewController ()<MAMapViewDelegate>
 
 @property (nonatomic, strong) UIView *smallMapView;
 @property (nonatomic, strong) UIView *smallVideoView;
@@ -30,12 +31,15 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 
 @property (nonatomic, strong) MAMapView *mapView1;
 @property (nonatomic, strong) MAMapView *mapView2;
+@property (nonatomic, strong) MAPointAnnotation *annotation;
 
 @property (nonatomic, strong) UIView *videoView;
 
 @property (nonatomic, strong) UIView *bottomBackView;
 @property (nonatomic, strong) UILabel *heartLabel;
 @property (nonatomic, strong) UIButton *contactButton;
+
+@property (nonatomic, strong) NSTimer *timer;
 
 @end
 
@@ -69,14 +73,27 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     [self lxt_addConstraints];
     
     [self loadData];
+    self.timer;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    
     [super viewWillAppear:animated];
+    
+    //必须要在预添加一个annotation否则 之后添加的annotation无效  具体原因不明
+    _annotation = [[MAPointAnnotation alloc] init];
+    _annotation.coordinate = CLLocationCoordinate2DMake(22.55724716, 113.93560028);
+    [_mapView1 addAnnotation:_annotation];
+    [_mapView1 setCenterCoordinate:_annotation.coordinate animated:YES];
+    _mapView1.zoomLevel = 13;
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
+    [_timer invalidate];
+    _timer = nil;
+    
     [super viewWillDisappear:animated];
 }
 
@@ -86,9 +103,10 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
 }
 
 - (void)dealloc{
-    NSLog(@"退出远程监控页面*****************");
+    NSLog(@"*****************退出远程监控页面*****************");
     [self.playerView stopPlay];
     [self.playerView2 stopPlay];
+    
 }
 
 #pragma mark - 请求数据
@@ -118,6 +136,45 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     }];
 }
 
+- (void)loadLocationData{
+    CareOldManModel *model = [MainDataManager sharedInstance].selectModel;
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:model.ID_number forKey:@"ID_number"];
+    [DataInterface remoteLocationRequest:params result:^(CommonResponseModel *model, NSError *error) {
+        if (error) {
+            [self showNetworkError];
+            return ;
+        }
+        
+        if (model.code.integerValue == 200) {
+            NSLog(@"===%@", model.data);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *heart = [model.data objectForKey:@"heart_rate"];
+                self.heartLabel.text = [NSString stringWithFormat:@"老人心率：%@次/分", heart];
+                float lat = [[[model.data objectForKey:@"position"] objectForKey:@"lat"] floatValue];
+                float lon = [[[model.data objectForKey:@"position"] objectForKey:@"lon"] floatValue];
+                
+                [self.mapView1 removeAnnotation:_annotation];
+                [self.mapView2 removeAnnotation:_annotation];
+                
+                [self.mapView1 setCenterCoordinate:CLLocationCoordinate2DMake(lat, lon)];
+                [self.mapView2 setCenterCoordinate:CLLocationCoordinate2DMake(lat, lon)];
+                
+                _annotation = [[MAPointAnnotation alloc] init];
+                _annotation.coordinate = CLLocationCoordinate2DMake(lat, lon);
+                
+                [self.mapView1 addAnnotation:_annotation];
+                self.mapView1.zoomLevel = 13;
+                
+                [self.mapView2 addAnnotation:_annotation];
+                self.mapView2.zoomLevel = 16;
+            });
+        }
+        else{
+            [self showInfoMsg:model.msg];
+        }
+    }];
+}
 
 #pragma mark - updateConstraints
 
@@ -228,6 +285,42 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     
 }
 
+#pragma mark - MAMapViewDelegate
+- (MAAnnotationView *)mapView:(MAMapView *)mapView viewForAnnotation:(id<MAAnnotation>)annotation{
+    
+    if ([annotation isKindOfClass:[MAPointAnnotation class]])
+    {
+        static NSString *customReuseIndetifier = @"customReuseIndetifier";
+        
+        CustomAnnotationView *annotationView = (CustomAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:customReuseIndetifier];
+        
+        if (annotationView == nil)
+        {
+            annotationView = [[CustomAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:customReuseIndetifier];
+            // must set to NO, so we can show the custom callout view.
+            annotationView.canShowCallout = NO;
+            annotationView.draggable = YES;
+            annotationView.calloutOffset = CGPointMake(0, -5);
+        }
+        
+        if ([mapView isEqual:_mapView1]) {
+            annotationView.portrait = [UIImage imageNamed:@"map_point_small"];
+        }
+        else{
+            annotationView.portrait = [UIImage imageNamed:@"map_point"];
+        }
+        
+        
+        return annotationView;
+    }
+    
+    return nil;
+}
+
+//- (void)mapView:(MAMapView *)mapView didAddAnnotationViews:(NSArray *)views{
+//
+//}
+
 #pragma mark - getter setter
 
 - (UIView *)videoView{
@@ -281,8 +374,9 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     if (!_mapView1) {
         _mapView1 = [[MAMapView alloc] init];
         _mapView1.zoomLevel = 16;
-        _mapView1.showsUserLocation = YES;
-        _mapView1.userTrackingMode = MAUserTrackingModeFollow;
+//        _mapView1.showsUserLocation = YES;
+        _mapView1.userTrackingMode = MAUserTrackingModeNone;
+        _mapView1.delegate = self;
         
     }
     return _mapView1;
@@ -292,9 +386,10 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     if (!_mapView2) {
         _mapView2 = [[MAMapView alloc] init];
         _mapView2.zoomLevel = 16;
-        _mapView2.showsUserLocation = YES;
-        _mapView2.userTrackingMode = MAUserTrackingModeFollow;
+//        _mapView2.showsUserLocation = YES;
+        _mapView2.userTrackingMode = MAUserTrackingModeNone;
         _mapView2.userInteractionEnabled = NO;
+        _mapView2.delegate = self;
     }
     
     return _mapView2;
@@ -356,5 +451,11 @@ static NSString *cloudURL = @"http://hls.kan1.live.anyan.com/live_60875_103875/m
     return _playerView2;
 }
 
+- (NSTimer *)timer{
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadLocationData) userInfo:nil repeats:YES];
+    }
+    return _timer;
+}
 
 @end

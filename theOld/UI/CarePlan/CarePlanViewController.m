@@ -20,6 +20,7 @@ static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 
 static NSString  *cellIdent = @"CarePlanTableViewCell";
 static NSString *calendarCell = @"calendarCell";
+static NSString *noneCell = @"noneCell";
 @interface CarePlanViewController ()<UITableViewDelegate,UITableViewDataSource,JTCalendarDelegate>{
     CGRect _frame;
     UILabel *_redLab;
@@ -39,6 +40,7 @@ static NSString *calendarCell = @"calendarCell";
 @property (nonatomic, strong) NSDate *dateSelected;
 @property (nonatomic) CGFloat showHiddenViewY;
 @property (nonatomic, strong) NSArray *planArray;
+@property (nonatomic, strong) UIView *infoView;
 
 //@property (strong, nonatomic) FyCalendarView *calendarView;
 @property (nonatomic, strong) NSDate *date;
@@ -145,6 +147,14 @@ static CGFloat lineH = 40;
         make.right.equalTo(self.view);
         make.top.equalTo(self.view).with.offset(topMargin);
         make.height.mas_equalTo(lineH);
+    }];
+    
+    [self.view addSubview:self.infoView];
+    [self.infoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.top.equalTo(self.lxtWeekView.mas_bottom);
+        make.height.mas_equalTo(40);
     }];
 
     //    self.mainTableView.tableHeaderView = self.calendarView;
@@ -265,7 +275,7 @@ static CGFloat lineH = 40;
     if (section == 0) {
         return 1;
     }
-    return self.planArray.count;
+    return self.planArray.count + 10;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -279,12 +289,17 @@ static CGFloat lineH = 40;
         }
         return cell;
     }
-    CarePlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    CarePlanModel *model = [self.planArray objectAtIndex:indexPath.row];
-    cell.model = model;
-
     
+    if (indexPath.row < self.planArray.count) {
+        CarePlanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdent];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        CarePlanModel *model = [self.planArray objectAtIndex:indexPath.row];
+        cell.model = model;
+        return cell;
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:noneCell];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -345,6 +360,13 @@ static CGFloat lineH = 40;
     }
     else{
         self.lxtWeekView.hidden = YES;
+    }
+    
+    if (scrollView.contentOffset.y > lineH * 5) {
+        self.infoView.hidden = NO;
+    }
+    else{
+        self.infoView.hidden = YES;
     }
 }
 
@@ -455,11 +477,13 @@ static CGFloat lineH = 40;
 -(UITableView*)mainTableView {
     if (!_mainTableView) {
         _mainTableView = [[UITableView alloc] init];
+        _mainTableView.showsVerticalScrollIndicator = NO;
         _mainTableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _mainTableView.delegate = self;
         _mainTableView.dataSource  =self;
         [_mainTableView registerNib:[UINib nibWithNibName:cellIdent bundle:nil] forCellReuseIdentifier:cellIdent];
         [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:calendarCell];
+        [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:noneCell];
         _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _mainTableView;
@@ -498,6 +522,24 @@ static CGFloat lineH = 40;
     }
     
     return _lxtWeekView;
+}
+
+- (UIView *)infoView{
+    if (!_infoView) {
+        _infoView = [[UIView alloc] init];
+        _infoView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        UILabel *infoLabel = [[UILabel alloc] init];
+        infoLabel.text =@"点击日期查看当天服务项目";
+        infoLabel.textColor = UIColorFromRGB(0x8dc21f);
+        infoLabel.textAlignment = NSTextAlignmentCenter;
+        infoLabel.font = [UIFont fontWithName:PingFang_SC_Medium size:12.0];
+        [_infoView addSubview:infoLabel];
+        [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(_infoView);
+        }];
+        _infoView.hidden = YES;
+    }
+    return _infoView;
 }
 
 /*
