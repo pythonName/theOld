@@ -324,6 +324,7 @@
 		799B1DE01FB87C5F000CB480 /* OldAccountDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DDF1FB87C5F000CB480 /* OldAccountDetailViewController.m */; };
 		799B1DE41FB87C89000CB480 /* OldAccountDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799B1DE21FB87C89000CB480 /* OldAccountDetailTableViewCell.m */; };
 		799B1DE51FB87C89000CB480 /* OldAccountDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 799B1DE31FB87C89000CB480 /* OldAccountDetailTableViewCell.xib */; };
+		BE394B962028092A004418AF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE394B952028092A004418AF /* AVFoundation.framework */; };
 		C3108E8C1FA9AC0D0087C473 /* VVConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E8A1FA9AC0D0087C473 /* VVConfig.m */; };
 		C3108E8F1FA9AC780087C473 /* VVGlobalDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E8E1FA9AC780087C473 /* VVGlobalDefine.m */; };
 		C3108E921FA9AEE60087C473 /* OrderCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3108E911FA9AEE60087C473 /* OrderCenterViewController.m */; };
@@ -892,6 +893,7 @@
 		799B1DE11FB87C89000CB480 /* OldAccountDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldAccountDetailTableViewCell.h; sourceTree = "<group>"; };
 		799B1DE21FB87C89000CB480 /* OldAccountDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldAccountDetailTableViewCell.m; sourceTree = "<group>"; };
 		799B1DE31FB87C89000CB480 /* OldAccountDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OldAccountDetailTableViewCell.xib; sourceTree = "<group>"; };
+		BE394B952028092A004418AF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C3108E8A1FA9AC0D0087C473 /* VVConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VVConfig.m; sourceTree = "<group>"; };
 		C3108E8B1FA9AC0D0087C473 /* VVConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVConfig.h; sourceTree = "<group>"; };
 		C3108E8D1FA9AC780087C473 /* VVGlobalDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VVGlobalDefine.h; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE394B962028092A004418AF /* AVFoundation.framework in Frameworks */,
 				5224BC58200312F600534BB0 /* CoreMotion.framework in Frameworks */,
 				5224BC56200312ED00534BB0 /* CFNetwork.framework in Frameworks */,
 				523FC6871FEC9F590078B111 /* libc++.tbd in Frameworks */,
@@ -1405,6 +1408,7 @@
 		0ADAC70C1FBEAE0900791F67 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE394B952028092A004418AF /* AVFoundation.framework */,
 				5224BC57200312F600534BB0 /* CoreMotion.framework */,
 				5224BC55200312ED00534BB0 /* CFNetwork.framework */,
 				523FC6861FEC9F590078B111 /* libc++.tbd */,

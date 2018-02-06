@@ -162,7 +162,8 @@ static MainDataManager *dataManager;
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(152*ScreenHRatioBaseIphone6, 183*ScreenHRatioBaseIphone6);
+    CGFloat cellWH = (ScreenWidth - 25 * 3) / 2;
+    return CGSizeMake(cellWH, cellWH);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section

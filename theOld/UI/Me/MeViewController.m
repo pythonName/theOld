@@ -50,7 +50,9 @@ static CGFloat CellH = 50;
     
     //header view
     UIView *headerV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_frame), 180*ScreenHRatioBaseIphone6)];
+//    UIView *headerV = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_frame), 180*1)];
     headerV.backgroundColor = UIColorFromRGB(0x8DC21F);
+    NSLog(@"%@", NSStringFromCGRect(headerV.frame));
     
     //中心按钮
     UIButton *centerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
