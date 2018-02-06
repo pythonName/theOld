@@ -44,7 +44,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self makeUIView];
+    //适配iPad
+    if ( [[[UIDevice currentDevice] model] hasPrefix:@"iPad"]) {
+        [self makeIpadUI];
+    }
+    else{
+        [self makeUIView];
+    }
+    
+    
     
     [self selectOldMan:nil];
     
@@ -72,12 +80,17 @@
                           @{@"image":@"guardians.png",@"name":@"监护人",@"describe":@"已有0名"}
                           ];
     
+    
+    
+    
     CGFloat width = 153* ScreenHRatioBaseIphone6;
     CGFloat height = 114 * ScreenHRatioBaseIphone6;
     CGFloat topLeading = 10;
     if (ScreenHRatioBaseIphone6>=1) {
         topLeading = 30;
     }
+    
+    
     for(int i=0 ;i<titleArr.count;i++) {
         NSDictionary *dic = titleArr[i];
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -116,6 +129,67 @@
     }
     
     
+}
+
+- (void)makeIpadUI{
+    NSArray *titleArr = @[
+                          @{@"image":@"carePackages.png",@"name":@"照护套餐",@"describe": @"服务进度0%"},
+                          @{@"image":@"PhysiologicalData.png",@"name":@"生理数据",@"describe":@"人工测量"},
+                          @{@"image":@"theRemoteSupervision.png",@"name":@"远程监护",@"describe":@"实时监控"},
+                          @{@"image":@"guardians.png",@"name":@"监护人",@"describe":@"已有0名"}
+                          ];
+    
+    
+    
+   
+    CGFloat width = (ScreenWidth - 30 * 2 -9) / 2;
+    CGFloat height = width * 114 / 153 + 20;    //计算出来的高度会有部分view超出 随便加了20 
+    CGFloat topLeading = 10;
+    if (ScreenHRatioBaseIphone6>=1) {
+        topLeading = 30;
+    }
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    [self.view addSubview:scrollView];
+    scrollView.frame = self.view.bounds;
+    scrollView.contentSize = CGSizeMake(ScreenWidth, height * 2 + topLeading * 2 + 9);
+    
+    for(int i=0 ;i<titleArr.count;i++) {
+        NSDictionary *dic = titleArr[i];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(30+(i%2)*(9+width), topLeading*ScreenHRatioBaseIphone6+i/2*(9+height), width, height);
+        [scrollView addSubview:btn];
+        [btn addTarget:self action:@selector(buttonsClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.backgroundColor = [UIColor whiteColor];
+        btn.layer.cornerRadius = 10;
+        btn.tag = 1000+i;
+        //图片
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake((width-39* ScreenHRatioBaseIphone6)/2, 14*ScreenHRatioBaseIphone6, 39* ScreenHRatioBaseIphone6, 38* ScreenHRatioBaseIphone6)];
+        [btn addSubview:imageV];
+        imageV.image = [UIImage imageNamed:dic[@"image"]];
+        
+        //名称
+        UILabel *nameLab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageV.frame)+10* ScreenHRatioBaseIphone6, CGRectGetWidth(btn.frame), 17)];
+        [btn addSubview:nameLab];
+        nameLab.textAlignment = NSTextAlignmentCenter;
+        nameLab.font = [UIFont systemFontOfSize:13];
+        nameLab.text = dic[@"name"];
+        
+        //描述
+        UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nameLab.frame)+4* ScreenHRatioBaseIphone6, CGRectGetWidth(btn.frame), 17)];
+        [btn addSubview:lab];
+        lab.textAlignment = NSTextAlignmentCenter;
+        lab.font = [UIFont systemFontOfSize:13];
+        lab.text = dic[@"describe"];
+        lab.textColor = UIColorFromRGB(0x888888);
+        if (i == 0) {
+            _serviceProgressLabel = lab;
+        }
+        
+        if (i == 3) {
+            _guardianCountLabel = lab;
+        }
+    }
 }
 
 

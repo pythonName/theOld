@@ -52,7 +52,8 @@
 }
 
 - (void)setupEnvironment {
-    if ([[[UIDevice currentDevice] model] hasPrefix:@"iPhone"] || [[[UIDevice currentDevice] model] hasPrefix:@"iPod"]) {
+    if ([[[UIDevice currentDevice] model] hasPrefix:@"iPhone"]
+        || [[[UIDevice currentDevice] model] hasPrefix:@"iPod"]) {
         deviceInt=1;
         //ScreenRatio = ScreenWidth/320;
         //以6的标准来比例
@@ -67,6 +68,10 @@
 
          */
         
+    }
+    else if ([[[UIDevice currentDevice] model] hasPrefix:@"iPad"]){
+        ScreenWRatioBaseIphone6 = ScreenWidth/375;
+        ScreenHRatioBaseIphone6 = 1;
     }
 //    else{
 //        deviceInt=2;

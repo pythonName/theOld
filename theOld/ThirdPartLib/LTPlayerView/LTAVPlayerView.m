@@ -8,6 +8,7 @@
 
 #import "LTAVPlayerView.h"
 #import <AVKit/AVKit.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface LTAVPlayerView()
 
