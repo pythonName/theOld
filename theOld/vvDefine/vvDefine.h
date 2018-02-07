@@ -183,3 +183,5 @@ typedef void (^callBackBlock)(id sender);
 #define PingFang_SC_Medium  @"PingFang-SC-Medium"
 
 #define PLACE_HOLDER_PORTRAIT @"accountIconDefault.png"
+
+#define DEVICE_IPAD [[[UIDevice currentDevice] model] hasPrefix:@"iPad"]

@@ -58,6 +58,9 @@ static NSString *cellIdent = @"OldManResourseTableViewCell";
     
     self.mainTableView.backgroundColor = UIColorFromRGB(0xF5F8FC);
     [self.view addSubview:self.mainTableView];
+    [self.mainTableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
     [self.mainTableView registerNib:[UINib nibWithNibName:@"OldManResourseTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdent];
     
     [self.mainTableView registerClass:[PhysiologicalDataTableViewHeader class] forHeaderFooterViewReuseIdentifier:headerIdent];

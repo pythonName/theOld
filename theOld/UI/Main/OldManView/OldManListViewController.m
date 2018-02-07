@@ -88,6 +88,10 @@ static MainDataManager *dataManager;
 
 //加载数据
 - (void)loadData{
+    if (![UserManager shareInstance].isLogined) {
+        [self.collectionView.mj_header endRefreshing];
+        return;
+    }
     [DataInterface careOldManListRequest:nil result:^(CommonResponseModel *model, NSError *error) {
         [self.collectionView.mj_header endRefreshing];
         if (error) {

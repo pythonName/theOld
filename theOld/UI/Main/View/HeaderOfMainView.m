@@ -28,7 +28,13 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.resouseButton.layer.cornerRadius = 10;
-    self.headerImageV.layer.cornerRadius = 38;
+    if (DEVICE_IPAD) {
+        self.headerImageV.layer.cornerRadius = 31;
+    }
+    else{
+        self.headerImageV.layer.cornerRadius = 38;
+    }
+    
     self.headerImageV.clipsToBounds = YES;
     
 }

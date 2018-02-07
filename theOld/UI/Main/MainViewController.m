@@ -63,7 +63,12 @@
     _headerOfMainView = [HeaderOfMainView loadHeaderOfMainView];
     [self.view addSubview:_headerOfMainView];
     _headerOfMainView.model = [MainDataManager sharedInstance].selectModel;
-    _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 190 );
+    if (DEVICE_IPAD) {
+        _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 150 );
+    }
+    else{
+        _headerOfMainView.frame = CGRectMake(0, 0, ScreenWidth, 180);
+    }
    [_headerOfMainView.gotoResouseBtn addTarget:self action:@selector(gotoResourseView) forControlEvents:UIControlEventTouchUpInside];
    
     
@@ -104,6 +109,7 @@
 //    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:USER_LOGIN_NOTIFICATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userLogout:) name:USER_LOGOUT_NOTIFICATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectOldMan:) name:SELECT_OLDMAN_NOTIFICATION object:nil];
     
 }
