@@ -107,10 +107,10 @@ cell.nameLab.text = dataModel.name;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    OldAccountDetailViewController *vv = [[OldAccountDetailViewController alloc] init];
-    CareOldManModel *dataModel =self.dataArr[indexPath.row];
-    vv.ID_number = dataModel.ID_number;
-    [self.navigationController pushViewController:vv animated:YES];
+//    OldAccountDetailViewController *vv = [[OldAccountDetailViewController alloc] init];
+//    CareOldManModel *dataModel =self.dataArr[indexPath.row];
+//    vv.ID_number = dataModel.ID_number;
+//    [self.navigationController pushViewController:vv animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

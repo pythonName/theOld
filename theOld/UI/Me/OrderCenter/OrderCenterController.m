@@ -66,23 +66,28 @@
 
 #pragma mark UIWebViewDelegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    VFWeakSelf(self)
-    BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[request.URL absoluteString] fromScheme:@"theOld" callback:^(NSDictionary *resultDic) {
-        //处理支付结果
-        NSLog(@"%@", resultDic);
-        // isProcessUrlPay 代表 支付宝已经处理该URL
-        if ([[resultDic objectForKey:@"isProcessUrlPay"] boolValue]) {
-            // returnUrl 代表 第三方App需要跳转的成功页URL
-            NSString* urlStr = resultDic[@"returnUrl"];
-            NSLog(@"****Alilpay****** urlStr=%@", urlStr);
-            [weakself loadUWithURLStr:urlStr];;
-        }
+    NSURL * myURL_APP_A = [NSURL URLWithString:@"alipay://"];
+    if ([[UIApplication sharedApplication] canOpenURL:myURL_APP_A]) {
+        VFWeakSelf(self)
+        BOOL isIntercepted = [[AlipaySDK defaultService] payInterceptorWithUrl:[request.URL absoluteString] fromScheme:@"theOld" callback:^(NSDictionary *resultDic) {
+            //处理支付结果
+            NSLog(@"%@", resultDic);
+            // isProcessUrlPay 代表 支付宝已经处理该URL
+            if ([[resultDic objectForKey:@"isProcessUrlPay"] boolValue]) {
+                // returnUrl 代表 第三方App需要跳转的成功页URL
+                NSString* urlStr = resultDic[@"returnUrl"];
+                NSLog(@"****Alilpay****** urlStr=%@", urlStr);
+                [weakself loadUWithURLStr:urlStr];;
+            }
+            
+        }];
         
-    }];
-    
-    if (isIntercepted) {
-        return NO;
+        if (isIntercepted) {
+            return NO;
+        }
     }
+    
+    
     
     return YES;
 }

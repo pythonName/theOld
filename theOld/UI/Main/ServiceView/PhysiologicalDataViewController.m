@@ -14,6 +14,7 @@
 #import "UserManager.h"
 #import "PhysiologyDataModel.h"
 #import "MJRefresh.h"
+#import "MainDataManager.h"
 
 static NSString *headerIdent = @"PhysiologicalDataTableViewHeader";
 static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
@@ -85,8 +86,10 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
 
 #pragma mark 请求数据
 -(void)loadDataMethod {
-    NSDictionary *params = @{@"ID_number" : @"420521199910100014"};
+    
+    NSDictionary *params = @{@"ID_number" : [MainDataManager sharedInstance].selectModel.ID_number};
     [DataInterface physiologicalDataRequest:params complication:^(CommonResponseModel *model, NSError *error) {
+        [self.mainTableView.mj_header endRefreshing];
         [self.noDataView removeFromSuperview];
         if (error) {
             [self.view addSubview:self.noDataView];
@@ -106,6 +109,7 @@ static NSString *cellIdent = @"PhysiologicalDataTableViewCell";
             
         }
         else{
+            [self.mainTableView.mj_header endRefreshing];
             [self showInfoMsg:model.msg];
         }
     }];
